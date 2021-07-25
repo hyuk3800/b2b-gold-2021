@@ -1,0 +1,17 @@
+{
+  "name": "dd",
+  "version": "1.0.0",
+  "description": "B2B",
+  "main": "index.js",
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyuk3800/b2b-gold-2021.git"
+  },
+  "author": "inhyuk Lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyuk3800/b2b-gold-2021/issues"
+  },
+  "homepage": "https://github.com/hyuk3800/b2b-gold-2021#readme"
+}
