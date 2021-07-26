@@ -1,0 +1,1570 @@
+@charset "utf-8";
+
+
+/* ///// 인트로 페이지 ///// */
+
+body {
+    position: relative;
+    min-width: 360px;
+    font-family: Noto sans KR;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.46;
+    letter-spacing: -1.2px;
+    color: #333;
+}
+
+
+/* 상단 fixed */
+.top_fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 16px 0 16px;
+    width: 100%;
+    height: 60px;
+
+    background-color: black;
+    z-index: 9999;
+}
+
+.top_box {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1170px;
+    height: 100%;
+    z-index: 999;
+    background: #000;
+}
+
+
+.top_fixed h1 {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+
+}
+
+.top_box>ul {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    transform: translateY(-50%);
+
+}
+
+
+.top_fixed ul li {
+    padding: 10px;
+}
+
+.top_fixed a {
+    color: white;
+}
+
+.top_fixed li:hover a {
+    color: rgb(179, 179, 179);
+}
+
+#colorLogin {
+    color: #ffaa34;
+}
+
+/* 햄버거 */
+.ham {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: url(../업스토어\ 분석/img/햄버거.png) 0 0 / 100% 100%;
+    cursor: pointer;
+}
+
+.ham.on {
+    background: url(../업스토어\ 분석/img/엑스.png) 0 0 / 100% 100%;
+}
+
+/* 햄버거 메뉴 */
+.mbmenu {
+    /* display: none; */
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+    transition: height .3s ease-in-out;
+}
+
+.mbmenu.on {
+    height: 265px;
+}
+
+
+.mbmenu ul li {
+    text-align: center;
+    float: none;
+    padding: 15px;
+    font-size: 16px;
+}
+
+
+/* top 버튼 */
+#topbtn {
+    position: fixed;
+    bottom: 68px;
+    right: 5px;
+    width: 50px;
+    height: 50px;
+    z-index: 99999999;
+}
+
+#topbtn img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 앱 다운로드 */
+#fix_down {
+    display: none;
+    position: fixed;
+    padding: 1px 6px 1px 6px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 9999;
+    line-height: 3;
+    text-align: center;
+    font-weight: 500;
+    background: #ffaa34;
+    color: #fff;
+    
+}
+
+
+
+/* 배너부분 */
+.banner {
+    position: relative;
+    margin-top: 59px;
+    width: 100%;
+    
+}
+
+.swiper-container {
+    display: flex;
+}
+
+
+.swiper-slide {
+    width: 100% !important;
+    margin-right: 0 !important;
+    padding-right: 30px;
+    
+}
+
+
+.swiper-slide img {
+    width: 100%;
+    /* height: 100%; */
+    min-width: 300px;
+    vertical-align: middle;
+    object-fit: cover;
+}
+
+
+/* slick 베너 */
+
+.autoplay1 {
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bannerbox {
+    position: relative;
+    
+}
+
+.slick-prev {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 20%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    z-index: 10;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.500);
+    
+}
+.slick-prev:hover{
+    color: #fff;
+}
+
+.slick-prev:focus{
+    border: none;
+    outline: none;
+}
+
+.slick-next {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 20%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.500);
+}
+.slick-next:hover{
+    color: #fff;
+}
+
+.slick-next:focus{
+    border: none;
+    outline: none;
+}
+
+
+.slick-dots{
+    display: flex;
+    align-items: flex-end;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    width: 5%;
+    height: 30px;
+}
+.slick-dots li{
+    margin: 0 auto;
+}
+
+
+.slick-dots li button{
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.500);
+    font-size: 0;
+}
+
+.slick-dots .slick-active > button{
+    background-color: #fff;
+    
+}
+.autoplay1 img {
+    /* min-width: 800px; */
+    
+    width: 100%;
+    vertical-align: middle;
+    object-fit: cover;
+}
+
+
+
+/* 시세 */
+
+
+/* .vy2{
+    
+} */
+/* 시세 */
+/* 
+.col-lg-6{
+    position: relative;
+    width: 100%;
+    flex-basis: 50%;
+    max-width: 50%;
+}
+
+.container{
+    width: 1200px;
+}
+
+.dynamic-padding-div1{
+    padding-right: 50px !important;
+}
+
+.table{
+    width: 100%;
+    color: #212529;
+}
+
+.quote_table_div{
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* margin: 0 auto;
+    margin-top: 10px;
+    width: 100%;
+    font-weight: 500;
+}
+
+.quote_table_div table{
+    flex-grow: 1;
+}
+
+
+
+.quote_table_div table thead {
+    background-color: rgb(255, 170, 52, .85);
+} */ 
+
+/* 다운로드 1번 */
+.down1 {
+    margin-top: 60px;
+    width: 100%;
+    height: 650px;
+    
+    background: #ccc;
+}
+
+.downbox {
+    margin: 0 auto;
+    max-width: 800px;
+    height: 100%;
+    
+    
+    
+}
+
+.down_inbox {
+    display: flex;
+    flex-direction: column;
+    
+    margin-left: 50%;
+    max-width: 50%;
+    height: 100%;
+}
+
+
+.mtextbox {
+    justify-content: center;
+    margin-top: 96px;
+}
+
+.mtextbox h2 {
+    font-family: Noto sans KR;
+    font-size: 38px;
+    font-weight: 700;
+    font-style: normal;
+    color: #333;
+}
+
+.mtextbox h2 span {
+    color: #ffaa34;
+}
+
+
+.stexybox {
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.stexybox span {
+    font-family: Noto sans KR;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.46;
+    color: #333;
+}
+
+
+.downlink {
+    position: relative;
+    justify-content: center;
+    margin-top: 112px;
+}
+
+.downlink a {
+    position: absolute;
+    top: 0;
+}
+
+.downlink a:first-child {
+    left: 0;
+}
+
+.downlink a:last-child {
+    right: -26px;
+}
+
+/* 소매 서비스 */
+
+.liftRetail2 {
+    position: relative;
+    width: 50%;
+    padding-left: 15px;
+
+}
+
+.liftretail2bx {
+    display: flex;
+    /* flex-basis: 33.333333333%; */
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-left: 20%;
+    max-width: 66.6666667%;
+}
+
+.bgImgBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.rbgbox {
+    top: -70px;
+    left: -190px;
+
+}
+
+.bgImgBox ul li {
+    position: absolute;
+    display: none;
+    width: 277px;
+    /* -> 347 -> 333*/
+    opacity: 0;
+}
+
+.bgImgBox ul li.on {
+    display: block;
+    opacity: 1;
+}
+
+.bgImgBox ul li img {
+    width: 100%;
+}
+
+
+.liftRetailbox {
+    position: absolute;
+    max-width: 362.8px;
+    max-height: 706px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.liftRetailbox>img {
+    width: 100%;
+    height: auto;
+}
+
+.smphonbox {
+    position: relative;
+    margin-top: 20px;
+    margin-left: 21px;
+    width: 221px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.smPhon {
+    position: absolute;
+    width: 400%;
+    height: 100%;
+
+}
+
+.smPhon li {
+    width: 25%;
+}
+
+
+
+.smPhon li img {
+    width: 98%;
+    height: 425px;
+}
+
+
+.Retail1 {
+    background-color: #f5f5f6;
+    width: 100%;
+}
+
+.Retail1_inbox {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 800px;
+    height: 700px;
+}
+
+.Retail1_text {
+    margin-top: 9.3%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.Retail1_text div:first-child span {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f28f1a;
+}
+
+.Retail1_text div:nth-child(2) span {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -4.5px;
+}
+
+
+.R1_txt {
+    margin-top: 32px;
+    font-size: 20px;
+    font-weight: 400;
+    justify-content: center;
+}
+
+
+.Retail1_icon {
+    display: flex;
+    margin-top: 8.9%;
+    justify-content: space-evenly;
+}
+
+.Rbox {
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.R_img_box {
+    display: flex;
+    justify-content: center;
+}
+
+.R_img_box img {
+    width: 100%;
+    height: 100%;
+}
+
+.R_textbox {
+    margin-top: 24px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.44;
+    letter-spacing: 0px;
+}
+
+
+.Rbox h2 {
+    margin-top: 12px;
+    font-weight: 700;
+    font-size: 30px;
+    color: #ffaa34;
+}
+
+
+.Retail2 {
+
+    overflow: hidden;
+    width: 100%;
+    height: 700px;
+
+}
+
+.Retail2_inbox {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 77px;
+    width: 800px;
+    height: 100%;
+    /* outline: 1px solid red; */
+}
+
+
+
+
+
+
+.rightRetail2 {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 15px;
+}
+
+.rightRetail2 h2 {
+    margin: 36px 0 10px 0;
+    padding-left: 15px;
+    font-weight: 700;
+    font-size: 24px;
+    color: #ffaa34;
+    letter-spacing: -1.2px;
+}
+
+
+
+.Reail2tit {
+    text-align: left;
+    line-height: 1.5;
+    ;
+    font-weight: 700;
+    padding-left: 15px;
+    font-size: 42px;
+}
+
+
+.R2tit {
+    display: none;
+}
+
+
+.Rmanu {
+    display: flex;
+    position: relative;
+}
+
+.Rm {
+    position: relative;
+    margin-top: 40px;
+    padding: 0 15px 0 15px;
+    width: 25%;
+    height: 64px;
+    color: rgb(170, 170, 170);
+}
+
+
+
+
+.Rmtext {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+.Rm_on {
+    color: #333;
+}
+
+
+.Rm_on::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    width: 100%;
+    height: 4px;
+    background-color: #ffaa34;
+}
+
+
+
+.Rm span {
+    font-weight: 400;
+    line-height: 1.46;
+    font-size: 19px;
+}
+
+.text_Rm {
+    margin-top: 32px;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.44;
+    letter-spacing: 1px;
+}
+
+.Rmtxt {
+    display: none;
+}
+
+/* 도매 서비스 */
+
+#W_color {
+    color: #8219ff;
+}
+
+.liftRetail2 h2 {
+    margin: 36px 0 10px 0;
+    padding-left: 15px;
+    font-weight: 700;
+    font-size: 24px;
+    color: #8219ff;
+    letter-spacing: -1.2px;
+}
+
+
+.Wm {
+    position: relative;
+    margin-top: 40px;
+    padding: 0 15px 0 15px;
+    width: 33%;
+    height: 64px;
+    color: rgb(170, 170, 170);
+}
+
+
+
+
+.Wmtext {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+
+.Wm_on {
+    color: #333;
+}
+
+
+.Wm_on::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    width: 100%;
+    height: 4px;
+    background-color: #8219ff;
+}
+
+.Wm span {
+    font-weight: 400;
+    line-height: 1.46;
+    font-size: 20px;
+}
+
+.lbgbox {
+    top: -70px;
+    left: 200px;
+}
+
+
+
+
+/* 촬영 도와주기 */
+
+.pagePhoto {
+    background: #f1eff0;
+}
+
+
+.photo {
+    display: flex;
+    max-width: 800px;
+    height: 730px;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: start
+}
+
+.photo span {
+    text-align: center;
+}
+
+.photo span:first-child {
+    margin-top: 56px;
+    font-weight: 700;
+    font-size: 24px;
+    color: #8219ff;
+    letter-spacing: -1.2px;
+}
+
+.photo span:nth-child(2) {
+    margin-top: 10px;
+
+    line-height: 1.27;
+    font-weight: 700;
+    font-size: 42px;
+
+}
+
+.photo span:nth-child(3) {
+    margin-top: 40px;
+    font-size: 18px;
+}
+
+.photoImg {
+    display: flex;
+    justify-content: center;
+}
+
+.Pimg {
+    margin-top: 50px;
+    padding: 0 15px 0 15px;
+    max-width: 66.666667%;
+}
+
+.Pimg img:first-child {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.Pimg img:last-child {
+    display: none;
+    margin: 0 auto;
+    width: 80%;
+    height: auto;
+}
+
+
+/* 리뷰 */
+.rv {
+    margin: 0 auto;
+    max-width: 800px;
+    height: 590px;
+
+}
+
+.rvImgbox {
+    display: flex;
+    justify-content: left;
+}
+
+.rvImg {
+    margin-top: 69px;
+    width: 60px;
+    height: 60px;
+}
+
+.rvImg img {
+    width: 100%;
+    height: 100%;
+}
+
+.rvTitle {
+    display: flex;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 42px;
+}
+
+.rvbox {
+    margin-top: 64px;
+    width: 100%;
+    height: 250px;
+}
+
+.rvrvrv {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.draggable {
+    overflow: visible;
+}
+
+.soqn {
+    position: relative;
+    margin: 0 auto;
+    padding: 15px;
+    max-width: 200px;
+    max-height: 190px;
+    min-height: 190px;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 16px;
+    box-shadow: 2px 5px 10px 0 rgb(0 0 0 / 16%);
+}
+
+.soqn span:nth-child(7) {
+    line-height: 2;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.soqnImg {
+    position: absolute;
+    left: 20px;
+    bottom: 15px;
+    width: 50px;
+    height: 50px;
+}
+
+.soqnImg img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 유튜브채널 */
+.ytb {
+    background-color: #f1eff0;
+    padding-bottom: 100px;
+}
+
+.ytbBox {
+    margin: 0 auto;
+    max-width: 800px;
+    height: 100%;
+}
+
+
+.ytbImg {
+    display: flex;
+    justify-content: left;
+}
+
+.ytbimgbox {
+    margin-top: 69px;
+    width: 60px;
+    height: 60px;
+}
+
+.ytbimgbox img {
+    width: 100%;
+    height: 100%;
+}
+
+.ytbtitle {
+    display: flex;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 42px;
+}
+
+
+.ytbmv {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+}
+
+.ytbmv span {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.ytbmv img {
+    width: 40px;
+    height: 35px;
+    padding-bottom: 4px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.ylink {
+    width: 100%;
+    overflow: hidden;
+}
+
+.ytbtitBox {
+    position: relative;
+    margin: 0 auto;
+    width: 233px;
+    height: 233px;
+}
+
+.ytbtitBox>img {
+    width: 100%;
+    height: auto;
+    min-width: 200px;
+    min-height: 200px;
+
+}
+
+
+.playbtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+}
+
+.playbtn a {
+    width: 100%;
+    height: 100%;
+}
+
+.playbtn a img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* 다운로드2 */
+.down2 {
+    width: 100%;
+    height: 433px;
+    background: #777;
+}
+
+
+.down_inbox2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.mtextbox2 {
+    margin-top: 92px;
+    height: 165px;
+}
+
+.mtextbox2 h2 {
+    font-size: 42px;
+    color: #fff;
+}
+
+.downlink2 {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.downlink2 a img {
+    margin-right: 30px;
+    width: 213px;
+    height: 60px;
+}
+
+
+
+
+
+/* 하단 */
+footer {
+    width: 100%;
+    height: 268px;
+    background: #2c3948;
+    font-size: 14px;
+    font-weight: 200;
+    letter-spacing: 0;
+    line-height: 1.71;
+    color: #fff;
+}
+
+.footerbox {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+
+.footerbx {
+    max-width: 75%;
+    flex-basis: 75%;
+}
+
+.footerspn {
+    margin-top: 48.5px;
+    text-align: center;
+}
+
+
+.l_footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.logo_first {
+    margin-top: 82px;
+    height: 23px;
+    width: 185px;
+}
+
+.logo_first img {
+    width: 100%;
+    height: 100%;
+}
+
+.logo_second {
+    margin-top: 79px;
+    width: 111.2px;
+    height: 26.5px;
+}
+
+.logo_second img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+.r_footer {
+    flex-basis: 25%;
+    margin-top: 82px;
+    max-width: 25%;
+    min-width: 300px;
+    height: 92px;
+    text-align: center;
+}
+
+
+.on {
+    display: block;
+}
+
+
+
+/* 미디어 쿼리 */
+
+@media only screen and (max-width: 1220px) {
+
+    /* 하단 */
+    .footerbox {
+        width: 90%;
+    }
+
+}
+
+@media only screen and (max-width: 990px) {
+
+
+    .footerbox {
+        flex-direction: column;
+    }
+
+    .footerbx {
+        max-width: 100%;
+    }
+
+    .footerspn {
+        margin-top: 10px;
+    }
+
+    .logo_first {
+        margin-top: 43px;
+
+
+    }
+
+    .logo_second {
+        margin-top: 40px;
+
+
+    }
+
+    .r_footer {
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+
+}
+
+
+
+@media only screen and (max-width: 880px) {
+
+
+    /* 다운로드 페이지 1 */
+
+
+    .mtextbox h2 {
+        color: #fff !important;
+        font-size: 28px !important;
+    }
+
+
+    .down_inbox {
+        text-align: center;
+        min-width: 100%;
+        margin: 0 auto;
+    }
+
+
+    .downlink {
+        display: none;
+    }
+
+
+    /* 소매서비스 2 */
+
+
+    .Retail2_inbox {
+        margin-top: 30px;
+        width: 100%;
+        flex-direction: column;
+
+    }
+
+    .inbox1>div:nth-child(2) {
+        order: -1;
+    }
+
+
+    .rightRetail2 {
+        padding: 0;
+        min-width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .rightRetail2 h2 {
+        margin: 0 0 0 0;
+        padding: 0;
+    }
+
+    .Reail2tit {
+        padding: 0;
+    }
+
+    .R2tit {
+        padding: 0;
+        text-align: center;
+    }
+
+    .Rmanu {
+        margin: 0 auto;
+
+        justify-content: space-around;
+        width: 80%;
+    }
+
+
+    .Rmtxt {
+        font-size: 15px;
+    }
+
+
+    /* 도매 서비스 */
+
+    .liftRetail2 {
+        padding: 0;
+        min-width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .leftRetail2 h2 {
+        margin: 0 0 0 0;
+        padding: 0;
+    }
+
+    .Reail2tit {
+        padding: 0;
+    }
+
+
+    .phoneImg {
+        margin-top: 40px;
+        height: 100%;
+    }
+
+    .liftretail2bx {
+        margin-left: 0;
+        margin: 0 auto;
+        justify-content: space-around;
+    }
+
+    .bgImgBox ul li {
+        width: 347px;
+    }
+
+    .smphonbox {
+        margin-top: 40px;
+        margin-left: 2px;
+        width: 295px;
+    }
+
+    .liftRetailbox {
+        width: 362px;
+    }
+
+    .smPhon li img {
+        height: auto;
+    }
+
+    /* 리뷰 */
+    .rv {
+        max-width: 80%;
+    }
+
+    /* 유튜브 */
+    .ytbBox {
+        width: 80%;
+    }
+
+
+    /* 다운로드 2 */
+    .mtextbox2 {
+        margin-top: 50px;
+        height: 80px;
+    }
+
+    .mtextbox2 h2 {
+        text-align: center;
+        font-size: 28px;
+    }
+
+
+    .downlink2 {
+        margin: 0;
+        text-align: center;
+
+    }
+
+    .downlink2 a img {
+        margin: 0 5px 0 5px;
+        width: 35%;
+        height: auto;
+    }
+
+}
+
+
+
+@media only screen and (max-width: 750px) {
+
+    body {
+        font-size: 13px;
+        letter-spacing: 0;
+    }
+
+
+    /* 상단메뉴 지움 */
+    .top_box ul {
+        display: none;
+    }
+
+    /* 햄버거 나옴 */
+    .ham {
+        display: block;
+    }
+
+    /* 앱 다운로드 */
+    #fix_down {
+        display: block;
+        font-size: 18px;
+    }
+
+    /* 소매 서비스 */
+    .Retail1_text div:first-child span {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    .Retail1_text div:nth-child(2) span {
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -2.5px;
+    }
+
+    /* 소매 서비스 */
+
+    .rightRetail2 h2 {
+        font-size: 18px;
+    }
+
+
+
+
+    .R_textbox {
+        margin-top: 24px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.44;
+        letter-spacing: -1.4px;
+    }
+
+
+    .Rbox h2 {
+        margin-top: 5px;
+        font-weight: 700;
+        font-size: 20px;
+        color: #ffaa34;
+    }
+
+
+    .R2tit {
+        font-size: 28px;
+    }
+
+    .Rmtext span {
+        width: 100%;
+        font-size: 17px;
+    }
+
+    .Rm {
+        padding: 0;
+        width: 87px;
+    }
+
+
+    .liftRetail2 h2 {
+        font-size: 18px;
+    }
+
+    .Wmtext span {
+        width: 100%;
+        font-size: 17px;
+        letter-spacing: -1.4px;
+    }
+
+
+
+
+
+    /* 사진촬영 */
+    .photo span:first-child {
+        font-size: 18px;
+    }
+
+    .photo span:nth-child(2) {
+        font-size: 28px;
+    }
+
+    .photo span:nth-child(3) {
+        font-size: 15px;
+    }
+
+    .Pimg img:first-child {
+        display: none;
+    }
+
+    .Pimg img:last-child {
+        display: block;
+    }
+
+    /* 리뷰 */
+    .rvImgbox {
+        justify-content: space-around;
+    }
+
+    .rvTitle {
+        justify-content: space-around;
+        font-size: 28px;
+    }
+
+
+    /* 유튜브 */
+    .ytbBox {
+        width: 80%;
+    }
+
+    .ytbImg {
+        justify-content: space-around;
+    }
+
+    .ytbtitle {
+        justify-content: space-around;
+        font-size: 28px;
+    }
+    .ytbtitBox{
+        width: 200px;
+        height: 200px;
+    }
+
+    /* 하단 */
+    .r_footer {
+        font-size: 10px;
+    }
+
+
+}
+
+
+@media only screen and (max-width: 550px) {
+
+    /* 소매 서비스 */
+
+
+
+    .R1_txt {
+        margin-top: 4px;
+        font-size: 13px;
+    }
+
+
+    .Retail1_icon {
+
+        flex-wrap: wrap;
+    }
+
+    .Rbox {
+        margin-top: 20px;
+        padding: 0 9px 0 9px;
+        width: 40%;
+    }
+
+    .R_img_box {
+        margin: 0 auto;
+        width: 95px;
+        height: 95px;
+    }
+
+
+
+    .Rmtext span {
+        font-size: 15px;
+        letter-spacing: -1.4px;
+    }
+
+    .Rmtxt {
+        font-size: 12px;
+    }
+
+
+    .Wm {
+        padding: 0;
+        width: 75px;
+    }
+
+
+    .bgImgBox {
+        width: 333px;
+    }
+
+    .liftRetailbox {
+        width: 253px;
+    }
+
+    .smphonbox {
+        width: 203px;
+
+    }
+
+    /* 사진촬영 */
+
+    .photo {
+        height: 600px;
+    }
+
+
+    /* 리뷰 */
+
+
+    /* 하단 */
+    .logo_first {
+        width: 140px;
+        height: 21px;
+    }
+
+    .logo_second {
+        width: 85.19px;
+        height: 18.5px;
+    }
+
+    .footerspn {
+        font-size: 12px;
+    }
+
+
+
+
+}

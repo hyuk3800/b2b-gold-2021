@@ -1,0 +1,304 @@
+@charset "utf-8";
+
+/*  대여등록  */
+
+
+.rentSaveBox{
+    margin-top: 100px;
+}
+
+
+.orderName{
+    position: relative;
+    display: flex;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.icInfoOutline{
+    position: absolute;
+    top: 0;
+    left: 115px;
+    width: 16px;
+    height: 16px;
+}
+.icInfoOutline img{
+    width: 100%;
+}
+
+
+.imgOrderBox{
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.imgbox{
+    margin-top: 15px;
+    width: 113px;
+    height: 113px;
+    border: 2px solid #ffaa34;
+}
+
+.imgbox img{
+    width: 100%;
+}
+
+.orderBtnBox{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#orderBtn{
+    width: 200px;
+    height: 38px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffaa34;
+    box-shadow: 1px 1px 2px 0 #999;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+
+.mntitArrow{
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: url(../업스토어\ 분석/img/ic-arrow-forward-24-px@3x.png) no-repeat center/cover;
+}
+
+/* 상단 표 */
+
+
+#calenderBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.calender{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    height: 28px;
+    border: none !important;
+}
+
+.calImg{
+    width: 30px;
+    height: 100%;
+    background: #f1f5f7 url(../업스토어\ 분석/img/calendar.png) no-repeat center/70%;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+}
+.calText{
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+}
+
+.sechBox{
+    margin: 0 auto;
+    position: relative;
+    width: 70%;
+    height: 28px;
+}
+.upuptable{
+    margin-top: 48px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.upuptable table{
+    width: 100%;
+    height: 120px;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+}
+
+
+.upuptable input{
+    padding-left: 15px;
+    width: 70%;
+    height: 28px;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+    border-radius: 5px;
+}
+
+
+.sechBox input{
+    width: 100%;
+}
+.secbtn{
+    position:absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    border: none;
+    outline: none;
+    background: #fff url(../업스토어\ 분석/img/ic-zoom-in-24-px@3x.png) no-repeat center/ cover;
+    border-radius: 5px;
+}
+
+.upselectBox{
+    padding-left: 15px;
+    width: 70%;
+    height: 28px;
+    background: #fff url("../업스토어\ 분석/img/ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+    border-radius: 5px;
+    font-size: 12px;
+    appearance: none;
+}
+
+.upselectBox::-ms-expand {
+    display: none;
+}
+
+.upuptable1 td:first-child{
+    color: #555;
+    background-color: #f1f5f7;
+}
+
+
+.upuptable2 th{
+    height: 30px;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+    background-color: #f1f5f7;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.upuptable2 td{
+    height: 30px;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+}
+
+.upuptable2  tr:nth-child(2){
+    background-color: #fdebec;
+}
+
+.upuptable2  tr:nth-child(3){
+    background-color: #f1f5f7;
+}
+
+.upuptable2  tr:nth-child(4){
+    background-color: #fdebec;
+}
+
+.upuptable2 td:first-child{
+    background-color: #fff;
+}
+
+/* 하단 표 */
+.dTableBox{
+    margin-top: 34px;
+}
+
+.dTableScrollBox{
+    padding-bottom: 20px;
+    width: 100%;
+    overflow-x: none;
+}
+
+
+
+
+.dTable{
+    width: 100%;
+    min-width: 1200px;
+    font-size: 12px;
+}
+
+.dTable thead{
+    background-color: #f1f5f7;
+}
+
+.dTable th{
+    height: 26px;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+}
+
+.dTable td{
+    height: 36px;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+}
+
+
+.trsBTN{
+    width: 18px;
+    height: 23px;
+    background: url(../업스토어\ 분석/img/delete-img.png) no-repeat center/cover;
+    border: none;
+    outline: none;
+}
+.sechBox2{
+    margin: 0 auto;
+    position: relative;
+    width: 90%;
+    height: 80%;
+}
+
+.sechBox2 input{
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+    border-radius: 5px;
+}
+
+.downSelectBox{
+    width: 90%;
+    height: 80%;
+    background: #fff url("../업스토어\ 분석/img/ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+    border-radius: 5px;
+    font-size: 12px;
+    appearance: none;
+}
+
+
+.pluseBox{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+#plsbtn{
+    width: 143px;
+    height: 57px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #999;
+    box-shadow: 1px 1px 2px 0 #999;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+@media (max-width: 1399px) {
+    
+    
+    
+    .dTableScrollBox{
+        overflow-x: scroll;
+    }
+
+
+}

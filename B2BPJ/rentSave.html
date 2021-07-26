@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대여등록</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="plugin/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/topfixed.css">
+    <link rel="stylesheet" href="css/rentSave.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+    <script defer src="js/jq/jquery-3.5.1.min.js"></script>
+    <script defer src="plugin/bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+    <script defer src="js/ham.js"></script>
+
+    <style>
+        div {
+            /* outline: 1px solid skyblue; */
+        }
+    </style>
+
+
+</head>
+
+<body>
+ <!-- 최상단 매뉴 -->
+ <div id="top">
+    <div class="container toptop">
+        <div class="row top_box">
+            <div class="col-2 logobx">
+                <div class="logo">
+                    logo
+                </div>
+            </div>
+            <div class="col-10 mnbx">
+                <div class="menuli">
+                    <ul>
+                        <li class=""><a href="catalog.html" target="_self"><span>카탈로그</span></a></li>
+                        <li class=""><a href="chat.html" target="_self"><span>채팅</span></a></li>
+                        <li class=""><a href="stone.html" target="_self"><span>스톤</span></a></li>
+                        <li class=""><a href="client.html" target="_self"><span>거래처</span></a></li>
+                        <li class=""><a href="quote.html" target="_self"><span>시세</span></a></li>
+                        <li class=""><a href="stock.html" target="_self"><span>제고관리</span></a></li>
+                        <li class=""><a href="order.html" target="_self"><span>주문</span></a></li>
+                        <li class=""><a href="repair.html" target="_self"><span>수리</span></a></li>
+                        <li class=""><a href="purchase.html" target="_self"><span>매입</span></a></li>
+                        <li class=""><a href="sale.html" target="_self"><span>판매</span></a></li>
+                        <li class="on"><a href="rent.html" target="_self"><span>대여</span></a></li>
+                        <li class=""><a href="accountsReceivable.html" target="_self"><span>미수</span></a></li>
+                        <li class=""><a href=""><span>로그아웃</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- 햄버거 -->
+                <button id="ham">
+                    <span class="hamImg">
+
+                    </span>
+                </button>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 햄버거 매뉴 -->
+    <div class="hammn">
+        <ul>
+            <li class=""><a href="catalog.html" target="_self"><span>카탈로그</span></a></li>
+            <li class=""><a href="chat.html" target="_self"><span>채팅</span></a></li>
+            <li class=""><a href="stone.html" target="_self"><span>스톤</span></a></li>
+            <li class=""><a href="client.html" target="_self"><span>거래처</span></a></li>
+            <li class=""><a href="quote.html" target="_self"><span>시세</span></a></li>
+            <li class=""><a href="stock.html" target="_self"><span>제고관리</span></a></li>
+            <li class=""><a href="order.html" target="_self"><span>주문</span></a></li>
+            <li class=""><a href="repair.html" target="_self"><span>수리</span></a></li>
+            <li class=""><a href="purchase.html" target="_self"><span>매입</span></a></li>
+            <li class=""><a href="sale.html" target="_self"><span>판매</span></a></li>
+            <li class="on"><a href="rent.html" target="_self"><span>대여</span></a></li>
+            <li class=""><a href="accountsReceivable.html" target="_self"><span>미수</span></a></li>
+            <li class=""><a href=""><span>로그아웃</span></a></li>
+        </ul>
+    </div>
+</div>
+    <div class="container rentSaveBox">
+        <div class="row">
+            <div class="col-6">
+                <div class="orderName">
+                    <a href="sale.html" target="_self" class="mntitArrow"></a>
+                    <span>대여 등록</span>
+                </div>
+                <a href="" class="icInfoOutline"><img src="업스토어 분석/img/ic-info-outline-24-px.png" alt="도움"></a>
+            </div>
+            <div class="col-6 orderBtnBox">
+                <button id="orderBtn">주문등록</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 imgOrderBox">
+                <div class="imgbox"><img src="업스토어 분석/img/no_image_available.png" alt=""></div>
+            </div>
+        </div>
+        <div class="row upuptable">
+            <div class="col-12 col-md-5">
+                <table class="upuptable1">
+                    <tr>
+                        <td>
+                            등록일
+                        </td>
+                        <td id="calenderBox">
+                            <div class="calender">
+                                <div class="calImg">
+
+                                </div>
+                                <div class="calText">
+                                    <span>
+                                        2021-07-19
+                                    </span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            거래처
+                        </td>
+                        <td>
+                            <div class="sechBox">
+                                <input type="text" placeholder="거래처">
+                                <button class="secbtn"></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            뒷시세(돈당)
+                        </td>
+                        <td>
+                            <input type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            적용해리
+                        </td>
+                        <td>
+                            <select name="HARI" class="upselectBox" id="HARI">
+                                <option value="1.10">1.10</option>
+                                <option value="1.09">1.09</option>
+                                <option value="1.07">1.07</option>
+                                <option value="1.06">1.06</option>
+                                <option value="1.00">1.00</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="col-12 col-md-7">
+                <table class="upuptable2">
+
+                    <tr>
+                        <th></th>
+                        <th>순금(g)</th>
+                        <th>금액(공임)</th>
+                        <th>수량</th>
+                    </tr>
+
+                    <tr>
+                        <td>전 미수</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>대 여</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>후 미수</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="row dTableBox">
+            <div class="col-12">
+                    <div class="dTableScrollBox">
+
+                    <table class="dTable">
+                        <thead>
+                            <tr>
+                                <th width="2%" rowspan="2">취소</th>
+                                <th width="6%" rowspan="2">시리얼</th>
+                                <th width="6%" style="border-bottom: none;">모델번호</th>
+                                <th width="3%" rowspan="2">재질</th>
+                                <th width="3%" rowspan="2">색상</th>
+                                <th width="3%" rowspan="2">단가 <br>
+                                    상품</th>
+                                <th width="" colspan="4">판매단가</th>
+                                <th width="4%" rowspan="2">개당 <br>
+                                    알중량</th>
+                                <th width="" colspan="4">중량</th>
+                                <th width="4%" rowspan="2">메인스톤</th>
+                                <th width="4%" rowspan="2">보조스톤</th>
+                                <th width="4%" rowspan="2">사이즈</th>
+                                <th width="5%" rowspan="2">비고</th>
+                                <th width="2%" rowspan="2">수량</th>
+                                <th width="4%" colspan="2">개당알수</th>
+                                <th width="6%" rowspan="2">공급가</th>
+                            </tr>
+                            <tr>
+                                <th width="" style="border-top: none;">ch</th>
+                                <th width="5%">기본</th>
+                                <th width="5%">추가</th>
+                                <th width="5%">중심</th>
+                                <th width="5%">보조</th>
+                                <th width="4%">총중량</th>
+                                <th width="4%">금중량</th>
+                                <th width="4%">알중량</th>
+                                <th width="4%">순금환산</th>
+                                <th width="3%">메인</th>
+                                <th width="3%">보조</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="trsBTN">
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                        <button class="secbtn"></button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select name="JAJIL" class="downSelectBox" id="JAJIL">
+                                        <option value=""></option>
+                                        <option value="10K">10K</option>
+                                        <option value="14K">14K</option>
+                                        <option value="18K">18K</option>
+                                        <option value="22K">22K</option>
+                                        <option value="순금-995">순금-995</option>
+                                        <option value="순금-999">순금-999</option>
+                                        <option value="실버">실버</option>
+                                        <option value="PT">PT</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="SAGSANG" class="downSelectBox" id="SAGSANG">
+                                        <option value=""></option>
+                                        <option value="G">G</option>
+                                        <option value="G/B">G/B</option>
+                                        <option value="G/P">G/P</option>
+                                        <option value="G/R/W">G/R/W</option>
+                                        <option value="G/W">G/W</option>
+                                        <option value="P">P</option>
+                                        <option value="P/W">P/W</option>
+                                        <option value="P/블랙도금">P/블랙도금</option>
+                                        <option value="W">W</option>
+                                        <option value="W/B">W/B</option>
+                                        <option value="W/G">W/G</option>
+                                        <option value="W/P">W/P</option>
+                                        <option value="블랙">블랙</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM">
+                                        <option value="N">N</option>
+                                        <option value="Y">Y</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="sechBox2">
+                                        <input type="text" disabled>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="pluseBox"><button id="plsbtn">추가</button></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

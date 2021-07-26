@@ -1,0 +1,205 @@
+@charset "utf-8";
+/* /////////// 채팅 페이지 /////////// */
+
+
+
+.mainContant{
+    margin-top: 60px;
+}
+
+#sisebox{
+    margin-bottom: 20px;
+}
+
+.sibx{
+    display: flex;
+    justify-content: center;
+}
+
+.sise{
+    padding: 15px 15px 0 15px;
+    width: 90%;
+    height: 80px;
+    border: 0px solid rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.si1{
+    background-color: rgba(193, 219, 252, 0.363);
+}
+
+.si2{
+    background-color: rgba(250, 211, 139, 0.363);
+}
+
+.sise span:first-child{
+    line-height: 1;
+}
+
+.mainchat{
+    margin-bottom: 30px;
+    border: 5px solid #ccc;
+
+}
+
+
+.serchbox{
+    border-right: 2px solid #ccc;
+    background-color: #333;
+}
+
+#serchMyName{
+    margin: 10px 0 10px 0;
+    position: relative;
+    width: 100%;
+}
+
+#serchMyName input{
+    padding: 5px 5px 5px 15px;
+    width: 100%;
+    height: 38px;
+    outline: none;
+    font-size: 14px;
+
+    border-radius: 5px;
+}
+
+.showName{
+    display: flex;
+    min-height: 50px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #f1f5f7;
+    /* border-right: 2px solid #ccc; */
+}
+
+
+
+#gogogoMessage{
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    margin: 15px 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  
+  
+}
+
+.shopbox{
+    padding: 0;
+    height: 700px;
+    overflow: hidden;
+
+}
+
+
+
+.shopListBox{
+    /* display: flex; */
+    /* flex-direction: column; */
+    width: 100%;
+    height: 200%;
+    border-right: 1px solid #ccc;
+}
+
+.shopList{
+    display: flex;
+    padding: 15px 0 15px 0;
+    width: 100%;
+    height: 88px;
+    border: 1px solid #ccc;
+    background-color: rgb(139, 139, 139);
+
+}
+.shopList img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50px;
+    height: 50px;
+}
+
+.shopShopName{
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 700;
+}
+.lastmessage{
+    margin-top: 8px;
+    width: 90%;
+    text-align: left;
+    font-size: 12px;
+}
+
+.timeStemp{
+    position: absolute;
+    top: 0;
+    right: 5px;
+    width: 50px;
+    font-size: 14px;
+
+}
+
+
+.Figure{
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    background-color: #ffaa34;
+    border-radius: 50%;
+    color: #f1f5f7;
+}
+
+
+
+#plusFile{
+    margin-right: 5px;
+    width: 38px;
+    height: 38px;
+    line-height: 1;
+    background-color: #ffaa34;
+    font-size: 25px;
+    font-weight: border;
+    color: #f1f5f7;
+}
+
+.chatingbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    width: 100%;
+    height: 90%;
+}
+.chatchatchat{
+    display: flex;
+}
+
+
+#gogogoMessage input{
+    width: 90%;
+    height: 38px;
+}
+
+#goMsg{
+    width: 38px;
+    height: 38px;
+    line-height: 1;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+    font-size: 25px;
+    color: #ffaa34;
+}
+

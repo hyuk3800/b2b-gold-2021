@@ -1,0 +1,457 @@
+@charset "utf-8";
+
+
+/* /////////////카탈로그 등록/////////////// */
+
+
+
+
+
+/* 카탈로그 메뉴 */
+.main-container{
+    margin-top: 100px;
+}
+
+
+.mainTitle{
+    display: flex;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+
+.mntitArrow{
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: url(../업스토어\ 분석/img/ic-arrow-forward-24-px@3x.png) no-repeat center/cover;
+}
+
+
+.helpIcon{
+    position: absolute;
+    top: 0;
+    left: 153px;
+    width: 16px;
+    height: 16px;
+    background: url(../업스토어\ 분석/img/ic-info-outline-24-px.png) no-repeat center/cover;
+}
+
+
+.mainTitle span{
+    
+    
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.btnbtn{
+
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.ctlogBox{
+    width: 88px;
+    height: 34px;
+    border-radius: 5px;
+    border: none; 
+    outline: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #8600fc;
+    box-shadow: 2px 1px 4px 1px rgba(0, 0, 0, 0.5);
+}
+
+.clossbtn{
+    margin-right: 5px;
+    background-color: #dbb3ff;
+    color: #888;
+}
+
+.ctlogBox:focus{
+    border: none;
+    outline: none;
+    box-shadow: 0 0 5px 3px rgba(0, 123, 255, 0.25);
+
+}
+
+
+.noto{
+    margin: 20px 15px 20px 0;
+    text-align: right;
+    font-size: 13px;
+    font-weight: 700;
+    color: #8600fc;
+}
+
+
+
+
+.mtt{
+    position: relative;
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.mtt2{
+    margin-top: 40px;
+}
+
+
+.mttbox2{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mtt3{
+    margin: 40px 0 10px 0;
+    padding: 0;
+    width: 188px;
+    height: 19px;
+}
+
+.mtt3 button{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #8600fc;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    color: #fff;
+}
+
+.mtt3 button:focus{
+    border: none;
+}
+
+
+
+.mtt::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #8600fc;
+}
+
+
+
+.mainImg{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 160px;
+    flex-direction: row;
+    border: 1px solid rgba(119, 119, 119, 0.5);
+
+}
+
+.mImgBox{
+    display: flex;
+    width: 148px;
+    height: 148px;
+    border-radius: 20px;
+    border: 1px solid #888;
+
+}
+
+.mainck{
+    border: 1px solid rgba(172, 172, 172, 0.5);
+    overflow: hidden;
+}
+
+
+.chackboxbox{
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.chackboxbox button{
+    margin: 4px 2px;
+    padding: 1px 6px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #333;
+
+}
+
+.chackboxbox button:focus{
+    outline: none;
+    background-color: #ffaa34;
+}
+
+
+.catalognanu{
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #777;
+    border-left: 1px solid rgba(172, 172, 172, 0.5);
+    background-color: #f1f5f7;
+
+}
+
+.chackboxbox1{
+    height: 40px;
+}
+
+.chackbox{
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+}
+
+.sltImg{
+    position: absolute;
+    top: 50%;
+    right: 13%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+}
+
+
+.hashi{
+    padding: 5px;
+    height: 30px;
+}
+
+
+.wjdqhbox{
+    border: 1px solid rgba(172, 172, 172, 0.5);
+    overflow: hidden;
+}
+
+.wjdqhbox span{
+    font-size: 13px;
+}
+
+form{
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 100%;
+}
+
+.open{
+    margin-left: 10px;
+}
+
+.conRdo{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    font-size: 13px;
+}
+
+
+.inppp{
+    margin: 5px;
+    padding-left: 10px;
+    width: 90%;
+    height: 28px;
+    border: 1px solid rgba(172, 172, 172, 0.5);    
+    border-radius: 5px;
+    outline: none;
+    font-size: 12px;
+}
+
+
+.tjfaudBox{
+    margin: 5px 0;
+    padding: 0;
+    width: 99%;
+    height: 100px !important;
+    overflow: hidden;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    border: 1px solid rgba(172, 172, 172, 0.5);
+
+}
+
+.tjfaud{
+    margin: 0;
+    padding: 5px 5px 4px 8px;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+.tjfaud::-webkit-scrollbar{
+    -webkit-appearance: none;
+    width: 20px;
+}
+
+.tjfaud::-webkit-scrollbar-thumb{
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+table{
+    width: 100%;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid rgba(172, 172, 172, 0.5);
+}
+
+th{
+    width: 10%;
+    border: 1px solid rgba(172, 172, 172, 0.5);
+    height: 26px;
+}
+
+td{
+    width: 10%;
+    border: 1px solid rgba(172, 172, 172, 0.5);
+}
+
+td form{
+    width: 100%;
+    height: 31px;
+}
+
+
+td input{
+    margin: 1%;
+    width: 99%;
+    height: 99%;
+    outline: none;
+    border: 1px solid rgba(172, 172, 172, 0.5);
+    border-radius:5px;
+}
+
+td button{
+    padding: 1px 6px;
+    border: none;
+    outline: none;
+}
+
+thead{
+    background-color: #f1f5f7;
+}
+tbody{
+    height: 31px;   
+}
+
+tfoot{
+    height: 36px;
+    background-color: #efdffe;
+}
+
+.tfootbox{
+    width: 100%;
+    height: 100%;
+}
+
+.noto2{
+    margin-top: 30px;
+    text-align: left;
+}
+
+
+.grabox{
+    border: 1px solid rgba(172, 172, 172, 0.5);
+}
+
+.grabox span{
+    font-size: 13px;
+}
+
+
+.pplcatn{
+    background-color: #efdffe !important;
+}
+
+.endbox{
+  margin-top: 148px;  
+  margin-bottom: 100px;
+}
+
+
+
+
+@media (max-width: 770px){
+    table{
+        display: flex;
+    }
+
+    thead{
+        width: 100%;
+    }
+
+    tbody{
+        width: 100%;
+    }
+
+    tfoot{
+        width: 100%;
+    }
+
+    tr{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    th{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 33px;
+    }
+
+    td{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 33px;
+    }
+}
+
+
+@media (max-width: 660px){
+    .mntitArrow{
+        left: -8px;
+    }
+    
+    .mainTitle{
+        justify-content: center;
+    }
+
+
+    .mainTitle span{
+        font-size: 20px;
+    }
+    .helpIcon{
+        left: 130px;
+    }
+
+}

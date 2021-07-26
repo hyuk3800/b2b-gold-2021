@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카탈로그</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="plugin/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/topfixed.css">
+    <link rel="stylesheet" href="css/catalog.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+    <script defer src="js/jq/jquery-3.5.1.min.js"></script>
+    <script defer src="plugin/bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+    <script defer src="js/ham.js"></script>
+    <script defer src="js/catalog.js"></script>
+    <script defer src="js/backendTest.js"></script>
+
+
+
+
+    <!-- <style>
+        div {
+            /* outline: 1px solid red; */
+        }
+    </style> -->
+
+
+</head>
+
+
+<body onload="showProductCard()">
+
+    <!-- 최상단 매뉴 -->
+    <div id="top">
+        <div class="container toptop">
+            <div class="row top_box">
+                <div class="col-2 logobx">
+                    <div class="logo">
+                        logo
+                    </div>
+                </div>
+                <div class="col-10 mnbx">
+                    <div class="menuli">
+                        <ul>
+                            <li class="on"><a href="catalog.html" target="_self"><span>카탈로그</span></a></li>
+                            <li class=""><a href="chat.html" target="_self"><span>채팅</span></a></li>
+                            <li class=""><a href="stone.html" target="_self"><span>스톤</span></a></li>
+                            <li class=""><a href="client.html" target="_self"><span>거래처</span></a></li>
+                            <li class=""><a href="quote.html" target="_self"><span>시세</span></a></li>
+                            <li class=""><a href="stock.html" target="_self"><span>제고관리</span></a></li>
+                            <li class=""><a href="order.html" target="_self"><span>주문</span></a></li>
+                            <li class=""><a href="repair.html" target="_self"><span>수리</span></a></li>
+                            <li class=""><a href="purchase.html" target="_self"><span>매입</span></a></li>
+                            <li class=""><a href="sale.html" target="_self"><span>판매</span></a></li>
+                            <li class=""><a href="rent.html" target="_self"><span>대여</span></a></li>
+                            <li class=""><a href="accountsReceivable.html" target="_self"><span>미수</span></a></li>
+                            <li class=""><a href=""><span>로그아웃</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- 햄버거 -->
+                    <button id="ham">
+                        <span class="hamImg">
+
+                        </span>
+                    </button>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 햄버거 매뉴 -->
+        <div class="hammn">
+            <ul>
+                <li class="on"><a href="catalog.html" target="_self"><span>카탈로그</span></a></li>
+                <li class=""><a href="chat.html" target="_self"><span>채팅</span></a></li>
+                <li class=""><a href="stone.html" target="_self"><span>스톤</span></a></li>
+                <li class=""><a href="client.html" target="_self"><span>거래처</span></a></li>
+                <li class=""><a href="quote.html" target="_self"><span>시세</span></a></li>
+                <li class=""><a href="stock.html" target="_self"><span>제고관리</span></a></li>
+                <li class=""><a href="order.html" target="_self"><span>주문</span></a></li>
+                <li class=""><a href="repair.html" target="_self"><span>수리</span></a></li>
+                <li class=""><a href="purchase.html" target="_self"><span>매입</span></a></li>
+                <li class=""><a href="sale.html" target="_self"><span>판매</span></a></li>
+                <li class=""><a href="rent.html" target="_self"><span>대여</span></a></li>
+                <li class=""><a href="accountsReceivable.html" target="_self"><span>미수</span></a></li>
+                <li class=""><a href=""><span>로그아웃</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <!-- 제품검색, 제품등록 -->
+    <div class="container" id="src_and_crt">
+        <div class="row">
+            <div class="col-md-6">
+                <from class="searchigbox">
+                    <input class="searching" type="text" placeholder="검색어를 입력하세요">
+                    <button id="btn_searching"><i class="las la-search"></i></button>
+                </from>
+
+            </div>
+            <div class="col-md-6">
+                <div class="buttonbox">
+                    <div class="click_box">
+                        <button onclick="location.href='catalogSave.html'">제품 등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row wjscpbox">
+            <div class="con-12">
+                <div class="wjscp">
+                    <a href=""><img src="업스토어 분석/img/ic-info-outline-24-px.png" alt="도움"></a>
+                    <span>전체 n 개</span>
+                    <span id="wjscpNum" class="hidden">(n) 개 선택됨</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="filterbtn">
+                    <button>필터</button>
+                </div>
+            </div>
+            <div class="col-9 bro_box">
+                <div class="card_bro brobx on">카드형식</div>
+
+                <div class="table_bro brobx">테이블형식</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 필터 -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="mainck">
+                    <div class="row">
+                        <div class="col-2 catalognanu">
+                            *성별
+                        </div>
+                        <div class="col-10 chackboxbox chackboxbox1">
+                            <form action="">
+                                <input name="gender" value="male" id="man" type="radio">
+                                남성
+                                <input name="gender" value="female" id="woman" type="radio">
+                                여성
+                                <input name="gender" value="all" id="all" type="radio">
+                                전체
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 catalognanu">
+                            *나이대
+                        </div>
+                        <div class="col-10 chackboxbox chackboxbox2">
+                            <div class="chackbox">
+                                <button>영유아</button>
+                                <button>10~20대</button>
+                                <button>30~40대</button>
+                                <button>50대이상</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 catalognanu">
+                            *부위
+                        </div>
+                        <div class="col-10 chackboxbox chackboxbox3">
+                            <div class="chackbox">
+                                <button>목걸이</button>
+                                <button>귀걸이</button>
+                                <button>팔찌</button>
+                                <button>발찌</button>
+                                <button>반지</button>
+                                <button>기타</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 catalognanu">
+                            *스타일
+                        </div>
+                        <div class="col-10 chackboxbox chackboxbox4">
+                            <div class="chackbox">
+                                <button>패션</button>
+                                <button>아기제품</button>
+                                <button>종교</button>
+                                <button>웨딩</button>
+                                <button>대작</button>
+                                <button>진주</button>
+                                <button>다이아</button>
+                                <button>유색보석</button>
+                                <button>레이스</button>
+                                <button>볼</button>
+                                <button>클립</button>
+                                <button>기계체인</button>
+                                <button>모줄</button>
+                                <button>함마링</button>
+                                <button>각줄</button>
+                                <button>할로우</button>
+                                <button>오메가</button>
+                                <button>이태리</button>
+                                <button>면</button>
+                                <button>가죽</button>
+                                <button>캐스팅</button>
+                                <button>양장</button>
+                                <button>고방</button>
+                                <button>스타킹</button>
+                                <button>초커</button>
+                                <button>볼드</button>
+                                <button>이니셜</button>
+                                <button>롱</button>
+                                <button>펜던트</button>
+                                <button>심플</button>
+                                <button>일체형</button>
+                                <button>뱅글</button>
+                                <button>원석</button>
+                                <button>컷팅</button>
+                                <button>연예인</button>
+                                <button>기타</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 catalognanu">
+                            *소재
+                        </div>
+                        <div class="col-10 chackboxbox chackboxbox5">
+                            <div class="chackbox">
+                                <button>실버</button>
+                                <button>10K</button>
+                                <button>14K</button>
+                                <button>18K</button>
+                                <button>22K</button>
+                                <button>순금-995</button>
+                                <button>순금-999</button>
+                                <button>PT</button>
+                                <button>기타</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 순금 클릭시 나온다 -->
+                    <div class="row">
+                        <div class="col-2 catalognanu">
+                            *중량
+                        </div>
+                        <div class="col-10 chackboxbox chackboxbox5">
+                            <div class="chackbox">
+                                <button>반돈</button>
+                                <button>1돈</button>
+                                <button>3돈</button>
+                                <button>5돈</button>
+                                <button>7돈</button>
+                                <button>10돈</button>
+                                <button>30돈</button>
+                                <button>50돈</button>
+                                <button>100돈</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 적용 초기화 버튼 -->
+                    <div class="row filterbtnbox">
+                        <div class="col-5 wjrdydqjxms">
+                            <button>적용</button>
+                        </div>
+                        <div class="col-2">
+                            </div>
+                        <div class="col-5 chrlghkqjxms">
+                        <button>초기화</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <!-- 카칼로그 등록된 카드 리스트 -->
+
+    <div class="container">
+        <div class="catalog_card">
+            <div class="row">
+                <div class="col-6">
+                    <!-- 클릭시 클래스에 on -->
+                    <div class="clickAndChack">
+                        <img src="업스토어 분석/img/select_off.png" alt="select_off">
+                        <img src="업스토어 분석/img/select_on.png" alt="select_on">
+
+                        <span>전체 선택</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="selectbox">
+                        <select name="page-view-counter" id="select10_50">
+                            <option value="10View">10View</option>
+                            <option value="20View">20View</option>
+                            <option value="30View">30View</option>
+                            <option value="50View">50View</option>
+                        </select>
+                        <span>선택 목록보기</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 카탈로그 카드-->
+            <div class="mainContainerCard on" id="cardTest">     
+
+
+                <!-- <div class="catalogCard">
+                    <div id="catalogImg">
+                        <img src="" alt="카탈로그이미지">
+                    </div>
+                    <div id="catalogId">
+                        <span>제품이름</span>
+                    </div>
+
+                    <div id="catalogTxt">
+                        <span>부위</span>/ <span>소제</span> <br>
+                        <span>기본공임</span>/<span>모르겠다</span> <br>
+                        <span>금(은)중량</span>/<span>스톤중량</span>
+                    </div>
+
+
+                    <div class="clickBox">
+                        <form class="clickbxbx" name="clickbxbx">
+                            <input name="clickThis" class="clickThis" type="checkbox">
+                        </form>
+
+                        <button class="rmvBtn">조회 / 수정</button>
+
+                    </div>
+                </div> -->
+             
+
+
+
+
+
+            </div>
+            <!-- 카탈로그 테이블 -->
+            <div class="mainContTable" >
+                <table id="tableTest">
+                    <thead>
+                        <tr>
+                            <th rowspan="2"><input name="clickThis" id="clickThis" type="checkbox"></th>
+                            <th rowspan="2">모델</th>
+                            <th rowspan="2">함량</th>
+                            <th>금중량</th>
+                            <th rowspan="2" style="width: 30px;">개당알수</th>
+                            <th colspan="2">공임단가</th>
+                            <th rowspan="2">수량</th>
+                            <th colspan="3">VAT별도</th>
+                        </tr>
+                        <tr>
+                            <th>알중량</th>
+                            <th>기/추</th>
+                            <th>중/보</th>
+                            <th>공임함</th>
+                            <th>금값</th>
+                            <th>소계</th>
+                        </tr>
+                    </thead>
+
+                    <!-- <tbody>
+                        <tr>
+                            <td rowspan="2">
+                                <input name="clickThis" class="clickThis" type="checkbox">
+                            </td>
+                            <td rowspan="2">
+                                <div class="model"><img src="" alt="제품이미지"></div>
+                                <div class="mdName">
+                                    <span>제품이름</span>
+                                </div>
+                            </td>
+                            <td rowspan="2">
+                                <span>함량</span>
+                            </td>
+                            <td>
+                                <span>금중량</span>
+                            </td>
+                            <td>
+                                <span>개당알수</span>
+                            </td>
+                            <td>
+                                <span>기/추</span>
+                            </td>
+                            <td>
+                                <span>중/보</span>
+                            </td>
+                            <td rowspan="2">
+                                <span>수량</span>
+                            </td>
+                            <td rowspan="2">
+                                <span>공임함</span>
+                            </td>
+                            <td rowspan="2">
+                                <span>금값</span>
+                            </td>
+                            <td rowspan="2">
+                                <span>소계</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>알중량</span>
+                            </td>
+                            <td>
+                                <span>개당 알수</span>
+                            </td>
+                            <td>
+                                <span>기/추</span>
+                            </td>
+                            <td>
+                                <span>중/보</span>
+                            </td>
+                        </tr>
+
+                    </tbody> -->
+
+                  
+
+
+                </table>
+
+
+            </div>
+            <!-- 숫자버튼 -->
+            <div class="col-12">
+                <div class="numlist">
+                    <div class="numnum on">
+                        <span>1</span>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <!-- 옵션 -->
+    <nav class="bot">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="botbox">
+                        <ul class="botmnul">
+                            <li>
+                                <img src="업스토어 분석/img/삭제하기.png" alt="삭제하기">
+                                <span>삭제하기</span>
+                            </li>
+                            <li>
+                                <img src="업스토어 분석/img/공임변경.png" alt="공임 변경">
+                                <span>공임 변경</span>
+                            </li>
+                            <li>
+                                <img src="업스토어 분석/img/재고등록.png" alt="등록">
+                                <span>재고 등록</span>
+                            </li>
+                            <li>
+                                <img src="업스토어 분석/img/주문등록.png" alt="주문 등록">
+                                <span>주문 등록</span>
+                            </li>
+                            <li>
+                                <img src="업스토어 분석/img/주문등록.png" alt="수리 등록">
+                                <span>수리 등록</span>
+                            </li>
+                            <li>
+                                <img src="업스토어 분석/img/판매등록 (1).png" alt="판매 등록">
+                                <span>판매 등록</span>
+
+                            </li>
+                            <li>
+                                <img src="업스토어 분석/img/대여등록 (1).png" alt="대여 등록">
+                                <span>대여 등록</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 하단 -->
+    <div class="container">
+        <footer class="container">
+            <nav class="footmn">
+                <ul>
+                    <li>
+                        <a href="">
+                            <span>
+                                고객 지원 센터
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>
+                                이용 약관
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>
+                                개인 정보 처리 방침
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>
+                                공지 사항
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="row footerbtm">
+                <div class="col-12 col-sm-3">
+                    <div class="ftbox">logo2</div>
+                </div>
+                <div class="col-12 col-sm-3">
+                    <div class="ftbox">
+                        <span>금방 (주) | 대표 : 임진리 </span>
+                        <span>서울 특별시 종로구 종로 133골드 유 빌딩 건물, 4층</span>
+                        <span>사업자 등록번호 : 68987 - 01235</span>
+                        <span>통신 판매업 신고 : 2019 - 서울 종로 - 0000</span>
+                        <span>업체 정보 확인></span>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-3">
+                    <div class="ftbox">
+                        <span>356 고객센터 | 전자 금융 거래 분쟁 처리 담당</span>
+                        <h2>02-2272-9899</h2>
+                        <span>서울 특별시 종로구 133 골드 유 빌딩 건물, 4 층</span>
+                        <span>팩스 : 02 - 2272 - 9897 | 이메일 : cs@keumbang.com</span>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-3">
+                    <div class="ftbox">
+                        <span>우리 은행 채무 지급 보증 안내</span>
+                        <span>당사는 고객님이 현금 결제 한 금액에 대해</span>
+                        <span>우리 은행과 채무 지급 보증 계약을 체결하여</span>
+                        <span>안전 거래를 보장하고 있습니다.</span>
+                        <span>서비스 가입 사실 확인></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+</body>
+
+</html>
