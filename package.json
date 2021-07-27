@@ -1,0 +1,28 @@
+{
+  "name": "dd",
+  "version": "1.0.0",
+  "description": "B2B",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyuk3800/b2b-gold-2021.git"
+  },
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js"
+  },
+  "author": "inhyuk Lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyuk3800/b2b-gold-2021/issues"
+  },
+  "homepage": "https://github.com/hyuk3800/b2b-gold-2021#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/node": "^7.14.7",
+    "@babel/preset-env": "^7.14.8",
+    "nodemon": "^2.0.12"
+  }
+}
