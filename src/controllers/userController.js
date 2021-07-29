@@ -1,3 +1,3 @@
-export const indexhome = (req, res) => res.send("home page");   
-export const login = (req, res) => res.send("login page");   
+export const indexhome = (req, res) => res.render("home", { pageTitle :  });
 
+export const login = (req, res) => res.send("login page");
