@@ -11,6 +11,7 @@
 
 /cataloge/main => Cataloge 카탈로그
 /cataloge/save => Cataloge save 카탈로그 저장
+/catalog/edit/:id => Caralog Edit 카탈로그 수정
 
 /stock/main => Stock 재고관리
 /stock/save => Stock save 재고관리 저장

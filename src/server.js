@@ -10,15 +10,14 @@ import saleRouter from "../src/routers/saleRouter";
 import rentRouter from "../src/routers/rentRouter";
 
 
-const PORT = 5000;
-
 const app = express();
 
 const logger = morgan("dev");
-app.use(logger);
 
 app.set('view engine', 'pug');
-
+app.set("views", process.cwd() + "/src/views");
+app.use(logger);
+app.use(express.urlencoded({ extended : true }));
 
 app.use("/", globalROuter);
 app.use("/cataloge", catalogeRouter);
@@ -30,8 +29,4 @@ app.use("/sale", saleRouter);
 app.use("/rent", rentRouter);
 
 
-const heandeListening = () => {
-    console.log(`server listening on port http://localhost:${PORT}`)
-};
-
-app.listen(PORT, heandeListening);
+export default app;

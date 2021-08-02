@@ -1,0 +1,10 @@
+extends base.pug
+include mixins/card
+
+block content
+    h2 카탈로그 보기 test
+        div     
+            each product in products 
+                +card(product)
+            else    
+                div test product none

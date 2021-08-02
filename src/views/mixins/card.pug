@@ -1,0 +1,9 @@
+mixin card(product)
+        div     
+                h4
+                    a(href=`/cataloge/edit/${product.id}`)=product.title 
+                ul 
+                    li #{product.gender}
+                    li #{product.modelNumber}
+                    li #{product.manufacturer}
+                    li #{product.id}

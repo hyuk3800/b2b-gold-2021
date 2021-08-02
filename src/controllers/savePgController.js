@@ -1,5 +1,33 @@
-export const catalogeMain = (req, res) => res.send("cataloge Page");
-export const catalogeSave = (req, res) => res.send("catalogesave Page");
+import goldProduct from "../models/Product";
+
+
+export const catalogeMain = async (req, res) =>{
+    const products = await goldProduct.find({});
+    return res.render("cataloge", { pageTitle:"카탈로그", products});
+};
+
+
+export const getUpload = (req, res) => {
+    return res.render("catalogeUpload", { pageTitle:"카탈로그 등록" })
+};
+export const postUpload = (req, res) => {
+    const { title } = req.body;
+    return res.redirect("/cataloge/main");
+};
+
+
+export const getEdit = (req, res) => {
+    const { id } = req.params;
+
+    return res.render("catalogeedit",{ pageTitle:"카탈로그 수정" ,});
+};
+export const postEdit = (req, res) => {
+    const { id } = req.params;
+    const { title } = req.body;
+
+    console.log(title);
+    return res.redirect("/cataloge/main");
+};
 
 export const stockMain = (req, res) => res.send("StockMain Page");
 export const stockSave = (req, res) => res.send("StockSave Page");
