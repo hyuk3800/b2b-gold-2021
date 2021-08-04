@@ -12,6 +12,8 @@ export const getUpload = (req, res) => {
 };
 export const postUpload = (req, res) => {
     const { title } = req.body;
+    
+    console.log(title,status);
     return res.redirect("/cataloge/main");
 };
 
