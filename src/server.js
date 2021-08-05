@@ -1,6 +1,6 @@
 import express from "express";
 import morgan from "morgan";
-import globalROuter from "../src/routers/globalRouter";
+import rootRouter from "../src/routers/rootRouter";
 import catalogeRouter from "../src/routers/catalogeRouter";
 import stockRouter from "../src/routers/stockRouter";
 import orderRouter from "../src/routers/orderRouter";
@@ -19,7 +19,7 @@ app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use(express.urlencoded({ extended : true }));
 
-app.use("/", globalROuter);
+app.use("/", rootRouter);
 app.use("/cataloge", catalogeRouter);
 app.use("/stock", stockRouter);
 app.use("/order", orderRouter);
