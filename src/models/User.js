@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true }, //아이디
@@ -9,6 +10,10 @@ const userSchema = new mongoose.Schema({
     contact: { type: Number, required: true }, // 연락처
 });
 
+
+userSchema.pre('save', async function(){
+    this.password = await bcrypt.hash(this.password, 5);
+});
 
 const User = mongoose.model('User', userSchema);
 export default User;

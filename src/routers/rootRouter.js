@@ -1,12 +1,12 @@
 import express from "express";
-import { indexhome , login, getJoin, postJoin } from "../controllers/userController";
+import { indexhome , getJoin, postJoin, getLogin, postLogin } from "../controllers/userController";
 import { chat , stone, client, quote, findstock, accountsreceivable } from "../controllers/noSavePgController";
 
 const rootRouter = express.Router();
 
 
 rootRouter.get("/", indexhome);
-rootRouter.get("/login", login);
+rootRouter.route("/login").get(getLogin).post(postLogin);
 rootRouter.route("/join").get(getJoin).post(postJoin);
 rootRouter.get("/chat", chat);
 rootRouter.get("/stone", stone);
