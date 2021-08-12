@@ -18,6 +18,9 @@ export const postLogin = async (req, res) => {
             errorMessage: "비밀번호가 올바르지 않습니다.",
         });
     }
+    console.log("LOGIN OK")
+    req.session.loggedIn = true;
+    req.session.user = user;
     return res.redirect("/cataloge/main");
 };
 

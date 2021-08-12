@@ -11,9 +11,8 @@ export const getUpload = (req, res) => {
     return res.render("catalogeUpload", { pageTitle:"카탈로그 등록" })
 };
 export const postUpload = (req, res) => {
-    const { title } = req.body;
-    
-    console.log(title,status);
+     
+    console.log(req.body);
     return res.redirect("/cataloge/main");
 };
 

@@ -11,7 +11,15 @@ html(lang="ko")
             ul  
                 li 
                     a(href="/cataloge/upload") upload
-                li 
-                    a(href="/cataloge/upload") login
+                if loggedIn    
+                    li 
+                        a(href="/logout") logout
+                    li 
+                        a(href="/my-profile") #{loggedInUser.businessname}의 Profile
+                else    
+                    li 
+                        a(href="/login") login
+                    li 
+                        a(href="/join") join
         main
             block content
