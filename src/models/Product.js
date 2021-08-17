@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
+    fileUrl: { type : String, required: true},// 제품 이미지
     title: { type: String, trim: true, require: true }, // 제품명
-    description: { type: String, trim: true, require: true }, // 설명
+    description: { type: String, trim: true }, // 설명
     createdAt: {type: Date, require: true, default: Date.now }, // 생성날짜
     hashtags:[{ type: String, trim: true, }], // 해쉬태그, 카탈로그 분류
-    status: {}, // 상태(라디오버튼)
+
+    owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
     
     
     meta: { 

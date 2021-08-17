@@ -1,4 +1,5 @@
 mixin card(product)
+        img(src="/" + product.fileUrl, alt="catalogeImg", width="100", height="100")
         div     
                 h4
                     a(href=`/cataloge/edit/${product.id}`)=product.title 

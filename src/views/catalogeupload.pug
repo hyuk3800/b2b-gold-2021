@@ -1,8 +1,9 @@
 extends base.pug
 
 block content 
-    form(method="POST")
+    form(method="POST", enctype="multipart/form-data")
+        label(for="catalogeimg") 제품이미지
+        input(name="catalogeimg", type="file", required, id="catalogeimg")
         input(name="title", placeholder="Title", required, type="text")  
-        input(name="status", type="radio",)
-        input(name="status", type="radio",)
+        input(name="description", placeholder="Description", required, type="text")  
         input(value="등록", type="submit")

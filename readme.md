@@ -4,6 +4,8 @@
 
 / => Home 홈
 /login => Login 로그인
+/users/logout => 로그아웃
+
 /chat =>chating 채팅
 /stone => Stone 스톤
 /client => Client 거래처

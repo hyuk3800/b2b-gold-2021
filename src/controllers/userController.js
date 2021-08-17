@@ -24,7 +24,10 @@ export const postLogin = async (req, res) => {
     return res.redirect("/cataloge/main");
 };
 
-
+export const logout = (req, res) => {
+    req.session.destroy();
+    return res.redirect("/cataloge/main");
+};
 
 
 
@@ -61,4 +64,11 @@ export const postJoin = async (req, res) => {
     } catch(error){
         return res.status(400).render("join", { errorMessage: error._message });
     }
+};
+
+export const getEdit = (req, res) => {
+    return res.render("");
+};
+export const postEdit = (req, res) => {
+
 };

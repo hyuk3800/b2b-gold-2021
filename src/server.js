@@ -2,14 +2,15 @@ import express from "express";
 import morgan from "morgan";
 import session from "express-session";
 import MongoStore from "connect-mongo";
-import rootRouter from "../src/routers/rootRouter";
-import catalogeRouter from "../src/routers/catalogeRouter";
-import stockRouter from "../src/routers/stockRouter";
-import orderRouter from "../src/routers/orderRouter";
-import repairRouter from "../src/routers/repairRouter";
-import purchaseRouter from "../src/routers/purchaseRouter";
-import saleRouter from "../src/routers/saleRouter";
-import rentRouter from "../src/routers/rentRouter";
+import rootRouter from "./routers/rootRouter";
+import catalogeRouter from "./routers/catalogeRouter";
+import stockRouter from "./routers/stockRouter";
+import orderRouter from "./routers/orderRouter";
+import repairRouter from "./routers/repairRouter";
+import purchaseRouter from "./routers/purchaseRouter";
+import saleRouter from "./routers/saleRouter";
+import rentRouter from "./routers/rentRouter";
+import userRouter from "./routers/userRouter";
 import { localsMiddleware } from "./middlewares";
 
 
@@ -24,22 +25,24 @@ app.use(express.urlencoded({ extended : true }));
 
 app.use(
     session({
-        secret: "Gold",
+        secret: process.env.COOKIE_SECRET,
         resave: true,
         saveUninitialized: true,
-        store: MongoStore.create({mongoUrl:"mongodb://127.0.0.1:27017/b2bgold"}),
+        store: MongoStore.create({mongoUrl: process.env.DB_URL }),
 })
 );
 
-app.use((req, res, next) => {
-    req.sessionStore.all((error, sessions) => {
-        console.log(sessions);
-        next();
-    });
-});
+// app.use((req, res, next) => {
+//     req.sessionStore.all((error, sessions) => {
+//         console.log(sessions);
+//         next();
+//     });
+// });
 
 app.use(localsMiddleware);
+app.use("/uploads", express.static("uploads"));
 app.use("/", rootRouter);
+app.use("/users", userRouter);
 app.use("/cataloge", catalogeRouter);
 app.use("/stock", stockRouter);
 app.use("/order", orderRouter);

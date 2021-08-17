@@ -10,17 +10,31 @@ export const catalogeMain = async (req, res) =>{
 export const getUpload = (req, res) => {
     return res.render("catalogeUpload", { pageTitle:"카탈로그 등록" })
 };
-export const postUpload = (req, res) => {
-     
-    console.log(req.body);
+export const postUpload = async (req, res) => {
+    const { path:fileUrl } = req.file;
+    const { title, description } = req.body;
+    try{
+        await goldProduct.create({
+            title,
+            fileUrl,
+            description,       
+        });
+        return res.redirect("/cataloge/main");
+    }catch(error){
+        return res.status(400).render("catalogeUpload", { pageTitle:"카탈로그 등록", errorMessage: error._message, });
+    }
+    console.log("카탈로그",fileUrl);
     return res.redirect("/cataloge/main");
 };
 
 
-export const getEdit = (req, res) => {
+export const getEdit = async (req, res) => {
     const { id } = req.params;
-
-    return res.render("catalogeedit",{ pageTitle:"카탈로그 수정" ,});
+    const product = await goldProduct.findById(id);
+    if(!product){
+        return res.status(404).render("404", {pageTitle:"Product not found."} )
+    }
+    return res.render("catalogeEdit",{ pageTitle:"카탈로그 수정", product});
 };
 export const postEdit = (req, res) => {
     const { id } = req.params;
