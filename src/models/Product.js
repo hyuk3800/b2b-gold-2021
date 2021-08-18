@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
     hashtags:[{ type: String, trim: true, }], // 해쉬태그, 카탈로그 분류
 
     owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
-    
+    gender: { type: String },
     
     meta: { 
         views: {type: Number, default: 0, require: true }, //조회수

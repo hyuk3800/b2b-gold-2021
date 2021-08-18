@@ -1,0 +1,17 @@
+extends ../base.pug
+
+block content
+    h4 Change Title of video
+    form(method="POST") 
+        input(name="title", type="text", partials="Title", value=product.title, required)
+        input(name="description", placeholder="Description", value=product.description,  type="text")   
+        label(for="man") 남자
+        input(type="radio", name="gender", value="남자", id="man")
+        br  
+        label(for="wuman") 여자
+        input(type="radio", name="gender", value="여자", id="wuman")  
+        br
+        label(for="all") 전체
+        input(type="radio", name="gender", value="전체", id="all")  
+        input(type="submit" value="수정")
+    a(href=`/cataloge/delete/${product.id}`)  Delete &rarr;
