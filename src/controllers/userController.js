@@ -61,7 +61,7 @@ export const postJoin = async (req, res) => {
     const pageTitle = "회원가입";
     console.log(fileUrl);
     if (password !== password2) {
-        return res.status(400).render("join", {
+        return res.status(400).render("users/join", {
             pageTitle,
             errorMessage: "암호가 일치하지않습니다.",
         })
@@ -70,7 +70,7 @@ export const postJoin = async (req, res) => {
         username
     });
     if (exists) {
-        return res.status(400).render("join", {
+        return res.status(400).render("users/join", {
             errorMessage: "ID가 중복 되었습니다.",
         })
     }
@@ -85,7 +85,7 @@ export const postJoin = async (req, res) => {
         });
         return res.redirect("/login");
     } catch (error) {
-        return res.status(400).render("join", {
+        return res.status(400).render("users/join", {
             errorMessage: error._message
         });
     }
@@ -107,11 +107,24 @@ export const postEdit = async (req, res) => {
             }
         },
         body: {
-            crnumber,
             businessname,
             contact,
         },
         file,
     } = req;
-    const 
+    const userBusinessName = req.session.businessname;
+    const exists = await User.exists({ businessname });
+    if(exists){
+        return req.status(400).render("users/edit-profile", {
+            pageTitle: "계정 정보 수정",
+            errorMessage: "이미 존제하는 상호명 입니다."
+        })
+    }
+    if(userBusinessName === businessname){
+        const updatUser = await User.findByIdAndUpdate(_id, {
+            businesscard: file ? file.path : businesscard,
+
+        }, {new: true});
+
+    }
 };

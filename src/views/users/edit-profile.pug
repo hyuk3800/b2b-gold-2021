@@ -6,8 +6,8 @@ block content
         if errorMessage
             span=errorMessage
         form(method="POST", enctype="multipart/form-data")
-            input(type="file", placeholder="클릭하여 명함/사업자등록증 사본을 보내주세요.", name="businesscard", id="businesscard", accept="image/*")
-            input(value=loggedInUser.crnumber, type="text", placeholder="사업자등록번호 10자리를 입력하여 주세요.", name="crnumber", required, maxlength=10, minlength=10,)
+            if !loggedInUser.businesscard
+                input(type="file", placeholder="클릭하여 명함/사업자등록증 사본을 보내주세요.", name="businesscard", required, id="businesscard", accept="image/*")
             input(value=loggedInUser.businessname, type="text", placeholder="클릭하여 상호명을 입력하여 주세요.", name="businessname", required)
             input(value=loggedInUser.contact, type="text", placeholder="클릭하여 연락처를 입력하여 주세요.", name="contact", required)
             input(type="submit" value="수정하기")
