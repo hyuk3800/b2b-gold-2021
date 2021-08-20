@@ -8,3 +8,21 @@ mixin card(product)
                     li #{product.modelNumber}
                     li #{product.manufacturer}
                     li #{product.id}
+        div(class="catalogCard")
+            div(id="catalogImg")
+                img(src="/" + product.fileUrl, alt="catalogeImg")
+            div(id="catalogId")
+                span #{product.title}
+            div(id="catalogTxt")
+                span #{product.part} &#47;
+                span #{product.material}
+                br
+                span 기본공임 &#47;
+                span 스톤공임
+                br
+                span #{product.goldWeight} &#47;
+                span 스톤중량
+            div(class="clickBox")
+                form(class="clickbxbx", name="clickbxbx")
+                    input(name="clickThis", class="clickThis", type="checkbox")
+                button(class="rmvBtn")

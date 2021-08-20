@@ -32,7 +32,7 @@
 
 
 .helpIcon{
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     left: 153px;
     width: 16px;
@@ -246,12 +246,23 @@
 .wjdqhbox span{
     font-size: 13px;
 }
-
-form{
+form.allForm{
     display: flex;
     position: relative;
     align-items: center;
     height: 100%;
+}
+
+.allForm{
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 100%;
+}
+
+.radiobox{
+    margin-left: 15px;
+    width: 45px;
 }
 
 .open{

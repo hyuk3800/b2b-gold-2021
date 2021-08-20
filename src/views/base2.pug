@@ -7,4 +7,19 @@ html(lang="ko")
         title=pageTitle
         link(rel="stylesheet" href="https://unpkg.com/mvp.css")
     body 
-        block content 
+        header 
+            ul  
+                li 
+                    a(href="/cataloge/upload") upload
+                if loggedIn    
+                    li 
+                        a(href="/users/logout") logout
+                    li 
+                        a(href="/users/edit") #{loggedInUser.businessname}의 Profile
+                else    
+                    li 
+                        a(href="/login") login
+                    li 
+                        a(href="/join") join
+        main
+            block content 

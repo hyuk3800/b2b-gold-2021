@@ -2,18 +2,27 @@ import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
     fileUrl: { type : String, required: true},// 제품 이미지
-    title: { type: String, trim: true, require: true }, // 제품명
-    description: { type: String, trim: true }, // 설명
     createdAt: {type: Date, require: true, default: Date.now }, // 생성날짜
     hashtags:[{ type: String, trim: true, }], // 해쉬태그, 카탈로그 분류
-
-    owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
-    gender: { type: String },
-    
+    gender: { type: String, required: true }, // 성별*
+    age: [{ type: String, trim: true, required: true }], // 나이대*
+    part: { type:String, required: true },  //부위*
+    styles: [{ type: String, trim: true, required: true }], // 스타일
+    material:{type: String, require: true }, // 소재*
+    open:{ type: String, required: true }, //공개 설정*
+    modelNumber: { type:String, trim: true, required: true }, //모델번호*
+    title: { type: String, trim: true, require: true }, // 제품명*
+    manufacturer: {type:String, trim: true, required: true },//제조사*
+    goldWeight: { type:Number }, // 금/은중량
+    description: { type: String, trim: true, required: true}, // 설명*
+    //기본공임
+    //스톤공임(중)
+    brandpage:{ type: Number, trim: true },//  공개순서(브랜드페이지)
     meta: { 
         views: {type: Number, default: 0, require: true }, //조회수
         rating: {type: Number, default: 0, require: true },//평가
     },
+    owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
 });
 
 const goldProduct = mongoose.model("Product", productSchema);

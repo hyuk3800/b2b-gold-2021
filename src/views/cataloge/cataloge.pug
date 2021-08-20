@@ -1,6 +1,11 @@
 extends ../base.pug
 include ../mixins/card
 
+
+block links
+    link(rel="stylesheet", href="/assets/css/cataloge.css")
+    link(rel="stylesheet", href="/assets/css/footer.css")
+
 block content
     h2 카탈로그 보기 test
         div     
@@ -8,3 +13,105 @@ block content
                 +card(product)
             else    
                 div 없다
+    div(class="container", id="src_and_crt")
+        div(class="row")
+            div(class="col-md-6")
+                form(class="searchigbox")
+                    input(type="text", class="searching", placeholder="검색어를 입력하세요")
+                    buttom(type="submit", id="btn_searching") 
+                        i(class="las la-search")
+            div(class="col-md-6")
+                div(class="buttonbox")
+                    div(class="click_box")
+                        button(onClick="location.href='/cataloge/upload'") 제품등록
+        div(class="row wjscpbox")
+            div(class="wjscp")
+                a(href="")
+                    img(src="../../../assets/images/ic-info-outline-24-px.png", alt="도움")
+                span 전체 n 개 
+                span(id="wjscpNum", class="hidden") (n) 개 선택됨
+        div(class="row")
+            div(class="col-3")
+                div(class="filterbtn")
+                    button 필터
+            div(class="col-9 bro_box")
+                div(class="card_bro brobx on") 카드형식
+                div(class="table_bro brobx") 테이블형식
+    div(class="container")
+        div(class="catalog_card")
+            div(class="row")
+                div(class="col-6")
+                    div(class="clickAndChack")
+                        img(src="../../../assets/images/select_off.png", alt="select_off")
+                        img(src="../../../assets/images/select_on.png", alt="select_on")
+                        span 전체선택
+                div(class="col-6")
+                    div(class="selectbox")
+                        select(name="page-view-counter", id="select10_50") 
+                            option(value="10View") 10View
+                            option(value="20View") 20View
+                            option(value="30View") 30View
+                            option(value="50View") 50View
+                        span 선택 목록보기
+            div(class="mainContainerCard on", id="cardTest")
+                each product in user.products 
+                    +card(product)
+                else    
+                    div 
+            div(class="mainContTable")
+                table(id="tableTest")
+                    thead 
+                        tr 
+                            th(rowspan="2")
+                                form(action="")
+                                    input(type="checkbox", name="clickThis", id="clickThis") 
+                            th(rowspan="2") 모델
+                            th(rowspan="2") 함량
+                            th 금중량
+                            th(rowspan="2") 개당알수
+                            th(colspan="2") 공임단가
+                            th(rowspan="2") 수량
+                            th(colspan="3") VAT별도
+                        tr 
+                            th 알중량
+                            th 기/추
+                            th 중/보
+                            th 공임함
+                            th 금값
+                            th 소계
+                    each product in user.products 
+                        +table(product)
+                    else 
+                        div
+            div(class="col-12")
+                div(class="numlist")
+                    div(class="numnum on")
+                        span 1
+    nav(class="bot")
+        div(class="container")
+            div(class="row")
+                div(class="col-12")
+                    div(class="botbox")
+                        ul(class="botmnul")
+                            li 
+                                img(src="../../../assets/images/삭제하기.png", alt="삭제하기")
+                                span 삭제하기
+                            li 
+                                img(src="../../../assets/images/공임변경.png", alt="공임 변경")
+                                span 공임 변경
+                            li 
+                                img(src="../../../assets/images/재고등록.png", alt="재고 등록")
+                                span 재고 등록
+                            li 
+                                img(src="../../../assets/images/주문등록.png", alt="주문 등록")
+                                span 주문 등록
+                            li 
+                                img(src="../../../assets/images/주문등록.png", alt="수리 등록")
+                                span 수리 등록
+                            li 
+                                img(src="../../../assets/images/판매등록 (1).png", alt="판매 등록")
+                                span 판매 등록
+                            li 
+                                img(src="../../../assets/images/대여등록 (1).png", alt="대여 등록")
+                                span 대여 등록
+    include ../partials/footer

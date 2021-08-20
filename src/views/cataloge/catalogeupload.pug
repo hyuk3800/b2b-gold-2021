@@ -1,19 +1,98 @@
 extends ../base.pug
 
+
+block links 
+    link(rel="stylesheet", href="/assets/css/catalogeupload.css")
+    link(rel="stylesheet", href="/assets/css/footer.css")    
+
 block content 
-    if errorMessage
-        span=errorMessage
-    form(method="POST", enctype="multipart/form-data")
-        label(for="catalogeimg") 제품이미지
-        input(name="catalogeimg", type="file", required, id="catalogeimg", accept="image/*")
-        input(name="title", placeholder="Title", required, type="text")  
-        input(name="description", placeholder="Description", required, type="text")
-        label(for="man") 남자
-        input(type="radio", name="gender", value="남자", id="man")
-        br  
-        label(for="wuman") 여자
-        input(type="radio", name="gender", value="여자", id="wuman")  
-        br
-        label(for="all") 전체
-        input(type="radio", name="gender", value="전체", id="all")  
-        input(value="등록", type="submit")
+    div(class="main-container")
+        form(method="POST", enctype="multipart/form-data")     
+            div(class="container pgnm")
+                div(class="row")
+                    div(class="col-6")
+                        div(class="mainTitle")
+                            a(href="/cataloge/main", target="_self", class="mntitArrow")
+                            span #{pageTitle}
+                            a(href="", class="helpIcon") 
+                    div(class="col-6 btnbtn")
+                        button(class="ctlogBox clossbtn") 취소
+                        button(class="ctlogBox" type="submit") 등록
+                div(class="row")
+                    div(class="col-12")
+                        div(class="noto")
+                            span *표시가 있는경우 필수입력사항입니다.
+                            br
+                            span 반드시 값을 입력해 주세요.
+            div(class="container")
+                div(class="row")
+                    div(class="col-12")
+                        div(class="mtt")
+                            span 카탈로그 이미지
+                div(class="row")
+                    div(class="col-12")
+                        div(class="mainImg")
+                            div(class="mImgBox")
+                div(class="row")
+                    div(class="col-12")
+                        div(class="mtt mtt2")
+                            span 카탈로그 분류
+                div(class="row")
+                    div(class="col-12")
+                        div(class="mainck")
+                            div(class="row")
+                                div(class="col-2 catalognanu") *성별
+                                div(class="col-10 chackboxbox chackboxbox1")
+                                    div(class="allForm")
+                                        label(class="radiobox", for="man") 남자
+                                            input(type="radio", name="gender", id="man", value="남성") 
+                                        label(class="radiobox", for="woman") 여자
+                                            input(type="radio", name="gender", id="woman", value="여성")
+                                        label(class="radiobox", for="all") 전체
+                                            input(type="radio", name="gender", id="all", value="전체" checked)
+                            div(class="row")
+                                div(class="col-2 catalognanu") *나이대
+                                div(class="col-10 chackboxbox chackboxbox1")
+                                    button 영유아
+                            div(class="row")
+                                div(class="col-2 catalognanu") *부위
+                                div(class="col-10 chackboxbox chackboxbox1")
+                                    button 목걸이
+                            div(class="row")
+                                div(class="col-2 catalognanu") *스타일
+                                div(class="col-10 chackboxbox chackboxbox1")
+                                    button 패션
+                            div(class="row")
+                                div(class="col-2 catalognanu") *소재
+                                div(class="col-10 chackboxbox chackboxbox1")
+                                    button 실버
+                            div(class="row")
+                                div(class="col-2 catalognanu") *중량
+                                div(class="col-10 chackboxbox chackboxbox1")
+                                    button 반돈
+                div(class="row")
+                    div(class="col-12")
+                        div(class="mtt mtt2")
+                            span 카탈로그 정보
+                div(class="wjdqhbox")
+                    div(class="row")
+                        div(class="col-3 col-sm-2 catalognanu") *공개 / 비공개설정
+                        div(class="col-9 col-sm-4 conRdo")
+                            div(class="allForm")
+                                label(class="radiobox", for="open") 공개
+                                input(type="radio", name="open", id="open", value="공개") 
+                                label(class="radiobox", for="close") 비공개
+                                input(type="radio", name="open", id="close", value="비공개" checked)
+                        div(class="col-3 col-sm-2 catalognanu") 공개 순서 (브랜드페이지)
+                        div(class="col-9 col-sm-4")
+                            div(class="allForm")
+                                input(class="inppp",name="brandpage" type="number", placeholder="숫자가 높은순으로 앞에 나오게 됩니다.")
+                    div(class="row")
+                        div(class="col-3 col-sm-2 catalognanu") *모델번호
+                        div(class="col-9 col-sm-4")
+                            div(class="allForm")
+                                input(class="inppp", name="modelNumber", type="text", placeholder="모델번호", required)
+                        div(class="col-3 col-sm-2 catalognanu") *제품명
+                        div(class="col-9 col-sm-4")
+                            div(class="allForm")
+                                input(class="inppp", name="title", type="text", placeholder="제품명", required)
