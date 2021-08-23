@@ -170,6 +170,32 @@
 
 }
 
+
+.mImgBox label{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.mImgBox label span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 50px;
+}
+.mImgBox input{
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    clip:rect(0,0,0,0); 
+    border: 0;
+}
+
+
 .mainck{
     border: 1px solid rgba(172, 172, 172, 0.5);
     overflow: hidden;
@@ -221,6 +247,8 @@
     flex-wrap: wrap;
 }
 
+
+
 .sltImg{
     position: absolute;
     top: 50%;
@@ -228,6 +256,14 @@
     transform: translateY(-50%);
     width: 14px;
     height: 14px;
+}
+button.sltImg{
+    right: 10%;
+    width: 10%;
+    height: 60%;
+    border: none;
+    outline: none;
+    background-color: #fff;
 }
 
 

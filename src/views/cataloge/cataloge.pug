@@ -3,8 +3,8 @@ include ../mixins/card
 
 
 block links
-    link(rel="stylesheet", href="/assets/css/cataloge.css")
-    link(rel="stylesheet", href="/assets/css/footer.css")
+    link(rel="stylesheet", href="/static/css/cataloge.css")
+    link(rel="stylesheet", href="/static/css/footer.css")
 
 block content
     h2 카탈로그 보기 test
@@ -27,7 +27,7 @@ block content
         div(class="row wjscpbox")
             div(class="wjscp")
                 a(href="")
-                    img(src="../../../assets/images/ic-info-outline-24-px.png", alt="도움")
+                    img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움")
                 span 전체 n 개 
                 span(id="wjscpNum", class="hidden") (n) 개 선택됨
         div(class="row")
@@ -42,8 +42,8 @@ block content
             div(class="row")
                 div(class="col-6")
                     div(class="clickAndChack")
-                        img(src="../../../assets/images/select_off.png", alt="select_off")
-                        img(src="../../../assets/images/select_on.png", alt="select_on")
+                        img(src="../../../static/images/select_off.png", alt="select_off")
+                        img(src="../../../static/images/select_on.png", alt="select_on")
                         span 전체선택
                 div(class="col-6")
                     div(class="selectbox")
@@ -94,24 +94,24 @@ block content
                     div(class="botbox")
                         ul(class="botmnul")
                             li 
-                                img(src="../../../assets/images/삭제하기.png", alt="삭제하기")
+                                img(src="../../../static/images/삭제하기.png", alt="삭제하기")
                                 span 삭제하기
                             li 
-                                img(src="../../../assets/images/공임변경.png", alt="공임 변경")
+                                img(src="../../../static/images/공임변경.png", alt="공임 변경")
                                 span 공임 변경
                             li 
-                                img(src="../../../assets/images/재고등록.png", alt="재고 등록")
+                                img(src="../../../static/images/재고등록.png", alt="재고 등록")
                                 span 재고 등록
                             li 
-                                img(src="../../../assets/images/주문등록.png", alt="주문 등록")
+                                img(src="../../../static/images/주문등록.png", alt="주문 등록")
                                 span 주문 등록
                             li 
-                                img(src="../../../assets/images/주문등록.png", alt="수리 등록")
+                                img(src="../../../static/images/주문등록.png", alt="수리 등록")
                                 span 수리 등록
                             li 
-                                img(src="../../../assets/images/판매등록 (1).png", alt="판매 등록")
+                                img(src="../../../static/images/판매등록 (1).png", alt="판매 등록")
                                 span 판매 등록
                             li 
-                                img(src="../../../assets/images/대여등록 (1).png", alt="대여 등록")
+                                img(src="../../../static/images/대여등록 (1).png", alt="대여 등록")
                                 span 대여 등록
     include ../partials/footer

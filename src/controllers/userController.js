@@ -15,14 +15,15 @@ export const postLogin = async (req, res) => {
     const user = await User.findOne({
         username
     });
+    console.log(user);
     if (!user) {
-        return res.status(400).render("login", {
+        return res.status(400).render("users/login", {
             errorMessage: "존재하지 않는 아이디 입니다.",
         });
     }
     const ok = await bcrypt.compare(password, user.password);
     if (!ok) {
-        return res.status(400).render("login", {
+        return res.status(400).render("users/login", {
             errorMessage: "비밀번호가 올바르지 않습니다.",
         });
     }

@@ -24,23 +24,24 @@ export const getUpload = (req, res) => {
 };
 export const postUpload = async (req, res) => {
     const { user:{_id}, } = req.session;
-    const { path:fileUrl } = req.file;
+    // const { path:fileUrl } = req.file;
     const { title, description, gender } = req.body;
-    try{
-        const newGoldProduct = await goldProduct.create({
-            title,
-            fileUrl,
-            description,       
-            owner: _id,
-            gender,
-        });
-        const user = await User.findById(_id);
-        user.products.push(newGoldProduct._id);
-        user.save();
-        return res.redirect("/cataloge/main");
-    }catch(error){
-        return res.status(400).render("cataloge/catalogeUpload", { pageTitle:"카탈로그 등록", errorMessage: error._message, });
-    }
+    // try{
+    //     const newGoldProduct = await goldProduct.create({
+    //         title,
+    //         fileUrl,
+    //         description,       
+    //         owner: _id,
+    //         gender,
+    //     });
+    //     const user = await User.findById(_id);
+    //     user.products.push(newGoldProduct._id);
+    //     user.save();
+    //     return res.redirect("/cataloge/main");
+    // }catch(error){
+    //     return res.status(400).render("cataloge/catalogeUpload", { pageTitle:"카탈로그 등록", errorMessage: error._message, });
+    // }
+    return res.render("cataloge/catalogeUpload", { pageTitle:"카탈로그 등록" });
 };
 
 // 해당제품 들어가서 삭제

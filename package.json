@@ -7,8 +7,8 @@
     "url": "git+https://github.com/hyuk3800/b2b-gold-2021.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node src/init.js",
-    "assets": "webpack --config webpack.config.js"
+    "dev": "nodemon",
+    "assets": "webpack"
   },
   "author": "inhyuk Lee",
   "license": "MIT",

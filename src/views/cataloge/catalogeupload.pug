@@ -2,8 +2,8 @@ extends ../base.pug
 
 
 block links 
-    link(rel="stylesheet", href="/assets/css/catalogeupload.css")
-    link(rel="stylesheet", href="/assets/css/footer.css")    
+    link(rel="stylesheet", href="/static/css/catalogeupload.css")
+    link(rel="stylesheet", href="/static/css/footer.css")    
 
 block content 
     div(class="main-container")
@@ -33,6 +33,9 @@ block content
                     div(class="col-12")
                         div(class="mainImg")
                             div(class="mImgBox")
+                                label(for="mimgpluse") 
+                                    span +
+                                input(type="file", name="fileUrl", id="mimgpluse")
                 div(class="row")
                     div(class="col-12")
                         div(class="mtt mtt2")
@@ -53,23 +56,26 @@ block content
                             div(class="row")
                                 div(class="col-2 catalognanu") *나이대
                                 div(class="col-10 chackboxbox chackboxbox1")
-                                    button 영유아
+                                    button(type="button", name="age", class="") 영유아
+                                    button(type="button", name="age", class="") 10대~20대
+                                    button(type="button", name="age", class="") 30대~40대
+                                    button(type="button", name="age", class="") 50대이상
                             div(class="row")
                                 div(class="col-2 catalognanu") *부위
                                 div(class="col-10 chackboxbox chackboxbox1")
-                                    button 목걸이
+                                    button(type="button", name="part") 목걸이
                             div(class="row")
                                 div(class="col-2 catalognanu") *스타일
                                 div(class="col-10 chackboxbox chackboxbox1")
-                                    button 패션
+                                    button(type="button", name="styles") 패션
                             div(class="row")
                                 div(class="col-2 catalognanu") *소재
                                 div(class="col-10 chackboxbox chackboxbox1")
-                                    button 실버
+                                    button(type="button", name="material") 실버
                             div(class="row")
                                 div(class="col-2 catalognanu") *중량
                                 div(class="col-10 chackboxbox chackboxbox1")
-                                    button 반돈
+                                    button(type="button") 반돈
                 div(class="row")
                     div(class="col-12")
                         div(class="mtt mtt2")
@@ -96,3 +102,190 @@ block content
                         div(class="col-9 col-sm-4")
                             div(class="allForm")
                                 input(class="inppp", name="title", type="text", placeholder="제품명", required)
+                    div(class="row")
+                        div(class="col-3 col-sm-2 catalognanu") *제조사
+                        div(class="col-9 col-sm-4")
+                            div(class="allForm")
+                                input(class="inppp", name="manufacturer", type="text", placeholder="제조사", required)
+                                button(class="sltImg", type="button")
+                                    img(class="sltImg", src="../../../static/images/ic-zoom-in-24-px@3x.png", alt="search")
+                        div(class="col-3 col-sm-2 catalognanu") 제조번호
+                        div(class="col-9 col-sm-4")
+                            div(class="allForm")
+                                input(class="inppp" type="text" placeholder="제조번호")
+                    div(class="row")
+                        div(class="col-3 col-sm-2 catalognanu") 금(은)중량
+                        div(class="col-9 col-sm-4")
+                            div(class="allForm")
+                                input(class="inppp", type="number", step=".01", name="goldWeight", placeholder="0")
+                                span g
+                        div(class="col-3 col-sm-2 catalognanu") 스톤 중량
+                        div(class="col-9 col-sm-4")
+                            div(class="allForm")
+                                input(input class="inppp" type="number" placeholder="0")
+                                span g
+                    div(class="row")
+                        div(class="col-3 col-sm-2 catalognanu") 사이즈
+                        div(class="col-9 col-sm-4")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="사이즈")
+                        div(class="col-3 col-sm-2 catalognanu") 세트 코드
+                        div(class="col-9 col-sm-4")
+                            div(class="allForm")
+                                input(class="inppp" type="text" placeholder="세트 코드")
+                    div(class="row")
+                        div(class="col-3 col-sm-2 catalognanu") 해시태그
+                        div(class="col-9 col-sm-10")
+                            div(class="hashi")
+                    div(class="row")
+                        div(class="col-3 col-sm-2 catalognanu") *상세 설명
+                        div(class="col-9 col-sm-10")
+                            div(class="tjfaudBox")
+                                textarea(class="tjfaud" name="description", cols="30", rows="10" placeholder="상세 설명 *주의 카카오플러스친구,웹사이트,네이버 밴드,인스타,SNS 등을 홍보하지 말아주세요. 홍보시 제품 업로드가 취소되며, 누적시 입점취소됩니다. 이미업로드한 제품들 또한 수정 부탁드립니다. 네이버밴드 카카오스토리 타 웹사이트 링크 공유시 노출이안됩니다")
+                div(class="row")
+                    div(class="col-6")
+                        div(class="mtt mtt2")
+                            span 스톤정보
+                    div(class="col-6 mttbox2")
+                        div(class="mtt3")
+                            button(type="button") 추가하기
+                div(class="row")
+                    div(class="col-12")
+                        table 
+                            thead 
+                                tr
+                                    th 스톤명
+                                    th *수량
+                                    th 설명
+                                    th 중량(개당)
+                                    th 중량(총중량)
+                                    th 매입단가(개당)
+                                    th 매입단가(총가격)
+                                    th 판매단가(개당)
+                                    th 판매단가(총가격)
+                                    th 삭제
+                            tfoot 
+                                tr 
+                                    td 
+                                        div(class="tfootbox") 합계
+                                    td
+                                        div(class="tfootbox") -
+                                    td
+                                        div(class="tfootbox") -
+                                    td
+                                        div(class="tfootbox") -
+                                    td
+                                        div(class="tfootbox") -
+                                    td
+                                        div(class="tfootbox") -
+                                    td
+                                        div(class="tfootbox") -
+                                    td
+                                        div(class="tfootbox") -
+                                    td
+                                        div(class="tfootbox") -
+                                    td
+                                        div(class="tfootbox") -
+                div(class="row")
+                    div(class="col-12")
+                        div(class="noto noto2")
+                            span *주의
+                            br
+                            span 제품 노출을 위한 허위공임 기재시 제품 업로드 취소됩니다.
+                            br
+                            span 이미 업로드된 제품들 또한 수정 부탁드립니다.
+                div(class="row")
+                    div(class="col-12")
+                        div(class="mtt mtt2")
+                            span 카탈로그 공임/중량 정보
+                div(class="container grabox")
+                    div(class="row")
+                        div(class="col-3 col-sm-1 catalognanu") 금(은) 중량
+                        div(class="col-9 col-sm-3")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="0")
+                                span g 
+                        div(class="col-3 col-sm-1 catalognanu") 기본공임
+                        div(class="col-9 col-sm-3")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="0")
+                                span 원
+                        div(class="col-3 col-sm-1 catalognanu") 구매공임
+                        div(class="col-9 col-sm-3")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="0")
+                                span 원
+                    div(class="row")
+                        div(class="col-3 col-sm-1 catalognanu")
+                        div(class="col-9 col-sm-3")
+                        div(class="col-3 col-sm-1 catalognanu") 추가공임
+                        div(class="col-9 col-sm-3")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="0")
+                                span 원
+                        div(class="col-3 col-sm-1 catalognanu")
+                        div(class="col-9 col-sm-3")
+                    div(class="row")
+                        div(class="col-3 col-sm-1 catalognanu") 스톤중량
+                        div(class="col-9 col-sm-3")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="0")
+                                span g
+                        div(class="col-3 col-sm-1 catalognanu") 스톤공임(중)
+                        div(class="col-9 col-sm-3")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="0")
+                                span 원
+                        div(class="col-3 col-sm-1 catalognanu") 알구매단가
+                        div(class="col-9 col-sm-3")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="0")
+                                span 원
+                    div(class="row")
+                        div(class="col-3 col-sm-1 catalognanu")
+                        div(class="col-9 col-sm-3")
+                        div(class="col-3 col-sm-1 catalognanu") 스톤공임(보)
+                        div(class="col-9 col-sm-3")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="0")
+                                span 원
+                        div(class="col-3 col-sm-1 catalognanu")
+                        div(class="col-9 col-sm-3")
+                    div(class="row")
+                        div(class="col-3 col-sm-1 catalognanu pplcatn") 제품 중량
+                        div(class="col-9 col-sm-3 pplcatn")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="0")
+                                span g
+                        div(class="col-3 col-sm-1 catalognanu pplcatn") 총공임
+                        div(class="col-9 col-sm-3 pplcatn")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="0")
+                                span 원
+                        div(class="col-3 col-sm-1 catalognanu pplcatn") 총구매단가
+                        div(class="col-9 col-sm-3 pplcatn")
+                            div(class="allForm")
+                                input(class="inppp" type="number" placeholder="0")
+                                span 원
+                div(class="row")
+                    div(class="col-6")
+                        div(class="mtt mtt2")
+                            span 기타 공임 정보
+                    div(class="col-6 mttbox2")
+                        div(class="mtt3")
+                            button(type="button") 추가하기
+                div(class="row")
+                    div(class="col-12")
+                        table 
+                            thead 
+                                tr 
+                                    th 이름
+                                    th 가격(개당)
+                                    th 가격(총가격)
+                                    th 수량
+                                    th 설명
+                                    th 삭제
+                div(class="row endbox")
+                    div(class="col-12 btnbtn")
+                        button(class="ctlogBox clossbtn") 취소
+                        button(class="ctlogBox", type="submit") 등록
