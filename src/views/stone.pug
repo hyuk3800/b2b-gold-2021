@@ -1,0 +1,66 @@
+extends base.pug
+
+block links 
+    link(rel="stylesheet", href="/static/css/stone.css")
+    link(rel="stylesheet", href="/static/css/components/footer.css")
+
+block content 
+    div(class="container stonemain")
+        form(method="POST")
+            div(class="row spaceBox")
+                div(class="col-sm-6 col-12")
+                    div(class="stoneFree")
+                        span #{pageTitle}
+                        span (전체 n개)
+                        a(href="")
+                            img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움") 
+                div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
+                    div(class="col-5 col-md-6 col-lg-5 stoneSave")
+                        button(type="button") 스톤 추가등록
+            div(class="row searchMyBox")
+                div(class="col-12 col-sm-6")
+                    div(class="searchbox")
+                        input(class="searching" type="text" placeholder="스톤명, 비고(으)로 검색")
+                        button(id="btn_searching") 
+                            i(class="las la-search")
+            div(class="row deleteOrViewBox")
+                div(class="col-8 col-sm-6 deleteOrView")
+                    div(class="deleteMan dVBox")
+                        img(src="../../../static/images/삭제하기.png", alt="삭제하기")
+                        span 삭제하기
+                    div(class="ViewMan dVBox")
+                        select(name="page-view-counter" id="select10_50")
+                            option(value="10View") 10View   
+                            option(value="20View") 20View   
+                            option(value="30View") 30View   
+                            option(value="50View") 50View
+    div(class="container tableStart")    
+        div(class="tablePluseBox")
+            div(class="row breackingBoxSize")
+                div(class="col-12 tablebox1")
+                    table(class="col-11")
+                        thead 
+                            tr 
+                                th(class="checkbxbx") 
+                                    input(type="checkbox", id="checkedAll", name="clickAll")
+                                th(class="index") #
+                                th(class="name") 스톤명
+                                th(class="weight") 중량
+                                th(class="sales-price") 판매단가
+                                th(class="purchasePrice") 매입단가
+                                th(class="desc") 비고
+                        tbody 
+                            tr 
+                                td
+                                    input(name="clickStone" id="chckchck" type="checkbox")
+                                td 1
+                                td 오닉스
+                                td 3.3
+                                td 100,000
+                                td 100,000
+                                td test
+    div(class="col-12")
+        div(class="numlist")
+            div(class="numnum on")
+                span 1
+    include ./partials/footer

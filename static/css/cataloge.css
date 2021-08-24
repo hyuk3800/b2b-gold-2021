@@ -481,6 +481,7 @@
 }
 
 .rmvBtn{
+    position: relative;
     width: 80%;
     background-color: #ffaa34;
     border:none;
@@ -490,9 +491,16 @@
     color: #fff;
 }
 
-.rmvBtn:focus{
+.rmvBtn:hover{
+    color: #fff;
     box-shadow: 1px 1px 5px 0px #000000;
     outline: none;
+}
+.rmvBtn span{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 /* 카탈로그 테이블 */

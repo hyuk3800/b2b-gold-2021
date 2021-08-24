@@ -5,10 +5,10 @@ const productSchema = new mongoose.Schema({
     createdAt: {type: Date, require: true, default: Date.now }, // 생성날짜
     hashtags:[{ type: String, trim: true, }], // 해쉬태그, 카탈로그 분류
     gender: { type: String, required: true }, // 성별*
-    age: [{ type: String, trim: true, required: true }], // 나이대*
-    part: { type:String, required: true },  //부위*
-    styles: [{ type: String, trim: true, required: true }], // 스타일
-    material:{type: String, require: true }, // 소재*
+    // age: [{ type: String, trim: true, required: true }], // 나이대*
+    // part: { type:String, required: true },  //부위*
+    // styles: [{ type: String, trim: true, required: true }], // 스타일
+    // material:{type: String, require: true }, // 소재*
     open:{ type: String, required: true }, //공개 설정*
     modelNumber: { type:String, trim: true, required: true }, //모델번호*
     title: { type: String, trim: true, require: true }, // 제품명*

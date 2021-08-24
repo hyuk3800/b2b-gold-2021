@@ -22,6 +22,12 @@ a{
     text-decoration: none;
     list-style: none;
 }
+
+a:hover{
+    color: #222;
+    text-decoration: none;
+    list-style: none;
+}
 /*리스트초기화*/
 ul,ol {
     list-style: none;

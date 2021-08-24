@@ -1,0 +1,290 @@
+@charset "utf-8";
+
+/* //////////스톤 관리 페이지/////////// */
+
+
+.stonemain {
+    margin-top: 150px;
+    position: relative;
+}
+
+.spaceBox{
+    justify-content: space-between;
+}
+
+
+.stoneFree {
+    display: flex;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+
+.stoneFree a {
+    position: relative;
+}
+
+.stoneFree a img {
+    position: absolute;
+    top: 5px;
+}
+
+.stoneSavebox {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.stoneSave {
+    margin: 0;
+    padding: 0;
+}
+
+.stoneSave button {
+    width: 100%;
+    height: 58px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #ffaa34;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 1px 1px 3px 1px #999;
+}
+
+.searchMyBox {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+
+#searchbox {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.searching {
+    margin: 5px 0 5px 0;
+    padding: 5px 12px 4px 8px;
+    width: 80%;
+    height: 38px;
+    border: 1px solid #999;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+#btn_searching {
+    margin: 0;
+    width: 38px;
+    font-size: 21px;
+    border-radius: 0 5px 5px 0;
+    line-height: 1;
+    height: 38px;
+    border: none;
+    font-weight: bold;
+    color: #fff;
+    background-color: #333;
+}
+
+#btn_searching:focus{
+    box-shadow: 0 0 3px 1px #ffaa34;
+    border: 1px solid #fc9300;
+    outline: none;   
+}
+
+.deleteOrViewBox{
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.deleteOrView{
+    display: flex;
+    justify-content: flex-end;
+    
+    line-height: 1;
+    vertical-align: bottom;
+}
+
+.dVBox{
+    margin: 0;
+    display: flex;
+    /* width: 100%; */
+    align-items: center;
+    position: relative;
+    justify-content: flex-end;
+    height: 38px;
+}
+
+.dVBox img{
+    position: absolute;
+    top: 54%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+
+.deleteMan{
+    margin-right: 30px;
+    width: 92px ;
+    cursor: pointer;
+}
+
+
+#select10_50 {
+    padding: 4px 10px 7px 10px;
+    width: 92px;
+    height: 32px;
+    border: 1px solid #999;
+    background: #f1f5f7 url("../images/ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: Noto sans KR;
+    appearance: none;
+}
+#select10_50::-ms-expand {
+    display: none;
+}
+
+
+/* 태이블 */
+
+
+.tablebox1{
+    display: flex;
+    justify-content: center;
+}
+
+.tableStart{
+    margin-top: 8px;
+    min-height: 300px;
+   
+    
+}
+
+.tablePluseBox{
+    padding-bottom: 30px;
+    width: 100%;
+    overflow: hidden;
+ 
+}
+
+.breackingBoxSize{
+    min-width: 469px !important;
+}
+
+
+
+table{
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid rgba(172, 172, 172, 0.5);
+   
+}
+
+thead{
+    background-color: #e3e3e3;
+}
+
+
+th{
+    height: 30px;
+    border: 1px solid rgba(172, 172, 172, 0.5);
+}
+
+td{
+    height: 30px;
+    border: 1px solid rgba(172, 172, 172, 0.5);
+}
+
+
+.checkbxbx{
+    width: 6%;
+}
+
+.index{
+    width: 6%;
+}
+
+.name{
+    width: 14%;
+}
+
+.weight{
+    width: 14%;
+}
+.sales-price{
+    width: 15%;
+}
+.purchasePrice{
+    width: 15%;
+}
+
+
+/* 하단 숫자박스 */
+
+.numlist{
+    margin-top: 52px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.numnum{
+    position: relative;
+
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 7px;
+}
+
+.numnum.on{
+    background-color: #999;
+    color: #fff;
+}
+
+.numnum span{
+    position: absolute;
+
+    line-height: 1;
+    top:48%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+
+
+
+/* 하단 박스 mt */
+.bottombox{
+    margin-top: 100px;
+}
+
+
+@media (max-width: 575px) {
+    
+    .stoneSavebox{
+        margin: 15px 0 15px 0;
+    }
+
+
+}
+
+
+@media (max-width: 475px) {
+    
+    
+    
+    .tablePluseBox{
+        overflow-x: scroll;
+    }
+
+    table{
+        width: 500px;
+    }
+
+
+}

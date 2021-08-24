@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+
+/* 하단 footer */
+
+
+footer{
+    margin-top: 15px;
+    margin-bottom: 50px;
+    padding: 0 !important;
+
+}
+
+.footmn {
+    padding: 0;
+    display: flex;
+    height: 34px;
+
+
+}
+
+.footmn ul {
+    display: flex;
+    margin: 0;
+}
+
+.footmn li {
+
+    margin: 0 10px 0 10px;
+    padding: 0.5rem 1rem;
+}
+
+.footmn span {
+    vertical-align: top;
+    font-size: 12px;
+    color: #fff;
+}
+
+.footerbtm{
+    display: flex;
+}
+
+
+.ftbox {
+    margin-top: 20px;
+}
+
+.ftbox h2{
+    text-align: left;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+.ftbox span {
+    display: block;
+    line-height: 1.5;
+    text-align: left !important;
+    font-size: 12px;
+}
+
+
+@media (max-width : 660px){
+
+    .footmn{
+        justify-content: space-around;
+        align-items: center;
+        font-size: 12px;
+    }
+
+    .footmn li{
+        margin: 0 5px 0 5px;
+        padding: 5px;
+    }
+
+
+}

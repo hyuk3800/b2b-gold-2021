@@ -1,0 +1,28 @@
+mixin table(product)
+            tbody 
+                tr 
+                    td(rowspan="2")
+                        input(name="clickThis" class="clickThis" type="checkbox")
+                    td(rowspan="2")
+                        div(class="model")
+                            img(src="/" + product.fileUrl, alt="catalogeImg")
+                        div(class="mdName")
+                            span=product.title
+                    td(rowspan="2")
+                        span 함량
+                    td
+                        span 금중량
+                    td
+                        span 개당알수
+                    td
+                        span 기/추
+                    td
+                        span 중/보
+                    td(rowspan="2")
+                        span 수량
+                    td(rowspan="2")
+                        span 공임함
+                    td(rowspan="2")
+                        span 금값
+                    td(rowspan="2")
+                        span 소계

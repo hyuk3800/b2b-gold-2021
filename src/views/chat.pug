@@ -1,0 +1,74 @@
+extends base
+
+block links
+    link(rel="stylesheet", href="/static/css/chat.css")
+    link(rel="stylesheet", href="/static/css/components/footer.css")
+
+block content
+    div(class="mainContant")
+        div(class="container")
+            div(class="row" id="sisebox")
+                div(class="col-6 col-md-3 sibx")
+                    div(class="sise si1")
+                        span #{loggedInUser.businessname} 앞시세
+                        br
+                        span 248,800원
+                div(class="col-6 col-md-3 sibx")
+                    div(class="sise si1")
+                        span #{loggedInUser.businessname} 뒷시세
+                        br
+                        span 248,800원
+                div(class="col-6 col-md-3 sibx")
+                    div(class="sise si2")
+                        span 업스토어 뒷시세
+                        br
+                        span 248,800원
+                div(class="col-6 col-md-3 sibx")
+                    div(class="sise si2")
+                        span 업스토어 뒷시세
+                        br
+                        span 248,800원
+        div(class="container mainchat")
+            div(class="row")
+                div(class="col-12 col-sm-4 serchbox")
+                    div(id="serchMyName")
+                        input(type="text", placeholder="거래처를 입력하세요")
+                div(class="col-12 col-sm-8 showName") 이니에스타
+            div(class="row")
+                div(class="col-12 col-sm-4 shopbox")
+                    div(class="shopListBox")
+                        div(class="col-12 shopList")
+                            div(class="col-4")
+                                img(src="../../static/images/채팅아이콘.png", alt="채팅아이콘")
+                            div(class="col-8")
+                                div(class="shopShopName")
+                                    span 거래처1
+                                div(class="lastmessage")
+                                    span 안녕하세요
+                                div(class="timeStemp")
+                                    span 00:00
+                                div(class="Figure")
+                                    span 0
+                        div(class="col-12 shopList")
+                            div(class="col-4")
+                                img(src="../../static/images/채팅아이콘.png", alt="채팅아이콘")
+                            div(class="col-8")
+                                div(class="shopShopName")
+                                    span 거래처2
+                                div(class="lastmessage")
+                                    span 안녕하세요
+                                div(class="timeStemp")
+                                    span 00:00
+                                div(class="Figure")
+                                    span 0
+                div(class="col-12 col-sm-8 shopbox")
+                    div(class="chatingbox")
+                        div(class="chatchatchat") 채팅방 채팅
+                        div(class="chatchatchat") 채팅방 채팅
+                    div(id="gogogoMessage")
+                        button(id="plusFile")
+                            i(class="las la-plus")
+                        input(type="text")
+                        button(id="goMsg")
+                            i(class="las la-arrow-right")
+    include ./partials/footer

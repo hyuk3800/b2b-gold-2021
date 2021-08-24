@@ -24,24 +24,27 @@ export const getUpload = (req, res) => {
 };
 export const postUpload = async (req, res) => {
     const { user:{_id}, } = req.session;
-    // const { path:fileUrl } = req.file;
-    const { title, description, gender } = req.body;
-    // try{
-    //     const newGoldProduct = await goldProduct.create({
-    //         title,
-    //         fileUrl,
-    //         description,       
-    //         owner: _id,
-    //         gender,
-    //     });
-    //     const user = await User.findById(_id);
-    //     user.products.push(newGoldProduct._id);
-    //     user.save();
-    //     return res.redirect("/cataloge/main");
-    // }catch(error){
-    //     return res.status(400).render("cataloge/catalogeUpload", { pageTitle:"카탈로그 등록", errorMessage: error._message, });
-    // }
-    return res.render("cataloge/catalogeUpload", { pageTitle:"카탈로그 등록" });
+    const { path:fileUrl } = req.file;
+    const { title, description, gender, open, modelNumber, manufacturer } = req.body;
+    console.log(req.file);
+    try{
+        const newGoldProduct = await goldProduct.create({
+            title,
+            fileUrl,
+            description,       
+            owner: _id,
+            gender,
+            open,
+            modelNumber,
+            manufacturer,
+        });
+        const user = await User.findById(_id);
+        user.products.push(newGoldProduct._id);
+        user.save();
+        return res.redirect("/cataloge/main");
+    }catch(error){
+        return res.status(400).render("cataloge/catalogeUpload", { pageTitle:"카탈로그 등록", errorMessage: error._message, });
+    }
 };
 
 // 해당제품 들어가서 삭제
@@ -89,7 +92,9 @@ export const postEdit = async (req, res) => {
     return res.redirect("/cataloge/main");
 };
 
-export const stockMain = (req, res) => res.send("StockMain Page");
+export const stockMain = (req, res) => {
+    return res.render("StockMain", {pageTitle:"재고 관리"});
+};
 export const stockSave = (req, res) => res.send("StockSave Page");
 
 export const orderMain = (req, res) => res.send("OrderMain Page");

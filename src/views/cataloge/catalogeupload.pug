@@ -3,7 +3,6 @@ extends ../base.pug
 
 block links 
     link(rel="stylesheet", href="/static/css/catalogeupload.css")
-    link(rel="stylesheet", href="/static/css/footer.css")    
 
 block content 
     div(class="main-container")
@@ -35,7 +34,7 @@ block content
                             div(class="mImgBox")
                                 label(for="mimgpluse") 
                                     span +
-                                input(type="file", name="fileUrl", id="mimgpluse")
+                                input(type="file", name="catalogeimg", id="mimgpluse", required)
                 div(class="row")
                     div(class="col-12")
                         div(class="mtt mtt2")
@@ -141,7 +140,7 @@ block content
                         div(class="col-3 col-sm-2 catalognanu") *상세 설명
                         div(class="col-9 col-sm-10")
                             div(class="tjfaudBox")
-                                textarea(class="tjfaud" name="description", cols="30", rows="10" placeholder="상세 설명 *주의 카카오플러스친구,웹사이트,네이버 밴드,인스타,SNS 등을 홍보하지 말아주세요. 홍보시 제품 업로드가 취소되며, 누적시 입점취소됩니다. 이미업로드한 제품들 또한 수정 부탁드립니다. 네이버밴드 카카오스토리 타 웹사이트 링크 공유시 노출이안됩니다")
+                                textarea(class="tjfaud", required, name="description", cols="30", rows="10" placeholder="상세 설명 *주의 카카오플러스친구,웹사이트,네이버 밴드,인스타,SNS 등을 홍보하지 말아주세요. 홍보시 제품 업로드가 취소되며, 누적시 입점취소됩니다. 이미업로드한 제품들 또한 수정 부탁드립니다. 네이버밴드 카카오스토리 타 웹사이트 링크 공유시 노출이안됩니다")
                 div(class="row")
                     div(class="col-6")
                         div(class="mtt mtt2")

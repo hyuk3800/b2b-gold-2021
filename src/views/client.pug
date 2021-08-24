@@ -1,0 +1,98 @@
+extends base.pug
+
+block links
+    link(rel="stylesheet", href="/static/css/client.css")
+    link(rel="stylesheet", href="/static/css/components/footer.css")
+
+block content
+    div(class="container stonemain")
+        div(class="row spaceBox")
+            div(class="col-md-6 col-12")
+                div(class="stoneFree")
+                    span #{pageTitle}
+                    span (전체 n개)
+                    a(href="")
+                         img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움")
+            div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
+                    div(class="col-5 col-md-6 col-lg-5 stoneSave")
+                        button(type="button") 등록하기
+        div(class="row searchMyBox")
+            div(class="col-12 col-sm-6")
+                div(class="searchbox")
+                    input(class="searching" type="text" placeholder="스톤명, 비고(으)로 검색")
+                    button(id="btn_searching") 
+                        i(class="las la-search")
+        div(class="row deleteOrViewBox")
+            div(class="col-4 col-md-2")
+                div(class="clientfilterbox")
+                    select(name="cliint-view-counter" id="clientfilter")
+                            option(value="구분 전체") 구분 전체   
+                            option(value="판매처") 판매처   
+                            option(value="매입처") 매입처   
+                            option(value="기타") 기타
+            div(class="col-8 col-sm-6 deleteOrView")
+                div(class="deleteMan dVBox")
+                    img(src="../../../static/images/삭제하기.png", alt="삭제하기")
+                    span 삭제하기
+                div(class="ViewMan dVBox")
+                    select(name="page-view-counter" id="select10_50")
+                            option(value="10View") 10View   
+                            option(value="20View") 20View   
+                            option(value="30View") 30View   
+                            option(value="50View") 50View
+    div(class="container tableStart")
+        div(class="hiddenBox")
+            div(class="row")
+                div(class="col-12 tabletrthtd")
+                    table 
+                        thead 
+                            tr 
+                                th No 
+                                th
+                                    input(name="checkedAll" id="checkedAll" type="checkbox")
+                                th 구분
+                                th 상호명
+                                th 사업체명
+                                th 대표자명
+                                th 대표자 연락처
+                                th 연락처
+                                th 팩스
+                                th 통상
+                                th 비고
+                                th VAT
+                                th 거래형태
+                                th 해리
+                        tbody 
+                            tr 
+                                td 1
+                                td 
+                                    input(name="clickClient" id="clickClient" type="checkbox")
+                                td 매입처
+                                td 한국표준금거래소
+                                td 한국표준금거래소
+                                td 배광수
+                                td 0216447967
+                                td 0216447967
+                                td 024875242
+                                td 
+                                td 
+                                td 0
+                                td 중량
+                                td 1.1
+        div(class="row")                    
+            div(class="col-12")
+                div(class="changeList")
+                    div(class="changed")
+                        span 체크된 것
+                    div(class="changed")
+                        a(href="")  부가세 변경
+                    div(class="changed")
+                        a(href="")  거래형태 변경
+                    div(class="changed")
+                        a(href="")  해리 변경
+        div(class="col-12")
+            div(class="numlist")
+                div(class="numnum on")
+                    span 1
+    include ./partials/footer
+                        

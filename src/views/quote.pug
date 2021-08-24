@@ -1,0 +1,64 @@
+extends base
+
+block links
+    link(rel="stylesheet", href="/static/css/quote.css")
+    link(rel="stylesheet", href="/static/css/components/footer.css")
+
+block content
+    div(class="container stonemain")
+        div(class="row spaceBox")
+            div(class="col-sm-6 col-12")
+                div(class="stoneFree")
+                    span #{pageTitle} 
+                    span (전체 n개)
+                    a(href="")
+                        img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움") 
+            div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
+                div(class="col-5 col-md-6 col-lg-5 stoneSave")
+                    button(type="button") 등록하기
+        div(class="row")
+            div(class="col-12 col-md-6 searchMyBox")
+                div(class="calinder cal1")
+                    img(src="../../../static/images/calendar.png", alt="calendar")
+                div(class="calData calD1") 2021-07-08
+                div(class="calinder cal2")
+                    img(src="../../../static/images/calendar.png", alt="calendar")
+                div(class="calData calD2") 2021-07-08
+                select(name="why_do_this" id="why_do_this")
+                    option(value="등록일") 등록일
+        div(class="row deleteOrViewBox")
+            div(class="col-8 col-sm-6 deleteOrView")
+                div(class="deleteMan dVBox")
+                    img(src="../../../static/images/삭제하기.png", alt="삭제하기")
+                    span 삭제하기
+                div(class="ViewMan dVBox")
+                    select(name="page-view-counter" id="select10_50") 
+                        option(value="10View") 10View   
+                        option(value="20View") 20View   
+                        option(value="30View") 30View   
+                        option(value="50View") 50View
+    div(class="container quoteStart")
+        div(class="row quoteBox")
+            div(class="col-10 col-md-11")
+                table   
+                    thead 
+                        tr 
+                            th
+                                input(type="checkbox", id="checkedAll", name="clickAll")
+                            th #
+                            th 등록일
+                            th 앞시세
+                            th 뒷시세
+                    tbody
+                        tr  
+                            td
+                                input(name="clickThis" id="checkedThis" type="checkbox")
+                            td 1
+                            td 2021.07.08
+                            td 270,000
+                            td 270,000
+    div(class="col-12")
+        div(class="numlist")
+            div(class="numnum on")
+                span 1
+    include ./partials/footer

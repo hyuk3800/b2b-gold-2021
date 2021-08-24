@@ -1,18 +1,13 @@
 extends ../base.pug
 include ../mixins/card
+include ../mixins/table
 
 
 block links
     link(rel="stylesheet", href="/static/css/cataloge.css")
-    link(rel="stylesheet", href="/static/css/footer.css")
+    link(rel="stylesheet", href="/static/css/components/footer.css")
 
 block content
-    h2 카탈로그 보기 test
-        div     
-            each product in user.products 
-                +card(product)
-            else    
-                div 없다
     div(class="container", id="src_and_crt")
         div(class="row")
             div(class="col-md-6")
@@ -28,7 +23,7 @@ block content
             div(class="wjscp")
                 a(href="")
                     img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움")
-                span 전체 n 개 
+                span 전체 #{user.products.length} 개 
                 span(id="wjscpNum", class="hidden") (n) 개 선택됨
         div(class="row")
             div(class="col-3")
