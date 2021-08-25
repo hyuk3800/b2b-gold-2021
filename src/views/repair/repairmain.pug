@@ -1,0 +1,118 @@
+extends ../base
+
+block links
+    link(rel="stylesheet", href="/static/css/repair/repairmain.css")
+    link(rel="stylesheet", href="/static/css/components/footer.css")
+
+block content
+    div(class="container stonemain")
+        div(class="row spaceBox")
+            div(class="col-sm-6 col-12")
+                div(class="stoneFree")
+                    span #{pageTitle}
+                    span (전체 n개)
+                    a(href="")
+                        img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움") 
+            div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
+                div(class="col-5 col-md-6 col-lg-5 stoneSave")
+                    button(type="button", onclick="location=`/repair/upload`") 수리등록
+        div(class="row")
+            div(class="col-sm-12 col-md-5 col-lg-3 searchMyBox")
+                div(class="calinder cal1" )
+                    img(src="../../../../static/images/calendar.png" alt="calendar" )
+                div(class="calData calD1") 2021-07-13
+                div(class="calinder cal2" )
+                    img(src="../../../../static/images/calendar.png" alt="calendar" )
+                div(class="calData calD2") 2021-07-13
+                select(name="why_do_this" id="why_do_this") 
+                    option(value="구분") 구분
+                    option(value="접수일") 접수일
+                    option(value="출고일") 출고일
+            div(class="col-sm-12 col-md-6 col-lg-4 wichbox")
+                select(name="sortselect" id="sortselect") 
+                    option(value="정렬") 정렬
+                    option(value="출고일") 출고일
+                    option(value="접수일") 접수일
+                    option(value="모델번호") 모델번호
+                    option(value="사이즈") 사이즈    
+                select(name="sortselect" id="sortselect") 
+                    option(value="정렬순서") 정렬순서
+                    option(value="오름차순") 오름차순
+                    option(value="내림차순") 내림차순
+            div(class="col-md-12 col-lg-5")
+                div(id="searchbox")
+                    input(class="searching" type="text" placeholder="검색어를 입력하세요")
+                    button(id="btn_searching")
+                        i(class="las la-search")        
+        div(class="row deleteOrViewBox")    
+            div(class="col-md-12 col-lg-6 filterselect")
+                select(name="sortselect", id="sortselect") 
+                    option(value="필터") 필터
+                    option(value="함량") 함량
+                    option(value="색상") 색상
+                    option(value="단계") 단계
+                    option(value="거래처") 거래처
+                    option(value="제조사") 제조사
+                section(name="sortselect", id="sortselect")
+                    option(value="목록") 목록
+            div(class="col-md-8 col-lg-6 deleteOrView")
+                    div(class="deleteMan dVBox")
+                        img(src="../../../static/images/삭제하기.png", alt="삭제하기")
+                        span 삭제하기
+                    div(class="ViewMan dVBox")
+                        select(name="page-view-counter" id="select10_50") 
+                            option(value="10View") 10View
+                            option(value="20View") 20View
+                            option(value="30View") 30View 
+    div(class="container")
+        div(class="row ttaabblleeBox")
+            div(class="ttaabbllee")
+                div(class="col-12")
+                    table 
+                        thead 
+                            tr 
+                                th No
+                                th 
+                                    input(name="clickAll" id="checkedAll" type="checkbox")
+                                th 출고일 <br> 접수일
+                                th 거래처 <br>수리번호
+                                th 사진
+                                th 모델번호
+                                th 함량 <br> 색상
+                                th 메인 <br> 보조
+                                th 사이즈
+                                th 수량
+                                th 비고
+                                th 제조사 <br> 제조No
+                                th 단계 구성
+                        tbody 
+                            tr 
+                                td(style="background-color: #dbb3ff; color: steelblue;") 1
+                                td 
+                                    input(name="clickThis" id="checkedThis" type="checkbox")
+                                td 출 2021-07-23 <br> 접 2021-07-16 
+                                td 바르샤 <br> 00000099
+                                td(class="clickImg")
+                                td 조각 돌반지
+                                td 순금995
+                                td 
+                                td 
+                                td 1
+                                td 
+                                td 한국표준금거래소
+                                td 접수
+        div(class="row")
+            div(class="col-12")
+                div(class="listlist")
+                    span 채크된 것
+                    a(href="") 단계변경
+                    a(href="") 접수일변경
+                    a(href="") 출고일변경
+                    a(href="") 거래처변경
+                    a(href="") 재고등록
+                    a(href="") 판매등록
+    div(class="col-12")
+        div(class="numlist")
+            div(class="numnum on")
+                span 1
+    include ../partials/footer

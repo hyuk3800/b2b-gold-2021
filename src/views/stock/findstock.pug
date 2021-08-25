@@ -1,0 +1,157 @@
+extends ../base
+
+block links 
+    link(rel="stylesheet", href="/static/css/stock/findstock.css")
+    link(rel="stylesheet", href="/static/css/components/footer.css")
+
+block content
+    div(class="container stonemain")
+        div(class="row spaceBox")
+            div(class="col-sm-6 col-12")
+                div(class="stoneFree")
+                    span #{pageTitle}
+                    span (전체 n개)
+            div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
+                div(class="col-5 col-md-6 col-lg-5 stoneSave")
+                    button(type="button") 재고조사
+        div(class="row")
+            div(class="col-sm-12 col-md-12 col-lg-7 wichbox")
+                select(name="sortselect" id="sortselect") 
+                    option(value="정렬") 정렬
+                    option(value="등록일") 등록일
+                    option(value="시리얼") 시리얼
+                    option(value="모델번호") 모델번호
+                    option(value="사이즈") 사이즈
+                select(name="Ascending" id="Ascending") 
+                    option(value="정렬순서") 정렬순서
+                    option(value="오름차순") 오름차순
+                    option(value="내림차순") 내림차순
+                select(name="why_do_this" id="why_do_this") 
+                    option(value="조사하지않은") 조사하지않은
+                    option(value="조사한") 조사한
+            div(class="col-md-12 col-lg-5")
+                div(id="searchbox")
+                    input( class="searching" type="text" placeholder="검색어를 입력하세요")
+                    button(id="btn_searching")
+                        i(class="las la-search")
+        div(class="row deleteOrViewBox")
+            div(class="col-md-12 col-lg-6 filterselect")
+                select(name="sortselect" id="sortselect") 
+                    option(value="필터") 필터
+                    option(value="함량") 함량
+                    option(value="색상") 색상
+                    option(value="단계") 단계
+                select(name="sortselect" id="sortselect") 
+                    option(value="목록") 목록
+            div(class="col-md-8 col-lg-6 deleteOrView")
+                div(class="QRcodeout dVBox")
+                    img(src="../../../../static/images/QR출력.png", alt="QR출력")
+                    span QR출력
+                div(class="deleteMan dVBox")
+                    img(src="../../../../static/images/삭제하기.png", alt="삭제하기")
+                    span 삭제하기
+                div(div class="ViewMan dVBox")
+                    select(name="page-view-counter" id="select10_50") 
+                        option(value="10View") 10View
+                        option(value="20View") 20View
+                        option(value="30View") 30View
+                        option(value="50View") 50View
+    div(class="container")
+        div(class="row tableboxrow")
+            div(class="tablebox")
+                div(class="col-12")
+                    table 
+                        thead 
+                            tr 
+                                th(width="2%") No
+                                th(width="2%") 
+                                    input(name="clickAll" id="checkedAll" type="checkbox") 
+                                th(width="14%") 조사일
+                                th(width="7%") 시리얼 <br>  (재고번호)
+                                th(width="7%") 등록일
+                                th(width="3%") 구분
+                                th(width="8%") 모델번호
+                                th(width="5%") 재질
+                                th(width="5%") 색상
+                                th(width="2%") 수량
+                                th(width="5%") 중량(g)
+                                th(width="6%") 매입가
+                                th(width="6%") 판매가 
+                        tbody 
+                            tr 
+                                td 1
+                                td 
+                                    input(name="clickThis" id="checkedThis" type="checkbox")
+                                td 
+                                td 00088604
+                                td 2021-07-12
+                                td 일반
+                                td 조각 돌반지
+                                td 순금 995
+                                td 
+                                td 1
+                                td 3.75
+                                td 0
+                                td 0  
+            div(class="col-12 nopaddingbox")
+                div(class="listlist")
+                    span 채크된 것
+                    a(href="") 재고있음 확인 
+    div(class="col-12")
+        div(class="numlist")
+            div(class="numnum on")
+                span 1
+    div(class="container")
+        div(class="row")
+            div(class="col-12 colbutton")
+                button 재고 조사 준비 (※검사하기전에 한번만 누르고 시작하세요※)
+        div(class="row")
+            div(class="col-12 col-md-6")
+                div(class="colbname colbname1")
+                    h2 검사하지 않은 재질별 통계
+                    table 
+                        thead 
+                            tr  
+                                th No 
+                                th 재질
+                                th 중량(g)
+                                th 수량
+                                th 매입가
+                        tbody 
+                            tr 
+                                td 1
+                                td 순금995
+                                td 
+                                td 1
+                                td 0
+                        tfoot 
+                            tr 
+                                td(colspan="2") 합계
+                                td 
+                                td 1
+                                td 0
+            div(class="col-12 col-md-6")
+                div(class="colbname")
+                    h2 검사한 재질별 통계
+                    table 
+                        thead
+                            tr 
+                                th No  
+                                th 재질
+                                th 중량
+                                th 수량
+                                th 매입가
+                        tbody
+                            tr 
+                                th  
+                                th 
+                                th 
+                                th 
+                                th 
+                        tfoot
+                            tr 
+                                td(colspan="2") 합계
+                                td 
+                                td 1
+                                td 0
+    include ../partials/footer

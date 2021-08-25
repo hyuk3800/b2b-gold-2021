@@ -1,0 +1,139 @@
+extends ../base
+
+block links 
+    link(rel="stylesheet", href="/static/css/purchase/purchaseupload.css")
+    
+block content
+    div(class="container purchaseSaveBox")
+        div(class="row purchaseSaveSmBox1")
+            div(class="col-6")
+                div(class="orderName")
+                    a(href="/purchase/main", target="_self", class="mntitArrow") 
+                    span #{pageTitle}
+                a(href="",class="icInfoOutline")
+                    img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움")  
+            div(class="col-6 purchaseBtnBox")
+                button(id="purchaseBtn") 매입등록
+        div(class="row")
+            div(class="col-12 col-sm-5")
+                table(class="purchaseSaveTable1")
+                    tr 
+                        td 등록일
+                        td  
+                            div(class="dunglogeel")
+                                div(class="calinder")
+                                    img(src="../../../../static/images/calendar.png", alt="calendar")
+                                div(class="calData") 2021-07-16
+                    tr 
+                        td 매입처
+                        td 
+                            div(class="maipcher")
+                                input(type="text" placeholder="매입처")
+                                button(class="secbtn")
+            div(class="col-12 col-sm-7")
+                table(class="purchaseSaveTable2")
+                    tr 
+                        td
+                        td 순금중량(g)
+                        td 금액(원)
+                    tr 
+                        td 매입전 미수
+                        td
+                            div
+                        td
+                            div
+                    tr 
+                        td 매입
+                        td
+                            div
+                        td
+                            div
+                    tr 
+                        td 결제 및 반품
+                        td
+                            div
+                        td
+                            div
+                    tr 
+                        td 매입 후 미수
+                        td
+                        td
+    div(class="container purchaseSaveToBox")
+        div(class="row")
+            div(class="col-12")
+                div(class="purchaseSaveToBox1")
+                    table 
+                        thead 
+                            tr 
+                                th(width="1%" rowspan="2") 취소
+                                th(width="4%" rowspan="2") 구분
+                                th(width="5%" rowspan="2") 재질
+                                th(width="6%" rowspan="2") 함량
+                                th(colspan="3") 중량
+                                th(width="3%" rowspan="2") 수량
+                                th(width="7%" rowspan="2") 단가
+                                th(width="7%" rowspan="2") 공급가
+                                th(width="4%" rowspan="2") 세율
+                                th(width="7%" rowspan="2") 세액
+                                th(width="7%" rowspan="2") 합계금액
+                                th(width="8%" rowspan="2") 비고
+                            tr 
+                                th(width="5%") 실중량
+                                th(width="4%") 해리
+                                th(width="5%") 순금환산
+                        tbody 
+                            tr
+                                td
+                                    button(class="trsBTN")
+                                td
+                                    select(name="purBox" id="purBox")
+                                        option(value="매입") 매입
+                                        option(value="매입후결제") 매입후결제
+                                        option(value="결제") 결제
+                                        option(value="결통") 결통
+                                        option(value="반품") 반품
+                                        option(value="DC") DC
+                                td
+                                    select(name="gramBox" id="gramBox") 
+                                        option(value="") 
+                                        option(value="10K") 10K
+                                        option(value="14K") 14K
+                                        option(value="18K") 18K
+                                        option(value="22K") 22K
+                                        option(value="순금-995") 순금-995
+                                        option(value="순금-999") 순금-999
+                                        option(value="실버") 실버
+                                        option(value="PT") PT
+                                        option(value="기타") 기타
+                                td
+                                    input(type="text" class="purbox1111" autocomplete="off" disabled) 
+                                td
+                                    input(type="text") 
+                                td
+                                    select(name="hali" id="hali") 
+                                        option(value="1.10") 1.10
+                                        option(value="1.09") 1.09
+                                        option(value="1.07") 1.07
+                                        option(value="1.06") 1.06
+                                        option(value="1.00") 1.00
+                                td
+                                    input(type="text" class="purbox1111" autocomplete="off" disabled) 
+                                td
+                                    input(type="text") 
+                                td
+                                    input(type="text") 
+                                td
+                                    input(type="text" class="purbox1111" autocomplete="off" disabled) 
+                                td
+                                    select(name="seul" id="seul") 
+                                        option(value="0") 0
+                                        option(value="10") 10
+                                td
+                                    input(type="text" class="purbox1111" autocomplete="off" disabled) 
+                                td
+                                    input(type="text" class="purbox1111" autocomplete="off" disabled) 
+                                td
+                                    input(type="text") 
+        div(class="row")
+            div(class="pluseBox")
+                button(id="plsbtn") 추가

@@ -1,7 +1,7 @@
-extends base.pug
+extends ../base
 
 block links 
-    link(rel="stylesheet", href="/static/css/stock.css")
+    link(rel="stylesheet", href="/static/css/stock/stock.css")
     link(rel="stylesheet", href="/static/css/components/footer.css")
 
 block content
@@ -12,10 +12,10 @@ block content
                     span #{pageTitle}
                     span (전체 n개)
                     a(href="")
-                        img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움") 
+                        img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움") 
             div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
                 div(class="col-5 col-md-6 col-lg-5 stoneSave")
-                    button(type="button", onclick="location=`/stock/save`") 재고등록
+                    button(type="button", onclick="location=`/stock/upload`") 재고등록
         div(class="row")
             div(class="col-sm-12 col-md-5 col-lg-3 searchMyBox")
                 div(class="calinder cal1")
@@ -128,4 +128,4 @@ block content
         div(class="numlist")
             div(class="numnum on")
                 span 1
-    include ./partials/footer
+    include ../partials/footer

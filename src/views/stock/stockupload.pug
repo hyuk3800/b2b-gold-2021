@@ -1,0 +1,158 @@
+extends ../base
+
+block links
+    link(rel="stylesheet", href="/static/css/stock/stockupload.css")
+    link(rel="stylesheet", href="/static/css/components/footer.css")   
+
+
+block content 
+    div(class="container orderSaveBox")
+        div(class="row")
+            div(class="col-6")
+                div(class="orderName")
+                    a(href="/stock/main", target="_self", class="mntitArrow")
+                    span #{pageTitle} 
+                a(href="", class="icInfoOutline") 
+                    img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움")
+            div(class="col-6 orderBtnBox")
+                button(id="orderBtn") 재고등록
+        div(class="row")
+            div(class="col-12 imgOrderBox")
+                div(class="imgbox")
+                    img(src="../../../../static/images/no_image_available.png", alt="이미지 없음")
+        div(class="row")
+            div(class="col-6 calinderBox")
+                div(class="calinder")
+                    img(src="../../../../static/images/calendar.png", alt="calendar")
+                div(class="calData") 2021-07-13
+        div(class="row tableLongBoxBox")
+            div(class="tableLongBox")
+                div(class="col-12 vybox")
+                    table   
+                        thead 
+                            tr 
+                                th(width="2%" rowspan="2") 취소
+                                th(width="6%" rowspan="2") 주문번호
+                                th(width="6%" style="border-bottom: none;") 모델번호
+                                th(width="6%" style="border-bottom: none;") 제조사
+                                th(width="3%" rowspan="2") 재질
+                                th(width="3%" rowspan="2") 색상
+                                th(width="2%" rowspan="2") 수량
+                                th(colspan="4") 판매단가
+                                th(width="4%" rowspan="2") 개당 <br> 알중량
+                                th(colspan="3") 총중량(g)
+                                th(width="4%" rowspan="2") 매입해리
+                                th(colspan="2") 개당알수
+                                th(width="2%" rowspan="2") 단가상품
+                                th(colspan="2") 스톤
+                                th(width="4%" rowspan="2") 사이즈
+                                th(width="4%" rowspan="2") 비고
+                                th(colspan="2") 매입단가
+                            tr 
+                                th(style="border-top: none;") 
+                                    input(name="clickAll" id="checkedAll" type="checkbox") 
+                                th(style="border-top: none;") 
+                                    input(name="clickAll" id="checkedAll" type="checkbox") 
+                                th(width="4.5%") 기본
+                                th(width="4.5%") 추가
+                                th(width="4.5%") 중심
+                                th(width="4.5%") 보조
+                                th(width="4%") 총중량
+                                th(width="4%") 금중량
+                                th(width="4%") 알중량
+                                th(width="3%") 메인
+                                th(width="3%") 보조
+                                th(width="5%") 매인
+                                th(width="5%") 보조
+                                th(width="4%") 기본
+                                th(width="4%") 스톤
+                        tbody
+                            tr
+                                td
+                                    button(class="trsBTN")
+                                td
+                                    input(type="text")
+                                    button(class="secbtn")
+                                td
+                                    input(type="text")
+                                    button(class="secbtn")
+                                td
+                                    input(type="text")
+                                    button(class="secbtn")
+                                td
+                                    select(name="gramBox" class="selBoxStock" id="gramBox")
+                                        option(value="")
+                                        option(value="10K") 10K
+                                        option(value="14K") 14K
+                                        option(value="18K") 18K
+                                        option(value="22K") 22K
+                                        option(value="순금-995") 순금-995
+                                        option(value="순금-999") 순금-999
+                                        option(value="실버") 실버
+                                        option(value="PT") PT
+                                        option(value="기타") 기타
+                                td
+                                    select(name="color" class="selBoxStock" id="color")
+                                        option(value="")
+                                        option(value="G") G
+                                        option(value="G/B") G/B
+                                        option(value="G/P") G/P
+                                        option(value="G/R/W") G/R/W
+                                        option(value="G/W") G/W
+                                        option(value="P") P
+                                        option(value="P/W") P/W
+                                        option(value="P/블랙도금") P/블랙도금
+                                        option(value="W") W
+                                        option(value="W/B") W/B
+                                        option(value="W/G") W/G
+                                        option(value="W/P") W/P
+                                        option(value="블랙") 블랙
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text" disabled)
+                                td
+                                    input(type="text" disabled)
+                                td
+                                    select(name="MAIPHARI" class="selBoxStock" id="MAIPHARI")
+                                        option(value="1.10") 1.10
+                                        option(value="1.09") 1.09
+                                        option(value="1.07") 1.07
+                                        option(value="1.06") 1.06
+                                        option(value="1.00") 1.00
+
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    select(name="MAIPHARI" class="selBoxStock" id="MAIPHARI")
+                                        option(value="N") N
+                                        option(value="Y") Y
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+        div(class="row")
+            div(class="pluseBox")
+                button(id="plsbtn") 추가

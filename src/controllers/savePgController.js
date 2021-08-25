@@ -93,21 +93,43 @@ export const postEdit = async (req, res) => {
 };
 
 export const stockMain = (req, res) => {
-    return res.render("StockMain", {pageTitle:"재고 관리"});
+    return res.render("stock/stockmain", {pageTitle:"재고 관리"});
 };
-export const stockSave = (req, res) => res.send("StockSave Page");
+export const stockUpload = (req, res) => {
+    return res.render("stock/stockupload",{pageTitle:"재고 등록"});
+};
 
-export const orderMain = (req, res) => res.send("OrderMain Page");
-export const orderSave = (req, res) => res.send("OrderSave Page");
+export const findStock = (req, res) => {
+    return res.render("stock/findstock",{pageTitle:"재고 조사"});
+};
 
-export const repairMain = (req, res) => res.send("RepairMain Page");
-export const repairSave = (req, res) => res.send("RepairSave Page");
+export const orderMain = (req, res) => {
+    return res.render("order/ordermain",{pageTitle:"주문 관리"});
+};
+export const orderUpload = (req, res) => {
+    return res.render("order/orderupload",{pageTitle:"주문 등록"});
+};
 
-export const purchaseMain = (req, res) => res.send("PurchaseMain Page");
-export const purchaseSave = (req, res) => res.send("PurchaseSave Page");
+export const repairMain = (req, res) => {
+    return res.render("repair/repairmain", {pageTitle:"수리 관리"});
+};
+export const repairupload = (req, res) => {
+    return res.render("repair/repairupload", {pageTitle:"수리 등록"});
+};
 
-export const saleMain = (req, res) => res.send("SaleMain Page");
-export const saleSave = (req, res) => res.send("SaleSave Page");
+export const purchaseMain = (req, res) => {
+    return res.render("purchase/purchasemain",{pageTitle: "매입 관리"});
+};
+export const purchaseUpload = (req, res) => {
+    return res.render("purchase/purchaseupload",{pageTitle: "매입 등록"});
+};
+
+export const saleMain = (req, res) => {
+    return res.render("salemain", {pageTitle: "판매 관리"});
+};
+export const saleUpload = (req, res) => {
+    return res.render("saleupload", {pageTitle: "판매 등록"});
+};
 
 export const rentMain = (req, res) => res.send("RentMain Page");
 export const rentSave = (req, res) => res.send("RentSave Page");

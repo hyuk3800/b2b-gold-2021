@@ -1,0 +1,140 @@
+extends ../base
+
+block links 
+    link(rel="stylesheet", href="/static/css/repair/repairupload.css")
+    
+block content
+    div(class="container orderSaveBox")
+        div(class="row")
+            div(class="col-6")
+                div(class="orderName")
+                    a(href="/repair/main" target="_self" class="mntitArrow")
+                    span #{pageTitle}
+                a(href="",class="icInfoOutline")
+                    img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움")  
+            div(class="col-6 orderBtnBox")
+                button(id="orderBtn") 수리등록
+        div(class="row")
+            div(class="col-12 imgOrderBox")
+                div(class="imgbox")
+                    img(src="../../../../static/images/no_image_available.png", alt="이미지없음")
+        div(class="row")
+            div(class="col-6 calinderBox")
+                div(class="calinder")
+                    img(src="../../../../static/images/calendar.png", alt="calendar")
+                div(class="calData") 2021-07-13
+        div(class="row tableLongBoxBox")
+            div(class="tableLongBox")
+                div(class="col-12 vybox")
+                    table 
+                        thead 
+                            tr 
+                                th(width="2%" rowspan="2") 취소
+                                th(width="8%" style="border-bottom: none;") 거래처
+                                th(width="8%" style="border-bottom: none;") 모델번호
+                                th(width="8%" style="border-bottom: none;") 제조사
+                                th(width="5%" rowspan="2") 재질
+                                th(width="5%" rowspan="2") 색상
+                                th(width="3%" rowspan="2") 수량
+                                th(colspan="4") 판매단가
+                                th(width="6%" colspan="2") 개당알수
+                                th(width="4%" rowspan="2") 개당 <br>  알중량
+                                th(colspan="2") 스톤
+                                th(width="4%" rowspan="2") 사이즈
+                                th(rowspan="2") 기타 설명
+                                th(width="8.5%") 출고일
+                            tr 
+                                th(style="border-top: none;")
+                                    input(name="clickAll" id="checkedAll" type="checkbox")
+                                
+                                th(style="border-top: none;")
+                                    input(name="clickAll" id="checkedAll" type="checkbox")
+                                
+                                th(style="border-top: none;")
+                                    input(name="clickAll" id="checkedAll" type="checkbox")
+                                
+                                th 기본
+                                th 추가
+                                th 중심
+                                th 보조
+                                th 메인
+                                th 보조
+                                th 메인
+                                th 보조
+                                th  
+                                    input(type="text" class="cldbox1111" autocomplete="off" disabled)
+                                    div(class="calinder2")
+                                        img(src="../../../../static/images/calendar.png" alt="calendar")
+                                
+                        <tbody>
+                            <tr>
+                                td
+                                    button(class="trsBTN")
+                                td
+                                    input(type="text")
+                                    button(class="secbtn")
+                                td
+                                    input(type="text")
+                                    button(class="secbtn")
+                                td
+                                    input(type="text")
+                                    button(class="secbtn")
+                                td
+                                    select(name="gramBox" id="gramBox")
+                                        option(value="") 
+                                        option(value="10K") 10K
+                                        option(value="14K") 14K
+                                        option(value="18K") 18K
+                                        option(value="22K") 22K
+                                        option(value="순금-995") 순금-995
+                                        option(value="순금-999") 순금-999
+                                        option(value="실버") 실버
+                                        option(value="PT") PT
+                                        option(value="기타") 기타
+                                td
+                                    select(name="color" id="color") 
+                                        option(value="") 
+                                        option(value="G") G
+                                        option(value="G/B") G/B
+                                        option(value="G/P") G/P
+                                        option(value="G/R/W") G/R/W
+                                        option(value="G/W") G/W
+                                        option(value="P") P
+                                        option(value="P/W") P/W
+                                        option(value="P/블랙도금") P/블랙도금
+                                        option(value="W") W
+                                        option(value="W/B") W/B
+                                        option(value="W/G") W/G
+                                        option(value="W/P") W/P
+                                        option(value="블랙") 블랙
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text")
+                                td
+                                    input(type="text" class="cldbox1111" autocomplete="off" disabled)
+                                    div(class="calinder2")
+                                        img(src="../../../../static/images/calendar.png" alt="calendar")
+        div(class="row")
+            div(class="pluseBox")
+                button(id="plsbtn") 추가

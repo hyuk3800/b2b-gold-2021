@@ -177,7 +177,7 @@
     left: 30px;
     width: 14px;
     height: 14px;
-    background: url("../images/카드형식off.png") no-repeat center/cover;
+    background: url("../../images/카드형식off.png") no-repeat center/cover;
 }
 
 .card_bro.on::before {
@@ -189,7 +189,7 @@
     left: 30px;
     width: 14px;
     height: 14px;
-    background: url("../images/카드형식on.png") no-repeat center/cover;
+    background: url("../../images/카드형식on.png") no-repeat center/cover;
 }
 
 
