@@ -5,5 +5,127 @@ block links
     link(rel="stylesheet", href="/static/css/components/footer.css")
 
 block content 
-
+    div(class="container stonemain")
+        div(class="row spaceBox")
+            div(class="col-sm-6 col-12")
+                div(class="stoneFree")
+                    span #{pageTitle}
+                    span (전체 n개)
+                    a(href="")
+                        img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움") 
+            div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
+                div(class="col-5 col-md-6 col-lg-5 stoneSave")
+                    button(type="button", onclick="location=`/sale/upload`") 판매등록
+        div(class="row")
+            div(class="col-sm-12 col-md-5 col-lg-3 searchMyBox")
+                div(class="calinder cal1")
+                    img(src="../../../static/images/calendar.png", alt="calendar")
+                div(class="calData calD1") 2021-07-08
+                div(class="calinder cal2")
+                    img(src="../../../static/images/calendar.png", alt="calendar")
+                div(class="calData calD2") 2021-07-08
+                select(name="why_do_this" id="why_do_this")
+                    option(value="등록일") 등록일
+            div(class="col-sm-12 col-md-6 col-lg-4 wichbox")  
+                select(name="sortselect" id="sortselect") 
+                    option(value="정렬") 정렬
+                    option(value="등록일") 등록일
+                    option(value="시리얼") 시리얼
+                    option(value="모델번호") 모델번호
+                    option(value="사이즈") 사이즈
+                select(name="Ascending" id="Ascending") 
+                    option(value="정렬순서") 정렬순서
+                    option(value="오름차순") 오름차순
+                    option(value="내림차순") 내림차순
+        div(class="row deleteOrViewBox")
+            div(class="col-md-12 col-lg-6 filterselect")
+                select(name="sortselect" id="sortselect") 
+                    option(value="필터") 필터
+                    option(value="함량") 함량
+                    option(value="색상") 색상
+                    option(value="단계") 단계
+                select(name="sortselect" id="sortselect") 
+                    option(value="목록") 목록
+            div(class="col-md-8 col-lg-6 deleteOrView")
+                div(class="deleteMan dVBox")
+                    img(src="../../../static/images/삭제하기.png", alt="삭제하기")
+                    span 삭제하기
+                div(class="ViewMan dVBox")
+                    select(name="page-view-counter" id="select10_50") 
+                        option(value="10View") 10View
+                        option(value="20View") 20View
+                        option(value="30View") 30View
+                        option(value="50View") 50View
+    div(class="container saleTableBigBox")
+        div(class="row")
+            div(class="col-12")
+                div(class="saleTableBox")
+                    table 
+                        thead
+                            tr 
+                                th(rowspan="2") No
+                                th(rowspan="2") 
+                                    input(name="clickAll" id="checkedAll" type="checkbox")
+                                th(rowspan="2") 거래일
+                                th(rowspan="2") 구분
+                                th(rowspan="2") 거래처 <br> 거래No
+                                th(rowspan="2") 시리얼 <br> 모델번호
+                                th(rowspan="2") 재질 <br> 색상
+                                th(rowspan="2") 사이즈 <br> 비고 
+                                th(rowspan="2") 메인 <br> 보조
+                                th(colspan="2") 개당알수
+                                th(rowspan="2") 수량
+                                th(colspan="4") 판매단가
+                                th(colspan="3") 중량(g)
+                                th(colspan="2") 메출합계
+                            tr
+                                th 메인
+                                th 보조
+                                th 기본
+                                th 추가
+                                th 중심
+                                th 보조
+                                th 총
+                                th 금
+                                th 알
+                                th 공급가
+                                th 부가세
+                        tbody 
+                            tr 
+                                td 1
+                                td 
+                                    input(name="clickThis" id="clickThis" type="checkbox")
+                                td 2021-07-19
+                                td 판매
+                                td 바르샤 <br> 00000095 
+                                td 00088604 <br> 조각 돌반지
+                                td 순금995
+                                td                               
+                                td 
+                                td 
+                                td 
+                                td 1
+                                td 3,000
+                                td 
+                                td 
+                                td 
+                                td 3.75
+                                td 3.75
+                                td 
+                                td 3,000
+                                td 
+            div(class="col-12 nopaddingbox")     
+                div(class="listlist")       
+                    span 체크된 것
+                    a(href="") 반품
+                    a(href="") 거래처 변경
+                    a(href="") 거래일 변경
+                    a(href="") 거래구분 변경
+                    a(href="") 시세 변경
+                    a(href="") 부가세 변경
+                    a(href="") 거래번호 통합
+    div(class="col-12")
+        div(class="numlist")
+            div(class="numnum on")
+                span 1
     include ../partials/footer

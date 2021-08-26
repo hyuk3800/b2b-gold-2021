@@ -1,9 +1,9 @@
 import express from "express";
-import { rentMain, rentSave } from "../controllers/savePgController";
+import { rentMain, rentUpload } from "../controllers/savePgController";
 
 const rentRouter = express.Router();
 
 rentRouter.get("/main", rentMain);
-rentRouter.get("/save", rentSave);
+rentRouter.get("/upload", rentUpload);
 
 export default rentRouter;

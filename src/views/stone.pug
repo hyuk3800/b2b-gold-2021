@@ -63,4 +63,15 @@ block content
         div(class="numlist")
             div(class="numnum on")
                 span 1
+    form(method="POST")
+        label(for="name") 스톤명*
+        input(type="text", name="name", required, id="name", placeholder="스톤명을 입력해주세요 ex)오닉스") 
+        label(for="weight") 표준 중량*
+        input(type="text", name="weight", required, id="weight", placeholder="중량을 입력해주세요") 
+        label(for="purchasePrice") 매입 가격*
+        input(type="text", name="purchasePrice", required, id="purchasePrice", placeholder="매입 가격을 입력해주세요") 
+        label(for="sellingPrice") 판매 가격*
+        input(type="text", name="sellingPrice", required, id="sellingPrice", placeholder="판매 가격을 입력해주세요") 
+        label(for="description") 비고
+        input(type="text", name="description", id="description") 
     include ./partials/footer

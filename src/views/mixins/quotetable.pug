@@ -1,0 +1,9 @@
+mixin quotetable(quote)
+        tbody
+            tr  
+                td
+                    input(name="clickThis" id="checkedThis" type="checkbox")
+                td 1
+                td #{quote.createdAt}
+                td #{quote.frontquote}
+                td #{quote.backquote}

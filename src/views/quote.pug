@@ -1,4 +1,5 @@
 extends base
+include ./mixins/quotetable
 
 block links
     link(rel="stylesheet", href="/static/css/quote.css")
@@ -10,7 +11,7 @@ block content
             div(class="col-sm-6 col-12")
                 div(class="stoneFree")
                     span #{pageTitle} 
-                    span (전체 n개)
+                    span (전체 #{user.quotes.length} 개)
                     a(href="")
                         img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움") 
             div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
@@ -49,16 +50,16 @@ block content
                             th 등록일
                             th 앞시세
                             th 뒷시세
-                    tbody
-                        tr  
-                            td
-                                input(name="clickThis" id="checkedThis" type="checkbox")
-                            td 1
-                            td 2021.07.08
-                            td 270,000
-                            td 270,000
+                    each quote in user.quotes 
+                        +quotetable(quote)
+                    else
+                        div
     div(class="col-12")
         div(class="numlist")
             div(class="numnum on")
                 span 1
+    form(method="POST")
+        input(type="number", name="frontquote",  placeholder="앞시세", required)
+        input(type="number", name="backquote",  placeholder="뒷시세", required)
+        button(type="submit") 등록
     include ./partials/footer

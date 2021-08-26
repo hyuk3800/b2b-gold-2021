@@ -5,6 +5,6 @@ import { protectorMiddleware } from "../middlewares";
 const saleRouter = express.Router();
 
 saleRouter.get("/main", protectorMiddleware, saleMain);
-saleRouter.get("/save", protectorMiddleware, saleUpload);
+saleRouter.get("/upload", protectorMiddleware, saleUpload);
 
 export default saleRouter;

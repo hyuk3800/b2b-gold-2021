@@ -12,6 +12,12 @@ const userSchema = new mongoose.Schema({
     products: [
         { type: mongoose.Schema.Types.ObjectId, ref: "Product" }
        ], // 등록한 제품 id
+    stones: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "Stone" }
+       ], // 등록한 스톤 id
+    quotes: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "Quote" }
+       ], // 등록한 시세 id
 });
 
 

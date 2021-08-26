@@ -26,7 +26,7 @@ export const postUpload = async (req, res) => {
     const { user:{_id}, } = req.session;
     const { path:fileUrl } = req.file;
     const { title, description, gender, open, modelNumber, manufacturer } = req.body;
-    console.log(req.file);
+    console.log(req.body);
     try{
         const newGoldProduct = await goldProduct.create({
             title,
@@ -125,12 +125,16 @@ export const purchaseUpload = (req, res) => {
 };
 
 export const saleMain = (req, res) => {
-    return res.render("salemain", {pageTitle: "판매 관리"});
+    return res.render("sale/salemain", {pageTitle: "판매 관리"});
 };
 export const saleUpload = (req, res) => {
-    return res.render("saleupload", {pageTitle: "판매 등록"});
+    return res.render("sale/saleupload", {pageTitle: "판매 등록"});
 };
 
-export const rentMain = (req, res) => res.send("RentMain Page");
-export const rentSave = (req, res) => res.send("RentSave Page");
+export const rentMain = (req, res) => {
+    return res.render("rent/rentmain",{ pageTitle:"대여 관리"});
+};
+export const rentUpload = (req, res) => {
+    return res.render("rent/rentupload",{ pageTitle:"대여 등록"});
+};
 

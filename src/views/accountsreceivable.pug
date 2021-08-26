@@ -1,0 +1,78 @@
+extends base.pug
+
+block links 
+    link(rel="stylesheet", href="/static/css/accountsreceivable.css")
+    link(rel="stylesheet", href="/static/css/components/footer.css")
+
+block content 
+    div(class="container accountsReceivableBox") 
+        div(class="row") 
+            div(class="col-12") 
+                div(class="stoneFree") 
+                    span  #{pageTitle}
+                    span (기준일 2021-07-21)
+                    a(href="") 
+                        img(src="../../../../static/images/ic-info-outline-24-px.png" alt="도움") 
+        div(class="row GIJUNDayAndJUNGRULBigBox") 
+            div(class="col-12 col-md-6 GIJUNDayAndJUNGRULBox") 
+                div(class="GIJUNDayBox") 
+                    span 기준일
+                    div(class="calinder") 
+                        img(src="../../../../static/images/calendar.png" alt="calendar") 
+                    div(class="calData") 2021-07-13
+                div(class="JUNGRULBox") 
+                    select(name="JUNGRUL" id="JUNGRUL") 
+                        option(value="정렬") 정렬
+                        option(value="미수순금") 미수순금
+                        option(value="미수금액") 미수금액
+                        option(value="거래처") 거래처
+                        option(value="최근거래일") 최근거래일
+                        option(value="최근결제일") 최근결제일
+                        option(value="관리자") 관리자
+            div(class="col-12 col-md-6") 
+                div(id="searchbox") 
+                    input(class="searching" type="text" placeholder="검색어를 입력하세요") 
+                    button(id="btn_searching") 
+                        i(class="las la-search")
+        div(class="row MISUBox") 
+            div(class="col-10") 
+                div(class="overflow-x_Box") 
+                    table
+                        thead
+                            tr
+                                th(rowspan="2") No
+                                th(rowspan="2") 
+                                    input(name="clickAll" id="checkedAll" type="checkbox") 
+                                
+                                th(rowspan="2") 거래처
+                                th(rowspan="2") 전화번호
+                                th(rowspan="2") 담당자
+                                th(rowspan="2") 담당HP
+                                th(colspan="2") 순금
+                                th(rowspan="2") 총 미수금
+                                th(rowspan="2") 최근거래일
+                                th(rowspan="2") 최근 결제일
+                            tr
+                                th g
+                                th 돈
+                        tbody
+                            tr
+                                td 1
+                                td 
+                                    input(name="clickThis" id="clickThis" type="checkbox") 
+                                
+                                td 바르샤
+                                td 
+                                td 
+                                td 
+                                td 3.75
+                                td 1
+                                td 6,000
+                                td 2021-07-19
+                                td 
+    include ./partials/footer
+            
+        
+
+
+    

@@ -4,3 +4,263 @@ block links
     link(rel="stylesheet", href="/static/css/sale/saleupload.css")
 
 block content 
+    div(class="container saleSaveBox")
+        div(class="row")
+            div(class="col-6")
+                div(class="orderName")
+                    a(href="/repair/main" target="_self" class="mntitArrow")
+                    span #{pageTitle}
+                a(href="",class="icInfoOutline")
+                    img(src="../../../../static/images/ic-info-outline-24-px.png" alt="도움")      
+            div(class="col-6 orderBtnBox")
+                button(id="orderBtn") 등록
+        div(class="row")
+            div(class="col-12 imgOrderBox")
+                div(class="imgbox")
+                    img(src="../../../../static/images/no_image_available.png" alt="이미지없음")
+        div(class="row upTableBox1")
+            div(class="col-md-5")
+                table(class="upTableBox1SBox1")
+                    tr 
+                        td 등록일
+                        td(id="calenderBox")
+                            div(class="calender")
+                                div(class="calImg")
+
+                                div(class="calText")
+                                    span 2021-07-19
+                    tr
+                        td 거래처
+                        td
+                            div(class="sechBox")
+                                input(type="text" placeholder="거래처")
+                                button(class="secbtn")
+                    tr
+                        td 
+                            input(name="client" id="clientF" class="client" type="radio") 
+                            span 앞시세(돈당)
+                        td 
+                            input(type="text") 
+                    tr
+                        td 
+                            input(name="client" id="clientB" class="client" type="radio") 
+                            span 뒷시세(돈당)
+                        td 
+                            input(type="text") 
+                    tr
+                        td 거래형태
+                        td 
+                            select(name="gLBTAndSISE" class="upselectBox" id="gLBTAndSISE") 
+                                option(value="중량") 중량
+                                option(value="시세") 시세
+                    tr
+                        td 부가세
+                        td 
+                            select(name="BUGA" class="upselectBox" id="BUGA") 
+                                option(value="0") 0
+                                option(value="10") 10
+                    tr
+                        td 적용해리
+                        td 
+                            select(name="HARI" class="upselectBox" id="HARI") 
+                                option(value="1.10") 1.10
+                                option(value="1.09") 1.09
+                                option(value="1.07") 1.07
+                                option(value="1.06") 1.06
+                                option(value="1.00") 1.00
+            div(class="col-md-7")
+                table(class="upTableBox1SBox2")
+                    thead
+                        tr
+                            th 
+                            th 순금(g)
+                            th 금액(공임)
+                            th 수량
+                    tbody
+                        tr
+                            td 전 미수
+                            td 
+                            td 
+                            td 
+                        tr
+                            td 판 매
+                            td 
+                            td 
+                            td 
+                        tr
+                            td 반 품
+                            td 
+                            td 
+                            td 
+                        tr
+                            td D C
+                            td 
+                            td 
+                            td 
+                        tr
+                            td 결 제
+                            td 
+                            td 
+                            td 
+                        tr
+                            td 후 미수
+                            td 
+                            td 
+                            td 
+                table(class="upTableBox1SBox3")
+                    thead
+                        tr
+                            th 순금환산(g)
+                            th 시세환산
+                            th WG환산
+                    tbody
+                        tr
+                            td 
+                            td 
+                            td 
+        div(class="row buttomTable")
+            div(class="col-12")
+                div(class="buttomTableBox")
+                    table
+                        thead
+                            tr
+                                th(width="1%" rowspan="2") 취소
+                                th(width="4%" rowspan="2") 구분
+                                th(width="7%" rowspan="2") 시리얼
+                                th(width="7%" style="border-bottom: none;") 모델번호
+                                th(width="3%" rowspan="2") 재질
+                                th(width="3%" rowspan="2") 색상
+                                th(width="3%" rowspan="2") 단가 <br>  상품
+                                th(colspan="4") 판매단가
+                                th(width="4%" rowspan="2") 개당 <br>  알중량
+                                th(colspan="4") 중량(g)
+                                th(width="3%" rowspan="2") 메인스톤
+                                th(width="3%" rowspan="2") 보조스톤
+                                th(width="4%" rowspan="2") 사이즈
+                                th(width="7%" rowspan="2") 비고
+                                th(width="1.5%" rowspan="2") 수량
+                                th(width="6%" colspan="2") 개당알수
+                                th(colspan="2") 매출합계
+                            tr
+                                th(style="border-top: none;") ch
+                                th 기본
+                                th 추가
+                                th 중심
+                                th 보조
+                                th 총중량
+                                th 금중량
+                                th 알중량
+                                th 순금환산
+                                th 메인
+                                th 보조
+                                th 공급가
+                                th VAT
+                        tbody
+                            tr
+                                td
+                                    button(class="trsBTN") 
+                                td
+                                    select(name="GUBUN" class="downSelectBox" id="GUBUN") 
+                                        option(value="판매") 판매
+                                        option(value="반품") 반품
+                                        option(value="결제") 결제
+                                        option(value="DC") DC
+                                        option(value="결통") 결통
+                                        option(value="초기") 초기
+                                        option(value="WG") WG
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                        button(class="secbtn") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                        button(class="secbtn") 
+                                td
+                                    select(name="JAJIL" class="downSelectBox" id="JAJIL") 
+                                        option(value="10K") 10K
+                                        option(value="14K") 14K
+                                        option(value="18K") 18K
+                                        option(value="22K") 22K
+                                        option(value="순금-995") 순금-995
+                                        option(value="순금-999") 순금-999
+                                        option(value="실버") 실버
+                                        option(value="PT") PT
+                                        option(value="기타") 기타
+                                td
+                                    select(name="SAGSANG" class="downSelectBox" id="SAGSANG") 
+                                        option(value="") 
+                                        option(value="G") G
+                                        option(value="G/B") G/B
+                                        option(value="G/P") G/P
+                                        option(value="G/R/W") G/R/W
+                                        option(value="G/W") G/W
+                                        option(value="P") P
+                                        option(value="P/W") P/W
+                                        option(value="P/블랙도금") P/블랙도금
+                                        option(value="W") W
+                                        option(value="W/B") W/B
+                                        option(value="W/G") W/G
+                                        option(value="W/P") W/P
+                                        option(value="블랙") 블랙
+                                td
+                                    select(name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM") 
+                                        option(value="N") N
+                                        option(value="Y") Y
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text" disabled) 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text" disabled) 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text" disabled) 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text" value="1") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text") 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text" disabled) 
+                                td
+                                    div(class="sechBox2")
+                                        input(type="text" disabled) 
+        div(class="row")
+            div(class="pluseBox")
+                button(id="plsbtn") 추가
