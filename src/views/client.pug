@@ -1,8 +1,12 @@
 extends base.pug
+include ./mixins/clienttable
 
 block links
     link(rel="stylesheet", href="/static/css/client.css")
     link(rel="stylesheet", href="/static/css/components/footer.css")
+
+block scripts 
+    script(src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js")
 
 block content
     div(class="container stonemain")
@@ -18,8 +22,8 @@ block content
                         button(type="button") 등록하기
         div(class="row searchMyBox")
             div(class="col-12 col-sm-6")
-                div(class="searchbox")
-                    input(class="searching" type="text" placeholder="스톤명, 비고(으)로 검색")
+                form(method="GET",class="searchbox")
+                    input(class="searching", name="keyword", type="text" placeholder="검색어를 입력해주세요")
                     button(id="btn_searching") 
                         i(class="las la-search")
         div(class="row deleteOrViewBox")
@@ -62,23 +66,10 @@ block content
                                 th VAT
                                 th 거래형태
                                 th 해리
-                        tbody 
-                            tr 
-                                td 1
-                                td 
-                                    input(name="clickClient" id="clickClient" type="checkbox")
-                                td 매입처
-                                td 한국표준금거래소
-                                td 한국표준금거래소
-                                td 배광수
-                                td 0216447967
-                                td 0216447967
-                                td 024875242
-                                td 
-                                td 
-                                td 0
-                                td 중량
-                                td 1.1
+                        each client in user.clients 
+                            +clientTable(client)
+                        else    
+                            div
         div(class="row")                    
             div(class="col-12")
                 div(class="changeList")
@@ -94,5 +85,62 @@ block content
             div(class="numlist")
                 div(class="numnum on")
                     span 1
+    form(method="POST", class="container")
+        
+        div(class="row")
+            span 거래처구분*
+            select(name="clientType", required)
+                option(value="판매처") 판매처 
+                option(value="매입처") 매입처
+                option(value="기타") 기타
+        
+            span 상호명*
+            input(type="text", name="clientName", placeholder="상호명")
+        
+        div(class="row")
+            span 사업자
+            input(type="text", name="buisnessName", placeholder="사업체")
+            input(type="text", name="buisnessNumber", placeholder="사업자번호")
+            input(type="text", name="representative", placeholder="대표자명")
+            input(type="text", name="representativeNumber", placeholder="대표자 연락처")
+        
+        div(class="row")
+            span 주소
+            input(type="text", name="postNumber", id="sample6_postcode", placeholder="우편번호") 
+            input(type="button", onclick="sample6_execDaumPostcode()", value="우편번호 찾기") 
+            input(type="text", name="addressLine1", id="sample6_address", placeholder="주소") 
+        
+        div(class="row")
+            span 옵션
+            select(name="harry")
+                option(value="1.10") 1.10 
+                option(value="1.09") 1.09
+                option(value="1.07") 1.07
+                option(value="1.06") 1.06
+                option(value="1.00") 1.00
+            select(name="transactionType")
+                option(value="중량") 중량 
+                option(value="시세") 시세
+            select(name="vat")
+                option(value="0%") 0% 
+                option(value="10%") 10%
+        
+        div(class="row")
+            span 연락처
+            input(type="text", name="phone", placeholder="전화번호")
+            input(type="text", name="fax", placeholder="팩스번호")
+        div(class="row")
+            span 담당자
+            input(type="text", name="managerName", placeholder="담당자명")
+            input(type="text", name="managerNumber", placeholder="담당자연락처")
+        div(class="row")
+            span 통상
+            input(type="text", name="commonName", placeholder="통상명")
+        div(class="row")
+            span 비고
+            input(type="text", name="description")
+
+        input(type="submit" value="등록")
+        
     include ./partials/footer
                         

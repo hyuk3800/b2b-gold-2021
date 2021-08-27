@@ -1,4 +1,5 @@
 extends base.pug
+include ./mixins/stonetable
 
 block links 
     link(rel="stylesheet", href="/static/css/stone.css")
@@ -11,7 +12,7 @@ block content
                 div(class="col-sm-6 col-12")
                     div(class="stoneFree")
                         span #{pageTitle}
-                        span (전체 n개)
+                        span (전체 #{user.stones.length}개)
                         a(href="")
                             img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움") 
                 div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
@@ -49,16 +50,10 @@ block content
                                 th(class="sales-price") 판매단가
                                 th(class="purchasePrice") 매입단가
                                 th(class="desc") 비고
-                        tbody 
-                            tr 
-                                td
-                                    input(name="clickStone" id="chckchck" type="checkbox")
-                                td 1
-                                td 오닉스
-                                td 3.3
-                                td 100,000
-                                td 100,000
-                                td test
+                        each stone in user.stones
+                            +stoneTable(stone)
+                        else
+                            div
     div(class="col-12")
         div(class="numlist")
             div(class="numnum on")
@@ -74,4 +69,5 @@ block content
         input(type="text", name="sellingPrice", required, id="sellingPrice", placeholder="판매 가격을 입력해주세요") 
         label(for="description") 비고
         input(type="text", name="description", id="description") 
+        input(type="submit", value="등록")
     include ./partials/footer

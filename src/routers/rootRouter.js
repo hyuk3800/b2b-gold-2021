@@ -10,7 +10,8 @@ import {
     chat,
     getStone,
     postStone,
-    client,
+    getClient,
+    postClient,
     getQuote,
     postQuote,
     accountsreceivable
@@ -29,7 +30,7 @@ rootRouter.route("/login").all(publicOnlyMiddleware).get(getLogin).post(postLogi
 rootRouter.route("/join").all(publicOnlyMiddleware).get(getJoin).post(businesscardimgUpload.single("businesscard"), postJoin);
 rootRouter.route("/chat").all(protectorMiddleware).get(chat);
 rootRouter.route("/stone").all(protectorMiddleware).get(getStone).post(postStone);
-rootRouter.get("/client", client);
+rootRouter.route("/client").all(protectorMiddleware).get(getClient).post(postClient);
 rootRouter.route("/quote").all(protectorMiddleware).get(getQuote).post(postQuote);
 rootRouter.get("/accountsreceivable", accountsreceivable);
 

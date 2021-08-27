@@ -202,7 +202,7 @@
     left: 15px;
     width: 14px;
     height: 14px;
-    background: url("../images/테이블형식off.png") no-repeat center/cover;
+    background: url("../../images/테이블형식off.png") no-repeat center/cover;
 }
 
 
@@ -215,7 +215,7 @@
     left: 15px;
     width: 14px;
     height: 14px;
-    background: url("../images/테이블형식on.png") no-repeat center/cover;
+    background: url("../../images/테이블형식on.png") no-repeat center/cover;
 }
 
 
@@ -343,7 +343,7 @@
     width: 92px;
     height: 32px;
     border: 1px solid #999;
-    background: #f1f5f7 url("../images/ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
+    background: #f1f5f7 url("../../images/ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
     border-radius: 5px;
     font-size: 12px;
     font-weight: 600;

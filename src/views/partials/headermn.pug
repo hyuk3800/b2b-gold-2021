@@ -5,43 +5,103 @@ div(id="top")
                 div(class="logo") logo 
             div(class="col-10 mnbx")
                 div(class="menuli")
-                    ul 
-                        li  
-                            a(href="/cataloge/main") 
-                                span 카탈로그
-                        li  
-                            a(href="/chat") 
-                                span 채팅
-                        li  
-                            a(href="/stone") 
-                                span 스톤
-                        li  
-                            a(href="/client") 
-                                span 거래처
-                        li  
-                            a(href="/quote") 
-                                span 시세
-                        li  
-                            a(href="/stock/main") 
-                                span 제고관리
-                        li  
-                            a(href="/order/main") 
-                                span 주문
-                        li  
-                            a(href="/repair/main") 
-                                span 수리
-                        li  
-                            a(href="/purchase/main") 
-                                span 매입
-                        li  
-                            a(href="/sale/main") 
-                                span 판매
-                        li  
-                            a(href="/rent/main") 
-                                span 대여
-                        li  
-                            a(href="/accountsReceivable") 
-                                span 미수
+                    ul  
+                        if pathname === "/cataloge/main" || pathname === "/cataloge/upload"
+                            li(class="on")  
+                                a(href="/cataloge/main") 
+                                    span 카탈로그
+                        else    
+                            li  
+                                a(href="/cataloge/main") 
+                                    span 카탈로그
+                        if pathname === "/chat"
+                            li(class="on")  
+                                a(href="/chat") 
+                                    span 채팅
+                        else
+                            li  
+                                a(href="/chat") 
+                                    span 채팅
+                        if pathname === "/stone"
+                            li(class="on")  
+                                a(href="/stone") 
+                                    span 스톤
+                        else
+                            li  
+                                a(href="/stone") 
+                                    span 스톤
+                        if pathname === "/client"
+                            li(class="on")  
+                                a(href="/client") 
+                                    span 거래처
+                        else
+                            li  
+                                a(href="/client") 
+                                    span 거래처
+                        if pathname === "/quote"
+                            li(class="on")  
+                                a(href="/quote") 
+                                    span 시세
+                        else
+                            li  
+                                a(href="/quote") 
+                                    span 시세
+                        if pathname === "/stock/main" || pathname === "/stock/upload"
+                            li(class="on")  
+                                a(href="/stock/main") 
+                                    span 제고관리
+                        else
+                            li  
+                                a(href="/stock/main") 
+                                    span 제고관리
+                        if pathname === "/order/main" || pathname === "/order/upload"
+                            li(class="on")  
+                                a(href="/order/main") 
+                                    span 주문
+                        else
+                            li  
+                                a(href="/order/main") 
+                                    span 주문
+                        if pathname === "/repair/main" || pathname === "/repair/upload"
+                            li(class="on")  
+                                a(href="/repair/main") 
+                                    span 수리
+                        else
+                            li  
+                                a(href="/repair/main") 
+                                    span 수리
+                        if pathname === "/purchase/main" || pathname === "/purchase/upload"
+                            li(class="on")  
+                                a(href="/purchase/main") 
+                                    span 매입
+                        else
+                            li  
+                                a(href="/purchase/main") 
+                                    span 매입
+                        if pathname === "/sale/main" || pathname === "/sale/upload"
+                            li(class="on")  
+                                a(href="/sale/main") 
+                                    span 판매
+                        else
+                            li  
+                                a(href="/sale/main") 
+                                    span 판매
+                        if pathname === "/rent/main" || pathname === "/rent/upload"
+                            li(class="on")  
+                                a(href="/rent/main") 
+                                    span 대여
+                        else
+                            li  
+                                a(href="/rent/main") 
+                                    span 대여
+                        if pathname === "/accountsReceivable"
+                            li(class="on")  
+                                a(href="/accountsReceivable") 
+                                    span 미수
+                        else
+                            li  
+                                a(href="/accountsReceivable") 
+                                    span 미수
                         li  
                             a(href="/users/logout") 
                                 span 로그아웃
@@ -49,42 +109,102 @@ div(id="top")
                     span(class="hamImg")
     div(class="hammn")
         ul 
-            li  
-                a(href="/cataloge/main") 
-                    span 카탈로그
-            li  
-                a(href="/chat") 
-                    span 채팅
-            li  
-                a(href="/stone") 
-                    span 스톤
-            li  
-                a(href="/client") 
-                    span 거래처
-            li  
-                a(href="/quote") 
-                    span 시세
-            li  
-                a(href="/stock/main") 
-                    span 제고관리
-            li  
-                a(href="/order/main") 
-                    span 주문
-            li  
-                a(href="/repair/main") 
-                    span 수리
-            li  
-                a(href="/purchase/main") 
-                    span 매입
-            li  
-                a(href="/sale/main") 
-                    span 판매
-            li  
-                a(href="/rent/main") 
-                    span 대여
-            li  
-                a(href="/accountsReceivable") 
-                    span 미수
+            if pathname === "/cataloge/main" || pathname === "/cataloge/upload"
+                li(class="on")  
+                    a(href="/cataloge/main") 
+                        span 카탈
+            else    
+                li  
+                    a(href="/cataloge/main") 
+                        span 카탈로그
+            if pathname === "/chat"
+                li(class="on")  
+                    a(href="/chat") 
+                        span 채팅
+            else
+                li  
+                    a(href="/chat") 
+                        span 채팅
+            if pathname === "/stone"
+                li(class="on")  
+                    a(href="/stone") 
+                        span 스톤
+            else
+                li  
+                    a(href="/stone") 
+                        span 스톤
+            if pathname === "/client"
+                li(class="on")  
+                    a(href="/client") 
+                        span 거래처
+            else
+                li  
+                    a(href="/client") 
+                        span 거래처
+            if pathname === "/quote"
+                li(class="on")  
+                    a(href="/quote") 
+                        span 시세
+            else
+                li  
+                    a(href="/quote") 
+                        span 시세
+            if pathname === "/stock/main" || pathname === "/stock/upload"
+                li(class="on")  
+                    a(href="/stock/main") 
+                        span 제고관리
+            else
+                li  
+                    a(href="/stock/main") 
+                        span 제고관리
+            if pathname === "/order/main" || pathname === "/order/upload"
+                li(class="on")  
+                    a(href="/order/main") 
+                        span 주문
+            else
+                li  
+                    a(href="/order/main") 
+                        span 주문
+            if pathname === "/repair/main" || pathname === "/repair/upload"
+                li(class="on")  
+                    a(href="/repair/main") 
+                        span 수리
+            else
+                li  
+                    a(href="/repair/main") 
+                        span 수리
+            if pathname === "/purchase/main" || pathname === "/purchase/upload"
+                li(class="on")  
+                    a(href="/purchase/main") 
+                        span 매입
+            else
+                li  
+                    a(href="/purchase/main") 
+                        span 매입
+            if pathname === "/sale/main" || pathname === "/sale/upload"
+                li(class="on")  
+                    a(href="/sale/main") 
+                        span 판매
+            else
+                li  
+                    a(href="/sale/main") 
+                        span 판매
+            if pathname === "/rent/main" || pathname === "/rent/upload"
+                li(class="on")  
+                    a(href="/rent/main") 
+                        span 대여
+            else
+                li  
+                    a(href="/rent/main") 
+                        span 대여
+            if pathname === "/accountsReceivable"
+                li(class="on")  
+                    a(href="/accountsReceivable") 
+                        span 미수
+            else
+                li  
+                    a(href="/accountsReceivable") 
+                        span 미수
             li  
                 a(href="/users/logout") 
                     span 로그아웃

@@ -1,0 +1,19 @@
+mixin clientTable(client)
+        tbody 
+            tr 
+                td
+                //- td #{client.findIndex((i) => i._id == client._id)}
+                td 
+                    input(name="clickClient" id="clickClient" type="checkbox")
+                td #{client.clientType}
+                td #{client.clientName}
+                td #{client.buisnessman.buisnessName}
+                td #{client.buisnessman.representative}
+                td #{client.buisnessman.representativeNumber}
+                td #{client.contact.phone}
+                td #{client.contact.fax}
+                td #{client.commonName}
+                td #{client.description}
+                td #{client.option.vat}
+                td #{client.option.transactionType}
+                td #{client.option.harry}

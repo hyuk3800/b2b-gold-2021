@@ -5,7 +5,7 @@ import User from "../models/User";
 export const catalogeMain = async (req, res) =>{
     const {user:{_id}} = req.session;
     const user = await User.findById(_id).populate("products");
-    console.log("세션 ID는",_id, "유저는",user._id)
+    // console.log("세션 ID는",_id, "유저는",user._id)
     if(!user){
         return res.status(404).render("404");
     }
@@ -15,18 +15,20 @@ export const catalogeMain = async (req, res) =>{
     // const products = await goldProduct.find({});
     
     // console.log(products.fileUrl);
-    return res.render("cataloge/cataloge", { pageTitle:"카탈로그", user});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("cataloge/cataloge", { pageTitle:"카탈로그", user, pathname});
 };
 
 
 export const getUpload = (req, res) => {
-    return res.render("cataloge/catalogeUpload", { pageTitle:"카탈로그 등록" })
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("cataloge/catalogeUpload", { pageTitle:"카탈로그 등록", pathname })
 };
 export const postUpload = async (req, res) => {
     const { user:{_id}, } = req.session;
     const { path:fileUrl } = req.file;
     const { title, description, gender, open, modelNumber, manufacturer } = req.body;
-    console.log(req.body);
+    //console.log(req.body);
     try{
         const newGoldProduct = await goldProduct.create({
             title,
@@ -88,53 +90,66 @@ export const postEdit = async (req, res) => {
     if(String(_id) !== String(product.owner)){
         return res.status(403).redirect("/");
     }
-    console.log(title, description );
+    // console.log(title, description );
     return res.redirect("/cataloge/main");
 };
 
 export const stockMain = (req, res) => {
-    return res.render("stock/stockmain", {pageTitle:"재고 관리"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("stock/stockmain", {pageTitle:"재고 관리", pathname});
 };
 export const stockUpload = (req, res) => {
-    return res.render("stock/stockupload",{pageTitle:"재고 등록"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("stock/stockupload",{pageTitle:"재고 등록", pathname});
 };
 
 export const findStock = (req, res) => {
-    return res.render("stock/findstock",{pageTitle:"재고 조사"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("stock/findstock",{pageTitle:"재고 조사", pathname});
 };
 
 export const orderMain = (req, res) => {
-    return res.render("order/ordermain",{pageTitle:"주문 관리"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("order/ordermain",{pageTitle:"주문 관리", pathname});
 };
 export const orderUpload = (req, res) => {
-    return res.render("order/orderupload",{pageTitle:"주문 등록"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("order/orderupload",{pageTitle:"주문 등록", pathname});
 };
 
 export const repairMain = (req, res) => {
-    return res.render("repair/repairmain", {pageTitle:"수리 관리"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("repair/repairmain", {pageTitle:"수리 관리", pathname});
 };
 export const repairupload = (req, res) => {
-    return res.render("repair/repairupload", {pageTitle:"수리 등록"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("repair/repairupload", {pageTitle:"수리 등록", pathname});
 };
 
 export const purchaseMain = (req, res) => {
-    return res.render("purchase/purchasemain",{pageTitle: "매입 관리"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("purchase/purchasemain",{pageTitle: "매입 관리", pathname});
 };
 export const purchaseUpload = (req, res) => {
-    return res.render("purchase/purchaseupload",{pageTitle: "매입 등록"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("purchase/purchaseupload",{pageTitle: "매입 등록", pathname});
 };
 
 export const saleMain = (req, res) => {
-    return res.render("sale/salemain", {pageTitle: "판매 관리"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("sale/salemain", {pageTitle: "판매 관리", pathname});
 };
 export const saleUpload = (req, res) => {
-    return res.render("sale/saleupload", {pageTitle: "판매 등록"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("sale/saleupload", {pageTitle: "판매 등록", pathname});
 };
 
 export const rentMain = (req, res) => {
-    return res.render("rent/rentmain",{ pageTitle:"대여 관리"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("rent/rentmain",{ pageTitle:"대여 관리", pathname});
 };
 export const rentUpload = (req, res) => {
-    return res.render("rent/rentupload",{ pageTitle:"대여 등록"});
+    const pathname = req._parsedOriginalUrl.pathname;
+    return res.render("rent/rentupload",{ pageTitle:"대여 등록", pathname});
 };
 

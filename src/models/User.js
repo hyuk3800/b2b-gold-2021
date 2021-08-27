@@ -18,6 +18,9 @@ const userSchema = new mongoose.Schema({
     quotes: [
         { type: mongoose.Schema.Types.ObjectId, ref: "Quote" }
        ], // 등록한 시세 id
+    clients: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "Client" }
+       ], // 등록한 시세 id
 });
 
 

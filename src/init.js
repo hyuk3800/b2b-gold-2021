@@ -1,9 +1,10 @@
 import "dotenv/config";
 import "./db";
-import "./models/Product";
 import "./models/User";
+import "./models/Product";
 import "./models/Stone";
 import "./models/Quote";
+import "./models/Client";
 import app from "./server";
 
 const PORT = 5000;
