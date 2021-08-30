@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const productSchema = new mongoose.Schema({
     fileUrl: { type : String, required: true},// 제품 이미지
     createdAt: {type: Date, require: true, default: Date.now }, // 생성날짜
+    click: {type: String, require: true, default: "off" }, // 채크여부
     hashtags:[{ type: String, trim: true, }], // 해쉬태그, 카탈로그 분류
     gender: { type: String, required: true }, // 성별*
     // age: [{ type: String, trim: true, required: true }], // 나이대*

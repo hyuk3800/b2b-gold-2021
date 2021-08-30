@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const stoneSchema = new mongoose.Schema({
     createdAt: {type: Date, require: true, default: Date.now }, // 생성날짜
+    clickThis: {type: Boolean, require: true, default: false }, // 채크여부
     // idNumder: { type:String, required: true }, // 번호
     name: { type:String, required: true }, //스톤명*
     weight: { type:String, required: true },//표준중량*

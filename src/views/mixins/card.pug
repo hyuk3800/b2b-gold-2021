@@ -14,7 +14,7 @@ mixin card(product)
                 span #{product.goldWeight} &#47;
                 span 스톤중량
             div(class="clickBox")
-                form(class="clickbxbx", name="clickbxbx")
-                    input(name="clickThis", class="clickThis", type="checkbox")
+                div(class="clickbxbx")
+                    input(name="click", value=`${product._id}`  , class="clickThis", type="checkbox")
                 a(class="rmvBtn", href=`/cataloge/edit/${product._id}`) 
                     span 조회 / 수정

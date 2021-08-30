@@ -19,6 +19,39 @@ export const catalogeMain = async (req, res) =>{
     return res.render("cataloge/cataloge", { pageTitle:"카탈로그", user, pathname});
 };
 
+export const postCatalogeMain = async (req, res) => {
+    // const {user:{_id}} = req.session;
+    const { click } = req.body;
+    // const user = await User.findById(_id).populate("products");
+    // console.log(req.body, "이거",click);
+    if(click){
+        const productId = click;
+        console.log(productId);
+        const  clickProduct = await goldProduct.findById('612cafcba7dd2c49b8e88865','612cb1a275e84b38149f814e');
+        console.log("이거", clickProduct);
+    }
+  
+    return res.redirect("/cataloge/main");
+};
+
+
+// 해당제품 들어가서 삭제
+export const deleteCataloge = async (req, res) => {
+    const { id } = req.params;
+    const {user:{_id}} = req.session;
+    const product = await goldProduct.findById(id);
+    const user = await User.findById(_id);
+    if(!product){
+        return res.status(404).render("404", {pageTitle:"Product not found."} )
+    }
+    if(String(_id) !== String(product.owner)){
+        return res.status(403).redirect("/");
+    }
+    await goldProduct.findByIdAndDelete(id);
+    user.products.splice(user.products.indexOf(id),1);
+    user.save();
+    return res.redirect("/cataloge/main");
+};
 
 export const getUpload = (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
@@ -28,7 +61,6 @@ export const postUpload = async (req, res) => {
     const { user:{_id}, } = req.session;
     const { path:fileUrl } = req.file;
     const { title, description, gender, open, modelNumber, manufacturer } = req.body;
-    //console.log(req.body);
     try{
         const newGoldProduct = await goldProduct.create({
             title,
@@ -49,23 +81,6 @@ export const postUpload = async (req, res) => {
     }
 };
 
-// 해당제품 들어가서 삭제
-export const deleteCataloge = async (req, res) => {
-    const { id } = req.params;
-    const {user:{_id}} = req.session;
-    const product = await goldProduct.findById(id);
-    const user = await User.findById(_id);
-    if(!product){
-        return res.status(404).render("404", {pageTitle:"Product not found."} )
-    }
-    if(String(_id) !== String(product.owner)){
-        return res.status(403).redirect("/");
-    }
-    await goldProduct.findByIdAndDelete(id);
-    user.products.splice(user.products.indexOf(id),1);
-    user.save();
-    return res.redirect("/cataloge/main");
-};
 
 export const getEdit = async (req, res) => {
     const { id } = req.params;
@@ -92,7 +107,7 @@ export const postEdit = async (req, res) => {
     }
     // console.log(title, description );
     return res.redirect("/cataloge/main");
-};
+};// 미완
 
 export const stockMain = (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;

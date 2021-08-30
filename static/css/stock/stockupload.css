@@ -69,7 +69,7 @@
     transform: translateY(-50%);
     width: 24px;
     height: 24px;
-    background: url("../images/ic-arrow-forward-24-px@3x.png") no-repeat center/cover;
+    background: url("../../images/ic-arrow-forward-24-px@3x.png") no-repeat center/cover;
 }
 
 .calinderBox{
@@ -172,7 +172,7 @@
 .trsBTN{
     width: 18px;
     height: 23px;
-    background: url("../images/delete-img.png") no-repeat center/cover;
+    background: url("../../images/delete-img.png") no-repeat center/cover;
     border: none;
     outline: none;
 }
@@ -201,7 +201,7 @@ td input{
     height: 14px;
     border: none;
     outline: none;
-    background: #fff url("../images//ic-zoom-in-24-px@3x.png") no-repeat center/ cover;
+    background: #fff url("../../images//ic-zoom-in-24-px@3x.png") no-repeat center/ cover;
     border-radius: 5px;
 }
 
@@ -211,7 +211,7 @@ td input{
     width: 90%;
     height: 80%;
     border: 1px solid #999;
-    background: #fff url("../images//ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
+    background: #fff url("../../images//ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
     border-radius: 3px;
     font-size: 10px;
     font-family: Noto sans KR;

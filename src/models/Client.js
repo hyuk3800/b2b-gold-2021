@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const clientSchema = new mongoose.Schema({
     createdAt: {type: Date, require: true, default: Date.now }, // 생성날짜
+    clickThis: {type: Boolean, require: true, default: false }, // 채크여부
     owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
     clientType: { type : String, required: true},// 거래처 구분
     clientName: { type : String, required: true}, // 상호명

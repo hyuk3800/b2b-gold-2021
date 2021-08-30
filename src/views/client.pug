@@ -66,10 +66,16 @@ block content
                                 th VAT
                                 th 거래형태
                                 th 해리
-                        each client in user.clients 
-                            +clientTable(client)
-                        else    
-                            div
+                        if clients
+                            each client in clients
+                                +clientTable(client)
+                            else    
+                                div
+                        else 
+                            each client in user.clients 
+                                +clientTable(client)
+                            else    
+                                div
         div(class="row")                    
             div(class="col-12")
                 div(class="changeList")

@@ -263,7 +263,7 @@ button.sltImg{
     height: 60%;
     border: none;
     outline: none;
-    background-color: #fff;
+    background-color: initial;
 }
 
 

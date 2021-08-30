@@ -67,6 +67,7 @@ export const getClient = async (req, res) => {
           },
       }); 
       console.log("이거말이야",clients);
+      return res.render("client",{pageTitle: "거래처", clients, pathname});
    }
    const pathname = req._parsedOriginalUrl.pathname;
    return res.render("client",{pageTitle: "거래처", user, pathname});
