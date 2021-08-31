@@ -12,6 +12,8 @@ block scripts
 
 
 block content  
+    if errorMessage
+        script alert("채크된것이 없습니다.")
     div(class="container", id="src_and_crt")
         div(class="row")
             div(class="col-md-6")
@@ -95,10 +97,10 @@ block content
                                 ul(class="botmnul")
                                     li 
                                         img(src="../../../static/images/삭제하기.png", alt="삭제하기")
-                                        button(type="submit")  삭제하기
+                                        button(type="submit", name="deleteBtn", value="삭제하기") 삭제하기
                                     li 
                                         img(src="../../../static/images/공임변경.png", alt="공임 변경")
-                                        span 공임 변경
+                                        button(type="submit", name="nonono", value="공임") 공임 변경
                                     li 
                                         img(src="../../../static/images/재고등록.png", alt="재고 등록")
                                         span 재고 등록
