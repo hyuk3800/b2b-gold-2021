@@ -4,6 +4,9 @@ block links
     link(rel="stylesheet", href="/static/css/order/orderupload.css")
     link(rel="stylesheet", href="/static/css/components/footer.css")
 
+block scripts 
+    script(defer, src="/assets/js/orderUpload.js") 
+
 block content   
     div(class="container orderSaveBox")
         div(class="row")
@@ -23,7 +26,7 @@ block content
             div(class="col-6 calinderBox")
                 div(class="calinder")
                     img(src="../../../../static/images/calendar.png", alt="calendar")
-                div(class="calData") 2021-07-13
+                div(class="calData") 날짜
         div(class="row tableLongBoxBox")
             div(class="tableLongBox")
                 div(class="col-12 vybox")
@@ -63,7 +66,7 @@ block content
                                     input(type="text" class="cldbox1111" autocomplete="off" disabled)
                                     div(class="calinder2")
                                         img(src="../../../../static/images/calendar.png" alt="calendar")
-                        tbody   
+                        tbody#tbody  
                             tr 
                                 td 
                                     button(class="trsBTN") 
@@ -129,7 +132,7 @@ block content
                                 td 
                                     input(type="text")
                                 td 
-                                    input(type="text" class="cldbox1111" autocomplete="off" disabled )
+                                    input(type="text" class="cldbox1111" autocomplete="off"  )
                                     div(class="calinder2") 
                                         img(src="../../../../static/images/calendar.png" alt="calendar")
         div(class="row")

@@ -6,6 +6,8 @@ module.exports = {
         main: "./src/client/js/main.js",
         hambutton: "./src/client/js/hambutton.js",
         catalogeMain:"./src/client/js/catalogeMain.js",
+        catalogeUpdate:"./src/client/js/catalogeUpdate.js",
+        orderUpload:"./src/client/js/orderUpload.js",
     },
     mode: "development",
     watch: true,

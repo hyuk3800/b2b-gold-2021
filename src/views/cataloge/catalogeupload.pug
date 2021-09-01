@@ -4,6 +4,9 @@ extends ../base.pug
 block links 
     link(rel="stylesheet", href="/static/css/cataloge/catalogeupload.css")
 
+block scripts 
+    script(defer, src="/assets/js/catalogeUpdate.js") 
+
 block content 
     div(class="main-container")
         form(method="POST", enctype="multipart/form-data")     
@@ -34,7 +37,7 @@ block content
                             div(class="mImgBox")
                                 label(for="mimgpluse") 
                                     span +
-                                input(type="file", name="catalogeimg", id="mimgpluse", required)
+                                input(type="file", accept="image/*", name="catalogeimg", id="mimgpluse", required)
                 div(class="row")
                     div(class="col-12")
                         div(class="mtt mtt2")
@@ -147,7 +150,7 @@ block content
                             span 스톤정보
                     div(class="col-6 mttbox2")
                         div(class="mtt3")
-                            button(type="button") 추가하기
+                            button(id="stoneClickBtn", type="button") 추가하기
                 div(class="row")
                     div(class="col-12")
                         table 
@@ -163,6 +166,38 @@ block content
                                     th 판매단가(개당)
                                     th 판매단가(총가격)
                                     th 삭제
+                            tbody#stoneTbody
+                                tr
+                                    td
+                                        div
+                                            input(type="text" placeholder="스톤명")
+                                            img(class="sltImg" src="../../../../static/images/ic-zoom-in-24-px@3x.png" alt="검색")
+                                    td
+                                        div
+                                            input(type="text" placeholder="수량")
+                                    td
+                                        div
+                                            input(type="text" placeholder="설명")
+                                    td
+                                        div
+                                            input(type="number" placeholder="중량(개당)")
+                                    td
+                                        div
+                                            input(type="number" placeholder="중량(총중량)")
+                                    td
+                                        div
+                                            input(type="number" placeholder="매입단가(개당)")
+                                    td
+                                        div
+                                            input(type="number" placeholder="매입단가(총가격)")
+                                    td
+                                        div
+                                            input(type="number" placeholder="판매단가(개당)")
+                                    td
+                                        div
+                                            input(type="number" placeholder="판매단가(총가격)")
+                                    td
+                                        button(type="button") 삭제
                             tfoot 
                                 tr 
                                     td 
