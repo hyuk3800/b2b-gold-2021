@@ -11,15 +11,15 @@ html(lang="ko")
         link(rel="stylesheet", href="/static/css/reset.css")
         link(rel="stylesheet", href="/static/css/components/topfixed.css")
         link(rel="stylesheet", href="/static/css/clickimg.css")
-        link(rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css")
+        link(rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
+        link(rel="stylesheet" href="/resources/demos/style.css")
         block links
         
-
-        script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
-        script(src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js")
+        script(src="https://code.jquery.com/jquery-1.12.4.js")
+        script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
         script(defer, src="/assets/js/hambutton.js") 
-        block scripts
 
     body 
         include partials/headermn
         block content
+        block scripts

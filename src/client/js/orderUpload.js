@@ -56,27 +56,107 @@ window.onload = function () {
 
     plsbtn.addEventListener("click", plsbtnClick);
 
+
+
+
+
+    
     const calData = document.querySelector(".calData");
-    const cldbox = document.getElementsByClassName("cldbox1111");
+    let cldbox1 = document.getElementsByClassName("cldbox1111");
+    let cldbox = document.querySelector("#cldbox");
 
-    console.log(cldbox);
-
+    
     let today = new Date();
     let KRDay = today.toLocaleDateString('ko-KR');
-    calData.innerText = KRDay;
-
+    calData.value = KRDay;
+    
+    
     let tomorrow = new Date(today.setDate(today.getDate() + 7));
-    // console.log("내일 : ", tomorrow.toLocaleDateString('ko-KR'));
-    for(let i=0; i<cldbox.length; i++){
-        cldbox[i].value = tomorrow.toLocaleDateString('ko-KR');
+    
+    
+    
+    const inputChinge = (e) => {
+        console.log("안녕");
+    };
+
+    calData.addEventListener("input", inputChinge)
+    
+    cldbox.value = tomorrow.toLocaleDateString('ko-KR');
+    
+    let cldboxval = cldbox.value;
+
+    // console.log(cldboxval);
+
+    calData.onclick = function(){
+        console.log("됬냐?");
     }
 
+    // console.log("내일 : ", tomorrow.toLocaleDateString('ko-KR'));
+    for (let i = 0; i < cldbox1.length; i++) {
+        cldbox1[i].value = cldboxval;
+    }
 
+    // let cldboxTop = [];
+
+    // for (let i = 0; i < cldbox.length; i++) {
+    //     cldboxTop = cldbox[i].getBoundingClientRect().bottom;
+    // }
+    // console.log(cldboxTop);
+
+
+
+    $(function () { ////// jQ 시작
+
+    $.datepicker.setDefaults({
+        dateFormat: 'yy. m. d.',
+        prevText: '이전 달',
+        nextText: '다음 달',
+        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        showMonthAfterYear: true,
+        yearSuffix: '년'
+    });
+
+    // $(function () {
+    // });
+
+
+        $("#datepicker").datepicker({
+            beforeShow: function (input, inst) {
+                let offset = $(input).offset();
+                window.setTimeout(function () {
+                    $(inst.dpDiv).css({
+                        "top": (offset.top - 70) + "px"
+                    })
+                }, 1); ///setTimeout
+            } /// beforeShow
+
+        });/// datepicker
+        // $(".cldbox1111").datepicker("setDate", "+7d");
+        $("#cldbox").datepicker({
+            showOn: "both",
+
+
+            beforeShow: function (input, inst) {
+                let offset = $(input).offset();
+                let height = $(input).height();
+
+                window.setTimeout(function () {
+                    $(inst.dpDiv).css({
+                        "top": (offset.top - 77) + "px"
+                    })
+                }, 1); ///setTimeout
+            } /// beforeShow
+        });// datepicker
+    
+
+
+
+
+    
+    });//// jQ 끝
 
 }
-
-$(function(){
-    $(".cldbox").datepicker({
-        
-    });
-});
