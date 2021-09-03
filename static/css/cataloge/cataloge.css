@@ -609,6 +609,161 @@ table tr,table th, table td{
     cursor: pointer;
 }
 
+#hold{
+    outline: none;
+    border: none;
+}
+
+.moveBtn{
+    margin: 0;
+    padding: 0;
+    background-color: initial;
+    border: none;
+    outline: none;
+}
+.moveBtn:focus{
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+#wagebox{
+    display: none;
+    position: fixed;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    z-index: 99999;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#wagebox.on{
+    display: block;
+}
+
+#wageboxcent{
+    position: relative;
+width: 100%;
+height: 100%;
+}
+.wagewage{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 274px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    z-index: 9999999;
+}
+
+.wage1{
+    height: 40px;
+    
+}
+
+.wage1 .col-12{
+    background-color: #f1f5f7;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.wage1 .col-12 span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 100%;
+    padding: 6px 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.wage2{
+    height: 100px;
+}
+.wage2 .col-12:first-child{
+    padding-top: 20px;
+}
+
+.wageInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wageInput label{
+    display: flex;
+    padding-left: 5px;
+    width: 110px;
+    height: 40px;
+    background-color: #ffd8a2;
+    align-items: center;
+}
+.wageInput label span{
+    font-weight: 700;
+    font-size: 14px;
+}
+.wageInput div{
+    margin-left: 10px;
+    width: 157px;
+    height: 28px;
+}
+.wageInput input{
+    padding: 5px 12px 4px 8px;
+    border: 1px solid #999;
+    border-radius: 2px;
+}
+
+.wage3{
+    padding-left: 40px;
+    height: 78px;
+    align-items: center;
+}
+.wage3 .col-12 span{
+    font-size: 14px;
+}
+
+.wage4{
+    height: 56px;
+}
+.wage4 .col-12{
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+}
+.wage4 button{
+    top: 0;
+    height: 36px;
+    border-radius: 5px;
+    border: none; 
+    outline: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #8600fc;
+    box-shadow: 2px 1px 4px 1px rgba(0, 0, 0, 0.5);
+}
+
+.wage4 button:focus{
+    border: none;
+    outline: none;
+    box-shadow: 0 0 5px 3px rgba(0, 123, 255, 0.25);
+}
+
+.wage4 button:first-child{  
+    width: 92px;
+    background-color: #dbb3ff;
+    color: #888;
+}
+.wage4 button:last-child{
+    margin-left: 10px;
+    width: 92px;
+}
+
+
+
 @media only screen and (max-width: 700px){
     .mainContainerCard{
         justify-content: space-around;

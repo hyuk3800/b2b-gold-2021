@@ -2,7 +2,7 @@ mixin table(product)
             tbody 
                 tr 
                     td(rowspan="2")
-                        input(name="clickThis" class="clickThis" type="checkbox")
+                        input(name="clickThis" class="clickThis" type="checkbox",  value=`${product._id}`)
                     td(rowspan="2")
                         div(class="model")
                             img(src="/" + product.fileUrl, alt="catalogeImg")
@@ -15,7 +15,7 @@ mixin table(product)
                     td
                         span 개당알수
                     td
-                        span 기/추
+                        span #{product.basicWage} / #{product.additionWage}
                     td
                         span 중/보
                     td(rowspan="2")

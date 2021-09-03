@@ -8,6 +8,7 @@ module.exports = {
         catalogeMain:"./src/client/js/catalogeMain.js",
         catalogeUpdate:"./src/client/js/catalogeUpdate.js",
         orderUpload:"./src/client/js/orderUpload.js",
+        home1:"./src/client/js/home1.js",
     },
     mode: "development",
     watch: true,

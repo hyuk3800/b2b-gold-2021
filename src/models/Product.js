@@ -21,8 +21,10 @@ const productSchema = new mongoose.Schema({
     description: { type: String, trim: true, required: true}, // 설명*
     size: { type: String },// 사이즈
     setCode: { type: String },
-    //기본공임
+    basicWage: { type: Number },//기본공임
+    additionWage: { type: Number },//추가공임
     //스톤공임(중)
+    //스톤공임(보)
     brandpage:{ type: Number, trim: true },//  공개순서(브랜드페이지)
     meta: { 
         views: {type: Number, default: 0, require: true }, //조회수

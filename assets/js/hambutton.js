@@ -15,7 +15,7 @@
   \************************************/
 /***/ (() => {
 
-eval("var ham = document.getElementById(\"ham\");\nvar hamMenu = document.querySelector(\".hammn\"); // console.log(ham);\n\nvar hamListClick = function hamListClick() {\n  hamMenu.classList.toggle(\"on\");\n};\n\nham.addEventListener(\"click\", hamListClick);\n\n//# sourceURL=webpack://dd/./src/client/js/hambutton.js?");
+eval("var ham = document.getElementById(\"ham\");\nvar hamMenu = document.querySelector(\".hammn\");\nvar hamListAll = document.querySelectorAll(\".hammn li\"); // console.log(ham);\n\nvar hamListClick = function hamListClick() {\n  hamMenu.classList.toggle(\"on\");\n};\n\nham.addEventListener(\"click\", hamListClick);\n\nfor (var i = 0; i < hamListAll.length; i++) {\n  hamListAll[i].addEventListener(\"click\", hamListClick);\n}\n\n;\n\n//# sourceURL=webpack://dd/./src/client/js/hambutton.js?");
 
 /***/ })
 

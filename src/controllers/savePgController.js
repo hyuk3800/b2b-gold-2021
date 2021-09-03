@@ -36,13 +36,44 @@ export const postCatalogeMain = async (req, res) => {
     console.log(req.body);
     const {
         click,
-        deleteBtn
+        hold,
+        deleteBtn,
+        wage,
+        basicWage,
+        additionWage,
     } = req.body;
     // const user = await User.findById(_id).populate("products");
-    console.log(click);
+    console.log(click, "이거클릭");
     if (!click) {
         // res.write("<script>alert('채크된것이 없습니다.')</script>");
-        return res.status(401).redirect("/cataloge/main",{errorMessage:error._message});
+        return res.status(401).redirect("/cataloge/main");
+    }
+    if (hold) {
+        console.log("안됨")
+        return res.status(401).redirect("/cataloge/main");
+    }
+    if (wage) {
+        const clickProduct = await goldProduct.find({
+            _id: {
+                $in: click
+            }
+        });
+        console.log("공임", clickProduct);
+        if (!basicWage) {
+            return res.status(401).redirect("/cataloge/main");
+        }
+        if (!additionWage) {
+            return res.status(401).redirect("/cataloge/main");
+        }
+        await goldProduct.updateMany({
+            _id: {
+                $in: click
+            }
+        }, {
+            basicWage,
+            additionWage,
+        });
+        return res.redirect("/cataloge/main");
     }
     // for(let clickObj = 1; clickObj < clickObj.length ; clickObj++ ){
     const clickProduct = await goldProduct.find({
@@ -65,7 +96,6 @@ export const postCatalogeMain = async (req, res) => {
     if (deleteBtn) {
         return res.redirect("/cataloge/delete");
     }
-
     return res.redirect("/cataloge/main");
 };
 
@@ -124,8 +154,11 @@ export const postUpload = async (req, res) => {
         gender,
         open,
         modelNumber,
-        manufacturer
+        manufacturer,
+        basicWage,
+        additionWage
     } = req.body;
+    console.log("요고", additionWage);
     try {
         const newGoldProduct = await goldProduct.create({
             title,
@@ -136,6 +169,8 @@ export const postUpload = async (req, res) => {
             open,
             modelNumber,
             manufacturer,
+            basicWage,
+            additionWage,
         });
         const user = await User.findById(_id);
         user.products.push(newGoldProduct._id);

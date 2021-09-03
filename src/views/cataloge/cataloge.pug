@@ -12,12 +12,10 @@ block scripts
 
 
 block content  
-    if errorMessage
-        script alert("채크된것이 없습니다.")
     div(class="container", id="src_and_crt")
         div(class="row")
             div(class="col-md-6")
-                form(class="searchigbox")
+                form(class="searchigbox", method="get")
                     input(type="text", class="searching", placeholder="검색어를 입력하세요")
                     buttom(type="button", id="btn_searching") 
                         i(class="las la-search")
@@ -94,13 +92,14 @@ block content
                     div(class="row")
                         div(class="col-12")
                             div(class="botbox")
-                                ul(class="botmnul")
+                                ul(class="botmnul") 
+                                    button#hold(type="hidden",name="hold", value="hold")
                                     li 
                                         img(src="../../../static/images/삭제하기.png", alt="삭제하기")
-                                        button(type="submit", name="deleteBtn", value="삭제하기") 삭제하기
+                                        input.moveBtn(type="submit", name="deleteBtn", value="삭제하기")
                                     li 
                                         img(src="../../../static/images/공임변경.png", alt="공임 변경")
-                                        button(type="submit", name="nonono", value="공임") 공임 변경
+                                        span#onbutton 공임 변경
                                     li 
                                         img(src="../../../static/images/재고등록.png", alt="재고 등록")
                                         span 재고 등록
@@ -117,3 +116,29 @@ block content
                                         img(src="../../../static/images/대여등록 (1).png", alt="대여 등록")
                                         span 대여 등록
     include ../partials/footer
+        div#wagebox(class="")
+            div#wageboxcent
+            div.wagewage.container
+                div.row.wage1
+                    div.col-12
+                        span 공임비 일괄 수정
+                div.row.wage2
+                    div.col-12.wageInput
+                        label(for="basicWage") 
+                            span 기본 공임
+                        div
+                            input(type="number", name="basicWage", id="basicWage", placeholder="입력") 
+                        span 원
+                    div.col-12.wageInput
+                        label(for="additionWage") 
+                            span 추가 공임
+                        div
+                            input(type="number", name="additionWage", id="additionWage", placeholder="입력") 
+                        span 원
+                div.row.wage3
+                    .col-12
+                        span 변경할 가격을 적어주세요 <br> ex)-4000 or 4000
+                div.row.wage4
+                    div.col-12
+                        button(type="button", id="offbutton") 닫기
+                        button(name="wage", type="submit" value="수정") 수정
