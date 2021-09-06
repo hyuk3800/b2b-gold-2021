@@ -1,4 +1,5 @@
 extends ../base
+include ../mixins/orderuploadtable
 
 block links 
     link(rel="stylesheet", href="/static/css/order/orderupload.css")
@@ -66,143 +67,147 @@ block content
                                     input(type="text" class="cldbox1", id="cldbox",  autocomplete="off" )
                                     div(class="calinder2")
                                         img(src="../../../../static/images/calendar.png" alt="calendar")
-                        tbody#tbody  
-                            tr 
-                                td 
-                                    button(class="trsBTN") 
-                                td 
-                                    input(type="text")
-                                    button(class="secbtn") 
-                                td 
-                                    input(type="text")
-                                    button(class="secbtn") 
-                                td 
-                                    input(type="text") 
-                                    button(class="secbtn") 
-                                td 
-                                    select(name="gramBox" id="gramBox") 
-                                        option(value="") 
-                                        option(value="10K") 10K
-                                        option(value="14K") 14K
-                                        option(value="18K") 18K
-                                        option(value="22K") 22K
-                                        option(value="순금-995") 순금-995
-                                        option(value="순금-999") 순금-999
-                                        option(value="실버") 실버
-                                        option(value="PT") PT
-                                        option(value="기타") 기타
-                                td 
-                                    select(name="color" id="color")
-                                        option(value="") 
-                                        option(value="G") G
-                                        option(value="G/B") G/B
-                                        option(value="G/P") G/P
-                                        option(value="G/R/W") G/R/W
-                                        option(value="G/W") G/W
-                                        option(value="P") P
-                                        option(value="P/W") P/W
-                                        option(value="P/블랙도금") P/블랙도금
-                                        option(value="W") W
-                                        option(value="W/B") W/B
-                                        option(value="W/G") W/G
-                                        option(value="W/P") W/P
-                                        option(value="블랙") 블랙
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text") 
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text" class="cldbox1111" autocomplete="off" )
-                                    div(class="calinder2") 
-                                        img(src="../../../../static/images/calendar.png" alt="calendar")
-                            tr 
-                                td 
-                                    button(class="trsBTN") 
-                                td 
-                                    input(type="text")
-                                    button(class="secbtn") 
-                                td 
-                                    input(type="text")
-                                    button(class="secbtn") 
-                                td 
-                                    input(type="text") 
-                                    button(class="secbtn") 
-                                td 
-                                    select(name="gramBox" id="gramBox") 
-                                        option(value="") 
-                                        option(value="10K") 10K
-                                        option(value="14K") 14K
-                                        option(value="18K") 18K
-                                        option(value="22K") 22K
-                                        option(value="순금-995") 순금-995
-                                        option(value="순금-999") 순금-999
-                                        option(value="실버") 실버
-                                        option(value="PT") PT
-                                        option(value="기타") 기타
-                                td 
-                                    select(name="color" id="color")
-                                        option(value="") 
-                                        option(value="G") G
-                                        option(value="G/B") G/B
-                                        option(value="G/P") G/P
-                                        option(value="G/R/W") G/R/W
-                                        option(value="G/W") G/W
-                                        option(value="P") P
-                                        option(value="P/W") P/W
-                                        option(value="P/블랙도금") P/블랙도금
-                                        option(value="W") W
-                                        option(value="W/B") W/B
-                                        option(value="W/G") W/G
-                                        option(value="W/P") W/P
-                                        option(value="블랙") 블랙
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text") 
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text")
-                                td 
-                                    input(type="text" class="cldbox1111" autocomplete="off" )
-                                    div(class="calinder2") 
-                                        img(src="../../../../static/images/calendar.png" alt="calendar")
+                        if anotherSaveDb
+                            each product in anotherSaveDb
+                                +orderUploadTable(product)
+                        else
+                            tbody#tbody  
+                                tr 
+                                    td 
+                                        button(class="trsBTN") 
+                                    td 
+                                        input(type="text")
+                                        button(class="secbtn") 
+                                    td 
+                                        input(type="text")
+                                        button(class="secbtn") 
+                                    td 
+                                        input(type="text") 
+                                        button(class="secbtn") 
+                                    td 
+                                        select(name="gramBox" id="gramBox") 
+                                            option(value="") 
+                                            option(value="10K") 10K
+                                            option(value="14K") 14K
+                                            option(value="18K") 18K
+                                            option(value="22K") 22K
+                                            option(value="순금-995") 순금-995
+                                            option(value="순금-999") 순금-999
+                                            option(value="실버") 실버
+                                            option(value="PT") PT
+                                            option(value="기타") 기타
+                                    td 
+                                        select(name="color" id="color")
+                                            option(value="") 
+                                            option(value="G") G
+                                            option(value="G/B") G/B
+                                            option(value="G/P") G/P
+                                            option(value="G/R/W") G/R/W
+                                            option(value="G/W") G/W
+                                            option(value="P") P
+                                            option(value="P/W") P/W
+                                            option(value="P/블랙도금") P/블랙도금
+                                            option(value="W") W
+                                            option(value="W/B") W/B
+                                            option(value="W/G") W/G
+                                            option(value="W/P") W/P
+                                            option(value="블랙") 블랙
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text") 
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text" class="cldbox1111" autocomplete="off" )
+                                        div(class="calinder2") 
+                                            img(src="../../../../static/images/calendar.png" alt="calendar")
+                                tr 
+                                    td 
+                                        button(class="trsBTN") 
+                                    td 
+                                        input(type="text")
+                                        button(class="secbtn") 
+                                    td 
+                                        input(type="text")
+                                        button(class="secbtn") 
+                                    td 
+                                        input(type="text") 
+                                        button(class="secbtn") 
+                                    td 
+                                        select(name="gramBox" id="gramBox") 
+                                            option(value="") 
+                                            option(value="10K") 10K
+                                            option(value="14K") 14K
+                                            option(value="18K") 18K
+                                            option(value="22K") 22K
+                                            option(value="순금-995") 순금-995
+                                            option(value="순금-999") 순금-999
+                                            option(value="실버") 실버
+                                            option(value="PT") PT
+                                            option(value="기타") 기타
+                                    td 
+                                        select(name="color" id="color")
+                                            option(value="") 
+                                            option(value="G") G
+                                            option(value="G/B") G/B
+                                            option(value="G/P") G/P
+                                            option(value="G/R/W") G/R/W
+                                            option(value="G/W") G/W
+                                            option(value="P") P
+                                            option(value="P/W") P/W
+                                            option(value="P/블랙도금") P/블랙도금
+                                            option(value="W") W
+                                            option(value="W/B") W/B
+                                            option(value="W/G") W/G
+                                            option(value="W/P") W/P
+                                            option(value="블랙") 블랙
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text") 
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text")
+                                    td 
+                                        input(type="text" class="cldbox1111" autocomplete="off" )
+                                        div(class="calinder2") 
+                                            img(src="../../../../static/images/calendar.png" alt="calendar")
         div(class="row")
             div(class="pluseBox")
                 button(id="plsbtn") 추가

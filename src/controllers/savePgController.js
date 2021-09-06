@@ -41,11 +41,17 @@ export const postCatalogeMain = async (req, res) => {
         wage,
         basicWage,
         additionWage,
+        movestock,
+        moveorder,
+        moverepair,
+        movesale,
+        moverent
     } = req.body;
     // const user = await User.findById(_id).populate("products");
-    console.log(click, "이거클릭");
+    // console.log(click, "이거클릭");
     if (!click) {
         // res.write("<script>alert('채크된것이 없습니다.')</script>");
+        console.log("없다")
         return res.status(401).redirect("/cataloge/main");
     }
     if (hold) {
@@ -75,27 +81,59 @@ export const postCatalogeMain = async (req, res) => {
         });
         return res.redirect("/cataloge/main");
     }
+    if (movestock) {
+        console.log("안녕 stock")
+        const clickProduct = await goldProduct.find({
+            _id: {
+                $in: click
+            }
+        });
+        req.session.anotherSaveDb = clickProduct;
+        console.log(req.session.anotherSaveDb);
+        return res.redirect("/stock/upload");
+    }
+    if (moveorder) {
+        console.log("안녕 order")
+        const clickProduct = await goldProduct.find({
+            _id: {
+                $in: click
+            }
+        });
+        req.session.anotherSaveDb = clickProduct;
+        console.log(req.session.anotherSaveDb);
+        return res.redirect("/order/upload");
+    }
+    if (moverepair) {
+        console.log("안녕 repair")
+    }
+    if (movesale) {
+        console.log("안녕 sale")
+    }
+    if (moverent) {
+        console.log("안녕 rent")
+    }
     // for(let clickObj = 1; clickObj < clickObj.length ; clickObj++ ){
-    const clickProduct = await goldProduct.find({
-        _id: {
-            $in: click
-        }
-    });
-    // .populate("products");
-    console.log("이거", clickProduct);
-    // await goldProduct.findByIdAndUpdate({ _id :{ $in : click}},{
-    //     click: "on",
-    await goldProduct.updateMany({
-        _id: {
-            $in: click
-        }
-    }, {
-        click: "on"
-    });
-    // });
     if (deleteBtn) {
+        const clickProduct = await goldProduct.find({
+            _id: {
+                $in: click
+            }
+        });
+        // .populate("products");
+        console.log("이거", clickProduct);
+        // await goldProduct.findByIdAndUpdate({ _id :{ $in : click}},{
+        //     click: "on",
+        await goldProduct.updateMany({
+            _id: {
+                $in: click
+            }
+        }, {
+            click: "on"
+        });
+        // });
         return res.redirect("/cataloge/delete");
     }
+
     return res.redirect("/cataloge/main");
 };
 
@@ -149,28 +187,52 @@ export const postUpload = async (req, res) => {
         path: fileUrl
     } = req.file;
     const {
-        title,
-        description,
         gender,
         open,
+        brandpage,
         modelNumber,
+        title,
         manufacturer,
+        manufacturerNumber,
+        goldWeight,
+        stoneWeight,
+        size,
+        description,
+        setCode,
         basicWage,
-        additionWage
+        additionWage,
+        stoneWage1,
+        stoneWage2,
+        purchaseWage,
+        eggPurchasePrice
     } = req.body;
     console.log("요고", additionWage);
     try {
         const newGoldProduct = await goldProduct.create({
-            title,
             fileUrl,
-            description,
-            owner: _id,
             gender,
             open,
+            brandpage,
             modelNumber,
+            title,
             manufacturer,
+            manufacturerNumber,
+            goldWeight,
+            stoneWeight,
+            size,
+            description,
+            setCode,
             basicWage,
             additionWage,
+            stoneWage1,
+            stoneWage2,
+            purchaseWage,
+            eggPurchasePrice,
+            
+            
+            
+            
+            owner: _id,
         });
         const user = await User.findById(_id);
         user.products.push(newGoldProduct._id);
@@ -243,6 +305,8 @@ export const stockMain = (req, res) => {
 };
 export const stockUpload = (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
+    console.log("안녕!!!!!!!!!!!");
+
     return res.render("stock/stockupload", {
         pageTitle: "재고 등록",
         pathname
@@ -256,6 +320,13 @@ export const findStock = (req, res) => {
         pathname
     });
 };
+
+export const editStock = (req, res) => {
+    console.log(req.session);
+    res.redirect("/stock/upload");
+};
+
+
 
 export const orderMain = (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;

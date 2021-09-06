@@ -45,22 +45,21 @@ const clickThis = document.getElementsByClassName('clickThis');
 // 체크박스 체크가 있을시에만 공임변경창 나오게하기
 for (let i = 0; i < clickThis.length; i++) {
     const checkedTrueFalse = (e) => {
-    console.log(clickThis[i].value);
-    
+    // console.log(clickThis[i].value);
+    console.log(e.target.checked);
         // console.log(e, "이거슨");
         
         if (e.target.checked) {
-
-
             const wageBoxOnOff = () => {
-                console.log("hihi")
                 wagebox.classList.toggle("on");
+                console.log("hihi")
             };
                 offbutton.addEventListener("click", wageBoxOnOff);
                 onbutton.addEventListener("click", wageBoxOnOff);
                 wageboxcent.addEventListener("click", wageBoxOnOff);
         }
         console.log("hi");
+
     };
     // console.log(clickThis.length);
 

@@ -10,14 +10,15 @@ import {
 } from "../controllers/savePgController";
 import {
     protectorMiddleware,
-    catalogeimgUpload
+    catalogeimgUpload,
+    clickDeta
 } from "../middlewares";
 
 const catalogeRouter = express.Router();
 
 
 
-catalogeRouter.route("/main").all(protectorMiddleware).get(catalogeMain).post(postCatalogeMain);
+catalogeRouter.route("/main").all(protectorMiddleware).get(catalogeMain).post(clickDeta, postCatalogeMain);
 catalogeRouter.route("/upload").all(protectorMiddleware).get(getUpload).post(catalogeimgUpload.single("catalogeimg"), postUpload);
 catalogeRouter.route("/edit/:id([0-9a-f]{24})").all(protectorMiddleware).get(getEdit).post(postEdit);
 catalogeRouter.get("/delete", protectorMiddleware, deleteCataloge);

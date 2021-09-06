@@ -11,18 +11,23 @@ mixin table(product)
                     td(rowspan="2")
                         span 함량
                     td
-                        span 금중량
+                        span #{product.goldWeight}
                     td
-                        span 개당알수
+                        span 개당알수(메인)
                     td
-                        span #{product.basicWage} / #{product.additionWage}
+                        span #{product.basicWage}
                     td
-                        span 중/보
+                        span #{product.stoneWage1}
                     td(rowspan="2")
                         span 수량
                     td(rowspan="2")
-                        span 공임함
+                        span #{product.basicWage + product.stoneWage1 + product.additionWage + product.stoneWage2}
                     td(rowspan="2")
                         span 금값
                     td(rowspan="2")
                         span 소계
+                tr 
+                    td #{product.stoneWeight}
+                    td 게당알수 (서브)
+                    td #{product.additionWage}
+                    td #{product.stoneWage2}

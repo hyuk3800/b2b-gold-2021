@@ -94,7 +94,7 @@ block content
                         div(class="col-3 col-sm-2 catalognanu") 공개 순서 (브랜드페이지)
                         div(class="col-9 col-sm-4")
                             div(class="allForm")
-                                input(class="inppp",name="brandpage" type="number", placeholder="숫자가 높은순으로 앞에 나오게 됩니다.")
+                                input(class="inppp",name="brandpage" type="text", placeholder="숫자가 높은순으로 앞에 나오게 됩니다.")
                     div(class="row")
                         div(class="col-3 col-sm-2 catalognanu") *모델번호
                         div(class="col-9 col-sm-4")
@@ -114,7 +114,7 @@ block content
                         div(class="col-3 col-sm-2 catalognanu") 제조번호
                         div(class="col-9 col-sm-4")
                             div(class="allForm")
-                                input(class="inppp" type="text" placeholder="제조번호")
+                                input(class="inppp" type="text" name="manufacturerNumber" placeholder="제조번호")
                     div(class="row")
                         div(class="col-3 col-sm-2 catalognanu") 금(은)중량
                         div(class="col-9 col-sm-4")
@@ -124,17 +124,17 @@ block content
                         div(class="col-3 col-sm-2 catalognanu") 스톤 중량
                         div(class="col-9 col-sm-4")
                             div(class="allForm")
-                                input(input class="inppp" type="number" placeholder="0")
+                                input(input class="inppp" type="number", step=".01", name="stoneWeight" placeholder="0")
                                 span g
                     div(class="row")
                         div(class="col-3 col-sm-2 catalognanu") 사이즈
                         div(class="col-9 col-sm-4")
                             div(class="allForm")
-                                input(class="inppp" type="number" placeholder="사이즈")
+                                input(class="inppp" type="text", name="size" placeholder="사이즈")
                         div(class="col-3 col-sm-2 catalognanu") 세트 코드
                         div(class="col-9 col-sm-4")
                             div(class="allForm")
-                                input(class="inppp" type="text" placeholder="세트 코드")
+                                input(class="inppp" type="text" name="setCode" placeholder="세트 코드")
                     div(class="row")
                         div(class="col-3 col-sm-2 catalognanu") 해시태그
                         div(class="col-9 col-sm-10")
@@ -247,7 +247,7 @@ block content
                         div(class="col-3 col-sm-1 catalognanu") 구매공임
                         div(class="col-9 col-sm-3")
                             div(class="allForm")
-                                input(class="inppp" type="number" placeholder="0")
+                                input(class="inppp", type="number" placeholder="0", name="purchaseWage")
                                 span 원
                     div(class="row")
                         div(class="col-3 col-sm-1 catalognanu")
@@ -268,12 +268,12 @@ block content
                         div(class="col-3 col-sm-1 catalognanu") 스톤공임(중)
                         div(class="col-9 col-sm-3")
                             div(class="allForm")
-                                input(class="inppp" type="number" placeholder="0")
+                                input(class="inppp" type="number" placeholder="0", name="stoneWage1")
                                 span 원
                         div(class="col-3 col-sm-1 catalognanu") 알구매단가
                         div(class="col-9 col-sm-3")
                             div(class="allForm")
-                                input(class="inppp" type="number" placeholder="0")
+                                input(class="inppp" type="number" placeholder="0", name="eggPurchasePrice")
                                 span 원
                     div(class="row")
                         div(class="col-3 col-sm-1 catalognanu")
@@ -281,7 +281,7 @@ block content
                         div(class="col-3 col-sm-1 catalognanu") 스톤공임(보)
                         div(class="col-9 col-sm-3")
                             div(class="allForm")
-                                input(class="inppp" type="number" placeholder="0")
+                                input(class="inppp" type="number" placeholder="0", name="stoneWage2")
                                 span 원
                         div(class="col-3 col-sm-1 catalognanu")
                         div(class="col-9 col-sm-3")

@@ -5,27 +5,32 @@ const productSchema = new mongoose.Schema({
     createdAt: {type: Date, require: true, default: Date.now }, // 생성날짜
     click: {type: String, require: true, default: "off" }, // 채크여부
     hashtags:[{ type: String, trim: true, }], // 해쉬태그, 카탈로그 분류
+    
+    // rea.body 시작부분
     gender: { type: String, required: true }, // 성별*
     // age: [{ type: String, trim: true, required: true }], // 나이대*
     // part: { type:String, required: true },  //부위*
     // styles: [{ type: String, trim: true, required: true }], // 스타일
     // material:{type: String, require: true }, // 소재*
     open:{ type: String, required: true }, //공개 설정*
-    orderOfDisclosure: { type: Number }, //공개순서
+    brandpage:{ type: String },//  공개순서(브랜드페이지)
     modelNumber: { type:String, trim: true, required: true }, //모델번호*
     title: { type: String, trim: true, require: true }, // 제품명*
     manufacturer: {type:String, trim: true, required: true },//제조사*
     manufacturerNumber: { type:String },//제조번호
-    goldWeight: { type:Number }, // 금/은중량
-    stoneWeight: { type:Number },//스톤중량
-    description: { type: String, trim: true, required: true}, // 설명*
+    goldWeight: { type: Number }, // 금/은중량
+    stoneWeight: { type: Number },//스톤중량
     size: { type: String },// 사이즈
-    setCode: { type: String },
+    description: { type: String, trim: true, required: true}, // 설명*
+    setCode: { type: String },// 세트코드
     basicWage: { type: Number },//기본공임
     additionWage: { type: Number },//추가공임
-    //스톤공임(중)
-    //스톤공임(보)
-    brandpage:{ type: Number, trim: true },//  공개순서(브랜드페이지)
+    stoneWage1: { type: Number },//스톤공임(중)
+    stoneWage2: { type: Number },//스톤공임(보)
+    purchaseWage:{ type: Number },//구매공임
+    eggPurchasePrice: { type: Number },//알구매단가
+
+
     meta: { 
         views: {type: Number, default: 0, require: true }, //조회수
         rating: {type: Number, default: 0, require: true },//평가

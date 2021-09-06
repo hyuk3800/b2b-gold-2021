@@ -39,3 +39,21 @@ export const catalogeimgUpload = multer({
     }
 });
 
+// 저장되는지 실험한다.
+export const clickDeta = (req, res, next) => {
+    console.log("마! 나는 clickDeta다. 클릭한 id데이터를 옯길 수 잇을지 실험할꺼야!")
+    console.log("req",req.session.anotherSaveDb);
+    console.log("res",res.locals.anotherSaveDb);
+    if(req.session.anotherSaveDb){
+        res.locals.anotherSaveDb = req.session.anotherSaveDb;
+        console.log("만약 존재하면",res.locals.anotherSaveDb);
+        console.log("locals 은",res.locals.anotherSaveDb);
+        req.session.anotherSaveDb="";
+        next();
+    }else{
+        res.locals.anotherSaveDb = "";
+        console.log("만약 존제하지 않으면",res.locals.anotherSaveDb);
+        next();
+    }
+};
+
