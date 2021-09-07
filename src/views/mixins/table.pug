@@ -2,7 +2,7 @@ mixin table(product)
             tbody 
                 tr 
                     td(rowspan="2")
-                        input(name="clickThis" class="clickThis" type="checkbox",  value=`${product._id}`)
+                        input(name="click" class="clickThis" type="checkbox",  value=`${product._id}`)
                     td(rowspan="2")
                         div(class="model")
                             img(src="/" + product.fileUrl, alt="catalogeImg")
@@ -10,10 +10,10 @@ mixin table(product)
                             span=product.title
                     td(rowspan="2")
                         span 함량
-                    td
+                    td(width="7%")
                         span #{product.goldWeight}
-                    td
-                        span 개당알수(메인)
+                    td(width="5%")
+                        span #{product.stone.stoneQuantity}
                     td
                         span #{product.basicWage}
                     td
@@ -26,8 +26,11 @@ mixin table(product)
                         span 금값
                     td(rowspan="2")
                         span 소계
-                tr 
-                    td #{product.stoneWeight}
-                    td 게당알수 (서브)
+                tr  
+                    if !product.stoneWeight
+                        td 0
+                    else
+                        td #{product.stoneWeight}
+                    td #{product.stone2.stoneQuantity2}
                     td #{product.additionWage}
                     td #{product.stoneWage2}

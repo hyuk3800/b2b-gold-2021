@@ -15,9 +15,9 @@ block content
     div(class="container", id="src_and_crt")
         div(class="row")
             div(class="col-md-6")
-                form(class="searchigbox", method="get")
-                    input(type="text", class="searching", placeholder="검색어를 입력하세요")
-                    buttom(type="button", id="btn_searching") 
+                form(class="searchigbox", method="GET")
+                    input(type="text", class="searching", name="keyword", placeholder="검색어를 입력하세요")
+                    button(id="btn_searching", type="submit") 
                         i(class="las la-search")
             div(class="col-md-6")
                 div(class="buttonbox")
@@ -27,7 +27,10 @@ block content
             div(class="wjscp")
                 a(href="")
                     img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움")
-                span 전체 #{user.products.length} 개 
+                if products
+                    span 전체 #{products.length} 개 
+                else
+                    span 전체 #{user.products.length} 개 
                 span(id="wjscpNum", class="hidden") (n) 개 선택됨
         div(class="row")
             div(class="col-3")
@@ -40,12 +43,12 @@ block content
         div(class="container")
             div(class="catalog_card")
                 div(class="row")
-                    div(class="col-6")
+                    div(class="col-2")
                         div(class="clickAndChack")
                             img(src="../../../static/images/select_off.png", alt="select_off")
                             img(src="../../../static/images/select_on.png", alt="select_on")
                             span 전체선택
-                    div(class="col-6")
+                    div(class="col-10")
                         div(class="selectbox")
                             select(name="page-view-counter", id="select10_50") 
                                 option(value="10View") 10View
@@ -54,16 +57,22 @@ block content
                                 option(value="50View") 50View
                             span 선택 목록보기
                 div(class="mainContainerCard on", id="cardTest")
-                    each product in user.products 
-                        +card(product)
-                    else    
-                        div 
+                    if products   
+                        each product in products 
+                            +card(product)
+                        else    
+                            div 
+                    else 
+                        each product in user.products 
+                            +card(product)
+                        else    
+                            div 
                 div(class="mainContTable")
                     table(id="tableTest")
                         thead 
                             tr 
                                 th(rowspan="2")
-                                    form(action="")
+                                    div
                                         input(type="checkbox", name="clickThis", id="clickThis") 
                                 th(rowspan="2") 모델
                                 th(rowspan="2") 함량
@@ -79,10 +88,16 @@ block content
                                 th 공임함
                                 th 금값
                                 th 소계
-                        each product in user.products 
-                            +table(product)
-                        else 
-                            div
+                        if products
+                            each product in products
+                                +table(product)
+                            else 
+                                div
+                        else   
+                            each product in user.products 
+                                +table(product)
+                            else 
+                                div
                 div(class="col-12")
                     div(class="numlist")
                         div(class="numnum on")
@@ -93,7 +108,7 @@ block content
                         div(class="col-12")
                             div(class="botbox")
                                 ul(class="botmnul") 
-                                    button#hold(type="hidden",name="hold", value="hold")
+                                    //- button#hold(type="hidden",name="hold", value="hold")
                                     li 
                                         img(src="../../../static/images/삭제하기.png", alt="삭제하기")
                                         input.moveBtn(type="submit", name="deleteBtn", value="삭제하기")

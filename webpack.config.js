@@ -9,6 +9,7 @@ module.exports = {
         catalogeUpdate:"./src/client/js/catalogeUpdate.js",
         orderUpload:"./src/client/js/orderUpload.js",
         home1:"./src/client/js/home1.js",
+        client1:"./src/client/js/client.js",
     },
     mode: "development",
     watch: true,

@@ -14,9 +14,10 @@ const clientSchema = new mongoose.Schema({
     }, 
     address:{
         postNumber: { type: String }, // 우편번호
-        addressLine1: { type: String }, //주소
-        addressLine2: { type: String }, //상세주소
-        addressLine3: { type: String }, // 참고목록
+        addressLine1: { type: String }, //도로명주소
+        addressLine2: { type: String }, //지번주소
+        addressLine3: { type: String }, //상세주소
+        addressLine4: { type: String }, // 참고목록
     }, //주소
     option: {
         harry:{ type: String }, //해리

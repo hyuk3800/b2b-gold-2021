@@ -16,14 +16,47 @@ export const catalogeMain = async (req, res) => {
     if (String(_id) !== String(user._id)) {
         return res.status(403).redirect("/");
     }
-    // const products = await goldProduct.find({});
-    // const aaaaaa = await goldProduct.find({click:"on"});
-    // console.log(aaaaaa);
-    // const product = await goldProduct.find({click:"off"});
-    // const id = product._id;
-    // console.log(product);
-    // console.log(products.fileUrl);
     const pathname = req._parsedOriginalUrl.pathname;
+
+    // 검색시
+    const { keyword } = req.query;
+    let products = [];
+    if(keyword){
+        console.log(keyword);
+        console.log(Math.floor(Number(keyword)));
+        if(!Number(keyword)){
+            products = await goldProduct.find({
+                $and: [{
+                        "title": { $regex: new RegExp(`${keyword}`, "i") }
+                    }, //상호명
+                    {
+                        "owner":_id
+                    }]
+            });
+        }else{
+
+            products = await goldProduct.find({
+                $and: [{
+                    "goldWeight": { $gte:Number(keyword),$lt:(Math.floor(Number(keyword))+1)}
+                },
+                {
+                    "owner":_id
+                }]  // 금/은중량
+            });
+        }
+            
+            
+            console.log(products.stone2);
+            
+        return res.render("cataloge/cataloge", {
+            pageTitle: "카탈로그",
+            products,
+            pathname
+        });
+    }
+
+
+
     return res.render("cataloge/cataloge", {
         pageTitle: "카탈로그",
         user,
@@ -204,7 +237,19 @@ export const postUpload = async (req, res) => {
         stoneWage1,
         stoneWage2,
         purchaseWage,
-        eggPurchasePrice
+        eggPurchasePrice,
+        stoneName,
+        stoneQuantity,
+        stoneDescription,
+        stoneWeight2,
+        stonePurchasePrice,
+        stoneSellingPrice,
+        stoneName2,
+        stoneQuantity2,
+        stoneDescription2,
+        stoneWeight22,
+        stonePurchasePrice2,
+        stoneSellingPrice2
     } = req.body;
     console.log("요고", additionWage);
     try {
@@ -228,9 +273,22 @@ export const postUpload = async (req, res) => {
             stoneWage2,
             purchaseWage,
             eggPurchasePrice,
-            
-            
-            
+            stone: {
+                 stoneName,
+                 stoneQuantity,
+                 stoneDescription,
+                 stoneWeight2,
+                 stonePurchasePrice,
+                 stoneSellingPrice,
+            },
+            stone2: [{
+                 stoneName2,
+                 stoneQuantity2,
+                 stoneDescription2,
+                 stoneWeight22,
+                 stonePurchasePrice2,
+                 stoneSellingPrice2,
+            }],
             
             owner: _id,
         });

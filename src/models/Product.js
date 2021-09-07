@@ -29,6 +29,22 @@ const productSchema = new mongoose.Schema({
     stoneWage2: { type: Number },//스톤공임(보)
     purchaseWage:{ type: Number },//구매공임
     eggPurchasePrice: { type: Number },//알구매단가
+    stone: { 
+            stoneName: { type: String },// 스톤명
+            stoneQuantity: { type: Number }, // 수량
+            stoneDescription: { type: String },// 설명
+            stoneWeight2: { type: Number },//스톤 중량(개당)
+            stonePurchasePrice: { type: Number },// 매입단가(개당)
+            stoneSellingPrice: { type: Number },// 판매단가(개당)
+        },//스톤(메인)
+    stone2: [{ 
+            stoneName2: { type: String },// 스톤명
+            stoneQuantity2: { type: Number }, // 수량
+            stoneDescription2: { type: String },// 설명
+            stoneWeight22: { type: Number },//스톤 중량(개당)
+            stonePurchasePrice2: { type: Number },// 매입단가(개당)
+            stoneSellingPrice2: { type: Number },// 판매단가(개당)
+        }],//스톤(서브)
 
 
     meta: { 

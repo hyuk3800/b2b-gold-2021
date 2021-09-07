@@ -6,7 +6,8 @@ block links
     link(rel="stylesheet", href="/static/css/components/footer.css")
 
 block scripts 
-    script(src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js")
+    script(defer, src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js")
+    script(defer, src="/assets/js/client1.js") 
 
 block content
     div(class="container stonemain")
@@ -112,10 +113,13 @@ block content
         
         div(class="row")
             span 주소
-            input(type="text", name="postNumber", id="sample6_postcode", placeholder="우편번호") 
-            input(type="button", onclick="sample6_execDaumPostcode()", value="우편번호 찾기") 
-            input(type="text", name="addressLine1", id="sample6_address", placeholder="주소") 
-        
+            <input type="text", name="postNumber" id="sample4_postcode" placeholder="우편번호">
+            <input type="button" id="startingsearch" value="우편번호 찾기"><br>
+            <input type="text" name="addressLine1" id="sample4_roadAddress" placeholder="도로명주소">
+            <input type="text" name="addressLine2" id="sample4_jibunAddress" placeholder="지번주소">
+            <span id="guide" style="color:#999;display:none"></span>
+            <input type="text" name="addressLine3" id="sample4_detailAddress" placeholder="상세주소">
+            <input type="text" name="addressLine4" id="sample4_extraAddress" placeholder="참고항목">
         div(class="row")
             span 옵션
             select(name="harry")

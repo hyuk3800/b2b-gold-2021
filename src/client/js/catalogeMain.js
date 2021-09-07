@@ -39,6 +39,7 @@ const offbutton = document.querySelector("#offbutton");
 const onbutton = document.querySelector("#onbutton");
 const wagebox = document.querySelector("#wagebox");
 
+const clickAndChack = document.querySelector(".clickAndChack");
 const clickThis = document.getElementsByClassName('clickThis');
 
 
@@ -50,9 +51,14 @@ for (let i = 0; i < clickThis.length; i++) {
         // console.log(e, "이거슨");
         
         if (e.target.checked) {
+        //    console.log(clickThis.value.find(e.target.value));
+
             const wageBoxOnOff = () => {
                 wagebox.classList.toggle("on");
                 console.log("hihi")
+            // if(e.target.value === clickThis[i].value){
+                
+            // }
             };
                 offbutton.addEventListener("click", wageBoxOnOff);
                 onbutton.addEventListener("click", wageBoxOnOff);
@@ -65,3 +71,28 @@ for (let i = 0; i < clickThis.length; i++) {
 
     clickThis[i].addEventListener("click", checkedTrueFalse);
 }
+
+
+
+const checkThisAll = () => {
+    console.log("누름");
+    if(clickAndChack.classList.contains("on") === false){
+            clickAndChack.classList.toggle("on");
+            for(let i=0; i<clickThis.length; i++){
+                clickThis[i].checked = true;
+            }
+        }else{
+            console.log("안녕?")
+            clickAndChack.classList.toggle("on");
+            for(let i=0; i<clickThis.length; i++){
+                clickThis[i].checked = false;
+            }
+        }
+    
+    
+};
+
+
+
+
+clickAndChack.addEventListener("click", checkThisAll);
