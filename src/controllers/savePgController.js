@@ -179,7 +179,7 @@ export const postCatalogeMain = async (req, res) => {
             _id: {
                 $in: click
             }
-        });
+        }).populate("stone2");
         req.session.anotherSaveDb = clickProduct;
         console.log(req.session.anotherSaveDb);
         return res.redirect("/sale/upload");
@@ -301,6 +301,22 @@ export const postUpload = async (req, res) => {
         stonePurchasePrice2,
         stoneSellingPrice2
     } = req.body;
+
+    console.log(req.body);
+
+
+    let stone2 = [];
+    for(let i=0; i<stoneName2.length; i++){
+        stone2.push({
+            stoneName2: stoneName2[i],
+            stoneQuantity2: stoneQuantity2[i],
+            stoneDescription2: stoneDescription2[i],
+            stoneWeight22: stoneWeight22[i],
+            stonePurchasePrice2: stonePurchasePrice2[i],
+            stoneSellingPrice2: stoneSellingPrice2[i]
+        });
+    }
+    console.log(stone2)
     console.log("요고", additionWage);
     try {
         const newGoldProduct = await goldProduct.create({
@@ -331,14 +347,7 @@ export const postUpload = async (req, res) => {
                 stonePurchasePrice,
                 stoneSellingPrice,
             },
-            stone2: [{
-                stoneName2,
-                stoneQuantity2,
-                stoneDescription2,
-                stoneWeight22,
-                stonePurchasePrice2,
-                stoneSellingPrice2,
-            }],
+            stone2,
 
             owner: _id,
         });

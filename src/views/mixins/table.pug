@@ -12,8 +12,12 @@ mixin table(product)
                         span 함량
                     td(width="7%")
                         span #{product.goldWeight}
-                    td(width="5%")
-                        span #{product.stone.stoneQuantity}
+                    if !product.stone.stoneQuantity
+                        td(width="5%")
+                            span 0
+                    else
+                        td(width="5%")
+                            span #{product.stone.stoneQuantity}
                     td
                         span #{product.basicWage}
                     td
@@ -31,6 +35,10 @@ mixin table(product)
                         td 0
                     else
                         td #{product.stoneWeight}
-                    td #{product.stone2.stoneQuantity2}
+                    -let add = [];
+                    -for(let i=0; i<product.stone2.length; i++) {add.push(product.stone2[i].stoneQuantity2)}
+                    -let sum = 0;
+                    -add.forEach((i)=>{sum+=i;})
+                        td #{sum}
                     td #{product.additionWage}
                     td #{product.stoneWage2}

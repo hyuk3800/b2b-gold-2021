@@ -101,3 +101,4 @@ const checkThisAll = () => {
 
 clickAndChack.addEventListener("click", checkThisAll);
 allClickBtnOff()
+

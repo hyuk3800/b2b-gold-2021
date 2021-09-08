@@ -14,11 +14,11 @@ mixin saleUploadTable(product)
                         option(value="WG") WG
                 td
                     div(class="sechBox2")
-                        input(type="text") 
+                        input(type="text", value="") 
                         button(class="secbtn") 
                 td
                     div(class="sechBox2")
-                        input(type="text") 
+                        input(type="text", value=`${product.modelNumber}`) 
                         button(class="secbtn") 
                 td
                     select(name="JAJIL" class="downSelectBox" id="JAJIL") 
@@ -51,39 +51,66 @@ mixin saleUploadTable(product)
                     select(name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM") 
                         option(value="N") N
                         option(value="Y") Y
+                td  
+                    if !product.basicWage
+                        div(class="sechBox2")
+                            input(type="number" value=`0`) 
+                    else
+                        div(class="sechBox2")
+                            input(type="number" value=`${product.basicWage}`) 
+                td  
+                    if !product.additionWage
+                        div(class="sechBox2")
+                            input(type="number" value=`0`) 
+                    else
+                        div(class="sechBox2")
+                            input(type="number" value=`${product.additionWage}`) 
+                td  
+                    if !product.stoneWage1 
+                        div(class="sechBox2")
+                            input(type="number" value=`0`) 
+                    else
+                        div(class="sechBox2")
+                            input(type="number" value=`${product.stoneWage1}`) 
+                td  
+                    if !product.stoneWage2 
+                        div(class="sechBox2")
+                            input(type="number" value=`0`) 
+                    else
+                        div(class="sechBox2")
+                            input(type="number" value=`${product.stoneWage2}`) 
+                td
+                    if !product.stone.stoneWeight2 && !product.stone.stoneQuantity
+                        div(class="sechBox2")
+                            input(type="number" value="0")
+                    else
+                        div(class="sechBox2")
+                            input(type="number" value=`${product.stone.stoneWeight2*product.stone.stoneQuantity}`)
                 td
                     div(class="sechBox2")
-                        input(type="text") 
+                        input(type="number") 
                 td
                     div(class="sechBox2")
-                        input(type="text") 
+                        input(type="number" disabled) 
                 td
                     div(class="sechBox2")
-                        input(type="text") 
+                        input(type="number" disabled) 
                 td
                     div(class="sechBox2")
-                        input(type="text") 
+                        input(type="number" disabled) 
                 td
                     div(class="sechBox2")
-                        input(type="text") 
+                        if !product.stone.stoneName
+                            input(type="text")
+                        else
+                            input(type="text" value=`${product.stone.stoneName}`) 
                 td
                     div(class="sechBox2")
-                        input(type="text") 
-                td
-                    div(class="sechBox2")
-                        input(type="text" disabled) 
-                td
-                    div(class="sechBox2")
-                        input(type="text" disabled) 
-                td
-                    div(class="sechBox2")
-                        input(type="text" disabled) 
-                td
-                    div(class="sechBox2")
-                        input(type="text") 
-                td
-                    div(class="sechBox2")
-                        input(type="text") 
+                        -for(let i=0; i<product.stone2.length; i++)
+                            if !product.stone2[i].stoneName2
+                                input(type="text")
+                            else
+                                input(type="text" value=`${product.stone2[i].stoneName2}`) 
                 td
                     div(class="sechBox2")
                         input(type="text") 
