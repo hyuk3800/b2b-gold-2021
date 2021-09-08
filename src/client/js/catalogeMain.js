@@ -4,6 +4,14 @@ const on = "on";
 const mainContainerCard = document.querySelector(".mainContainerCard");
 const mainContTable = document.querySelector(".mainContTable");
 
+const wageboxcent = document.querySelector("#wageboxcent");
+const offbutton = document.querySelector("#offbutton");
+const onbutton = document.querySelector("#onbutton");
+const wagebox = document.querySelector("#wagebox");
+
+const clickAndChack = document.querySelector(".clickAndChack");
+const clickThis = document.getElementsByClassName('clickThis');
+
 // console.log(
 //     cardBro,
 //     tableBro,
@@ -18,6 +26,7 @@ const cardBroBtnClick = () => {
         tableBro.classList.toggle(on);
         mainContainerCard.classList.toggle(on);
         mainContTable.classList.toggle(on);
+        clickAndChack.classList.toggle("off");
     }
 };
 
@@ -27,20 +36,13 @@ const tableBroBtnClick = () => {
         tableBro.classList.toggle(on);
         mainContainerCard.classList.toggle(on);
         mainContTable.classList.toggle(on);
+        clickAndChack.classList.toggle("off");
     }
 };
 
 cardBro.addEventListener("click", cardBroBtnClick);
 tableBro.addEventListener("click", tableBroBtnClick);
 
-
-const wageboxcent = document.querySelector("#wageboxcent");
-const offbutton = document.querySelector("#offbutton");
-const onbutton = document.querySelector("#onbutton");
-const wagebox = document.querySelector("#wagebox");
-
-const clickAndChack = document.querySelector(".clickAndChack");
-const clickThis = document.getElementsByClassName('clickThis');
 
 
 // 체크박스 체크가 있을시에만 공임변경창 나오게하기
@@ -75,14 +77,14 @@ for (let i = 0; i < clickThis.length; i++) {
 
 
 const checkThisAll = () => {
-    console.log("누름");
+    // console.log("누름");
     if(clickAndChack.classList.contains("on") === false){
             clickAndChack.classList.toggle("on");
             for(let i=0; i<clickThis.length; i++){
                 clickThis[i].checked = true;
             }
         }else{
-            console.log("안녕?")
+            // console.log("안녕?")
             clickAndChack.classList.toggle("on");
             for(let i=0; i<clickThis.length; i++){
                 clickThis[i].checked = false;
@@ -95,4 +97,7 @@ const checkThisAll = () => {
 
 
 
+
+
 clickAndChack.addEventListener("click", checkThisAll);
+allClickBtnOff()

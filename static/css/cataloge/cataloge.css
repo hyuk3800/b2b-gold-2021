@@ -388,6 +388,10 @@
     color: #666;
 }
 
+.clickAndChack.off{
+    display: none;
+}
+
 .clickAndChack.on img:nth-child(1){
     display: none;
 }
@@ -514,7 +518,6 @@
 .mainContTable.on{
     display: block;
 }
-
 
 .mainContTable table{
     width: 100%;

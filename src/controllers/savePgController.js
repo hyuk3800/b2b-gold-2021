@@ -19,35 +19,59 @@ export const catalogeMain = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
 
     // 검색시
-    const { keyword } = req.query;
+    const {
+        keyword
+    } = req.query;
     let products = [];
-    if(keyword){
+    if (keyword) {
         console.log(keyword);
         console.log(Math.floor(Number(keyword)));
-        if(!Number(keyword)){
+        if (!Number(keyword)) {
             products = await goldProduct.find({
                 $and: [{
-                        "title": { $regex: new RegExp(`${keyword}`, "i") }
+                        "title": {
+                            $regex: new RegExp(`${keyword}`, "i")
+                        }
                     }, //상호명
                     {
-                        "owner":_id
-                    }]
+                        "owner": _id
+                    }
+                ]
             });
-        }else{
+        } else {
 
             products = await goldProduct.find({
-                $and: [{
-                    "goldWeight": { $gte:Number(keyword),$lt:(Math.floor(Number(keyword))+1)}
+                $and: [{ 
+                    $or: [{
+                        "goldWeight": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
+                    },
+                    {
+                        "stoneWeight": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
+                    },
+                    {
+                        "basicWage": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
+                    },
+                    {
+                        "additionWage": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
+                    },
+                    {
+                        "stoneWage1": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
+                    },
+                    {
+                        "stoneWage2": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
+                    },
+                ]
                 },
-                {
-                    "owner":_id
-                }]  // 금/은중량
+                    {
+                        "owner": _id
+                    }
+                ] // 금/은중량
             });
         }
-            
-            
-            console.log(products.stone2);
-            
+
+
+        console.log(products.stone2);
+
         return res.render("cataloge/cataloge", {
             pageTitle: "카탈로그",
             products,
@@ -81,7 +105,8 @@ export const postCatalogeMain = async (req, res) => {
         moverent
     } = req.body;
     // const user = await User.findById(_id).populate("products");
-    // console.log(click, "이거클릭");
+    console.log(click, "이거클릭");
+    console.log( wage,basicWage,additionWage)
     if (!click) {
         // res.write("<script>alert('채크된것이 없습니다.')</script>");
         console.log("없다")
@@ -112,6 +137,7 @@ export const postCatalogeMain = async (req, res) => {
             basicWage,
             additionWage,
         });
+        console.log("변경후", clickProduct);
         return res.redirect("/cataloge/main");
     }
     if (movestock) {
@@ -138,12 +164,36 @@ export const postCatalogeMain = async (req, res) => {
     }
     if (moverepair) {
         console.log("안녕 repair")
+        const clickProduct = await goldProduct.find({
+            _id: {
+                $in: click
+            }
+        });
+        req.session.anotherSaveDb = clickProduct;
+        console.log(req.session.anotherSaveDb);
+        return res.redirect("/repair/upload");
     }
     if (movesale) {
         console.log("안녕 sale")
+        const clickProduct = await goldProduct.find({
+            _id: {
+                $in: click
+            }
+        });
+        req.session.anotherSaveDb = clickProduct;
+        console.log(req.session.anotherSaveDb);
+        return res.redirect("/sale/upload");
     }
     if (moverent) {
         console.log("안녕 rent")
+        const clickProduct = await goldProduct.find({
+            _id: {
+                $in: click
+            }
+        });
+        req.session.anotherSaveDb = clickProduct;
+        console.log(req.session.anotherSaveDb);
+        return res.redirect("/rent/upload");
     }
     // for(let clickObj = 1; clickObj < clickObj.length ; clickObj++ ){
     if (deleteBtn) {
@@ -274,22 +324,22 @@ export const postUpload = async (req, res) => {
             purchaseWage,
             eggPurchasePrice,
             stone: {
-                 stoneName,
-                 stoneQuantity,
-                 stoneDescription,
-                 stoneWeight2,
-                 stonePurchasePrice,
-                 stoneSellingPrice,
+                stoneName,
+                stoneQuantity,
+                stoneDescription,
+                stoneWeight2,
+                stonePurchasePrice,
+                stoneSellingPrice,
             },
             stone2: [{
-                 stoneName2,
-                 stoneQuantity2,
-                 stoneDescription2,
-                 stoneWeight22,
-                 stonePurchasePrice2,
-                 stoneSellingPrice2,
+                stoneName2,
+                stoneQuantity2,
+                stoneDescription2,
+                stoneWeight22,
+                stonePurchasePrice2,
+                stoneSellingPrice2,
             }],
-            
+
             owner: _id,
         });
         const user = await User.findById(_id);

@@ -39,7 +39,7 @@ block content
             div(class="col-9 bro_box")
                 div(class="card_bro brobx on") 카드형식
                 div(class="table_bro brobx") 테이블형식
-    form(method="POST")     
+    form(method="POST" id="catalogePost")     
         div(class="container")
             div(class="catalog_card")
                 div(class="row")
@@ -108,7 +108,7 @@ block content
                         div(class="col-12")
                             div(class="botbox")
                                 ul(class="botmnul") 
-                                    //- button#hold(type="hidden",name="hold", value="hold")
+                                    button#hold(type="hidden",name="hold", value="hold")
                                     li 
                                         img(src="../../../static/images/삭제하기.png", alt="삭제하기")
                                         input.moveBtn(type="submit", name="deleteBtn", value="삭제하기")
@@ -130,6 +130,7 @@ block content
                                     li 
                                         img(src="../../../static/images/대여등록 (1).png", alt="대여 등록")
                                         input.moveBtn(value="대여 등록", type="submit", name="moverent")
+
     include ../partials/footer
         div#wagebox(class="")
             div#wageboxcent
@@ -142,13 +143,13 @@ block content
                         label(for="basicWage") 
                             span 기본 공임
                         div
-                            input(type="number", name="basicWage", id="basicWage", placeholder="입력") 
+                            input(type="number", name="basicWage", form="catalogePost" id="basicWage", placeholder="입력") 
                         span 원
                     div.col-12.wageInput
                         label(for="additionWage") 
                             span 추가 공임
                         div
-                            input(type="number", name="additionWage", id="additionWage", placeholder="입력") 
+                            input(type="number", name="additionWage", form="catalogePost" id="additionWage", placeholder="입력") 
                         span 원
                 div.row.wage3
                     .col-12
@@ -156,4 +157,4 @@ block content
                 div.row.wage4
                     div.col-12
                         button(type="button", id="offbutton") 닫기
-                        button(name="wage", type="submit" value="수정") 수정
+                        button(name="wage", type="submit" form="catalogePost" value="수정") 수정
