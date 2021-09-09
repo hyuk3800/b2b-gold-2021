@@ -1,19 +1,19 @@
-mixin orderUploadTable(product)
-            tbody#tbody  
-                tr 
-                    td 
-                        button(class="trsBTN") 
-                    td 
-                        input(type="text") 
-                        button(class="secbtn") 
-                    td 
+mixin repairUploadTable(product)
+            tbody
+                tr
+                    td
+                        button(class="trsBTN")
+                    td
+                        input(type="text")
+                        button(class="secbtn")
+                    td
                         input(type="text" value=`${product.modelNumber}`)
-                        button(class="secbtn") 
-                    td 
+                        button(class="secbtn")
+                    td
                         input(type="text" value=`${product.manufacturer}`)
-                        button(class="secbtn") 
-                    td 
-                        select(name="gramBox" id="gramBox") 
+                        button(class="secbtn")
+                    td
+                        select(name="gramBox" id="gramBox")
                             option(value="") 
                             option(value="10K") 10K
                             option(value="14K") 14K
@@ -24,8 +24,8 @@ mixin orderUploadTable(product)
                             option(value="실버") 실버
                             option(value="PT") PT
                             option(value="기타") 기타
-                    td 
-                        select(name="color" id="color")
+                    td
+                        select(name="color" id="color") 
                             option(value="") 
                             option(value="G") G
                             option(value="G/B") G/B
@@ -40,59 +40,62 @@ mixin orderUploadTable(product)
                             option(value="W/G") W/G
                             option(value="W/P") W/P
                             option(value="블랙") 블랙
-                    td 
+                    td
                         input(type="number" value="1")
-                    td  
+                    td
                         if !product.basicWage
-                             input(type="number" value="0")
+                            input(type="number" value=`0`) 
                         else
                             input(type="number" value=`${product.basicWage}`) 
-                    td  
+                    td
                         if !product.additionWage
-                             input(type="number" value="0")
+                            input(type="number" value=`0`) 
                         else
-                            input(type="number" value=`${product.additionWage}`)
-                    td 
-                        if !product.stoneWage1
-                            input(type="number" value="0")
+                            input(type="number" value=`${product.additionWage}`) 
+                    td
+                        if !product.stoneWage1 
+                            input(type="number" value=`0`) 
                         else
-                            input(type="number" value=`${product.stoneWage1}`)
-                    td  
-                        if !product.stoneWage2
-                            input(type="number" value="0")
-                        else    
-                            input(type="number" value=`${product.stoneWage2}`)
-                    td 
+                            input(type="number" value=`${product.stoneWage1}`) 
+                    td
+                        if !product.stoneWage2 
+                            input(type="number" value=`0`) 
+                        else
+                            input(type="number" value=`${product.stoneWage2}`) 
+                    td
                         if !product.stone
-                            input(type="number" value="0")
-                        else    
-                            input(type="number" value=`${product.stone.stoneQuantity}`)
-                    td 
+                            input(type="number" value="0") 
+                        else
+                            input(type="number" value=`${product.stone.stoneQuantity}`) 
+                    td
                         -let add = [];
                         -for(let i=0; i<product.stone2.length; i++) {add.push(product.stone2[i].stoneQuantity2)}
                         -let sum = 0;
                         -add.forEach((i)=>{sum+=i;})
-                            input(type="number" value=`${sum}`)
-                    td  
-                        if !product.stone
+                        input(type="number" value=`${sum}`) 
+                    td
+                        if product.stone
+                            input(type="number" value=`${product.stone.stoneWeight2*product.stone.stoneQuantity}`)
+                        else 
                             input(type="number")
-                        else    
-                            input(type="number" value=`${product.stone.stoneQuantity + sum}`)
-                    td 
-                        if !product.stone || product.stone.stoneName === "undefined"
+                    td
+                        if !product.stone
                             input(type="text")
                         else
                             input(type="text" value=`${product.stone.stoneName}`) 
-                    td 
+                    td  
                         -let stone22 = [];
                         -for(let i=0; i<product.stone2.length; i++){stone22.push(product.stone2[i].stoneName2)}
                         -console.log(stone22)
-                            input(type="text" value=`${stone22}`) 
-                    td 
-                        input(type="text" value=`${product.size}`)
-                    td 
+                        input(type="text" value=`${stone22}`)
+                    td  
+                        if !product.size
+                            input(type="text")
+                        else
+                            input(type="text" value=`${product.size}`) 
+                    td
                         input(type="text")
-                    td 
-                        input(type="text" class="cldbox1111" autocomplete="off" disabled )
-                        div(class="calinder2") 
-                            img(src="../../../../static/images/calendar.png" alt="calendar" )
+                    td
+                        input(type="text" class="cldbox1111" autocomplete="off" disabled)
+                        div(class="calinder2")
+                            img(src="../../../../static/images/calendar.png" alt="calendar")

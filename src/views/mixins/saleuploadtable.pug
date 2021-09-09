@@ -80,12 +80,12 @@ mixin saleUploadTable(product)
                         div(class="sechBox2")
                             input(type="number" value=`${product.stoneWage2}`) 
                 td
-                    if !product.stone.stoneWeight2 && !product.stone.stoneQuantity
-                        div(class="sechBox2")
-                            input(type="number" value="0")
-                    else
+                    if product.stone
                         div(class="sechBox2")
                             input(type="number" value=`${product.stone.stoneWeight2*product.stone.stoneQuantity}`)
+                    else 
+                        div(class="sechBox2")
+                            input(type="number") 
                 td
                     div(class="sechBox2")
                         input(type="number") 
@@ -100,32 +100,41 @@ mixin saleUploadTable(product)
                         input(type="number" disabled) 
                 td
                     div(class="sechBox2")
-                        if !product.stone.stoneName
+                        if !product.stone
                             input(type="text")
                         else
                             input(type="text" value=`${product.stone.stoneName}`) 
+                -let stone22 = [];
+                -for(let i=0; i<product.stone2.length; i++){stone22.push(product.stone2[i].stoneName2)}
+                    -console.log(stone22)
+                    td
+                       div(class="sechBox2")
+                            input(type="text" value=`${stone22}`) 
                 td
                     div(class="sechBox2")
-                        -for(let i=0; i<product.stone2.length; i++)
-                            if !product.stone2[i].stoneName2
-                                input(type="text")
-                            else
-                                input(type="text" value=`${product.stone2[i].stoneName2}`) 
+                        if !product.size
+                            input(type="text")
+                        else
+                            input(type="text" value=`${product.size}`) 
                 td
                     div(class="sechBox2")
-                        input(type="text") 
+                        input(type="text" value=`${product.description}`) 
                 td
                     div(class="sechBox2")
-                        input(type="text") 
+                        input(type="number" value="1") 
                 td
                     div(class="sechBox2")
-                        input(type="text" value="1") 
+                        if !product.stone
+                            input(type="number" value="0") 
+                        else
+                            input(type="number" value=`${product.stone.stoneQuantity}`) 
                 td
                     div(class="sechBox2")
-                        input(type="text") 
-                td
-                    div(class="sechBox2")
-                        input(type="text") 
+                        -let add = [];
+                        -for(let i=0; i<product.stone2.length; i++) {add.push(product.stone2[i].stoneQuantity2)}
+                        -let sum = 0;
+                        -add.forEach((i)=>{sum+=i;})
+                        input(type="number" value=`${sum}`) 
                 td
                     div(class="sechBox2")
                         input(type="text" disabled) 

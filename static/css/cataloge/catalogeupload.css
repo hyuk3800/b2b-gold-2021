@@ -209,7 +209,10 @@
     align-items: center;
 }
 
-.chackboxbox button{
+.chackbox{
+}
+
+.chackbox button{
     margin: 4px 2px;
     padding: 1px 6px;
     border-radius: 5px;
@@ -218,9 +221,12 @@
 
 }
 
-.chackboxbox button:focus{
-    outline: none;
+.chackbox button.on{
     background-color: #ffaa34;
+}
+
+.chackbox button:focus{
+    outline: none;
 }
 
 
@@ -238,7 +244,7 @@
 }
 
 .chackboxbox1{
-    height: 40px;
+    min-height: 40px;
 }
 
 .chackbox{
@@ -247,7 +253,13 @@
     flex-wrap: wrap;
 }
 
+.styleBox{
+    display: none;
+}
 
+.styleBox.on{
+    display: flex;
+}
 
 .sltImg{
     position: absolute;

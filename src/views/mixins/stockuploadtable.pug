@@ -4,7 +4,7 @@ mixin stockUploadTable(product)
                     td
                         button(class="trsBTN")
                     td
-                        input(type="text" value=`${product.manufacturerNumber}`) 
+                        input(type="text") 
                         button(class="secbtn")
                     td
                         input(type="text" value=`${product.modelNumber}`) 
@@ -40,18 +40,33 @@ mixin stockUploadTable(product)
                             option(value="W/G") W/G
                             option(value="W/P") W/P
                             option(value="블랙") 블랙
-                    td
+                    td  
                         input(type="number" value="1")
+                    td  
+                        if !product.basicWage
+                            input(type="number" value="0")
+                        else
+                            input(type="number" value=`${product.basicWage}`)
+                    td  
+                        if !product.additionWage
+                            input(type="number" value="0")
+                        else
+                            input(type="number" value=`${product.additionWage}`)
+                    td  
+                        if !product.stoneWage1
+                            input(type="number" value="0")
+                        else
+                            input(type="number" value=`${product.stoneWage1}`)
+                    td  
+                        if !product.stoneWage2
+                            input(type="number" value="0")
+                        else
+                            input(type="number" value=`${product.stoneWage2}`)
                     td
-                        input(type="number" value=`${product.basicWage}`)
-                    td
-                        input(type="text" value=`${product.additionWage}`)
-                    td
-                        input(type="text" value=`${product.stoneWage1}`)
-                    td
-                        input(type="text" value=`${product.stoneWage2}`)
-                    td
-                        input(type="text")
+                        if product.stone
+                            input(type="number" value=`${product.stone.stoneWeight2*product.stone.stoneQuantity}`)
+                        else 
+                            input(type="number") 
                     td
                         input(type="text")
                     td
@@ -66,22 +81,40 @@ mixin stockUploadTable(product)
                             option(value="1.06") 1.06
                             option(value="1.00") 1.00
                     td
-                        input(type="text")
+                        if !product.stone
+                            input(type="number" value="0") 
+                        else
+                            input(type="number" value=`${product.stone.stoneQuantity}`) 
                     td
-                        input(type="text")
+                        -let add = [];
+                        -for(let i=0; i<product.stone2.length; i++) {add.push(product.stone2[i].stoneQuantity2)}
+                        -let sum = 0;
+                        -add.forEach((i)=>{sum+=i;})
+                        input(type="number" value=`${sum}`) 
                     td
                         select(name="MAIPHARI" class="selBoxStock" id="MAIPHARI")
                             option(value="N") N
                             option(value="Y") Y
                     td
-                        input(type="text")
+                        if !product.stone
+                            input(type="text")
+                        else
+                            input(type="text" value=`${product.stone.stoneName}`) 
                     td
-                        input(type="text")
+                        -let stone22 = [];
+                        -for(let i=0; i<product.stone2.length; i++){stone22.push(product.stone2[i].stoneName2)}
+                            input(type="text" value=`${stone22}`)
                     td
-                        input(type="text")
+                        input(type="text" value=`${product.size}`)
                     td
-                        input(type="text")
-                    td
-                        input(type="text")
-                    td
-                        input(type="text")
+                        input(type="text" value=`${product.description}`)
+                    td  
+                        if !product.purchaseWage
+                            input(type="number")
+                        else    
+                            input(type="number" value=`${product.purchaseWage}`)
+                    td  
+                        if !product.eggPurchasePrice
+                            input(type="number")
+                        else
+                            input(type="number" value=`${product.eggPurchasePrice}`)

@@ -1,4 +1,5 @@
 extends ../base
+include ../mixins/rentuploadtable
 
 block links 
     link(rel="stylesheet", href="/static/css/rent/rentupload.css")
@@ -8,7 +9,7 @@ block content
         div(class="row") 
             div(class="col-6") 
                 div(class="orderName") 
-                    a(href="sale.html" target="_self" class="mntitArrow") 
+                    a(href="/rent/main" target="_self" class="mntitArrow") 
                     span 대여 등록
                 a(href="" class="icInfoOutline") 
                     img(src="../../../../static/images/ic-info-outline-24-px.png" alt="도움") 
@@ -108,101 +109,105 @@ block content
                                 th(width="4%") 순금환산
                                 th(width="3%") 메인
                                 th(width="3%") 보조
-                        tbody
-                            tr
-                                td
-                                    button(class="trsBTN") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                        button(class="secbtn") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                        button(class="secbtn") 
-                                td
-                                    select(name="JAJIL" class="downSelectBox" id="JAJIL") 
-                                        option(value="") 
-                                        option(value="10K") 10K
-                                        option(value="14K") 14K
-                                        option(value="18K") 18K
-                                        option(value="22K") 22K
-                                        option(value="순금-995") 순금-995
-                                        option(value="순금-999") 순금-999
-                                        option(value="실버") 실버
-                                        option(value="PT") PT
-                                        option(value="기타") 기타
-                                td
-                                    select(name="SAGSANG" class="downSelectBox" id="SAGSANG") 
-                                        option(value="") 
-                                        option(value="G") G
-                                        option(value="G/B") G/B
-                                        option(value="G/P") G/P
-                                        option(value="G/R/W") G/R/W
-                                        option(value="G/W") G/W
-                                        option(value="P") P
-                                        option(value="P/W") P/W
-                                        option(value="P/블랙도금") P/블랙도금
-                                        option(value="W") W
-                                        option(value="W/B") W/B
-                                        option(value="W/G") W/G
-                                        option(value="W/P") W/P
-                                        option(value="블랙") 블랙
-                                td
-                                    select(name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM") 
-                                        option(value="N") N
-                                        option(value="Y") Y
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text" disabled)
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text" disabled)
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text" disabled)
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text")  
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text") 
-                                td
-                                    div(class="sechBox2") 
-                                        input(type="text" disabled)
+                        if anotherSaveDb
+                            each product in anotherSaveDb
+                                +rentUploadTable(product)
+                        else
+                            tbody
+                                tr
+                                    td
+                                        button(class="trsBTN") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                            button(class="secbtn") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                            button(class="secbtn") 
+                                    td
+                                        select(name="JAJIL" class="downSelectBox" id="JAJIL") 
+                                            option(value="") 
+                                            option(value="10K") 10K
+                                            option(value="14K") 14K
+                                            option(value="18K") 18K
+                                            option(value="22K") 22K
+                                            option(value="순금-995") 순금-995
+                                            option(value="순금-999") 순금-999
+                                            option(value="실버") 실버
+                                            option(value="PT") PT
+                                            option(value="기타") 기타
+                                    td
+                                        select(name="SAGSANG" class="downSelectBox" id="SAGSANG") 
+                                            option(value="") 
+                                            option(value="G") G
+                                            option(value="G/B") G/B
+                                            option(value="G/P") G/P
+                                            option(value="G/R/W") G/R/W
+                                            option(value="G/W") G/W
+                                            option(value="P") P
+                                            option(value="P/W") P/W
+                                            option(value="P/블랙도금") P/블랙도금
+                                            option(value="W") W
+                                            option(value="W/B") W/B
+                                            option(value="W/G") W/G
+                                            option(value="W/P") W/P
+                                            option(value="블랙") 블랙
+                                    td
+                                        select(name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM") 
+                                            option(value="N") N
+                                            option(value="Y") Y
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text" disabled)
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text" disabled)
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text" disabled)
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text")  
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text") 
+                                    td
+                                        div(class="sechBox2") 
+                                            input(type="text" disabled)
         div(class="col-12")
             div(class="pluseBox")
                 button(id="plsbtn") 추가
