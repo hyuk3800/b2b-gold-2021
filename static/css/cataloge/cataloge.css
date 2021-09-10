@@ -268,18 +268,37 @@
 
 .chackboxbox button:focus{
     outline: none;
-    background-color: #ffaa34;
+
 }
 
 
 .chackboxbox1{
-    height: 40px;
+    min-height: 40px;
 }
 
 .chackbox{
     display: flex;
     width: 90%;
     flex-wrap: wrap;
+}
+
+.chackbox button.on{
+    background-color: #ffaa34;
+}
+
+.styleBox{
+    display: none;
+}
+
+.styleBox.on{
+    display: flex;
+}
+
+.weightBox{
+    display: none;
+}
+.weightBox.on{
+    display: flex;
 }
 
 
@@ -543,7 +562,7 @@ table tr,table th, table td{
     height: 60px;
 }
 .model img{
-
+    width: 100%;
     height: 100%;
 }
 

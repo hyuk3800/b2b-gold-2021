@@ -41,27 +41,45 @@ export const catalogeMain = async (req, res) => {
         } else {
 
             products = await goldProduct.find({
-                $and: [{ 
-                    $or: [{
-                        "goldWeight": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
+                $and: [{
+                        $or: [{
+                                "goldWeight": {
+                                    $gte: Number(keyword),
+                                    $lt: (Math.floor(Number(keyword)) + 1)
+                                }
+                            },
+                            {
+                                "stoneWeight": {
+                                    $gte: Number(keyword),
+                                    $lt: (Math.floor(Number(keyword)) + 1)
+                                }
+                            },
+                            {
+                                "basicWage": {
+                                    $gte: Number(keyword),
+                                    $lt: (Math.floor(Number(keyword)) + 1)
+                                }
+                            },
+                            {
+                                "additionWage": {
+                                    $gte: Number(keyword),
+                                    $lt: (Math.floor(Number(keyword)) + 1)
+                                }
+                            },
+                            {
+                                "stoneWage1": {
+                                    $gte: Number(keyword),
+                                    $lt: (Math.floor(Number(keyword)) + 1)
+                                }
+                            },
+                            {
+                                "stoneWage2": {
+                                    $gte: Number(keyword),
+                                    $lt: (Math.floor(Number(keyword)) + 1)
+                                }
+                            },
+                        ]
                     },
-                    {
-                        "stoneWeight": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
-                    },
-                    {
-                        "basicWage": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
-                    },
-                    {
-                        "additionWage": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
-                    },
-                    {
-                        "stoneWage1": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
-                    },
-                    {
-                        "stoneWage2": {$gte: Number(keyword), $lt: (Math.floor(Number(keyword)) + 1)}
-                    },
-                ]
-                },
                     {
                         "owner": _id
                     }
@@ -106,7 +124,7 @@ export const postCatalogeMain = async (req, res) => {
     } = req.body;
     // const user = await User.findById(_id).populate("products");
     console.log(click, "이거클릭");
-    console.log( wage,basicWage,additionWage)
+    console.log(wage, basicWage, additionWage)
     if (!click) {
         // res.write("<script>alert('채크된것이 없습니다.')</script>");
         console.log("없다")
@@ -299,14 +317,26 @@ export const postUpload = async (req, res) => {
         stoneDescription2,
         stoneWeight22,
         stonePurchasePrice2,
-        stoneSellingPrice2
+        stoneSellingPrice2,
+        ageinput,
+        partinput,
+        styleinput,
+        materialinput,
+        weightinput
     } = req.body;
 
-    console.log(req.body);
+    console.log(
+        "이거 req.body",
+        ageinput,
+        partinput,
+        styleinput,
+        materialinput,
+        weightinput
+        );
 
 
     let stone2 = [];
-    for(let i=0; i<stoneName2.length; i++){
+    for (let i = 0; i < stoneName2.length; i++) {
         stone2.push({
             stoneName2: stoneName2[i],
             stoneQuantity2: stoneQuantity2[i],
@@ -316,12 +346,17 @@ export const postUpload = async (req, res) => {
             stoneSellingPrice2: stoneSellingPrice2[i]
         });
     }
-    console.log(stone2)
-    console.log("요고", additionWage);
+    // console.log(stone2)
+    // console.log("요고", additionWage);
     try {
         const newGoldProduct = await goldProduct.create({
             fileUrl,
             gender,
+            age: ageinput.split(","),
+            part: partinput,
+            styles: styleinput.split(","),
+            material: materialinput.split(","),
+            weight: weightinput.split(","),
             open,
             brandpage,
             modelNumber,

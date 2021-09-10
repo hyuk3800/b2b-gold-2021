@@ -8,11 +8,11 @@ const productSchema = new mongoose.Schema({
     
     // rea.body 시작부분
     gender: { type: String, required: true }, // 성별*
-    // age: [{ type: String, trim: true, required: true }], // 나이대*
-    // part: { type:String, required: true },  //부위*
-    // styles: [{ type: String, trim: true, required: true }], // 스타일
-    // material:{type: String, require: true }, // 소재*
-    // weight:{type: String }, // 중량
+    age: [{ type: String, trim: true, required: true }], // 나이대*
+    part: { type:String, required: true },  //부위*
+    styles: [{ type: String, trim: true, required: true }], // 스타일
+    material:[{type: String, require: true }], // 소재*
+    weight:[{type: String }], // 중량
     open:{ type: String, required: true }, //공개 설정*
     brandpage:{ type: String },//  공개순서(브랜드페이지)
     modelNumber: { type:String, trim: true, required: true }, //모델번호*

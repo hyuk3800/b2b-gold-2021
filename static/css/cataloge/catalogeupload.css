@@ -209,8 +209,6 @@
     align-items: center;
 }
 
-.chackbox{
-}
 
 .chackbox button{
     margin: 4px 2px;
@@ -258,6 +256,13 @@
 }
 
 .styleBox.on{
+    display: flex;
+}
+
+.weightBox{
+    display: none;
+}
+.weightBox.on{
     display: flex;
 }
 

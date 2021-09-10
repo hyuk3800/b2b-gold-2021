@@ -9,7 +9,7 @@ block scripts
 
 block content 
     div(class="main-container")
-        form(method="POST", enctype="multipart/form-data")     
+        form(method="POST", enctype="multipart/form-data", id="PostForm")     
             div(class="container pgnm")
                 div(class="row")
                     div(class="col-6")
@@ -255,16 +255,16 @@ block content
                                 div(class="col-2 catalognanu") *중량
                                 div(class="col-10 chackboxbox chackboxbox1")
                                     div(class="chackbox weightBox")    
-                                        button(type="button" name="weight") 반돈
-                                        button(type="button" name="weight") 1돈
-                                        button(type="button" name="weight") 2돈
-                                        button(type="button" name="weight") 3돈
-                                        button(type="button" name="weight") 5돈
-                                        button(type="button" name="weight") 7돈
-                                        button(type="button" name="weight") 10돈
-                                        button(type="button" name="weight") 30돈
-                                        button(type="button" name="weight") 50돈
-                                        button(type="button" name="weight") 100돈
+                                        button(type="button" name="weight" value="1.875") 반돈
+                                        button(type="button" name="weight" value="3.75") 1돈
+                                        button(type="button" name="weight" value="7.5") 2돈
+                                        button(type="button" name="weight" value="11.25") 3돈
+                                        button(type="button" name="weight" value="18.75") 5돈
+                                        button(type="button" name="weight" value="26.25") 7돈
+                                        button(type="button" name="weight" value="37.5") 10돈
+                                        button(type="button" name="weight" value="112.5") 30돈
+                                        button(type="button" name="weight" value="187.5") 50돈
+                                        button(type="button" name="weight" value="375") 100돈
                 div(class="row")
                     div(class="col-12")
                         div(class="mtt mtt2")

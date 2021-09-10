@@ -9,9 +9,12 @@ mixin table(product)
                         div(class="mdName")
                             span=product.title
                     td(rowspan="2", width="15%")
-                        span 함량
+                        span #{product.material}
                     td(width="7%")
-                        span #{product.goldWeight}
+                        if !product.weight
+                            span #{product.goldWeight}
+                        else 
+                            span #{product.weight}                       
                     if !product.stone.stoneQuantity
                         td(width="5%")
                             span 0
