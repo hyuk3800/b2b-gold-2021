@@ -311,16 +311,16 @@ window.onload = function () {
                 e.target.classList.add("on");
                 materialConter.push(e.target.value);
                 console.log(materialConter);
-                    if(materialBtn[5].classList.contains("on") || materialBtn[6].classList.contains("on")){
-                        weightBoxOn();
-                    }
+                if (materialBtn[5].classList.contains("on") || materialBtn[6].classList.contains("on")) {
+                    weightBoxOn();
+                }
             } else {
                 e.target.classList.remove("on");
                 materialConter.splice(materialConter.indexOf(e.target.value), 1);
                 console.log(materialConter);
-                    if(!materialBtn[5].classList.contains("on") || !materialBtn[6].classList.contains("on")){
-                        weightBoxOff();
-                    }
+                if (!materialBtn[5].classList.contains("on") || !materialBtn[6].classList.contains("on")) {
+                    weightBoxOff();
+                }
             }
         };
         materialBtn[i].addEventListener("click", materialOnOff);
@@ -332,13 +332,13 @@ window.onload = function () {
 
     let weightConter = [];
 
-    for(let i=0; i<weightBtn.length; i++){
-        const weightBtnClick = (e) =>{
-            if(!e.target.classList.contains("on")){
+    for (let i = 0; i < weightBtn.length; i++) {
+        const weightBtnClick = (e) => {
+            if (!e.target.classList.contains("on")) {
                 e.target.classList.add("on");
                 weightConter.push(e.target.value);
                 console.log(weightConter);
-            }else{
+            } else {
                 e.target.classList.remove("on");
                 weightConter.splice(weightConter.indexOf(e.target.value), 1);
                 console.log(weightConter);
@@ -346,43 +346,193 @@ window.onload = function () {
         };
 
         weightBtn[i].addEventListener("click", weightBtnClick);
-    };//////for문
+    }; //////for문
 
 
-const PostForm = document.querySelector("#PostForm");
+    const PostForm = document.querySelector("#PostForm");
 
-const Makeinputs = () => {
-    ageinput = "<input name='ageinput' type='text' value='"+ageConter+"' >";
-    PostForm.insertAdjacentHTML('beforeEnd',ageinput);
-    partinput = "<input name='partinput' type='text' value='"+partConter+"' >";
-    PostForm.insertAdjacentHTML('beforeEnd',partinput);
-    styleinput = "<input name='styleinput' type='text' value='"+styleConter+"' >";
-    PostForm.insertAdjacentHTML('beforeEnd',styleinput);
-    materialinput = "<input name='materialinput' type='text' value='"+materialConter+"' >";
-    PostForm.insertAdjacentHTML('beforeEnd',materialinput);
-    weightinput = "<input name='weightinput' type='text' value='"+weightConter+"' >";
-    PostForm.insertAdjacentHTML('beforeEnd',weightinput);
-    alert("성공");
-};
+    const Makeinputs = () => {
+        ageinput = "<input name='ageinput' type='text' value='" + ageConter + "' >";
+        PostForm.insertAdjacentHTML('beforeEnd', ageinput);
+        partinput = "<input name='partinput' type='text' value='" + partConter + "' >";
+        PostForm.insertAdjacentHTML('beforeEnd', partinput);
+        styleinput = "<input name='styleinput' type='text' value='" + styleConter + "' >";
+        PostForm.insertAdjacentHTML('beforeEnd', styleinput);
+        materialinput = "<input name='materialinput' type='text' value='" + materialConter + "' >";
+        PostForm.insertAdjacentHTML('beforeEnd', materialinput);
+        weightinput = "<input name='weightinput' type='text' value='" + weightConter + "' >";
+        PostForm.insertAdjacentHTML('beforeEnd', weightinput);
+        alert("성공");
+    };
 
-// const lelel = document.querySelector("#lelel");
+    // const lelel = document.querySelector("#lelel");
 
-PostForm.addEventListener("submit", Makeinputs);
-
-
+    PostForm.addEventListener("submit", Makeinputs);
 
 
+    // 추가버튼 클릭시 표 추가. 삭제 버튼 클릭ㅎ시 해당버튼 삭제
+
+
+    const stoneClickBtn = document.querySelector("#stoneClickBtn");
+    const stoneTbody = document.querySelector("#stoneTbody");
+    const stoneTr = document.querySelectorAll("#stoneTbody tr");
+
+    let table_count = [];
+    let count = 0;
+    let cnt = 0;
+
+
+    const stoneTablePluse = () => {
+
+        const row = document.createElement("tr");
+
+        if(table_count.length === 0){
+            const td1 = document.createElement("td");
+            td1TdIn = "<div><input type='text' placeholder='스톤명', name='stoneName'><img class='sltImg' src='../../../../static/images/ic-zoom-in-24-px@3x.png' alt='검색'></div>";
+            td1.insertAdjacentHTML("beforeEnd", td1TdIn);
+            
+            const td2 = document.createElement("td");
+            td2TdIn = "<div><input type='number' placeholder='수량' name='stoneQuantity'></div>";   
+            td2.insertAdjacentHTML("beforeEnd", td2TdIn);
+            
+            const td3 = document.createElement("td");
+            td3TdIn = "<div><input type='text' placeholder='설명', name='stoneDescription'></div>";
+            td3.insertAdjacentHTML("beforeEnd", td3TdIn);
+            
+            const td4 = document.createElement("td");
+            td4TdIn = "<div><input type='number' placeholder='중량(개당)', name='stoneWeight2'></div>";
+            td4.insertAdjacentHTML("beforeEnd", td4TdIn);
+            
+            const td5 = document.createElement("td");
+            td5TdIn = "<div><input type='number' placeholder='중량(총중량)'></div>";
+            td5.insertAdjacentHTML("beforeEnd", td5TdIn);
+            
+            const td6 = document.createElement("td");
+            td6TdIn = "<div><input type='number' placeholder='매입단가(개당)', name='stonePurchasePrice'></div>";
+            td6.insertAdjacentHTML("beforeEnd", td6TdIn);
+            
+            const td7 = document.createElement("td");
+            td7TdIn = "<div><input type='number' placeholder='매입단가(총가격)'></div>";
+            td7.insertAdjacentHTML("beforeEnd", td7TdIn);
+            
+            const td8 = document.createElement("td");
+            td8TdIn = "<div><input type='number' placeholder='판매단가(개당)', name='stoneSellingPrice'></div>";
+            td8.insertAdjacentHTML("beforeEnd", td8TdIn);
+            
+            const td9 = document.createElement("td");
+            td9TdIn = "<div><input type='number' placeholder='판매단가(총가격)'></div>";
+            td9.insertAdjacentHTML("beforeEnd", td9TdIn);
+            
+            const td10 = document.createElement("td");
+            td10TdIn = "<button type='button' value='delButton" + (count + 1) +"'>삭제</button>";
+            td10.insertAdjacentHTML("beforeEnd", td10TdIn);
+            
+            row.appendChild(td1);
+            row.appendChild(td2);
+            row.appendChild(td3);
+            row.appendChild(td4);
+            row.appendChild(td5);
+            row.appendChild(td6);
+            row.appendChild(td7);
+            row.appendChild(td8);
+            row.appendChild(td9);
+            row.appendChild(td10);
+    
+    
+            stoneTbody.appendChild(row);
+
+            count++;
+            cnt++;
+            table_count[cnt] = count;
+
+        }else{
+            const td1 = document.createElement("td");
+            td1TdIn = "<div><input type='text' placeholder='스톤명', name='stoneName2'><img class='sltImg' src='../../../../static/images/ic-zoom-in-24-px@3x.png' alt='검색'></div>";
+            td1.insertAdjacentHTML("beforeEnd", td1TdIn);
+            
+            const td2 = document.createElement("td");
+            td2TdIn = "<div><input type='number' placeholder='수량' name='stoneQuantity2'></div>";   
+            td2.insertAdjacentHTML("beforeEnd", td2TdIn);
+            
+            const td3 = document.createElement("td");
+            td3TdIn = "<div><input type='text' placeholder='설명', name='stoneDescription2'></div>";
+            td3.insertAdjacentHTML("beforeEnd", td3TdIn);
+            
+            const td4 = document.createElement("td");
+            td4TdIn = "<div><input type='number' placeholder='중량(개당)', name='stoneWeight22'></div>";
+            td4.insertAdjacentHTML("beforeEnd", td4TdIn);
+            
+            const td5 = document.createElement("td");
+            td5TdIn = "<div><input type='number' placeholder='중량(총중량)'></div>";
+            td5.insertAdjacentHTML("beforeEnd", td5TdIn);
+            
+            const td6 = document.createElement("td");
+            td6TdIn = "<div><input type='number' placeholder='매입단가(개당)', name='stonePurchasePrice2'></div>";
+            td6.insertAdjacentHTML("beforeEnd", td6TdIn);
+            
+            const td7 = document.createElement("td");
+            td7TdIn = "<div><input type='number' placeholder='매입단가(총가격)'></div>";
+            td7.insertAdjacentHTML("beforeEnd", td7TdIn);
+            
+            const td8 = document.createElement("td");
+            td8TdIn = "<div><input type='number' placeholder='판매단가(개당)', name='stoneSellingPrice2'></div>";
+            td8.insertAdjacentHTML("beforeEnd", td8TdIn);
+            
+            const td9 = document.createElement("td");
+            td9TdIn = "<div><input type='number' placeholder='판매단가(총가격)'></div>";
+            td9.insertAdjacentHTML("beforeEnd", td9TdIn);
+            
+            const td10 = document.createElement("td");
+            td10TdIn = "<button type='button' value='delButton" + (count + 1) + "'>삭제</button>";
+            td10.insertAdjacentHTML("beforeEnd", td10TdIn);
+            
+            row.appendChild(td1);
+            row.appendChild(td2);
+            row.appendChild(td3);
+            row.appendChild(td4);
+            row.appendChild(td5);
+            row.appendChild(td6);
+            row.appendChild(td7);
+            row.appendChild(td8);
+            row.appendChild(td9);
+            row.appendChild(td10);
+    
+    
+            stoneTbody.appendChild(row);
+
+            count++;
+            cnt++;
+            table_count[cnt] = count;
+
+        }
+        console.log(table_count);
+        console.log("이건",stoneDelButton);
+
+    };
+
+    
 
 
 
+    stoneClickBtn.addEventListener("click", stoneTablePluse);
+    
+    const stoneDelButton = document.querySelectorAll("#delButton"+"table_count");
+    
+
+    console.log("이거",stoneDelButton);
+
+for(let i=0; i<table_count.length; i++){
+    stoneDelButton.va
+    // console.log(stoneDelButton);
+
+    const stoneDelButtonClick = (e) => {
+        console.log("되냐?");
+    };
 
 
 
-
-
-
-
-
+    stoneDelButton[i].addEventListener("click", stoneDelButtonClick);
+}; ////for 문
 
 
 
