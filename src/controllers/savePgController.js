@@ -322,20 +322,23 @@ export const postUpload = async (req, res) => {
         partinput,
         styleinput,
         materialinput,
-        weightinput
+        weightinput,
+        etcName,
+        etcPrice,
+        etcQuantuty,
+        etcDescription,
     } = req.body;
 
-    console.log(
-        "이거 req.body",
-        ageinput,
-        partinput,
-        styleinput,
-        materialinput,
-        weightinput
-        );
+    // console.log(
+    //     "이거 req.body",
+    //     etcName[0],
+    //     etcPrice,
+    //     etcQuantuty,
+    //     etcDescription,
+    // );
 
-
-    let stone2 = [];
+      let stone2 = [];
+if(stoneName2){
     for (let i = 0; i < stoneName2.length; i++) {
         stone2.push({
             stoneName2: stoneName2[i],
@@ -345,7 +348,18 @@ export const postUpload = async (req, res) => {
             stonePurchasePrice2: stonePurchasePrice2[i],
             stoneSellingPrice2: stoneSellingPrice2[i]
         });
-    }
+    };}
+    let etc = [];
+    if(etcName){
+    for (let i = 0; i < etcName.length; i++) {
+        etc.push({
+            etcName: etcName[i],
+            etcPrice: etcPrice[i],
+            etcQuantuty: etcQuantuty[i],
+            etcDescription: etcDescription[i],
+        });
+    };}
+    // console.log(etcName2.length);
     // console.log(stone2)
     // console.log("요고", additionWage);
     try {
@@ -383,6 +397,7 @@ export const postUpload = async (req, res) => {
                 stoneSellingPrice,
             },
             stone2,
+            etc,
 
             owner: _id,
         });

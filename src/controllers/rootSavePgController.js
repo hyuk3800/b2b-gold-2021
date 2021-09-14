@@ -30,7 +30,7 @@ export const getStone = async (req, res) => {
    }
    const pathname = req._parsedOriginalUrl.pathname;
    return res.render("stone", {
-      pageTitle: "스톤관리",
+      pageTitle: "스톤 관리",
       user,
       pathname
    })
@@ -63,7 +63,7 @@ export const postStone = async (req, res) => {
       return res.redirect("/stone");
    } catch {
       return res.status(400).render("stone", {
-         pageTitle: "스톤관리",
+         pageTitle: "스톤 관리",
          user
       });
    }

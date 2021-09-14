@@ -46,7 +46,12 @@ const productSchema = new mongoose.Schema({
             stonePurchasePrice2: { type: Number },// 매입단가(개당)
             stoneSellingPrice2: { type: Number },// 판매단가(개당)
         }],//스톤(서브)
-
+    etc : [{
+        etcName: { type: String }, //이름
+        etcPrice: { type: Number },// 가격
+        etcQuantuty: { type: Number },//수량
+        etcDescription: { type: String },//설명
+    }],// 기타 공임정보
 
     meta: { 
         views: {type: Number, default: 0, require: true }, //조회수

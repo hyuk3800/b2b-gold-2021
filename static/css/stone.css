@@ -149,6 +149,85 @@
 }
 
 
+/* 포스트  */
+.postForm{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    
+    z-index: 999999999;
+}
+
+.postForm.on{
+    height: 100%;
+}
+
+#bgbtn{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color .5s;
+}
+
+.postForm.on #bgbtn{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.postBox{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 676px;
+    
+    height: 753px;
+    background-color: #fff;
+    border: #999;
+    border-radius: 10px;
+    overflow: hidden;
+    opacity: 0;
+    transition: top .5s, opacity .5s;
+}
+
+.postForm.on .postBox{
+    top: 50%;
+    opacity: 1;
+}
+
+.stonetitle{
+    margin: 0;
+    padding-top: 20px;
+    width: 100%;
+    height: 118px;
+    border-bottom: 1px solid rgba(153, 153, 153, 0.541);
+    background-color: #f1f5f7;
+}
+.spanfirst{
+    margin: 0 auto;
+    margin-bottom: 16px;
+    width: 80%;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 700;
+}
+.spanseccond{
+    margin: 0 auto;
+    width: 80%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 0.6);
+}
+
+#stoneSubmitBox{
+    margin: 0 auto;
+    padding: 20px 0 20px 0;
+    max-width: 80%;
+    width: 100%;
+}
+
 /* 태이블 */
 
 
@@ -175,7 +254,61 @@
     min-width: 469px !important;
 }
 
+.labelBox{
+    margin-top: 20px;
+    width: 100%;
+    font-size: 21px;
+    text-align: left;
 
+}
+
+.labelBox span{
+    color: #fc9300;
+}
+
+.inputBox{
+    width: 100%;
+    text-align: left;
+}
+
+.inputBox input{
+    width: 100%;
+    height: 39px;
+}
+
+
+#stoneSubmitButton{
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 90%;
+    height: 100px;
+    text-align: right;
+}
+
+#stoneSubmitButton input{
+    margin-top: 20px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    margin-left: 10px;
+    width: 170px;
+    height: 57px;
+    color: #999;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #fff;
+}
+
+#stoneSubmitButton .col-12{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+#stoneSubmitButton input:last-child{
+    background-color: #ffaa34;
+    color: #fff;
+    border: 1px solid #ffaa34;
+}
 
 table{
     width: 100%;

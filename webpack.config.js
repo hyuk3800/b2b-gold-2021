@@ -10,6 +10,7 @@ module.exports = {
         orderUpload:"./src/client/js/orderUpload.js",
         home1:"./src/client/js/home1.js",
         client1:"./src/client/js/client.js",
+        stone:"./src/client/js/stone.js",
     },
     mode: "development",
     watch: true,

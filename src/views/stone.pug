@@ -5,6 +5,9 @@ block links
     link(rel="stylesheet", href="/static/css/stone.css")
     link(rel="stylesheet", href="/static/css/components/footer.css")
 
+block scripts 
+    script(defer, src="/assets/js/stone.js") 
+
 block content 
     div(class="container stonemain")
         form(method="POST")
@@ -17,7 +20,7 @@ block content
                             img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움") 
                 div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
                     div(class="col-5 col-md-6 col-lg-5 stoneSave")
-                        button(type="button") 스톤 추가등록
+                        button#stoneButton(type="button") 스톤 추가등록
             div(class="row searchMyBox")
                 div(class="col-12 col-sm-6")
                     div(class="searchbox")
@@ -58,16 +61,53 @@ block content
         div(class="numlist")
             div(class="numnum on")
                 span 1
-    form(method="POST")
-        label(for="name") 스톤명*
-        input(type="text", name="name", required, id="name", placeholder="스톤명을 입력해주세요 ex)오닉스") 
-        label(for="weight") 표준 중량*
-        input(type="text", name="weight", required, id="weight", placeholder="중량을 입력해주세요") 
-        label(for="purchasePrice") 매입 가격*
-        input(type="text", name="purchasePrice", required, id="purchasePrice", placeholder="매입 가격을 입력해주세요") 
-        label(for="sellingPrice") 판매 가격*
-        input(type="text", name="sellingPrice", required, id="sellingPrice", placeholder="판매 가격을 입력해주세요") 
-        label(for="description") 비고
-        input(type="text", name="description", id="description") 
-        input(type="submit", value="등록")
+    form(method="POST" class="postForm")
+        #bgbtn
+        div.postBox    
+            .row.stonetitle
+                .col-12 
+                    .spanfirst
+                        span 스톤 등록
+                    .spanseccond    
+                        span * 표시가 있는 경우 필수 입력사항입니다. 반드시 입력해주세요
+            .row#stoneSubmitBox    
+             
+                div.col-12
+                    div.labelBox    
+                        label(for="name") 스톤명
+                            span *
+                    div.inputBox    
+                        input(type="text", name="name", required, id="name", placeholder="스톤명을 입력해주세요 ex)오닉스") 
+               
+                div.col-12
+                    div.labelBox   
+                        label(for="weight") 표준 중량
+                            span *
+                    div.inputBox 
+                        input(type="text", name="weight", required, id="weight", placeholder="중량을 입력해주세요") 
+              
+                div.col-12
+                    div.labelBox    
+                        label(for="purchasePrice") 매입 가격
+                            span *
+                    div.inputBox    
+                        input(type="text", name="purchasePrice", required, id="purchasePrice", placeholder="매입 가격을 입력해주세요") 
+              
+                div.col-12
+                    div.labelBox    
+                        label(for="sellingPrice") 판매 가격
+                            span *
+                    div.inputBox    
+                        input(type="text", name="sellingPrice", required, id="sellingPrice", placeholder="판매 가격을 입력해주세요") 
+     
+                div.col-12
+                    div.labelBox    
+                        label(for="description") 비고
+                    div.inputBox    
+                        input(type="text", name="description", id="description") 
+             
+            .row#stoneSubmitButton
+                .col-12
+                    input#offButton(type="button", value="취소")
+                    input(type="submit", value="등록")
     include ./partials/footer

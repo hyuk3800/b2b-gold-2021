@@ -56,3 +56,27 @@ function sample4_execDaumPostcode() {
 const startingsearch = document.querySelector("#startingsearch");
 
 startingsearch.addEventListener("click", sample4_execDaumPostcode);
+
+
+
+
+
+const openClient = document.querySelector("#openClient");
+const postForm = document.querySelector("#postForm");
+
+const bgOff = document.querySelector("#bgOff");
+const removeOn = document.querySelector("#removeOn");
+
+const openClientOn = () => {
+    postForm.classList.add("on");
+    postForm.style.transition = "";
+};
+const openClientOff = () => {
+    postForm.classList.remove("on");
+    postForm.style.transition = "height 0s .5s";
+};
+
+
+openClient.addEventListener("click", openClientOn);
+bgOff.addEventListener("click", openClientOff);
+removeOn.addEventListener("click", openClientOff);

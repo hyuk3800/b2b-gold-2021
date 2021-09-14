@@ -556,7 +556,7 @@ block content
                             span 기타 공임 정보
                     div(class="col-6 mttbox2")
                         div(class="mtt3")
-                            button(type="button") 추가하기
+                            button#etcPluseBtn(type="button") 추가하기
                 div(class="row")
                     div(class="col-12")
                         table 
@@ -568,6 +568,43 @@ block content
                                     th 수량
                                     th 설명
                                     th 삭제
+                            tbody#etcTbody
+                                tr
+                                    td
+                                        div
+                                            input(type="text", name="etcName" placeholder="이름")
+                                    td
+                                        div
+                                            input(type="number", name="etcPrice" placeholder="가격(개당)")
+                                    td
+                                        div
+                                            input(type="number", placeholder="가격(총가격)")
+                                    td
+                                        div
+                                            input(type="number", name="etcQuantuty" placeholder="수량")
+                                    td
+                                        div
+                                            input(type="text", name="etcDescription" placeholder="설명")
+                                    td
+                                        button 삭제
+                                tr
+                                    td
+                                        div
+                                            input(type="text", name="etcName" placeholder="이름")
+                                    td
+                                        div
+                                            input(type="number", name="etcPrice" placeholder="가격(개당)")
+                                    td
+                                        div
+                                            input(type="number", placeholder="가격(총가격)")
+                                    td
+                                        div
+                                            input(type="number", name="etcQuantuty" placeholder="수량")
+                                    td
+                                        div
+                                            input(type="text", name="etcDescription" placeholder="설명")
+                                    td
+                                        button 삭제
                 div(class="row endbox")
                     div(class="col-12 btnbtn")
                         button(class="ctlogBox clossbtn") 취소

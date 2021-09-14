@@ -20,7 +20,7 @@ block content
                          img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움")
             div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
                     div(class="col-5 col-md-6 col-lg-5 stoneSave")
-                        button(type="button") 등록하기
+                        button#openClient(type="button") 등록하기
         div(class="row searchMyBox")
             div(class="col-12 col-sm-6")
                 form(method="GET",class="searchbox")
@@ -92,65 +92,97 @@ block content
             div(class="numlist")
                 div(class="numnum on")
                     span 1
-    form(method="POST", class="container")
-        
-        div(class="row")
-            span 거래처구분*
-            select(name="clientType", required)
-                option(value="판매처") 판매처 
-                option(value="매입처") 매입처
-                option(value="기타") 기타
-        
-            span 상호명*
-            input(type="text", name="clientName", placeholder="상호명")
-        
-        div(class="row")
-            span 사업자
-            input(type="text", name="buisnessName", placeholder="사업체")
-            input(type="text", name="buisnessNumber", placeholder="사업자번호")
-            input(type="text", name="representative", placeholder="대표자명")
-            input(type="text", name="representativeNumber", placeholder="대표자 연락처")
-        
-        div(class="row")
-            span 주소
-            <input type="text", name="postNumber" id="sample4_postcode" placeholder="우편번호">
-            <input type="button" id="startingsearch" value="우편번호 찾기"><br>
-            <input type="text" name="addressLine1" id="sample4_roadAddress" placeholder="도로명주소">
-            <input type="text" name="addressLine2" id="sample4_jibunAddress" placeholder="지번주소">
-            <span id="guide" style="color:#999;display:none"></span>
-            <input type="text" name="addressLine3" id="sample4_detailAddress" placeholder="상세주소">
-            <input type="text" name="addressLine4" id="sample4_extraAddress" placeholder="참고항목">
-        div(class="row")
-            span 옵션
-            select(name="harry")
-                option(value="1.10") 1.10 
-                option(value="1.09") 1.09
-                option(value="1.07") 1.07
-                option(value="1.06") 1.06
-                option(value="1.00") 1.00
-            select(name="transactionType")
-                option(value="중량") 중량 
-                option(value="시세") 시세
-            select(name="vat")
-                option(value="0%") 0% 
-                option(value="10%") 10%
-        
-        div(class="row")
-            span 연락처
-            input(type="text", name="phone", placeholder="전화번호")
-            input(type="text", name="fax", placeholder="팩스번호")
-        div(class="row")
-            span 담당자
-            input(type="text", name="managerName", placeholder="담당자명")
-            input(type="text", name="managerNumber", placeholder="담당자연락처")
-        div(class="row")
-            span 통상
-            input(type="text", name="commonName", placeholder="통상명")
-        div(class="row")
-            span 비고
-            input(type="text", name="description")
+    form(method="POST", id="postForm" class="")
+        #bgOff
+        .postBox.container
+            .row 
+                .col-12#postT
+                    .postTitle    
+                        span 거래처 등록
+                        .postTitle2
+                            span *표시가 있는 경우 필수 입력사항입니다.반드시 입력해주세요
+            .postBody    
+                div(class="row")
+                    .col-3.postb    
+                        span 거래처구분
+                        span.star *
+                    .col-3.postb
+                        select(name="clientType", required)
+                            option(value="판매처") 판매처 
+                            option(value="매입처") 매입처
+                            option(value="기타") 기타
+                    .col-3.postb  
+                        span 상호명
+                        span.star *
+                    .col-3.postb  
+                        input(type="text", name="clientName", placeholder="상호명")
 
-        input(type="submit" value="등록")
-        
+                    .col-3.postb 
+                        span 사업자
+                    .col-4.postb
+                        input(type="text", name="buisnessName", placeholder="사업체")
+                        input(type="text", name="representative", placeholder="대표자명")
+                    .col-5.postb
+                        input(type="text", name="buisnessNumber", placeholder="사업자번호")
+                        input(type="text", name="representativeNumber", placeholder="대표자 연락처")
+
+                    .col-3.postb
+                        span 주소
+                    .col-4.postb
+                        <input type="text", name="postNumber" id="sample4_postcode" placeholder="우편번호">
+                    .col-2.postb
+                        <input type="button" id="startingsearch" value="검색">
+                    .col-3.postb
+                    .col-3.postb
+                    .col-9.postb.mom
+                        <input type="text" name="addressLine1" id="sample4_roadAddress" placeholder="도로명주소">
+                        //- <input type="text" name="addressLine2" id="sample4_jibunAddress" placeholder="지번주소">
+                        <span id="guide" style="color:#999;display:none"></span>
+                        <input type="text" name="addressLine3" id="sample4_detailAddress" placeholder="상세주소">
+                        //- <input type="text" name="addressLine4" id="sample4_extraAddress" placeholder="참고항목">
+                    .col-3.postb
+                        span 옵션
+                    .col-3.postb
+                        select(name="harry")
+                            option(value="1.10") 1.10 
+                            option(value="1.09") 1.09
+                            option(value="1.07") 1.07
+                            option(value="1.06") 1.06
+                            option(value="1.00") 1.00
+                    .col-3.postb
+                        select(name="transactionType")
+                            option(value="중량") 중량 
+                            option(value="시세") 시세
+                    .col-3.postb
+                        select(name="vat")
+                            option(value="0%") 0% 
+                            option(value="10%") 10%
+
+                    .col-3.postb
+                        span 연락처
+                    .col-4.postb
+                        input(type="text", name="phone", placeholder="전화번호")
+                    .col-5.postb
+                        input(type="text", name="fax", placeholder="팩스번호")
+                    .col-3.postb
+                        span 담당자
+                    .col-4.postb
+                        input(type="text", name="managerName", placeholder="담당자명")
+                    .col-5.postb
+                        input(type="text", name="managerNumber", placeholder="담당자연락처")
+                    .col-3.postb
+                        span 통상
+                    .col-4.postb
+                        input(type="text", name="commonName", placeholder="통상명")
+                    .col-5.postb
+                    .col-3.postb
+                        span 비고
+                    .col-9.postb
+                        textarea(type="text" class="bigo" name="description")
+            .row#clientSubmitButton
+                .col-12    
+                    input#removeOn(type="button" value="취소")
+                    input(type="submit" value="등록")
+
     include ./partials/footer
                         
