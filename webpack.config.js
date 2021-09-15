@@ -11,6 +11,7 @@ module.exports = {
         home1:"./src/client/js/home1.js",
         client1:"./src/client/js/client.js",
         stone:"./src/client/js/stone.js",
+        quote:"./src/client/js/quote.js",
     },
     mode: "development",
     watch: true,

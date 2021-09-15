@@ -15,7 +15,10 @@ block content
             div(class="col-md-6 col-12")
                 div(class="stoneFree")
                     span #{pageTitle}
-                    span (전체 n개)
+                    if clients
+                        span (전체 #{clients.length}개)
+                    else 
+                        span (전체 #{user.clients.length}개)
                     a(href="")
                          img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움")
             div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
@@ -27,6 +30,7 @@ block content
                     input(class="searching", name="keyword", type="text" placeholder="검색어를 입력해주세요")
                     button(id="btn_searching") 
                         i(class="las la-search")
+    form(class="container tableStart" method="POST")
         div(class="row deleteOrViewBox")
             div(class="col-4 col-md-2")
                 div(class="clientfilterbox")
@@ -38,14 +42,13 @@ block content
             div(class="col-8 col-sm-6 deleteOrView")
                 div(class="deleteMan dVBox")
                     img(src="../../../static/images/삭제하기.png", alt="삭제하기")
-                    span 삭제하기
+                    button#deleteBtn(type="submit" name="deleteBtn" value="삭제하기") 삭제하기
                 div(class="ViewMan dVBox")
                     select(name="page-view-counter" id="select10_50")
                             option(value="10View") 10View   
                             option(value="20View") 20View   
                             option(value="30View") 30View   
                             option(value="50View") 50View
-    div(class="container tableStart")
         div(class="hiddenBox")
             div(class="row")
                 div(class="col-12 tabletrthtd")
@@ -182,7 +185,7 @@ block content
             .row#clientSubmitButton
                 .col-12    
                     input#removeOn(type="button" value="취소")
-                    input(type="submit" value="등록")
+                    input(type="submit" name="clientSubmitBtn" value="등록")
 
     include ./partials/footer
                         

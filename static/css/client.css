@@ -98,6 +98,7 @@
 
 .deleteOrViewBox {
     margin-top: 24px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
 }
@@ -171,8 +172,8 @@
 /* 표 */
 
 .tableStart {
-    margin-top: 20px;
-    min-height: 300px;
+    
+    min-height: 500px;
 
 }
 
@@ -427,6 +428,20 @@ td {
     background-color: #ffaa34;
     color: #fff;
     border: 1px solid #ffaa34;
+}
+
+
+#deleteBtn{
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+}
+
+#deleteBtn:focus{
+    border: none;
+    outline: none;
 }
 
 

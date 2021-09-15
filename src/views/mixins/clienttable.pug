@@ -4,7 +4,7 @@ mixin clientTable(client)
                 td
                 //- td #{client.findIndex((i) => i._id == client._id)}
                 td 
-                    input(name="clickClient" id="clickClient" type="checkbox")
+                    input(name="clickClient" id="clickClient" type="checkbox" value=`${client._id}`)
                 td #{client.clientType}
                 td #{client.clientName}
                 td #{client.buisnessman.buisnessName}

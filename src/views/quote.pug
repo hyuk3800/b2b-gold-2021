@@ -5,6 +5,9 @@ block links
     link(rel="stylesheet", href="/static/css/quote.css")
     link(rel="stylesheet", href="/static/css/components/footer.css")
 
+block scripts 
+    script(defer, src="/assets/js/quote.js") 
+
 block content
     div(class="container stonemain")
         div(class="row spaceBox")
@@ -16,7 +19,8 @@ block content
                         img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움") 
             div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
                 div(class="col-5 col-md-6 col-lg-5 stoneSave")
-                    button(type="button") 등록하기
+                    button#openButton(type="button") 등록하기
+    form(class="container quoteStart" method="POST")
         div(class="row")
             div(class="col-12 col-md-6 searchMyBox")
                 div(class="calinder cal1")
@@ -31,14 +35,13 @@ block content
             div(class="col-8 col-sm-6 deleteOrView")
                 div(class="deleteMan dVBox")
                     img(src="../../../static/images/삭제하기.png", alt="삭제하기")
-                    span 삭제하기
+                    button#deleteBtn(name="deleteBtn" type="submit" value="삭제하기") 삭제하기
                 div(class="ViewMan dVBox")
                     select(name="page-view-counter" id="select10_50") 
                         option(value="10View") 10View   
                         option(value="20View") 20View   
                         option(value="30View") 30View   
                         option(value="50View") 50View
-    div(class="container quoteStart")
         div(class="row quoteBox")
             div(class="col-10 col-md-11")
                 table   
@@ -58,8 +61,32 @@ block content
         div(class="numlist")
             div(class="numnum on")
                 span 1
-    form(method="POST")
-        input(type="number", name="frontquote",  placeholder="앞시세", required)
-        input(type="number", name="backquote",  placeholder="뒷시세", required)
-        button(type="submit") 등록
+    form(method="POST" id="postForm")
+        #bgOff 
+        .postBox.container
+            .row.quoteTitle
+                .col-12 
+                    .spanfirst.postInBox
+                        span 시세 등록
+                    .spanlast.postInBox 
+                        span *표시가 있는 경우 필수 입력사항입니다. 반드시 입력해주세요
+            .submitBox
+                .row
+                    .col-12
+                        .spanBox.postInBox   
+                            span 앞시세
+                            span *
+                        .inputBox.postInBox
+                            input(type="number", name="frontquote",  placeholder="앞시세", required)
+                .row
+                    .col-12
+                        .spanBox.postInBox  
+                            span 뒷시세
+                            span *
+                        .inputBox.postInBox
+                            input(type="number", name="backquote",  placeholder="뒷시세", required)
+            .row#qutoeSubmitButton
+                .col-12
+                    button#offButton(type="button") 닫기
+                    button(name="qutoeSubmitBtn" type="submit" value="등록") 등록
     include ./partials/footer

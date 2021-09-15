@@ -96,6 +96,7 @@
 
 .deleteOrViewBox{
     margin-top: 24px;
+    margin-bottom: 8px;
     display: flex;
     justify-content: flex-end;
 }
@@ -237,7 +238,7 @@
 }
 
 .tableStart{
-    margin-top: 8px;
+
     min-height: 300px;
    
     
@@ -388,8 +389,18 @@ td{
     transform: translate(-50%,-50%);
 }
 
+#deleteBtn{
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+}
 
-
+#deleteBtn:focus{
+    border: none;
+    outline: none;
+}
 
 /* 하단 박스 mt */
 .bottombox{

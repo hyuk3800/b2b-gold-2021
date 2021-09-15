@@ -10,12 +10,14 @@ block scripts
 
 block content 
     div(class="container stonemain")
-        form(method="POST")
             div(class="row spaceBox")
                 div(class="col-sm-6 col-12")
                     div(class="stoneFree")
                         span #{pageTitle}
-                        span (전체 #{user.stones.length}개)
+                        if stones
+                            span (전체 #{stones.length}개)
+                        else
+                            span (전체 #{user.stones.length}개)
                         a(href="")
                             img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움") 
                 div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
@@ -23,22 +25,22 @@ block content
                         button#stoneButton(type="button") 스톤 추가등록
             div(class="row searchMyBox")
                 div(class="col-12 col-sm-6")
-                    div(class="searchbox")
-                        input(class="searching" type="text" placeholder="스톤명, 비고(으)로 검색")
+                    form(class="searchbox" method="GET")
+                        input(class="searching" type="text" name="keyword" placeholder="스톤명, 비고(으)로 검색")
                         button(id="btn_searching") 
                             i(class="las la-search")
-            div(class="row deleteOrViewBox")
-                div(class="col-8 col-sm-6 deleteOrView")
-                    div(class="deleteMan dVBox")
-                        img(src="../../../static/images/삭제하기.png", alt="삭제하기")
-                        span 삭제하기
-                    div(class="ViewMan dVBox")
-                        select(name="page-view-counter" id="select10_50")
-                            option(value="10View") 10View   
-                            option(value="20View") 20View   
-                            option(value="30View") 30View   
-                            option(value="50View") 50View
-    div(class="container tableStart")    
+    form(method="POST" class="container tableStart")    
+        div(class="row deleteOrViewBox")
+            div(class="col-8 col-sm-6 deleteOrView")
+                div(class="deleteMan dVBox" method="POST")
+                    img(src="../../../static/images/삭제하기.png", alt="삭제하기")
+                    button#deleteBtn(type="submit" name="deleteBtn" value="삭제하기") 삭제하기
+                div(class="ViewMan dVBox")
+                    select(name="page-view-counter" id="select10_50")
+                        option(value="10View") 10View   
+                        option(value="20View") 20View   
+                        option(value="30View") 30View   
+                        option(value="50View") 50View
         div(class="tablePluseBox")
             div(class="row breackingBoxSize")
                 div(class="col-12 tablebox1")
@@ -53,15 +55,21 @@ block content
                                 th(class="sales-price") 판매단가
                                 th(class="purchasePrice") 매입단가
                                 th(class="desc") 비고
-                        each stone in user.stones
-                            +stoneTable(stone)
+                        if stones
+                            each stone in stones
+                                +stoneTable(stone)
+                            else 
+                                div
                         else
-                            div
+                            each stone in user.stones
+                                +stoneTable(stone)
+                            else
+                                div
     div(class="col-12")
         div(class="numlist")
             div(class="numnum on")
                 span 1
-    form(method="POST" class="postForm")
+    form(method="POST" class="postForm" id="postForm")
         #bgbtn
         div.postBox    
             .row.stonetitle
@@ -109,5 +117,5 @@ block content
             .row#stoneSubmitButton
                 .col-12
                     input#offButton(type="button", value="취소")
-                    input(type="submit", value="등록")
+                    input(type="submit",name="stoneSubmit" value="등록")
     include ./partials/footer

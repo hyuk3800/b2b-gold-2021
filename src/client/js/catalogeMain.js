@@ -55,16 +55,25 @@ for (let i = 0; i < clickThis.length; i++) {
         if (e.target.checked) {
             //    console.log(clickThis.value.find(e.target.value));
 
-            const wageBoxOnOff = () => {
-                wagebox.classList.toggle("on");
+            const wageBoxOn = () => {
+                wagebox.classList.add("on");
                 console.log("hihi")
+                wagebox.style.transition = "";
                 // if(e.target.value === clickThis[i].value){
 
                 // }
             };
-            offbutton.addEventListener("click", wageBoxOnOff);
-            onbutton.addEventListener("click", wageBoxOnOff);
-            wageboxcent.addEventListener("click", wageBoxOnOff);
+            const wageBoxOff = () => {
+                wagebox.classList.remove("on");
+                console.log("hihi")
+                wagebox.style.transition = "height 0s .5s";
+                // if(e.target.value === clickThis[i].value){
+
+                // }
+            };
+            offbutton.addEventListener("click", wageBoxOff);
+            onbutton.addEventListener("click", wageBoxOn);
+            wageboxcent.addEventListener("click", wageBoxOff);
         }
         console.log("hi");
 
