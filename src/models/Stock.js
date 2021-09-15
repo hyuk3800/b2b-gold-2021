@@ -10,3 +10,5 @@ const stockSchema = new mongoose.Schema({
 
 const goldStock = mongoose.model("Stock", stockSchema);
 export default goldStock;
+
+////이거랑 나머지들은 별계이다!
