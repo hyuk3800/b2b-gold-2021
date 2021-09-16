@@ -1,0 +1,179 @@
+.startsearch{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+#bgBg{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.searcOrderhBox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90% !important;
+    background-color: #fff;
+    border: 1px solid rgba(136, 136, 136, 0.4);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.orderTitleBox{
+    padding: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    background-color: #f1f5f7;
+    border-bottom: 1px solid rgba(136, 136, 136, 0.4);
+}
+
+.orderButtonBox1{
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.ordername{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+@media (max-width: 580px){
+
+    .ordername{
+        flex-direction: column;
+        font-size: 20px;
+    }
+
+}
+
+.goOrderUpload{
+    text-align: right;
+}
+.goOrderUpload button{
+    width: 100%;
+    height: 55px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffaa34;
+    box-shadow: 1px 1px 2px 0 #999;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.orderSelect{
+    margin-top: 16px;
+}
+
+.searcOrderhBox1{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.searcOrderhBox2{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+
+.calBox2{
+    margin-top: 8px;
+    width: 240px;
+}
+
+.calBox2 input{
+    width: 80px;
+}
+
+.orderSelectBox{
+    display: flex;
+    margin-top: 8px;
+}
+.orderSelectBox select{
+    margin-left: 8px;
+}
+.orderSelectBox select:first-child{
+    margin-left: 0;
+}
+
+.searchOrder{
+    margin-top: 8px;
+}
+.searchOrder input{
+    width: 85%;
+    height: 38px;
+}
+.searchOrder button{
+    width: 15%;
+    height: 38px;
+}
+
+.orderSelectMBox{
+    margin-top: 32px;
+    justify-content: space-between;
+}
+
+
+.orderSelectBox2{
+    text-align: left;
+    width: 138px;
+}
+
+.orderSelectBox3{
+    text-align: right;
+
+}
+
+
+.orderTableBox{
+    margin-top: 8px;
+}
+
+
+
+.orderTableBox table{
+    width: 100%;
+    font-size: 12px;
+}
+
+.orderTableBox thead{
+    height: 35px;
+    border: 1px solid rgba(136, 136, 136, 0.4);
+    background-color: #f1f5f7;
+}
+.orderTableBox th{
+    border-left: 1px solid rgba(136, 136, 136, 0.4);
+    /* border-right: 1px solid rgba(136, 136, 136, 0.4); */
+}
+
+
+
+
+
+.orderButtonBox2{
+    justify-content: right;
+}
+.orderButtonBox2 .col-5{
+    display: flex;
+    justify-content: right;
+}
+.orderButtonBox2 button{
+    width: 92px;
+    height: 36px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #dbb3ff;
+    font-size: 12px;
+    font-weight: 500;
+    color: #666;
+    box-shadow: 1px 1px 3px 0 rgba(153, 153, 153);
+}

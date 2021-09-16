@@ -4,7 +4,10 @@ include ../mixins/stockuploadtable
 block links
     link(rel="stylesheet", href="/static/css/stock/stockupload.css")
     link(rel="stylesheet", href="/static/css/components/footer.css")   
+    link(rel="stylesheet", href="/static/css/stock/startsearch.css")   
 
+block scripts 
+    script(src="/assets/js/stockUpload.js") 
 
 block content 
     div(class="container orderSaveBox")
@@ -25,7 +28,8 @@ block content
             div(class="col-6 calinderBox")
                 div(class="calinder")
                     img(src="../../../../static/images/calendar.png", alt="calendar")
-                div(class="calData") 2021-07-13
+                div(class="calData") 
+                    input(name="registrationdate" value="2021-07-13") 
         div(class="row tableLongBoxBox")
             div(class="tableLongBox")
                 div(class="col-12 vybox")
@@ -74,18 +78,18 @@ block content
                             tbody
                                 tr
                                     td
-                                        button(class="trsBTN")
+                                        button(type="button" class="trsBTN")
                                     td
-                                        input(type="text")
+                                        input(type="text" name="orderNumber")
                                         button(class="secbtn")
                                     td
-                                        input(type="text")
+                                        input(type="text" name="modelNumber")
                                         button(class="secbtn")
                                     td
-                                        input(type="text")
+                                        input(type="text" name="manufacturer")
                                         button(class="secbtn")
                                     td
-                                        select(name="gramBox" class="selBoxStock" id="gramBox")
+                                        select(name="material" class="selBoxStock" id="gramBox")
                                             option(value="")
                                             option(value="10K") 10K
                                             option(value="14K") 14K
@@ -113,25 +117,25 @@ block content
                                             option(value="W/P") W/P
                                             option(value="블랙") 블랙
                                     td
-                                        input(type="text")
+                                        input(type="number" name="quantity")
                                     td
-                                        input(type="text")
+                                        input(type="number" name="basicWage")
                                     td
-                                        input(type="text")
+                                        input(type="number" name="additionWage")
                                     td
-                                        input(type="text")
+                                        input(type="number" name="stoneWage1")
                                     td
-                                        input(type="text")
+                                        input(type="number" name="stoneWage2")
                                     td
-                                        input(type="text")
+                                        input(type="number" name="stoneWeight3")
                                     td
-                                        input(type="text")
+                                        input(type="number")
                                     td
-                                        input(type="text" disabled)
+                                        input(type="number" disabled name="goldWeight")
                                     td
-                                        input(type="text" disabled)
+                                        input(type="text" disabled name="stoneWeight")
                                     td
-                                        select(name="MAIPHARI" class="selBoxStock" id="MAIPHARI")
+                                        select(name="harry" class="selBoxStock" id="MAIPHARI")
                                             option(value="1.10") 1.10
                                             option(value="1.09") 1.09
                                             option(value="1.07") 1.07
@@ -139,25 +143,119 @@ block content
                                             option(value="1.00") 1.00
 
                                     td
-                                        input(type="text")
+                                        input(type="number" name="stoneQuantity")
                                     td
-                                        input(type="text")
+                                        input(type="number" name="stoneQuantity2")
                                     td
-                                        select(name="MAIPHARI" class="selBoxStock" id="MAIPHARI")
+                                        select(name="unitPrice" class="selBoxStock" id="MAIPHARI")
                                             option(value="N") N
                                             option(value="Y") Y
                                     td
-                                        input(type="text")
+                                        input(type="text" name="stoneName")
                                     td
-                                        input(type="text")
+                                        input(type="text" name="stoneName2")
                                     td
-                                        input(type="text")
+                                        input(type="text" name="size")
                                     td
-                                        input(type="text")
+                                        input(type="text" name="description")
                                     td
-                                        input(type="text")
+                                        input(type="number" name="purchaseWage")
                                     td
-                                        input(type="text")
+                                        input(type="number" name="eggPurchasePrice")
         div(class="row")
             div(class="pluseBox")
                 button(id="plsbtn") 추가
+    .startsearch
+        #bgBg 
+        .searcOrderhBox.container
+            .row.orderTitleBox 
+                .col-12 
+                    .orderTitle 
+                        span 주문번호 검색
+            .searcOrderhBox1
+                .row.orderButtonBox1
+                    .col-6.ordername
+                        span 주문관리&nbsp;
+                        span (전체 0개)
+                    .col-4.col-md-3.col-xl-2.goOrderUpload
+                        button(type="button") 주문등록
+            .searcOrderhBox2
+                .row.orderSelect
+                    .col-12.col-md-4
+                        .calBox2
+                           input#orderCldbox1(type="text" value="2010.1.1.")
+                           input#orderCldbox2(type="text" value="")
+                    .col-12.col-md-4
+                        .orderSelectBox
+                           select(name="")
+                               option(value="구분") 구분 
+                               option(value="접수일") 접수일 
+                               option(value="출고일") 출고일
+                           select(name="") 
+                               option(value="정렬") 정렬 
+                               option(value="출고일") 출고일 
+                               option(value="접수일") 접수일
+                               option(value="모델번호") 모델번호 
+                               option(value="사이즈") 사이즈 
+                           select(name="") 
+                               option(value="정렬순서") 정렬순서
+                               option(value="오름차순") 오름차순
+                               option(value="내림차순") 내림차순
+                    .col-12.col-md-4
+                       .searchOrder
+                           input(type="text")
+                           button 
+                .row.orderSelectMBox
+                    .col-4
+                        .orderSelectBox2
+                            select(name="")
+                                option(value="필터") 필터  
+                                option(value="함량") 함량  
+                                option(value="색상") 색상  
+                                option(value="단계") 단계
+                                option(value="거래처") 거래처 
+                                option(value="제조사") 제조사
+                            select(name="")
+                                option(value="필터") 필터  
+                                option(value="함량") 함량  
+                                option(value="색상") 색상  
+                                option(value="단계") 단계
+                                option(value="거래처") 거래처 
+                                option(value="제조사") 제조사
+                    .col-4.orderSelectBox3
+                       select(name="") 
+                           option(value="10View") 10 View 
+                           option(value="25View") 25 View
+                           option(value="50View") 50 View
+                           option(value="100View") 100 View
+                .row 
+                    .col-12.orderTableBox
+                       table 
+                           thead
+                               tr
+                                   th(rowspan="2") No
+                                   th(rowspan="2")
+                                   th 출고일
+                                   th(rowspan="2") 거래처
+                                   th(rowspan="2") 사진
+                                   th(rowspan="2") 모델번호
+                                   th 함량
+                                   th 메인스톤
+                                   th(rowspan="2") 사이즈
+                                   th(rowspan="2") 수량
+                                   th(rowspan="2") 비고
+                                   th 제조사
+                                   th(rowspan="2") 단계 구성
+                               tr 
+                                   th 접수일
+                                   th 색상
+                                   th 보조스톤
+                                   th 제조No
+                           tbody
+
+                .row
+                .row.orderButtonBox2
+                    .col-5
+                        button(type="button") 취소
+        .searcModelhBox
+        .searchManuBox 

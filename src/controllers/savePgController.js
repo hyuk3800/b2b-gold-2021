@@ -1,4 +1,5 @@
 import goldProduct from "../models/Product";
+import goldStock from "../models/Stock";
 import User from "../models/User";
 
 
@@ -337,28 +338,30 @@ export const postUpload = async (req, res) => {
     //     etcDescription,
     // );
 
-      let stone2 = [];
-if(stoneName2){
-    for (let i = 0; i < stoneName2.length; i++) {
-        stone2.push({
-            stoneName2: stoneName2[i],
-            stoneQuantity2: stoneQuantity2[i],
-            stoneDescription2: stoneDescription2[i],
-            stoneWeight22: stoneWeight22[i],
-            stonePurchasePrice2: stonePurchasePrice2[i],
-            stoneSellingPrice2: stoneSellingPrice2[i]
-        });
-    };}
+    let stone2 = [];
+    if (stoneName2) {
+        for (let i = 0; i < stoneName2.length; i++) {
+            stone2.push({
+                stoneName2: stoneName2[i],
+                stoneQuantity2: stoneQuantity2[i],
+                stoneDescription2: stoneDescription2[i],
+                stoneWeight22: stoneWeight22[i],
+                stonePurchasePrice2: stonePurchasePrice2[i],
+                stoneSellingPrice2: stoneSellingPrice2[i]
+            });
+        };
+    }
     let etc = [];
-    if(etcName){
-    for (let i = 0; i < etcName.length; i++) {
-        etc.push({
-            etcName: etcName[i],
-            etcPrice: etcPrice[i],
-            etcQuantuty: etcQuantuty[i],
-            etcDescription: etcDescription[i],
-        });
-    };}
+    if (etcName) {
+        for (let i = 0; i < etcName.length; i++) {
+            etc.push({
+                etcName: etcName[i],
+                etcPrice: etcPrice[i],
+                etcQuantuty: etcQuantuty[i],
+                etcDescription: etcDescription[i],
+            });
+        };
+    }
     // console.log(etcName2.length);
     // console.log(stone2)
     // console.log("요고", additionWage);
@@ -472,7 +475,34 @@ export const stockMain = (req, res) => {
 };
 export const stockUpload = (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
+    const { user: {_id} } = req.session;
+    const {
+        orderNumber,
+        modelNumber,
+        manufacturer,
+        material,
+        color,
+        quantity,
+        basicWage,
+        additionWage,
+        stoneWage1,
+        stoneWage2,
+        stoneWeight3,
+        goldWeight,
+        stoneWeight,
+        harry,
+        stoneQuantity,
+        stoneQuantity2,
+        unitPrice,
+        stoneName,
+        stoneName2,
+        size,
+        description,
+        purchaseWage,
+        eggPurchasePrice,
+    } = req.body;
     console.log("안녕!!!!!!!!!!!");
+    // try
 
     return res.render("stock/stockupload", {
         pageTitle: "재고 등록",

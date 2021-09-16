@@ -119,7 +119,8 @@ window.onload = function () {
         showMonthAfterYear: true,
         yearSuffix: '년'
     });
-
+    
+    $('.ui-datepicker ').css({ "margin-left" : "141px", "margin-top": "-223px"});  //달력(calendar) 위치
     // $(function () {
     // });
 
