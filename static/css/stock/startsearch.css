@@ -2,19 +2,30 @@
     position: fixed;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 0%;
     z-index: 9999;
+    overflow: hidden;
+}
+
+.startsearch.on{
+    height: 100%;
 }
 
 #bgBg{
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.startsearch.on #bgBg{
+    opacity: 1;
 }
 
 .searcOrderhBox{
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 90% !important;
@@ -22,7 +33,15 @@
     border: 1px solid rgba(136, 136, 136, 0.4);
     border-radius: 5px;
     overflow: hidden;
+    opacity: 0;
+    transition: top .5s, opacity .5s, left 0 .5s;
 }
+.searcOrderhBox.on{
+    top: 50%;
+    opacity: 1;
+}
+
+
 .orderTitleBox{
     padding: 20px;
     font-size: 24px;
@@ -85,12 +104,16 @@
 
 
 .calBox2{
+    display: flex;
     margin-top: 8px;
     width: 240px;
 }
 
 .calBox2 input{
+    padding-left: 10px;
     width: 80px;
+    border: none;
+    font-size: 12px;
 }
 
 .orderSelectBox{
@@ -99,6 +122,15 @@
 }
 .orderSelectBox select{
     margin-left: 8px;
+    padding-left: 10px;
+    width: 78px;
+    height: 28px;
+    border-radius: 3px;
+    border: 1px solid #999;
+    background: #fff url("../../images/ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
+    font-size: 12px;
+    font-weight: 600;
+    appearance: none;
 }
 .orderSelectBox select:first-child{
     margin-left: 0;
@@ -106,14 +138,30 @@
 
 .searchOrder{
     margin-top: 8px;
+    display: flex;
 }
 .searchOrder input{
-    width: 85%;
+    width: 90%;
     height: 38px;
+    border: 1px solid #333;
+    border-radius: 5px 0 0 5px ;
 }
 .searchOrder button{
-    width: 15%;
+    position: relative;
+    width: 10%;
     height: 38px;
+    background-color: #333;
+    border: 1px solid #333;
+    border-radius: 0 5px 5px 0;
+    font-size: 26px;
+    color: #fff;
+}
+
+.searchOrder button i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .orderSelectMBox{
@@ -123,8 +171,21 @@
 
 
 .orderSelectBox2{
-    text-align: left;
+    display: flex;
     width: 138px;
+}
+
+.orderSelectBox2 select{
+    margin-left: 8px;
+    padding-left: 10px;
+    width: 78px;
+    height: 28px;
+    border-radius: 3px;
+    border: 1px solid #999;
+    background: #fff url("../../images/ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
+    font-size: 12px;
+    font-weight: 600;
+    appearance: none;
 }
 
 .orderSelectBox3{
@@ -132,6 +193,17 @@
 
 }
 
+.orderSelectBox3 select{
+    padding: 4px 10px 7px 10px;
+    width: 92px;
+    height: 32px;
+    border: 1px solid #999;
+    background: #f1f5f7 url("../../images/ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    appearance: none;
+} 
 
 .orderTableBox{
     margin-top: 8px;
@@ -154,11 +226,21 @@
     /* border-right: 1px solid rgba(136, 136, 136, 0.4); */
 }
 
+.calInBox{
+    display: flex;
+    flex-direction: row-reverse;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid rgba(136, 136, 136, 0.4);
+    overflow: hidden;
+}
 
-
+.calInBox:last-child{
+    border-radius: 0 5px 5px 0;
+}
 
 
 .orderButtonBox2{
+    margin-top: 30px;
     justify-content: right;
 }
 .orderButtonBox2 .col-5{
@@ -176,4 +258,64 @@
     font-weight: 500;
     color: #666;
     box-shadow: 1px 1px 3px 0 rgba(153, 153, 153);
+}
+
+
+.ui-datepicker-trigger{
+    width: 30px;
+    background-color: #f1f5f7;
+    border: none;
+    border-right: 1px solid rgba(153, 153, 153, 0.5);
+}
+
+
+
+
+/* /////////////////////////// */
+
+.searcModelhBox{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 0% !important;
+    background-color: #fff;
+    border: 1px solid rgba(136, 136, 136, 0.4);
+    border-radius: 5px;
+    overflow: hidden;
+    opacity: 0;
+    transition: top .5s, opacity .5s;
+}
+.searcModelhBox.on{
+    max-width:90% !important;
+    top: 50%;
+    opacity: 1;
+}  
+
+.searcModelTitle{
+    padding: 20px 6px 20px 6px;
+    border-bottom: 1px solid #999;
+    background-color: #f1f5f7;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.searcModelSubTitle{
+    margin-top: 8px;
+}
+
+.searcModelSubTitle span{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.inputModel{
+    display: flex;
+    justify-content: flex-end;
+}
+.inputModel input{
+    width: 90%;
+}
+.inputModel button{
+    width: 10%;
 }

@@ -10,252 +10,274 @@ block scripts
     script(src="/assets/js/stockUpload.js") 
 
 block content 
-    div(class="container orderSaveBox")
-        div(class="row")
-            div(class="col-6")
-                div(class="orderName")
-                    a(href="/stock/main", target="_self", class="mntitArrow")
-                    span #{pageTitle} 
-                a(href="", class="icInfoOutline") 
-                    img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움")
-            div(class="col-6 orderBtnBox")
-                button(id="orderBtn") 재고등록
-        div(class="row")
-            div(class="col-12 imgOrderBox")
-                div(class="imgbox")
-                    img(src="../../../../static/images/no_image_available.png", alt="이미지 없음")
-        div(class="row")
-            div(class="col-6 calinderBox")
-                div(class="calinder")
-                    img(src="../../../../static/images/calendar.png", alt="calendar")
-                div(class="calData") 
-                    input(name="registrationdate" value="2021-07-13") 
-        div(class="row tableLongBoxBox")
-            div(class="tableLongBox")
-                div(class="col-12 vybox")
-                    table   
-                        thead 
-                            tr 
-                                th(width="2%" rowspan="2") 취소
-                                th(width="6%" rowspan="2") 주문번호
-                                th(width="6%" style="border-bottom: none;") 모델번호
-                                th(width="6%" style="border-bottom: none;") 제조사
-                                th(width="3%" rowspan="2") 재질
-                                th(width="3%" rowspan="2") 색상
-                                th(width="2%" rowspan="2") 수량
-                                th(colspan="4") 판매단가
-                                th(width="4%" rowspan="2") 개당 <br> 알중량
-                                th(colspan="3") 총중량(g)
-                                th(width="4%" rowspan="2") 매입해리
-                                th(colspan="2") 개당알수
-                                th(width="2%" rowspan="2") 단가상품
-                                th(colspan="2") 스톤
-                                th(width="4%" rowspan="2") 사이즈
-                                th(width="4%" rowspan="2") 비고
-                                th(colspan="2") 매입단가
-                            tr 
-                                th(style="border-top: none;") 
-                                    input(name="clickAll" id="checkedAll" type="checkbox") 
-                                th(style="border-top: none;") 
-                                    input(name="clickAll" id="checkedAll" type="checkbox") 
-                                th(width="4.5%") 기본
-                                th(width="4.5%") 추가
-                                th(width="4.5%") 중심
-                                th(width="4.5%") 보조
-                                th(width="4%") 총중량
-                                th(width="4%") 금중량
-                                th(width="4%") 알중량
-                                th(width="3%") 메인
-                                th(width="3%") 보조
-                                th(width="5%") 매인
-                                th(width="5%") 보조
-                                th(width="4%") 기본
-                                th(width="4%") 스톤
-                        if anotherSaveDb
-                            each product in anotherSaveDb
-                                +stockUploadTable(product)
-                        else
-                            tbody
-                                tr
-                                    td
-                                        button(type="button" class="trsBTN")
-                                    td
-                                        input(type="text" name="orderNumber")
-                                        button(class="secbtn")
-                                    td
-                                        input(type="text" name="modelNumber")
-                                        button(class="secbtn")
-                                    td
-                                        input(type="text" name="manufacturer")
-                                        button(class="secbtn")
-                                    td
-                                        select(name="material" class="selBoxStock" id="gramBox")
-                                            option(value="")
-                                            option(value="10K") 10K
-                                            option(value="14K") 14K
-                                            option(value="18K") 18K
-                                            option(value="22K") 22K
-                                            option(value="순금-995") 순금-995
-                                            option(value="순금-999") 순금-999
-                                            option(value="실버") 실버
-                                            option(value="PT") PT
-                                            option(value="기타") 기타
-                                    td
-                                        select(name="color" class="selBoxStock" id="color")
-                                            option(value="")
-                                            option(value="G") G
-                                            option(value="G/B") G/B
-                                            option(value="G/P") G/P
-                                            option(value="G/R/W") G/R/W
-                                            option(value="G/W") G/W
-                                            option(value="P") P
-                                            option(value="P/W") P/W
-                                            option(value="P/블랙도금") P/블랙도금
-                                            option(value="W") W
-                                            option(value="W/B") W/B
-                                            option(value="W/G") W/G
-                                            option(value="W/P") W/P
-                                            option(value="블랙") 블랙
-                                    td
-                                        input(type="number" name="quantity")
-                                    td
-                                        input(type="number" name="basicWage")
-                                    td
-                                        input(type="number" name="additionWage")
-                                    td
-                                        input(type="number" name="stoneWage1")
-                                    td
-                                        input(type="number" name="stoneWage2")
-                                    td
-                                        input(type="number" name="stoneWeight3")
-                                    td
-                                        input(type="number")
-                                    td
-                                        input(type="number" disabled name="goldWeight")
-                                    td
-                                        input(type="text" disabled name="stoneWeight")
-                                    td
-                                        select(name="harry" class="selBoxStock" id="MAIPHARI")
-                                            option(value="1.10") 1.10
-                                            option(value="1.09") 1.09
-                                            option(value="1.07") 1.07
-                                            option(value="1.06") 1.06
-                                            option(value="1.00") 1.00
+    form(method="POST")     
+        div(class="container orderSaveBox")
+            div(class="row")
+                div(class="col-6")
+                    div(class="orderName")
+                        a(href="/stock/main", target="_self", class="mntitArrow")
+                        span #{pageTitle} 
+                    a(href="", class="icInfoOutline") 
+                        img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움")
+                div(class="col-6 orderBtnBox")
+                    button(id="orderBtn") 재고등록
+            div(class="row")
+                div(class="col-12 imgOrderBox")
+                    div(class="imgbox")
+                        img(src="../../../../static/images/no_image_available.png", alt="이미지 없음")
+            div(class="row")
+                div(class="col-6 calinderBox")
+                    div(class="calinder")
+                        img(src="../../../../static/images/calendar.png", alt="calendar")
+                    div(class="calData") 
+                        input(name="registrationdate" value="2021-07-13") 
+            div(class="row tableLongBoxBox")
+                div(class="tableLongBox")
+                    div(class="col-12 vybox")
+                        table   
+                            thead 
+                                tr 
+                                    th(width="2%" rowspan="2") 취소
+                                    th(width="6%" rowspan="2") 주문번호
+                                    th(width="6%" style="border-bottom: none;") 모델번호
+                                    th(width="6%" style="border-bottom: none;") 제조사
+                                    th(width="3%" rowspan="2") 재질
+                                    th(width="3%" rowspan="2") 색상
+                                    th(width="2%" rowspan="2") 수량
+                                    th(colspan="4") 판매단가
+                                    th(width="4%" rowspan="2") 개당 <br> 알중량
+                                    th(colspan="3") 총중량(g)
+                                    th(width="4%" rowspan="2") 매입해리
+                                    th(colspan="2") 개당알수
+                                    th(width="2%" rowspan="2") 단가상품
+                                    th(colspan="2") 스톤
+                                    th(width="4%" rowspan="2") 사이즈
+                                    th(width="4%" rowspan="2") 비고
+                                    th(colspan="2") 매입단가
+                                tr 
+                                    th(style="border-top: none;") 
+                                        input(name="clickAll" id="checkedAll" type="checkbox") 
+                                    th(style="border-top: none;") 
+                                        input(name="clickAll" id="checkedAll" type="checkbox") 
+                                    th(width="4.5%") 기본
+                                    th(width="4.5%") 추가
+                                    th(width="4.5%") 중심
+                                    th(width="4.5%") 보조
+                                    th(width="4%") 총중량
+                                    th(width="4%") 금중량
+                                    th(width="4%") 알중량
+                                    th(width="3%") 메인
+                                    th(width="3%") 보조
+                                    th(width="5%") 매인
+                                    th(width="5%") 보조
+                                    th(width="4%") 기본
+                                    th(width="4%") 스톤
+                            if anotherSaveDb
+                                each product in anotherSaveDb
+                                    +stockUploadTable(product)
+                            else
+                                tbody
+                                    tr
+                                        td
+                                            button(type="button" class="trsBTN")
+                                        td
+                                            input(type="text" name="orderNumber")
+                                            button(class="secbtn orderOnButton" type="button")
+                                        td
+                                            input(type="text" name="modelNumber")
+                                            button(class="secbtn"  type="button")
+                                        td
+                                            input(type="text" name="manufacturer")
+                                            button(class="secbtn"  type="button")
+                                        td
+                                            select(name="material" class="selBoxStock" id="gramBox")
+                                                option(value="")
+                                                option(value="10K") 10K
+                                                option(value="14K") 14K
+                                                option(value="18K") 18K
+                                                option(value="22K") 22K
+                                                option(value="순금-995") 순금-995
+                                                option(value="순금-999") 순금-999
+                                                option(value="실버") 실버
+                                                option(value="PT") PT
+                                                option(value="기타") 기타
+                                        td
+                                            select(name="color" class="selBoxStock" id="color")
+                                                option(value="")
+                                                option(value="G") G
+                                                option(value="G/B") G/B
+                                                option(value="G/P") G/P
+                                                option(value="G/R/W") G/R/W
+                                                option(value="G/W") G/W
+                                                option(value="P") P
+                                                option(value="P/W") P/W
+                                                option(value="P/블랙도금") P/블랙도금
+                                                option(value="W") W
+                                                option(value="W/B") W/B
+                                                option(value="W/G") W/G
+                                                option(value="W/P") W/P
+                                                option(value="블랙") 블랙
+                                        td
+                                            input(type="number" name="quantity")
+                                        td
+                                            input(type="number" name="basicWage")
+                                        td
+                                            input(type="number" name="additionWage")
+                                        td
+                                            input(type="number" name="stoneWage1")
+                                        td
+                                            input(type="number" name="stoneWage2")
+                                        td
+                                            input(type="number" name="stoneWeight3")
+                                        td
+                                            input(type="number")
+                                        td
+                                            input(type="number" disabled name="goldWeight")
+                                        td
+                                            input(type="text" disabled name="stoneWeight")
+                                        td
+                                            select(name="harry" class="selBoxStock" id="MAIPHARI")
+                                                option(value="1.10") 1.10
+                                                option(value="1.09") 1.09
+                                                option(value="1.07") 1.07
+                                                option(value="1.06") 1.06
+                                                option(value="1.00") 1.00
 
-                                    td
-                                        input(type="number" name="stoneQuantity")
-                                    td
-                                        input(type="number" name="stoneQuantity2")
-                                    td
-                                        select(name="unitPrice" class="selBoxStock" id="MAIPHARI")
-                                            option(value="N") N
-                                            option(value="Y") Y
-                                    td
-                                        input(type="text" name="stoneName")
-                                    td
-                                        input(type="text" name="stoneName2")
-                                    td
-                                        input(type="text" name="size")
-                                    td
-                                        input(type="text" name="description")
-                                    td
-                                        input(type="number" name="purchaseWage")
-                                    td
-                                        input(type="number" name="eggPurchasePrice")
-        div(class="row")
-            div(class="pluseBox")
-                button(id="plsbtn") 추가
-    .startsearch
-        #bgBg 
-        .searcOrderhBox.container
-            .row.orderTitleBox 
-                .col-12 
-                    .orderTitle 
-                        span 주문번호 검색
-            .searcOrderhBox1
-                .row.orderButtonBox1
-                    .col-6.ordername
-                        span 주문관리&nbsp;
-                        span (전체 0개)
-                    .col-4.col-md-3.col-xl-2.goOrderUpload
-                        button(type="button") 주문등록
-            .searcOrderhBox2
-                .row.orderSelect
-                    .col-12.col-md-4
-                        .calBox2
-                           input#orderCldbox1(type="text" value="2010.1.1.")
-                           input#orderCldbox2(type="text" value="")
-                    .col-12.col-md-4
-                        .orderSelectBox
-                           select(name="")
-                               option(value="구분") 구분 
-                               option(value="접수일") 접수일 
-                               option(value="출고일") 출고일
+                                        td
+                                            input(type="number" name="stoneQuantity")
+                                        td
+                                            input(type="number" name="stoneQuantity2")
+                                        td
+                                            select(name="unitPrice" class="selBoxStock" id="MAIPHARI")
+                                                option(value="N") N
+                                                option(value="Y") Y
+                                        td
+                                            input(type="text" name="stoneName")
+                                        td
+                                            input(type="text" name="stoneName2")
+                                        td
+                                            input(type="text" name="size")
+                                        td
+                                            input(type="text" name="description")
+                                        td
+                                            input(type="number" name="purchaseWage")
+                                        td
+                                            input(type="number" name="eggPurchasePrice")
+            div(class="row")
+                div(class="pluseBox")
+                    button(id="plsbtn") 추가
+        .startsearch.on
+            #bgBg 
+            .searcOrderhBox.container
+                .row.orderTitleBox 
+                    .col-12 
+                        .orderTitle 
+                            span 주문번호 검색
+                .searcOrderhBox1
+                    .row.orderButtonBox1
+                        .col-6.ordername
+                            span 주문관리&nbsp;
+                            span (전체 0개)
+                        .col-4.col-md-3.col-xl-2.goOrderUpload
+                            button(type="button") 주문등록
+                .searcOrderhBox2
+                    .row.orderSelect
+                        .col-12.col-md-4
+                            .calBox2
+                                .calInBox
+                                    input#orderCldbox1(type="text" value="2010.1.1.")
+                                .calInBox
+                                    input#orderCldbox2(type="text" value="")
+                        .col-12.col-md-4
+                            .orderSelectBox
+                               select(name="")
+                                   option(value="구분") 구분 
+                                   option(value="접수일") 접수일 
+                                   option(value="출고일") 출고일
+                               select(name="") 
+                                   option(value="정렬") 정렬 
+                                   option(value="출고일") 출고일 
+                                   option(value="접수일") 접수일
+                                   option(value="모델번호") 모델번호 
+                                   option(value="사이즈") 사이즈 
+                               select(name="") 
+                                   option(value="정렬순서") 정렬순서
+                                   option(value="오름차순") 오름차순
+                                   option(value="내림차순") 내림차순
+                        .col-12.col-md-4
+                           .searchOrder
+                               input(type="text")
+                               button <i class="las la-search"></i>
+                    .row.orderSelectMBox
+                        .col-4
+                            .orderSelectBox2
+                                select(name="")
+                                    option(value="필터") 필터  
+                                    option(value="함량") 함량  
+                                    option(value="색상") 색상  
+                                    option(value="단계") 단계
+                                    option(value="거래처") 거래처 
+                                    option(value="제조사") 제조사
+                                select(name="")
+                                    option(value="필터") 필터  
+                                    option(value="함량") 함량  
+                                    option(value="색상") 색상  
+                                    option(value="단계") 단계
+                                    option(value="거래처") 거래처 
+                                    option(value="제조사") 제조사
+                        .col-4.orderSelectBox3
                            select(name="") 
-                               option(value="정렬") 정렬 
-                               option(value="출고일") 출고일 
-                               option(value="접수일") 접수일
-                               option(value="모델번호") 모델번호 
-                               option(value="사이즈") 사이즈 
-                           select(name="") 
-                               option(value="정렬순서") 정렬순서
-                               option(value="오름차순") 오름차순
-                               option(value="내림차순") 내림차순
-                    .col-12.col-md-4
-                       .searchOrder
-                           input(type="text")
-                           button 
-                .row.orderSelectMBox
-                    .col-4
-                        .orderSelectBox2
-                            select(name="")
-                                option(value="필터") 필터  
-                                option(value="함량") 함량  
-                                option(value="색상") 색상  
-                                option(value="단계") 단계
-                                option(value="거래처") 거래처 
-                                option(value="제조사") 제조사
-                            select(name="")
-                                option(value="필터") 필터  
-                                option(value="함량") 함량  
-                                option(value="색상") 색상  
-                                option(value="단계") 단계
-                                option(value="거래처") 거래처 
-                                option(value="제조사") 제조사
-                    .col-4.orderSelectBox3
-                       select(name="") 
-                           option(value="10View") 10 View 
-                           option(value="25View") 25 View
-                           option(value="50View") 50 View
-                           option(value="100View") 100 View
-                .row 
-                    .col-12.orderTableBox
-                       table 
-                           thead
-                               tr
-                                   th(rowspan="2") No
-                                   th(rowspan="2")
-                                   th 출고일
-                                   th(rowspan="2") 거래처
-                                   th(rowspan="2") 사진
-                                   th(rowspan="2") 모델번호
-                                   th 함량
-                                   th 메인스톤
-                                   th(rowspan="2") 사이즈
-                                   th(rowspan="2") 수량
-                                   th(rowspan="2") 비고
-                                   th 제조사
-                                   th(rowspan="2") 단계 구성
-                               tr 
-                                   th 접수일
-                                   th 색상
-                                   th 보조스톤
-                                   th 제조No
-                           tbody
+                               option(value="10View") 10 View 
+                               option(value="25View") 25 View
+                               option(value="50View") 50 View
+                               option(value="100View") 100 View
+                    .row 
+                        .col-12.orderTableBox
+                           table 
+                               thead
+                                   tr
+                                       th(rowspan="2") No
+                                       th(rowspan="2")
+                                       th 출고일
+                                       th(rowspan="2") 거래처
+                                       th(rowspan="2") 사진
+                                       th(rowspan="2") 모델번호
+                                       th 함량
+                                       th 메인스톤
+                                       th(rowspan="2") 사이즈
+                                       th(rowspan="2") 수량
+                                       th(rowspan="2") 비고
+                                       th 제조사
+                                       th(rowspan="2") 단계 구성
+                                   tr 
+                                       th 접수일
+                                       th 색상
+                                       th 보조스톤
+                                       th 제조No
+                               tbody
 
+                    .row
+                    .row.orderButtonBox2
+                        .col-5
+                            button.orderClose(type="button") 취소
+            .searcModelhBox.container.on
+                .row.searcModelTitle
+                    .col-12 
+                        span 메인 상품(사진) 검색
+                .row.searcModelSubTitle
+                    .col-2 
+                        span 전체 n개
+                    .col-10  
+                        .inputModel
+                            input(type="text")
+                            button 검색
                 .row
-                .row.orderButtonBox2
-                    .col-5
-                        button(type="button") 취소
-        .searcModelhBox
-        .searchManuBox 
+                    .col-12
+                        button 필터 
+                .row
+                    .col-12
+                        each product in user.products
+                            +mainCard(product)
+                        
+
+            .searchManuBox 

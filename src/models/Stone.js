@@ -10,6 +10,7 @@ const stoneSchema = new mongoose.Schema({
     sellingPrice: { type:String, required: true },//판매단가*
     description: { type: String, trim: true},//비고
     owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
+    
 });
 
 const goldStone = mongoose.model("Stone", stoneSchema);
