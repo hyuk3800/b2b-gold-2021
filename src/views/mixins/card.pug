@@ -8,14 +8,26 @@ mixin card(product)
                 span #{product.part} &#47;
                 span #{product.material}
                 br
-                span #{product.basicWage} &#47;
-                span #{product.additionWage}
+                if !product.basicWage
+                    span 0 &#47;
+                else
+                    span #{product.basicWage} &#47;
+                if !product.additionWage
+                    span  0
+                else
+                    span #{product.additionWage}
+               
                 br
                 if !product.weight
                     span #{product.goldWeight} &#47;
                 else    
                     span #{product.weight} &#47;
-                span #{product.stoneWeight}
+                
+                if !product.stoneWeight
+                    span  0
+                else
+                    span #{product.stoneWeight}
+
             div(class="clickBox")
                 div(class="clickbxbx")
                     input(name="click", value=`${product._id}`  , class="clickThis", type="checkbox")

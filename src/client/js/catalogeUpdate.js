@@ -351,18 +351,36 @@ window.onload = function () {
 
     const PostForm = document.querySelector("#PostForm");
 
-    const Makeinputs = () => {
-        ageinput = "<input name='ageinput' type='text' value='" + ageConter + "' >";
-        PostForm.insertAdjacentHTML('beforeEnd', ageinput);
-        partinput = "<input name='partinput' type='text' value='" + partConter + "' >";
-        PostForm.insertAdjacentHTML('beforeEnd', partinput);
-        styleinput = "<input name='styleinput' type='text' value='" + styleConter + "' >";
-        PostForm.insertAdjacentHTML('beforeEnd', styleinput);
-        materialinput = "<input name='materialinput' type='text' value='" + materialConter + "' >";
-        PostForm.insertAdjacentHTML('beforeEnd', materialinput);
-        weightinput = "<input name='weightinput' type='text' value='" + weightConter + "' >";
-        PostForm.insertAdjacentHTML('beforeEnd', weightinput);
-        alert("성공");
+    const Makeinputs = (event) => {
+        if(ageConter.length === 0){
+            event.preventDefault();
+            alert("나이대를 선택해주세요");
+        }
+        if(partConter.length === 0){
+            event.preventDefault();
+            alert("부위를 선택해주세요");
+        }
+        if(styleConter.length === 0){
+            event.preventDefault();
+            alert("스타일을 선택해주세요");
+        }
+        if(materialConter.length === 0){
+            event.preventDefault();
+            alert("소재를 선택해주세요");
+        }
+        else{
+            ageinput = "<input name='ageinput' type='text' value='" + ageConter + "' >";
+            PostForm.insertAdjacentHTML('beforeEnd', ageinput);
+            partinput = "<input name='partinput' type='text' value='" + partConter + "' >";
+            PostForm.insertAdjacentHTML('beforeEnd', partinput);
+            styleinput = "<input name='styleinput' type='text' value='" + styleConter + "' >";
+            PostForm.insertAdjacentHTML('beforeEnd', styleinput);
+            materialinput = "<input name='materialinput' type='text' value='" + materialConter + "' >";
+            PostForm.insertAdjacentHTML('beforeEnd', materialinput);
+            weightinput = "<input name='weightinput' type='text' value='" + weightConter + "' >";
+            PostForm.insertAdjacentHTML('beforeEnd', weightinput);
+            alert("성공");
+        }
     };
 
     // const lelel = document.querySelector("#lelel");
