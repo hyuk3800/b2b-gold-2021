@@ -12,6 +12,7 @@ import saleRouter from "./routers/saleRouter";
 import rentRouter from "./routers/rentRouter";
 import userRouter from "./routers/userRouter";
 import { localsMiddleware } from "./middlewares";
+import apiRouter from "./routers/apiRouter";
 
 
 const app = express();
@@ -52,6 +53,7 @@ app.use("/repair", repairRouter);
 app.use("/purchase", purchaseRouter);
 app.use("/sale", saleRouter);
 app.use("/rent", rentRouter);
+app.use("/api", apiRouter);
 
 
 export default app;

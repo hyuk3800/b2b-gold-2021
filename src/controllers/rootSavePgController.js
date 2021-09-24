@@ -2,6 +2,7 @@ import User from "../models/User";
 import goldQuote from "../models/Quote";
 import goldStone from "../models/Stone";
 import goldClient from "../models/Client";
+import goldProduct from "../models/Product";
 
 export const chat = async (req, res) => {
    const pathname = req._parsedOriginalUrl.pathname;
@@ -463,4 +464,20 @@ export const accountsreceivable = (req, res) => {
       pageTitle: "거래처 미수 현황",
       pathname
    });
+};
+
+
+
+
+// View
+
+export const registerView = async () => {
+   const { id } = req.params;
+   const product = await goldProduct.findById(id);
+   if(!product){
+      return res.sendStatus(404);
+   }
+   product.meta.views = product.meta.views + 1;
+   await product.save();
+   return res.sendStatus(200);
 };
