@@ -1,5 +1,6 @@
 import goldProduct from "../models/Product";
 import goldStock from "../models/Stock";
+import goldClient from "../models/Client";
 import User from "../models/User";
 
 
@@ -473,9 +474,37 @@ export const stockMain = (req, res) => {
         pathname
     });
 };
-export const stockUpload = (req, res) => {
+export const getStockUpload = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
     const { user: {_id} } = req.session;
+    const user = await User.findById(_id).populate("products");
+    const client = await goldClient.find({
+        $and: [{
+                "clientType": "매입처"
+            }, //거래처 구분
+            {
+                "owner": _id
+            }
+        ]
+    });
+    console.log("세션 ID는", _id, "유저는", user._id)
+    if (!user) {
+        return res.status(404).render("404");
+    }
+    if (String(_id) !== String(user._id)) {
+        return res.status(403).redirect("/");
+    }
+    // try
+
+    return res.render("stock/stockupload", {
+        pageTitle: "재고 등록",
+        pathname,
+        user,
+        client
+    });
+};
+
+export const postStockUpload = (req, res) => {
     const {
         orderNumber,
         modelNumber,
@@ -502,13 +531,9 @@ export const stockUpload = (req, res) => {
         eggPurchasePrice,
     } = req.body;
     console.log("안녕!!!!!!!!!!!");
-    // try
-
-    return res.render("stock/stockupload", {
-        pageTitle: "재고 등록",
-        pathname
-    });
 };
+
+
 
 export const findStock = (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;

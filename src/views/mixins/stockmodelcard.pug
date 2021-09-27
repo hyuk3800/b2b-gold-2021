@@ -1,0 +1,32 @@
+mixin stockmodelCard(product)
+            .modelCard
+                .cardHead
+                    .cardimg
+                        img(src="/" + product.fileUrl, alt="catalogeImg")
+                .cordBody 
+                    .cardname
+                        span #{product.title}
+                    .cardExplanation
+                        span #{product.part} &#47;
+                        span #{product.material}
+                        br
+                        if !product.basicWage
+                            span 0 &#47;
+                        else
+                            span #{product.basicWage} &#47;
+                        if !product.additionWage
+                            span  0
+                        else
+                            span #{product.additionWage}
+                        br
+                        if !product.weight
+                            span #{product.goldWeight} &#47;
+                        else    
+                            span #{product.weight} &#47;
+                        if !product.stoneWeight
+                            span  0
+                        else
+                            span #{product.stoneWeight}
+        
+                .cardFoot
+                    button(type="button") 선택

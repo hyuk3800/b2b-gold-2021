@@ -34,7 +34,7 @@
     border-radius: 5px;
     overflow: hidden;
     opacity: 0;
-    transition: top .5s, opacity .5s, left 0 .5s;
+    transition: top .5s, opacity .5s;
 }
 .searcOrderhBox.on{
     top: 50%;
@@ -278,16 +278,16 @@
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 0% !important;
+    max-width:90% !important;
+    max-height: 95%;
     background-color: #fff;
     border: 1px solid rgba(136, 136, 136, 0.4);
     border-radius: 5px;
-    overflow: hidden;
     opacity: 0;
     transition: top .5s, opacity .5s;
+    overflow-y: scroll;
 }
 .searcModelhBox.on{
-    max-width:90% !important;
     top: 50%;
     opacity: 1;
 }  
@@ -315,7 +315,338 @@
 }
 .inputModel input{
     width: 90%;
+    height: 38px;
+    border: 1px solid #999;
+    outline: none;
 }
 .inputModel button{
-    width: 10%;
+    width: 38px;
+    height: 38px;
+    background-color: #333;
+    outline: none;
+    border: none;
+    border-radius: 0 3px 3px 0;
+    color: #fff;
+    font-size: 26px;
+}
+
+#fillterBox{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+#filterButton{
+    width: 100px;
+    height: 26px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #999;
+    border: none;
+    outline: none;
+}
+
+
+.modelcardlistBox{
+    margin-top: 20px;
+}
+
+.modelcardlist{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.modelCard{
+    margin-bottom: 20px;
+    margin-right: 5px;
+    width: 134px;
+    height: 311px;
+    border: 2px solid rgba(0,0,0,.125);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.cardHead{
+    margin: 0;
+    width: 130px;
+    height: 130px;
+    /* border:1px solid rgba(0,0,0,.125); */
+    /* outline: 1px solid rgba(0,0,0,.125); */
+}
+.cardimg{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    /* border:1px solid rgba(0,0,0,.125); */
+}
+
+.cardimg img{
+    width: 100%;
+    height: 100%;
+}
+
+.cordBody{
+    width: 130px;
+    /* border: 1px solid rgba(0,0,0,.125); */
+    /* outline: 1px solid rgba(0,0,0,.125); */
+}
+
+.cardname{
+    padding: 12px 20px;
+    width: 100%;
+    height: 40px;
+    background-color: #eee;
+    /* border:1px solid rgba(0,0,0,.125); */
+    font-size: 13px;
+    font-weight: 500;
+}
+.cardExplanation{
+    padding-top: 10px;
+    padding-bottom: 5px;
+    height: 111px;
+}
+.cardFoot{
+    width: 100%;
+    height: 26px;
+}
+.cardFoot button{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #ffaa34;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+}
+#goCatalogeUpload{
+    width: 130px;
+    margin-bottom: 20px;
+    height: 311px;
+    min-height: 100px; 
+    font-size: 20px;
+}
+
+#goCatalogeUpload button{
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(0,0,0,.125);
+    border-radius: 5px;
+    background-color: #fff5e8;
+    color: #ffaa34;
+
+}
+
+#goCatalogeUpload i{
+    font-size: 50px;
+    font-weight: 700;
+}
+
+/* 필터 */
+
+
+.mainck{
+    margin-top: 20px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .3s ease-in-out;
+    
+}
+
+.mainck.on{
+    max-height: 500px;
+    border: 1px solid rgba(172, 172, 172, 0.5);
+}
+
+
+.catalognanu{
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #777;
+    border-left: 1px solid rgba(172, 172, 172, 0.5);
+    background-color: #f1f5f7;
+
+}
+
+.chackboxbox{
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.chackboxbox button{
+    margin: 4px 2px;
+    padding: 1px 6px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #333;
+
+}
+
+.chackboxbox button:focus{
+    outline: none;
+
+}
+
+
+.chackboxbox1{
+    min-height: 40px;
+}
+
+.chackbox{
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+}
+
+.chackbox button.on{
+    background-color: #ffaa34;
+}
+
+.styleBox{
+    display: none;
+}
+
+.styleBox.on{
+    display: flex;
+}
+
+.weightBox{
+    display: none;
+}
+.weightBox.on{
+    display: flex;
+}
+
+
+.filterbtnbox{
+    border-top: 1px solid rgba(172, 172, 172, 0.5);
+}
+
+.filterbtnbox .col-5,.filterbtnbox .col-2{
+    padding: 0.5rem 0;
+}
+
+.filterbtnbox button{
+    width: 40%;
+    height: 38px;
+}
+.wjrdydqjxms{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wjrdydqjxms button{
+    border-radius: 4px;
+    background-color: #ffaa34;
+    border: none;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.wjrdydqjxms button:focus{
+    box-shadow: none;
+}
+
+.chrlghkqjxms{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.chrlghkqjxms button{
+    background-color: #fff;
+}
+
+
+
+
+.searchManuBox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.manuNameBox{
+    margin-bottom: 20px;
+}
+
+.manuName{
+    padding: 6px;
+    width: 100%;
+    height: 50px;
+    background-color: #f1f5f7;
+    border-bottom: 1px solid #999;
+    border-radius: 5px 5px 0 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.clientBody{
+    margin-bottom: 20px;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.clientBodyName{
+    font-size: 24px;
+}
+
+.getClient input{
+    width: 70%;
+    height: 38px;
+}
+
+.getClient button{
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 0 3px 3px 0;
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+}
+
+
+.clientBox{
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+.clientBox table{
+    min-width: 990px;
+    width: 100%;
+    font-size: 12px;
+}
+
+.clientBox table thead{
+    height: 30px;
+    background-color: #f1f5f7;
+}
+.clientBox table tbody{
+    height: 30px;
+}
+
+.botbutton button{
+    margin-top: 20px;
+    width: 100%;
+    height: 28px;
+}
+
+
+
+.numberBox{
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
