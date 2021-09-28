@@ -20,7 +20,10 @@ const userSchema = new mongoose.Schema({
        ], // 등록한 시세 id
     clients: [
         { type: mongoose.Schema.Types.ObjectId, ref: "Client" }
-       ], // 등록한 시세 id
+       ], // 등록한 거래처 id
+    stocks: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "Stock" }
+       ], // 등록한 재고 id
 });
 
 

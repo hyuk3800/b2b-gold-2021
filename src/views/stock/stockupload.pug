@@ -32,7 +32,7 @@ block content
                     div(class="calinder")
                         img(src="../../../../static/images/calendar.png", alt="calendar")
                     div(class="calData") 
-                        input(name="registrationdate" value="2021-07-13") 
+                        input#datepicker(name="registrationdate" value="2021-07-13") 
             div(class="row tableLongBoxBox")
                 div(class="tableLongBox")
                     div(class="col-12 vybox")
@@ -90,7 +90,7 @@ block content
                                             button(class="secbtn modelOnButton"  type="button")
                                         td
                                             input(type="text" name="manufacturer")
-                                            button(class="secbtn"  type="button")
+                                            button(class="secbtn searchManuButton"  type="button")
                                         td
                                             select(name="material" class="selBoxStock" id="gramBox")
                                                 option(value="")
@@ -167,8 +167,8 @@ block content
                                             input(type="number" name="eggPurchasePrice")
             div(class="row")
                 div(class="pluseBox")
-                    button(id="plsbtn") 추가
-        .startsearch.on
+                    button(id="plsbtn" type="button") 추가
+        .startsearch
             #bgBg 
             .searcOrderhBox.container
                 .row.orderTitleBox 
@@ -517,8 +517,12 @@ block content
                     .row    
                         .col-12.numberBox
                             span 1
+                    .row.orderButtonBox2
+                        .col-5
+                            button.orderClose(type="button") 취소
 
-            .searchManuBox.container.on 
+
+            .searchManuBox.container
                 .row.manuNameBox
                     .col-12.manuName 
                          span 거래처
@@ -554,9 +558,9 @@ block content
                                                 th 해리
                                         tbody 
                                             if client
-                                                //- each client in client
-                                                //-     +stockClienTtable(client)
-                                                span 씨발련아
+                                                each clients in client
+                                                    +stockClienTtable(clients)
+                                                span 
                                             else 
 
                                 .col-12.botbutton
@@ -564,3 +568,6 @@ block content
                     .row 
                         .col-12.numberBox
                             span 1
+                    .row.orderButtonBox2
+                        .col-5
+                            button.orderClose(type="button") 취소

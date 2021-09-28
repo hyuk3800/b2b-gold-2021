@@ -476,12 +476,16 @@ export const stockMain = (req, res) => {
 };
 export const getStockUpload = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
-    const { user: {_id} } = req.session;
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
     const user = await User.findById(_id).populate("products");
     const client = await goldClient.find({
         $and: [{
                 "clientType": "매입처"
-            }, //거래처 구분
+            },
             {
                 "owner": _id
             }
@@ -495,7 +499,7 @@ export const getStockUpload = async (req, res) => {
         return res.status(403).redirect("/");
     }
     // try
-
+    // console.log("이건",client);
     return res.render("stock/stockupload", {
         pageTitle: "재고 등록",
         pathname,
@@ -504,7 +508,12 @@ export const getStockUpload = async (req, res) => {
     });
 };
 
-export const postStockUpload = (req, res) => {
+export const postStockUpload = async (req, res) => {
+    const {
+        user: {
+            _id
+        },
+    } = req.session;
     const {
         orderNumber,
         modelNumber,
@@ -530,7 +539,53 @@ export const postStockUpload = (req, res) => {
         purchaseWage,
         eggPurchasePrice,
     } = req.body;
-    console.log("안녕!!!!!!!!!!!");
+    console.log("안녕!!!!!!!!!!!", req.body);
+    /*
+    해야할거 .....  
+    카탈로그에 있는 제품들하고 모델번호에 적히는 제품하고
+    같은지 확인후 같은 카탈로그의 아이디를 가져온다.
+    */
+    const products = await goldProduct.find({
+        $and: [{
+            "modelNumber": modelNumber
+        }, {
+            "owner": _id
+        }]
+    });
+
+    console.log("이거슨!", products.styles);
+
+    // const newGoldStock = await goldStock.create({
+    //     orderNumber,
+    //     modelNumber,
+    //     manufacturer,
+    //     material,
+    //     color,
+    //     quantity,
+    //     basicWage,
+    //     additionWage,
+    //     stoneWage1,
+    //     stoneWage2,
+    //     stoneWeight3,
+    //     goldWeight,
+    //     stoneWeight,
+    //     harry,
+    //     stoneQuantity,
+    //     stoneQuantity2,
+    //     unitPrice,
+    //     stoneName,
+    //     stoneName2,
+    //     size,
+    //     description,
+    //     purchaseWage,
+    //     eggPurchasePrice,
+
+    //     owner: _id,
+    // });
+    // const user = await User.findById(_id);
+    // user.stocks.push(newGoldStock._id);
+    // user.save();
+    return res.end();
 };
 
 

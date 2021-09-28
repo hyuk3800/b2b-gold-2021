@@ -4,7 +4,7 @@ const stockSchema = new mongoose.Schema({
     createdAt: {type: Date, require: true, default: Date.now }, // 생성날짜\
     clickThis: {type: Boolean, require: true, default: false }, // 채크여부
     owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },// 오너
-    // products: { type: mongoose.Schema.Types.ObjectId, ref: "Product" }, // 등록한 제품 id
+    products: { type: mongoose.Schema.Types.ObjectId, ref: "Product" }, // 등록한 제품 id
     
     registrationdate: { type: String },// 등록일 (날짜 변경 가능)
     orderNumber: { type: String },//주문번호

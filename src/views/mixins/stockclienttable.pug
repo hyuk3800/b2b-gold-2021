@@ -1,17 +1,17 @@
-mixin stockClienTtable(client)
+mixin stockClienTtable(clients)
         tr 
-            td 1
+            td #{clients.length}
             td 
                 a(href="#")  선택
-            td #{client.clientType}
-            td #{client.clientName}
-            td #{client.buisnessman.buisnessName}
-            td #{client.buisnessman.representative}
-            td #{client.buisnessman.representativeNumber}
-            td #{client.contact.phone}
-            td #{client.contact.fax}
-            td #{client.commonName}
-            td #{client.description}
-            td #{client.option.vat}
-            td #{client.option.transactionType}
-            td #{client.option.harry}
+            td #{clients.clientType}
+            td #{clients.clientName}
+            td.clientsName #{clients.buisnessman.buisnessName}
+            td #{clients.buisnessman.representative}
+            td #{clients.buisnessman.representativeNumber}
+            td #{clients.contact.phone}
+            td #{clients.contact.fax}
+            td #{clients.commonName}
+            td #{clients.description}
+            td #{clients.option.vat}
+            td #{clients.option.transactionType}
+            td #{clients.option.harry}
