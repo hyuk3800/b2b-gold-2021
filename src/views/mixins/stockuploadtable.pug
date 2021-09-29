@@ -1,120 +1,119 @@
 mixin stockUploadTable(product)
-            tbody
-                tr
-                    td
-                        button(class="trsBTN")
-                    td
-                        input(type="text" name="orderNumber") 
-                        button(class="secbtn orderOnButton" type="button")
-                    td
-                        input(type="text" name="modelNumber" value=`${product.modelNumber}`) 
-                        button(class="secbtn modelOnButton"  type="button")
-                    td
-                        input(type="text" name="manufacturer" value=`${product.manufacturer}`)
-                        button(class="secbtn")
-                    td
-                        select(name="material" class="selBoxStock" id="gramBox")
-                            option(value="")
-                            option(value="10K") 10K
-                            option(value="14K") 14K
-                            option(value="18K") 18K
-                            option(value="22K") 22K
-                            option(value="순금-995") 순금-995
-                            option(value="순금-999") 순금-999
-                            option(value="실버") 실버
-                            option(value="PT") PT
-                            option(value="기타") 기타
-                    td
-                        select(name="color" class="selBoxStock" id="color")
-                            option(value="")
-                            option(value="G") G
-                            option(value="G/B") G/B
-                            option(value="G/P") G/P
-                            option(value="G/R/W") G/R/W
-                            option(value="G/W") G/W
-                            option(value="P") P
-                            option(value="P/W") P/W
-                            option(value="P/블랙도금") P/블랙도금
-                            option(value="W") W
-                            option(value="W/B") W/B
-                            option(value="W/G") W/G
-                            option(value="W/P") W/P
-                            option(value="블랙") 블랙
-                    td  
-                        input(type="number" name="quantity" value="1")
-                    td  
-                        if !product.basicWage
-                            input(type="number" name="basicWage" value="0")
-                        else
-                            input(type="number" name="basicWage" value=`${product.basicWage}`)
-                    td  
-                        if !product.additionWage
-                            input(type="number" name="additionWage" value="0")
-                        else
-                            input(type="number" name="additionWage" value=`${product.additionWage}`)
-                    td  
-                        if !product.stoneWage1
-                            input(type="number" name="stoneWage1" value="0")
-                        else
-                            input(type="number" name="stoneWage1" value=`${product.stoneWage1}`)
-                    td  
-                        if !product.stoneWage2
-                            input(type="number" name="stoneWage2" value="0")
-                        else
-                            input(type="number" name="stoneWage2" value=`${product.stoneWage2}`)
-                    td
-                        if product.stone
-                            input(type="number" name="stoneWeight3" value=`${product.stone.stoneWeight2*product.stone.stoneQuantity}`)
-                        else 
-                            input(type="number" name="stoneWeight3") 
-                    td
-                        input(type="number")
-                    td
-                        input(type="text" disabled name="goldWeight")
-                    td
-                        input(type="text" disabled name="stoneWeight")
-                    td
-                        select(name="harry" class="selBoxStock" id="MAIPHARI")
-                            option(value="1.10") 1.10
-                            option(value="1.09") 1.09
-                            option(value="1.07") 1.07
-                            option(value="1.06") 1.06
-                            option(value="1.00") 1.00
-                    td
-                        if !product.stone
-                            input(type="number" name="stoneQuantity" value="0") 
-                        else
-                            input(type="number" name="stoneQuantity" value=`${product.stone.stoneQuantity}`) 
-                    td
-                        -let add = [];
-                        -for(let i=0; i<product.stone2.length; i++) {add.push(product.stone2[i].stoneQuantity2)}
-                        -let sum = 0;
-                        -add.forEach((i)=>{sum+=i;})
-                        input(type="number" value=`${sum}`) 
-                    td
-                        select(name="unitPrice" class="selBoxStock" id="MAIPHARI")
-                            option(value="N") N
-                            option(value="Y") Y
-                    td
-                        if !product.stone
-                            input(type="text" name="stoneName")
-                        else
-                            input(type="text" name="stoneName" value=`${product.stone.stoneName}`) 
-                    td
-                        -let stone22 = [];
-                        -for(let i=0; i<product.stone2.length; i++){stone22.push(product.stone2[i].stoneName2)}
-                            input(type="text"  name="stoneName2" value=`${stone22}`)
-                    td
-                        input(type="text" name="size" value=`${product.size}`)
-                    td
-                        input(type="text" name="description" value=`${product.description}`)
-                    td  
-                        if !product.purchaseWage
-                            input(type="number" name="purchaseWage")
-                        else    
-                            input(type="number" name="purchaseWage" value=`${product.purchaseWage}`)
-                    td  
-                        if !product.eggPurchasePrice
-                            input(type="number" name="eggPurchasePrice")
-                        else
-                            input(type="number" name="eggPurchasePrice" value=`${product.eggPurchasePrice}`)
+        tr
+            td
+                button(class="trsBTN")
+            td
+                input(type="text" name="orderNumber") 
+                button(class="secbtn orderOnButton" type="button")
+            td
+                input(type="text" name="modelNumber" value=`${product.modelNumber}`) 
+                button(class="secbtn modelOnButton"  type="button")
+            td
+                input(type="text" name="manufacturer" value=`${product.manufacturer}`)
+                button(class="secbtn")
+            td
+                select(name="material" class="selBoxStock" id="gramBox")
+                    option(value="")
+                    option(value="10K") 10K
+                    option(value="14K") 14K
+                    option(value="18K") 18K
+                    option(value="22K") 22K
+                    option(value="순금-995") 순금-995
+                    option(value="순금-999") 순금-999
+                    option(value="실버") 실버
+                    option(value="PT") PT
+                    option(value="기타") 기타
+            td
+                select(name="color" class="selBoxStock" id="color")
+                    option(value="")
+                    option(value="G") G
+                    option(value="G/B") G/B
+                    option(value="G/P") G/P
+                    option(value="G/R/W") G/R/W
+                    option(value="G/W") G/W
+                    option(value="P") P
+                    option(value="P/W") P/W
+                    option(value="P/블랙도금") P/블랙도금
+                    option(value="W") W
+                    option(value="W/B") W/B
+                    option(value="W/G") W/G
+                    option(value="W/P") W/P
+                    option(value="블랙") 블랙
+            td  
+                input(type="number" name="quantity" value="1")
+            td  
+                if !product.basicWage
+                    input(type="number" name="basicWage" value="0")
+                else
+                    input(type="number" name="basicWage" value=`${product.basicWage}`)
+            td  
+                if !product.additionWage
+                    input(type="number" name="additionWage" value="0")
+                else
+                    input(type="number" name="additionWage" value=`${product.additionWage}`)
+            td  
+                if !product.stoneWage1
+                    input(type="number" name="stoneWage1" value="0")
+                else
+                    input(type="number" name="stoneWage1" value=`${product.stoneWage1}`)
+            td  
+                if !product.stoneWage2
+                    input(type="number" name="stoneWage2" value="0")
+                else
+                    input(type="number" name="stoneWage2" value=`${product.stoneWage2}`)
+            td
+                if product.stone
+                    input(type="number" name="stoneWeight3" value=`${product.stone.stoneWeight2*product.stone.stoneQuantity}`)
+                else 
+                    input(type="number" name="stoneWeight3") 
+            td
+                input(type="number")
+            td
+                input(type="number" disabled name="goldWeight")
+            td
+                input(type="number" disabled name="stoneWeight")
+            td
+                select(name="harry" class="selBoxStock" id="MAIPHARI")
+                    option(value="1.10") 1.10
+                    option(value="1.09") 1.09
+                    option(value="1.07") 1.07
+                    option(value="1.06") 1.06
+                    option(value="1.00") 1.00
+            td
+                if !product.stone
+                    input(type="number" name="stoneQuantity" value="0") 
+                else
+                    input(type="number" name="stoneQuantity" value=`${product.stone.stoneQuantity}`) 
+            td
+                -let add = [];
+                -for(let i=0; i<product.stone2.length; i++) {add.push(product.stone2[i].stoneQuantity2)}
+                -let sum = 0;
+                -add.forEach((i)=>{sum+=i;})
+                input(type="number" value=`${sum}`) 
+            td
+                select(name="unitPrice" class="selBoxStock" id="MAIPHARI")
+                    option(value="N") N
+                    option(value="Y") Y
+            td
+                if !product.stone
+                    input(type="text" name="stoneName")
+                else
+                    input(type="text" name="stoneName" value=`${product.stone.stoneName}`) 
+            td
+                -let stone22 = [];
+                -for(let i=0; i<product.stone2.length; i++){stone22.push(product.stone2[i].stoneName2)}
+                    input(type="text"  name="stoneName2" value=`${stone22}`)
+            td
+                input(type="text" name="size" value=`${product.size}`)
+            td
+                input(type="text" name="description" value=`${product.description}`)
+            td  
+                if !product.purchaseWage
+                    input(type="number" name="purchaseWage")
+                else    
+                    input(type="number" name="purchaseWage" value=`${product.purchaseWage}`)
+            td  
+                if !product.eggPurchasePrice
+                    input(type="number" name="eggPurchasePrice")
+                else
+                    input(type="number" name="eggPurchasePrice" value=`${product.eggPurchasePrice}`)

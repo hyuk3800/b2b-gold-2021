@@ -538,6 +538,7 @@ export const postStockUpload = async (req, res) => {
         description,
         purchaseWage,
         eggPurchasePrice,
+        registrationdate,
     } = req.body;
     console.log("안녕!!!!!!!!!!!", req.body);
     /*
@@ -545,6 +546,7 @@ export const postStockUpload = async (req, res) => {
     카탈로그에 있는 제품들하고 모델번호에 적히는 제품하고
     같은지 확인후 같은 카탈로그의 아이디를 가져온다.
     */
+    // const products = await User.findById(_id).populate("products");
     const products = await goldProduct.find({
         $and: [{
             "modelNumber": modelNumber
@@ -553,40 +555,55 @@ export const postStockUpload = async (req, res) => {
         }]
     });
 
-    console.log("이거슨!", products.styles);
+    let productList = [];
 
-    // const newGoldStock = await goldStock.create({
-    //     orderNumber,
-    //     modelNumber,
-    //     manufacturer,
-    //     material,
-    //     color,
-    //     quantity,
-    //     basicWage,
-    //     additionWage,
-    //     stoneWage1,
-    //     stoneWage2,
-    //     stoneWeight3,
-    //     goldWeight,
-    //     stoneWeight,
-    //     harry,
-    //     stoneQuantity,
-    //     stoneQuantity2,
-    //     unitPrice,
-    //     stoneName,
-    //     stoneName2,
-    //     size,
-    //     description,
-    //     purchaseWage,
-    //     eggPurchasePrice,
+    for (let i = 0; i < products.length; i++) {
+        // console.log("이거슨!", products[i]._id);
+        productList.push(products[i]._id);
+    }
 
-    //     owner: _id,
-    // });
-    // const user = await User.findById(_id);
-    // user.stocks.push(newGoldStock._id);
-    // user.save();
-    return res.end();
-};
+    // console.log(manufacturer[0]);
+    try {
+            for (let i = 0; i < Number(orderNumber.length); i++) {
+            const newGoldStock = await goldStock.create({
+                registrationdate: registrationdate[i],
+                orderNumber: orderNumber[i],
+                modelNumber: modelNumber[i],
+                manufacturer: manufacturer[i],
+                material: material[i],
+                color: color[i],
+                quantity: quantity[i],
+                basicWage: basicWage[i],
+                additionWage: additionWage[i],
+                stoneWage1: stoneWage1[i],
+                stoneWage2: stoneWage2[i],
+                stoneWeight3: stoneWeight3[i],
+                harry: harry[i],
+                stoneQuantity: stoneQuantity[i],
+                unitPrice: unitPrice[i],
+                stoneName: stoneName[i],
+                stoneName2: stoneName2[i],
+                size: size[i],
+                description: description[i],
+                purchaseWage: purchaseWage[i],
+                eggPurchasePrice: eggPurchasePrice[i],
+
+                products: productList[i],
+
+
+                owner: _id,
+            });
+            const user = await User.findById(_id);
+            user.stocks.push(newGoldStock._id);
+            user.save();
+            console.log("뉴스톡",newGoldStock._id);
+        }
+        return res.redirect("/stock/main");
+        } catch (error) {
+            console.log(error);
+            return res.status(400).redirect("/stock/upload");
+        }
+}; 
 
 
 

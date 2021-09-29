@@ -81,6 +81,9 @@ bgBg.addEventListener("click", allCloseBtn);
 
 
 
+
+
+
 /////////////////////// 필터/////////////////
 
 
@@ -491,13 +494,75 @@ for (let i = 0; i < manufacturer.length; i++) {
 
 
 const plsbtn = document.querySelector("#plsbtn");
+const tbody = document.querySelector("#tbody");
 
-const rerere = () => {
+
+const plusTableBody = () => {
     // location.reload(false);
+    const newRow = tbody.insertRow();
+    
+    const newCell1 = newRow.insertCell(0);
+    const newCell2 = newRow.insertCell(1);
+    const newCell3 = newRow.insertCell(2);
+    const newCell4 = newRow.insertCell(3);
+    const newCell5 = newRow.insertCell(4);
+    const newCell6 = newRow.insertCell(5);
+    const newCell7 = newRow.insertCell(6);
+    const newCell8 = newRow.insertCell(7);
+    const newCell9 = newRow.insertCell(8);
+    const newCell10 = newRow.insertCell(9);
+    const newCell11 = newRow.insertCell(10);
+    const newCell12 = newRow.insertCell(11);
+    const newCell13 = newRow.insertCell(12);
+    const newCell14 = newRow.insertCell(13);
+    const newCell15 = newRow.insertCell(14);
+    const newCell16 = newRow.insertCell(15);
+    const newCell17 = newRow.insertCell(16);
+    const newCell18 = newRow.insertCell(17);
+    const newCell19 = newRow.insertCell(18);
+    const newCell20 = newRow.insertCell(19);
+    const newCell21 = newRow.insertCell(20);
+    const newCell22 = newRow.insertCell(21);
+    const newCell23 = newRow.insertCell(22);
+    const newCell24 = newRow.insertCell(23);
+    const newCell25 = newRow.insertCell(24);
+    
+    newCell1.innerHTML = `<button type="button" class="trsBTN onClick="deletRow()"></button>`;
+    newCell2.innerHTML = `<input type="text" name="orderNumber"><button class="secbtn orderOnButton" type="button"></button>`;
+    newCell3.innerHTML = `<input type="text" name="modelNumber"><button class="secbtn modelOnButton"  type="button"></button>`;
+    newCell4.innerHTML = `<input type="text" name="manufacturer"><button class="secbtn searchManuButton"  type="button"></button>`;
+    newCell5.innerHTML = `<select name="material" class="selBoxStock" id="gramBox"><option value=""></option><option value="10K">10K</option><option value="14K">14K</option><option value="18K">18K</option><option value="22K">22K</option><option value="순금-995">순금-995</option><option value="순금-999">순금-999</option><option value="실버">실버</option><option value="PT">PT</option><option value="기타">기타</option></select>`;
+    newCell6.innerHTML = `<select name="color" class="selBoxStock" id="color"><option value=""></option><option value="G">G</option><option value="G/B">G/B</option><option value="G/P">G/P</option><option value="G/R/W">G/R/W</option><option value="G/W">G/W</option><option value="P">P</option><option value="P/W">P/W</option><option value="P/블랙도금">P/블랙도금</option><option value="W">W</option><option value="W/B">W/B</option><option value="W/G">W/G</option><option value="W/P">W/P</option><option value="블랙">블랙</option></select>`;
+    newCell7.innerHTML = `<input type="number" name="quantity">`;
+    newCell8.innerHTML = `<input type="number" name="basicWage">`;
+    newCell9.innerHTML = `<input type="number" name="additionWage">`;
+    newCell10.innerHTML = `<input type="number" name="stoneWage1">`;
+    newCell11.innerHTML = `<input type="number" name="stoneWage2">`;
+    newCell12.innerHTML = `<input type="number" name="stoneWeight3">`;
+    newCell13.innerHTML = `<input type="number">`;
+    newCell14.innerHTML = `<input type="number" disabled name="goldWeight">`;
+    newCell15.innerHTML = `<input type="number" disabled name="stoneWeight">`;
+    newCell16.innerHTML = `<select name="harry" class="selBoxStock" id="MAIPHARI"><option value="1.10">1.10</option><option value="1.09">1.09</option><option value="1.07">1.07</option><option value="1.06">1.06</option><option value="1.00">1.00</option></select>`;
+    newCell17.innerHTML = `<input type="number" name="stoneQuantity">`;
+    newCell18.innerHTML = `<input type="number" name="stoneQuantity2">`;
+    newCell19.innerHTML = `<select name="unitPrice" class="selBoxStock" id="MAIPHARI"><option value="N">N</option><option value="Y">Y</option></select>`;
+    newCell20.innerHTML = `<input type="text" name="stoneName">`;
+    newCell21.innerHTML = `<input type="text" name="stoneName2">`;
+    newCell22.innerHTML = `<input type="text" name="size">`;
+    newCell23.innerHTML = `<input type="text" name="description">`;
+    newCell24.innerHTML = `<input type="number" name="purchaseWage">`;
+    newCell25.innerHTML = `<input type="number" name="eggPurchasePrice">`;
+    
+    
 };
 
 
-plsbtn.addEventListener("click", rerere);
+plsbtn.addEventListener("click", plusTableBody);
+
+function deletRow() {
+    tbody.removeChild(tbody.childNodes[tbody.childNoders.length]);
+};
+window.deletRow = deletRow;
 
 
 

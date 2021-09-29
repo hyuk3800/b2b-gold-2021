@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const stockSchema = new mongoose.Schema({
     createdAt: {type: Date, require: true, default: Date.now }, // 생성날짜\
-    clickThis: {type: Boolean, require: true, default: false }, // 채크여부
+    // clickThis: {type: Boolean, require: true, default: false }, // 채크여부
     owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },// 오너
     products: { type: mongoose.Schema.Types.ObjectId, ref: "Product" }, // 등록한 제품 id
     
@@ -23,7 +23,7 @@ const stockSchema = new mongoose.Schema({
     harry: { type: Number },//매입해리
     stoneQuantity: { type: Number },//개당알수(메인)
     stoneQuantity2: { type: Number },//개당알수(보조)
-    unitPrice: { type: Boolean }, //단가상품
+    unitPrice: { type: String }, //단가상품
     stoneName: { type: String },//스톤(메인)
     stoneName2: { type: String },//스톤(보조)
     size: { type: String },//사이즈
