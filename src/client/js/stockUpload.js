@@ -500,7 +500,7 @@ const tbody = document.querySelector("#tbody");
 const plusTableBody = () => {
     // location.reload(false);
     const newRow = tbody.insertRow();
-    
+
     const newCell1 = newRow.insertCell(0);
     const newCell2 = newRow.insertCell(1);
     const newCell3 = newRow.insertCell(2);
@@ -526,7 +526,7 @@ const plusTableBody = () => {
     const newCell23 = newRow.insertCell(22);
     const newCell24 = newRow.insertCell(23);
     const newCell25 = newRow.insertCell(24);
-    
+
     newCell1.innerHTML = `<button type="button" class="trsBTN onClick="deletRow()"></button>`;
     newCell2.innerHTML = `<input type="text" name="orderNumber"><button class="secbtn orderOnButton" type="button"></button>`;
     newCell3.innerHTML = `<input type="text" name="modelNumber"><button class="secbtn modelOnButton"  type="button"></button>`;
@@ -552,8 +552,8 @@ const plusTableBody = () => {
     newCell23.innerHTML = `<input type="text" name="description">`;
     newCell24.innerHTML = `<input type="number" name="purchaseWage">`;
     newCell25.innerHTML = `<input type="number" name="eggPurchasePrice">`;
-    
-    
+
+
 };
 
 
@@ -578,6 +578,37 @@ orderCldbox.value = KRDay;
 
 //ui-datepicker-trigger
 //ui-datepicker-trigger
+
+
+
+
+
+// submit시 disabled 풀어주기
+// const modelNumber = document.getElementsByName("modelNumber");
+const goldWeight = document.getElementsByName("goldWeight");
+const stoneWeight = document.getElementsByName("stoneWeight");
+const formPOST = document.querySelector("#formPOST");
+
+console.log(goldWeight);
+
+const startDisabledNone = () => {
+    // if (!modelNumber.innerText) {
+    //     event.preventDefault();
+    //     alert("입력하신 데이터가 없습니다.")
+    // }else{
+        for (let i = 0; i < goldWeight.length; i++) {
+            goldWeight[i].disabled = false;
+            stoneWeight[i].disabled = false;
+        };
+    // }
+        
+
+};
+
+formPOST.addEventListener("submit", startDisabledNone);
+
+
+
 
 $(function () { ////// jQ 시작
 

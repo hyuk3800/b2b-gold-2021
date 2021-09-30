@@ -6,6 +6,10 @@ const stockSchema = new mongoose.Schema({
     owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },// 오너
     products: { type: mongoose.Schema.Types.ObjectId, ref: "Product" }, // 등록한 제품 id
     
+    serialNumber: { type: String, required: true, },// 시리얼번호
+
+    gubun: { type: String, require: true, default: "일반" }, // 구분
+
     registrationdate: { type: String },// 등록일 (날짜 변경 가능)
     orderNumber: { type: String },//주문번호
     modelNumber: { type:String },//모델번호(모델번호가 없으면 등록하러 가자고함)

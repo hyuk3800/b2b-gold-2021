@@ -68,10 +68,16 @@ mixin stockUploadTable(product)
                     input(type="number" name="stoneWeight3") 
             td
                 input(type="number")
-            td
-                input(type="number" disabled name="goldWeight")
-            td
-                input(type="number" disabled name="stoneWeight")
+            td  
+                if product.goldWeight
+                    input(type="number" disabled name="goldWeight" value=`${product.goldWeight}`)
+                else 
+                    input(type="number" disabled name="goldWeight")
+            td      
+                if product.stoneWeight
+                    input(type="number" disabled name="stoneWeight" value=`${product.stoneWeight}`)
+                else 
+                    input(type="number" disabled name="stoneWeight")
             td
                 select(name="harry" class="selBoxStock" id="MAIPHARI")
                     option(value="1.10") 1.10
@@ -89,7 +95,7 @@ mixin stockUploadTable(product)
                 -for(let i=0; i<product.stone2.length; i++) {add.push(product.stone2[i].stoneQuantity2)}
                 -let sum = 0;
                 -add.forEach((i)=>{sum+=i;})
-                input(type="number" value=`${sum}`) 
+                input(type="number" name="stoneQuantity2" value=`${sum}`) 
             td
                 select(name="unitPrice" class="selBoxStock" id="MAIPHARI")
                     option(value="N") N

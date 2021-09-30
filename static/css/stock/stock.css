@@ -65,6 +65,7 @@
     justify-content: flex-end;
     align-items: center;
     width: 100%;
+
 }
 
 .searching {
@@ -170,7 +171,6 @@
 }
 
 .calData{
-    padding-left: 10px;
     width: 90px;
     height: 30px;
     border: 1px solid rgba(153, 153, 153, 0.5);
@@ -184,8 +184,26 @@
     border-right: none;
 }
 
+#calD1{
+    margin-right: 1px;
+    padding-left: 10px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
 .calD2{
     border-radius: 0 4px 4px 0;
+}
+#calD2{
+    padding-left: 10px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    outline: none;
 }
 
 #why_do_this{
@@ -275,24 +293,24 @@
     padding: 0;
 }
 
-table{
+.nopaddingbox table{
     min-width: 900px;
     width: 100%;
     font-size: 14px;
     text-align: center;
 }
 
-thead{
+.nopaddingbox thead{
     height: 30px;
     background-color: #f1f5f7;
 }
 
 
-th{
+.nopaddingbox th{
     border: 1px solid rgba(153, 153, 153, 0.3);
 }
 
-td{
+.nopaddingbox td{
     height: 30px;
     border: 1px solid rgba(153, 153, 153, 0.3);
 }
@@ -354,4 +372,135 @@ td{
     }
 
 
+}
+
+
+#changesStart{
+    cursor: pointer;
+    color: #007bff;
+    font-weight: 400;
+}
+
+.footSubmitButton{
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #007bff;
+    font-weight: 400;
+}
+.footSubmitButton:focus{
+    border: none;
+    outline: none;
+}
+
+
+.changesStart {
+    width: 100%;
+    height: 0%;
+    position: fixed;
+    top: 0;
+    z-index: 999999;
+}
+
+.changesStart.on{
+    height: 100%;
+}
+
+#bgbg{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.changesStart.on #bgbg{
+    opacity: 1;
+}
+
+.changeBox{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 193px;
+    background-color: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+    opacity: 0;
+    transition: top .5s, opacity .5s;
+}
+
+.changesStart.on .changeBox{
+    top: 50%;
+    opacity: 1;
+}
+
+.changeTitle{
+    padding: 6px;
+    width: 400px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(153, 153, 153, 0.445);
+    background-color: #f1f5f7;
+    margin-bottom: 20px;
+
+}
+
+.changeBody{
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.changeBody2{
+    padding-right: 0;
+}
+
+.changeBodyBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: #ffd8a2;
+}
+.changeBodyselect select{
+    padding-left: 5px;
+    width: 100%;
+    height: 32px;
+    font-size: 14px;
+    background: #f0edea url("../../images/ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
+    appearance: none;
+}
+
+.changeBodyselect select:focus{
+    border: none;
+    outline: none;
+    box-shadow: 0 0 5px 1px #fc9300;
+}
+
+
+.changeBodyButton{
+    display: flex;
+    justify-content: end;
+}
+
+.changeBodyButton button{
+    margin: 0 5px;
+    width: 92px;
+    height: 36px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #8600FC;
+}
+
+.changeBodyButton button:first-child{
+    color: #666;
+    background-color: #dbb3ff;
 }

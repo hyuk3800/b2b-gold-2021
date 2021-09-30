@@ -467,11 +467,14 @@ export const postEdit = async (req, res) => {
     return res.redirect("/cataloge/main");
 }; // 미완
 
-export const stockMain = (req, res) => {
+export const getStockMain = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
+    const { user:{_id} } = req.session;
+    const user = await User.findById(_id).populate("stocks");
     return res.render("stock/stockmain", {
         pageTitle: "재고 관리",
-        pathname
+        pathname,
+        user
     });
 };
 export const getStockUpload = async (req, res) => {
@@ -540,7 +543,7 @@ export const postStockUpload = async (req, res) => {
         eggPurchasePrice,
         registrationdate,
     } = req.body;
-    console.log("안녕!!!!!!!!!!!", req.body);
+    // console.log("안녕!!!!!!!!!!!", req.body);
     /*
     해야할거 .....  
     카탈로그에 있는 제품들하고 모델번호에 적히는 제품하고
@@ -555,6 +558,15 @@ export const postStockUpload = async (req, res) => {
         }]
     });
 
+    
+
+    
+    const serial = await goldStock.find({});
+    
+    // const serialNum = String(serial.length).padStart(8, '0');
+    
+    // console.log(serialNum);
+    
     let productList = [];
 
     for (let i = 0; i < products.length; i++) {
@@ -563,10 +575,10 @@ export const postStockUpload = async (req, res) => {
     }
 
     // console.log(manufacturer[0]);
-    try {
+    // try {
             for (let i = 0; i < Number(orderNumber.length); i++) {
             const newGoldStock = await goldStock.create({
-                registrationdate: registrationdate[i],
+                registrationdate: registrationdate,
                 orderNumber: orderNumber[i],
                 modelNumber: modelNumber[i],
                 manufacturer: manufacturer[i],
@@ -578,8 +590,11 @@ export const postStockUpload = async (req, res) => {
                 stoneWage1: stoneWage1[i],
                 stoneWage2: stoneWage2[i],
                 stoneWeight3: stoneWeight3[i],
+                goldWeight: goldWeight[i],
+                stoneWeight: stoneWeight[i],
                 harry: harry[i],
                 stoneQuantity: stoneQuantity[i],
+                stoneQuantity2: stoneQuantity2[i],
                 unitPrice: unitPrice[i],
                 stoneName: stoneName[i],
                 stoneName2: stoneName2[i],
@@ -591,6 +606,8 @@ export const postStockUpload = async (req, res) => {
                 products: productList[i],
 
 
+                serialNumber: String(serial.length + (i+1)).padStart(8, '0'),
+
                 owner: _id,
             });
             const user = await User.findById(_id);
@@ -599,10 +616,10 @@ export const postStockUpload = async (req, res) => {
             console.log("뉴스톡",newGoldStock._id);
         }
         return res.redirect("/stock/main");
-        } catch (error) {
-            console.log(error);
-            return res.status(400).redirect("/stock/upload");
-        }
+        // } catch (error) {
+        //     console.log(error);
+        //     return res.status(400).redirect("/stock/upload");
+        // }
 }; 
 
 

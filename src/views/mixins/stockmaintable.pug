@@ -1,26 +1,25 @@
-mixin stockMainTable(product)
-        tbody
-            tr
-                td 1
-                td
-                    input(name="clickThis" id="checkedThis" type="checkbox")
-                td 00088604
-                td 2021-07-12
-                td 일반
-                td
-                td 조각 돌반지
-                td 순금995
-                td 0
-                td 0
-                td 0
-                td 1
-                td 0
-                td 3,000
-                td 0
-                td 0
-                td 0
-                td 3.75
-                td 3.75
-                td 0
-                td 3,000
-                td 0
+mixin stockMainTable(stock)
+        tr
+            td
+            td
+                input(name="clickThis" class="checkedThis" type="checkbox" value=`${stock._id}`)
+            td #{stock.serialNumber}
+            td #{stock.registrationdate}
+            td #{stock.gubun}
+            td #{stock.size}
+            td #{stock.modelNumber}
+            td #{stock.material} </br> #{stock.color}
+            td 
+            td #{stock.stoneQuantity}
+            td #{stock.stoneQuantity2}
+            td #{stock.quantity}
+            td #{stock.unitPrice}
+            td #{stock.basicWage}
+            td #{stock.additionWage}
+            td #{stock.stoneWage1}
+            td #{stock.stoneWage2}
+            td #{(stock.goldWeight)+(stock.stoneWeight)}
+            td #{stock.goldWeight}
+            td #{stock.stoneWeight}
+            td #{(stock.basicWage)+(stock.additionWage)+(stock.stoneWage1)+(stock.stoneWage2)}
+            td 0

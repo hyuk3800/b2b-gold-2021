@@ -12,6 +12,7 @@ module.exports = {
         client1:"./src/client/js/client.js",
         stone:"./src/client/js/stone.js",
         quote:"./src/client/js/quote.js",
+        stockMain:"./src/client/js/stockMain.js",
         stockUpload:"./src/client/js/stockUpload.js",
     },
     mode: "development",
