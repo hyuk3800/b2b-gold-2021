@@ -7,6 +7,7 @@ block links
 
 block scripts 
     script(src="/assets/js/stockMain.js") 
+    //- script(src="/static/js/stockMain.js") 
 
 block content    
     div(class="container stonemain")
@@ -14,7 +15,7 @@ block content
             div(class="col-sm-6 col-12")
                 div(class="stoneFree")
                     span #{pageTitle}
-                    span (전체 n개)
+                    span (전체 #{user.stocks.length} 개)
                     a(href="")
                         img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움") 
             div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
@@ -26,11 +27,11 @@ block content
                     div(class="calinder cal1")
                         img(src="../../../static/images/calendar.png", alt="calendar")
                     div(class="calData calD1") 
-                        input#calD1(value="2021-07-08")
+                        input#calD1(name="startCalData" value="2010-01-01")
                     div(class="calinder cal2")
                         img(src="../../../static/images/calendar.png", alt="calendar")
                     div(class="calData calD2") 
-                        input#calD2(value="2021-07-08")
+                        input#calD2(name="endCalData" value="2010-01-01")
                     select(name="why_do_this" id="why_do_this")
                         option(value="등록일") 등록일
                 div(class="col-sm-12 col-md-4 col-lg-2 wichbox")  
@@ -46,8 +47,8 @@ block content
                         option(value="내림차순") 내림차순
                 .col-12.col-md-12.col-lg-6
                     #searchbox
-                        input(type="text" placeholder="검색어를 입력하세요").searching
-                        button#btn_searching
+                        input(type="text" name="keyword" placeholder="검색어를 입력하세요").searching
+                        button#btn_searching(type="submit")
                             i.las.la-search
     form(method="post")     
         .container
@@ -66,7 +67,7 @@ block content
                         span QR출력
                     div(class="deleteMan dVBox")
                         img(src="../../../static/images/삭제하기.png", alt="삭제하기")
-                        span 삭제하기
+                        button(type="submit" name="deleteBtn" value="삭제하기")#deleteBtn 삭제하기
                     div(class="ViewMan dVBox")
                         select(name="page-view-counter" id="select10_50") 
                             option(value="10View") 10View
@@ -109,7 +110,7 @@ block content
                                     th 알
                             tbody
                                 if user.stocks
-                                    each stock in user.stocks 
+                                    each stock in user.stocks
                                         +stockMainTable(stock)
                                 else
                                     tr
@@ -117,8 +118,8 @@ block content
                     div(class="listlist")       
                         span 체크된 것 &nbsp;&nbsp;
                         span#changesStart 단계변경
-                        button.footSubmitButton#saleBtn(type="submit" value="판매") 판매
-                        button.footSubmitButton#rentBtn(type="submit" value="대여") 대여
+                        button.footSubmitButton#saleBtn(type="submit" name="saleBtn" value="판매") 판매
+                        button.footSubmitButton#rentBtn(type="submit" name="rentBtn" value="대여") 대여
         div(class="col-12")
             div(class="numlist")
                 div(class="numnum on")
@@ -135,7 +136,7 @@ block content
                         div.changeBodyBox
                             span 단계
                     .col-8.changeBodyselect
-                        select(name="") 
+                        select(name="gubun") 
                             option(value="주문") 주문 
                             option(value="수리") 수리
                             option(value="일반") 일반
@@ -146,4 +147,4 @@ block content
                     .col-4 
                     .col-8.changeBodyButton
                         button#closeChangeBox(type="button") 닫기
-                        button(type="submit" value="수정") 수정
+                        button(type="submit" name="changeButton" value="수정") 수정

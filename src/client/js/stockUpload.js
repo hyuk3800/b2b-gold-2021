@@ -7,6 +7,10 @@ const bgBg = document.querySelector("#bgBg");
 const searcOrderhBox = document.querySelector(".searcOrderhBox");
 const searcModelhBox = document.querySelector(".searcModelhBox");
 const searchManuBox = document.querySelector(".searchManuBox");
+
+const goClient = document.querySelector("#goClient");
+
+
 for (let i = 0; i < orderOnButton.length; i++) {
     const openOrder = () => {
         searcModelhBox.style.display = "none";
@@ -79,6 +83,14 @@ const allCloseBtn = () => {
 bgBg.addEventListener("click", allCloseBtn);
 
 
+
+const goClientGo = () =>{
+    location.href="/client";
+};
+
+
+
+goClient.addEventListener("click", goClientGo)
 
 
 

@@ -136,6 +136,17 @@
     cursor: pointer;
 }
 
+#deleteBtn{
+    background-color: #fff;
+    border: none;
+    outline: none;
+}
+
+#deleteBtn:focus{
+    border: none;
+    outline: none;
+}
+
 
 #select10_50 {
     padding: 4px 10px 7px 10px;
@@ -401,6 +412,7 @@
     position: fixed;
     top: 0;
     z-index: 999999;
+    overflow: hidden;
 }
 
 .changesStart.on{

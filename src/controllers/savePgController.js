@@ -222,18 +222,8 @@ export const postCatalogeMain = async (req, res) => {
                 $in: click
             }
         });
-        // .populate("products");
-        console.log("이거", clickProduct);
-        // await goldProduct.findByIdAndUpdate({ _id :{ $in : click}},{
-        //     click: "on",
-        await goldProduct.updateMany({
-            _id: {
-                $in: click
-            }
-        }, {
-            click: "on"
-        });
-        // });
+        req.session.anotherSaveDb = clickProduct;
+        console.log(req.session.anotherSaveDb);
         return res.redirect("/cataloge/delete");
     }
 
@@ -250,20 +240,21 @@ export const deleteCataloge = async (req, res) => {
             _id
         }
     } = req.session;
+
+    // console.log("이게 말이야",req.session.anotherSaveDb.length);
+
+    let deletId = [];
+    for (let i = 0; i < req.session.anotherSaveDb.length; i++) {
+        deletId.push(req.session.anotherSaveDb[i]._id);
+    }
+
     const user = await User.findById(_id);
 
     if (String(_id) !== String(user._id)) {
         return res.status(403).redirect("/");
     }
-
-
-
     await goldProduct.deleteMany({
-        $and: [{
-            owner: _id
-        }, {
-            click: "on"
-        }]
+        _id: deletId
     });
 
 
@@ -467,16 +458,163 @@ export const postEdit = async (req, res) => {
     return res.redirect("/cataloge/main");
 }; // 미완
 
+
+
+
+
 export const getStockMain = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
-    const { user:{_id} } = req.session;
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
     const user = await User.findById(_id).populate("stocks");
+
+    // const user = await goldStock.find({
+    //     $and: [{
+    //         "registrationdate": KRDay,
+    //     }, {
+    //         "owner": _id
+
+    //     }]
+    // });
+    // console.log("이거말이야", user);
+
+    // const {
+    //     keyword,
+    //     startCalData,
+    //     endCalData,
+    // } = req.query;
+    // console.log("이거봐봐",new Date(startCalData).getTime(), new Date(endCalData).getTime());
+    // if (keyword) {
+    //     console.log(keyword);
+    //     console.log((Math.floor(Number(keyword))));
+    //     if (!Number(keyword)) {
+    //         stocks = await goldStock.find({
+    //             $and: [{
+    //                 registrationdate: {"$gte":new Date(startCalData).getTime(),"$lte":new Date(endCalData).getTime()
+
+    //                 }
+    //             },
+    //                 {
+    //                     "owner": _id
+    //             }]
+    //         });
+    //     }
+    // }
+
+
     return res.render("stock/stockmain", {
         pageTitle: "재고 관리",
         pathname,
         user
     });
 };
+
+
+export const postStockMain = async (req, res) => {
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
+    const {
+        clickThis,
+        deleteBtn,
+        saleBtn,
+        rentBtn,
+        changeButton,
+        gubun
+    } = req.body;
+
+    console.log(req.body);
+    if (!clickThis) {
+        return res.status(401).redirect("/stock/main");
+    }
+    if (changeButton) {
+        const clickStock = await goldStock.updateMany({
+            _id: {
+                $in: clickThis
+            }
+        }, {
+            gubun,
+        });
+        console.log(clickStock);
+        return res.redirect("/stock/main")
+    }
+    if (saleBtn) {
+        console.log("안녕 saleBtn");
+        const clickStock = await goldStock.find({
+            _id: {
+                $in: clickThis
+            }
+        });
+        req.session.anotherSaveDb = clickStock;
+        console.log(req.session.anotherSaveDb);
+        return res.redirect("/sale/upload");
+    }
+    if (rentBtn) {
+        console.log("안녕 rentBtn");
+        const clickStock = await goldStock.find({
+            _id: {
+                $in: clickThis
+            }
+        });
+        req.session.anotherSaveDb = clickStock;
+        console.log(req.session.anotherSaveDb);
+        return res.redirect("/rent/upload");
+    }
+    if (deleteBtn) {
+        const clickStock = await goldStock.find({
+            _id: {
+                $in: clickThis
+            }
+        });
+        req.session.anotherSaveDb = clickStock;
+        console.log(req.session.anotherSaveDb);
+        return res.redirect("/stock/delete");
+
+    }
+
+
+
+    return res.end();
+
+};
+
+export const deleteStock = async (req, res) => {
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
+
+    let deletId = [];
+
+    for (let i = 0; i < req.session.anotherSaveDb.length; i++) {
+        deletId.push(req.session.anotherSaveDb[i]._id);
+    }
+
+    console.log("여긴 delete", deletId);
+    const user = await User.findById(_id);
+
+    if (String(_id) !== String(user._id)) {
+        return res.status(403).redirect("/");
+    }
+    await goldStock.deleteMany({
+        _id: deletId
+    });
+
+    // console.log("삭제해야할", deletStock);
+    return res.redirect("/stock/main");
+};
+
+
+
+
+
+
 export const getStockUpload = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
     const {
@@ -501,6 +639,8 @@ export const getStockUpload = async (req, res) => {
     if (String(_id) !== String(user._id)) {
         return res.status(403).redirect("/");
     }
+
+
     // try
     // console.log("이건",client);
     return res.render("stock/stockupload", {
@@ -510,6 +650,8 @@ export const getStockUpload = async (req, res) => {
         client
     });
 };
+
+
 
 export const postStockUpload = async (req, res) => {
     const {
@@ -558,69 +700,122 @@ export const postStockUpload = async (req, res) => {
         }]
     });
 
-    
 
-    
-    const serial = await goldStock.find({});
-    
+
+
+    // const serial = await goldStock.find({});
+
     // const serialNum = String(serial.length).padStart(8, '0');
-    
+
     // console.log(serialNum);
-    
+
     let productList = [];
 
     for (let i = 0; i < products.length; i++) {
         // console.log("이거슨!", products[i]._id);
         productList.push(products[i]._id);
     }
+    console.log(req.body);
 
-    // console.log(manufacturer[0]);
-    // try {
+    console.log(orderNumber.length);
+    try {
+        if (orderNumber.length === 0) {
+            const rand = Math.floor(Math.random() * 100000000);
+                const newGoldStock = await goldStock.create({
+                    registrationdate: registrationdate,
+                    orderNumber: orderNumber,
+                    modelNumber: modelNumber,
+                    manufacturer: manufacturer,
+                    material: material,
+                    color: color,
+                    quantity: quantity,
+                    basicWage: basicWage,
+                    additionWage: additionWage,
+                    stoneWage1: stoneWage1,
+                    stoneWage2: stoneWage2,
+                    stoneWeight3: stoneWeight3,
+                    goldWeight: goldWeight,
+                    stoneWeight: stoneWeight,
+                    harry: harry,
+                    unitPrice: unitPrice,
+                    stone: {
+                        stoneName: stoneName,
+                        stoneQuantity: stoneQuantity,
+                    },
+                    stone2: {
+                        stoneName2: stoneName2,
+                        stoneQuantity2: stoneQuantity2,
+                    },
+                    size: size,
+                    description: description,
+                    purchaseWage: purchaseWage,
+                    eggPurchasePrice: eggPurchasePrice,
+
+                    products: productList,
+
+
+                    serialNumber: String((0 + 1) + rand).padStart(8, '0'),
+
+                    owner: _id,
+                });///// newGoldStock
+
+                const user = await User.findById(_id);
+                user.stocks.push(newGoldStock._id);
+                user.save();
+                console.log("뉴스톡", newGoldStock._id);
+        } else {
             for (let i = 0; i < Number(orderNumber.length); i++) {
-            const newGoldStock = await goldStock.create({
-                registrationdate: registrationdate,
-                orderNumber: orderNumber[i],
-                modelNumber: modelNumber[i],
-                manufacturer: manufacturer[i],
-                material: material[i],
-                color: color[i],
-                quantity: quantity[i],
-                basicWage: basicWage[i],
-                additionWage: additionWage[i],
-                stoneWage1: stoneWage1[i],
-                stoneWage2: stoneWage2[i],
-                stoneWeight3: stoneWeight3[i],
-                goldWeight: goldWeight[i],
-                stoneWeight: stoneWeight[i],
-                harry: harry[i],
-                stoneQuantity: stoneQuantity[i],
-                stoneQuantity2: stoneQuantity2[i],
-                unitPrice: unitPrice[i],
-                stoneName: stoneName[i],
-                stoneName2: stoneName2[i],
-                size: size[i],
-                description: description[i],
-                purchaseWage: purchaseWage[i],
-                eggPurchasePrice: eggPurchasePrice[i],
+                const rand = Math.floor(Math.random() * 100000000);
+                const newGoldStock = await goldStock.create({
+                    registrationdate: registrationdate,
+                    orderNumber: orderNumber[i],
+                    modelNumber: modelNumber[i],
+                    manufacturer: manufacturer[i],
+                    material: material[i],
+                    color: color[i],
+                    quantity: quantity[i],
+                    basicWage: basicWage[i],
+                    additionWage: additionWage[i],
+                    stoneWage1: stoneWage1[i],
+                    stoneWage2: stoneWage2[i],
+                    stoneWeight3: stoneWeight3[i],
+                    goldWeight: goldWeight[i],
+                    stoneWeight: stoneWeight[i],
+                    harry: harry[i],
+                    unitPrice: unitPrice[i],
+                    stone: {
+                        stoneName: stoneName[i],
+                        stoneQuantity: stoneQuantity[i],
+                    },
+                    stone2: {
+                        stoneName2: stoneName2[i],
+                        stoneQuantity2: stoneQuantity2[i],
+                    },
+                    size: size[i],
+                    description: description[i],
+                    purchaseWage: purchaseWage[i],
+                    eggPurchasePrice: eggPurchasePrice[i],
 
-                products: productList[i],
+                    products: productList[i],
 
 
-                serialNumber: String(serial.length + (i+1)).padStart(8, '0'),
+                    serialNumber: String((i + 1) + rand).padStart(8, '0'),
 
-                owner: _id,
-            });
-            const user = await User.findById(_id);
-            user.stocks.push(newGoldStock._id);
-            user.save();
-            console.log("뉴스톡",newGoldStock._id);
+                    owner: _id,
+                });///// newGoldStock
+                const user = await User.findById(_id);
+                user.stocks.push(newGoldStock._id);
+                user.save();
+                console.log("뉴스톡", newGoldStock._id);
+            }
         }
         return res.redirect("/stock/main");
-        // } catch (error) {
-        //     console.log(error);
-        //     return res.status(400).redirect("/stock/upload");
-        // }
-}; 
+        // return res.end();
+    } catch (error) {
+        console.log(error);
+        return res.status(400).redirect("/stock/upload");
+    }
+};
 
 
 

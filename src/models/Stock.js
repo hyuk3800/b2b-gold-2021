@@ -11,7 +11,7 @@ const stockSchema = new mongoose.Schema({
     gubun: { type: String, require: true, default: "일반" }, // 구분
 
     registrationdate: { type: String },// 등록일 (날짜 변경 가능)
-    orderNumber: { type: String },//주문번호
+    orderNumber: { type: Number },//주문번호
     modelNumber: { type:String },//모델번호(모델번호가 없으면 등록하러 가자고함)
     manufacturer:{ type: String },//제조사
     material: { type: String },//재질
@@ -25,11 +25,15 @@ const stockSchema = new mongoose.Schema({
     goldWeight: { type: Number }, //금중량
     stoneWeight: { type: Number },//알중량
     harry: { type: Number },//매입해리
-    stoneQuantity: { type: Number },//개당알수(메인)
-    stoneQuantity2: { type: Number },//개당알수(보조)
+    stone: {
+        stoneName: { type: String },//스톤(메인)
+        stoneQuantity: { type: Number },//개당알수(메인)
+    },
+    stone2: [{
+        stoneName2: { type: String },//스톤(보조)
+        stoneQuantity2: { type: Number },//개당알수(보조)
+    }],
     unitPrice: { type: String }, //단가상품
-    stoneName: { type: String },//스톤(메인)
-    stoneName2: { type: String },//스톤(보조)
     size: { type: String },//사이즈
     description: { type: String },//비고
     purchaseWage: { type: Number },//매입단가(기본)

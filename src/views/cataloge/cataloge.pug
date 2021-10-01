@@ -334,25 +334,25 @@ block content
                                     button#hold(type="hidden",name="hold", value="hold")
                                     li 
                                         img(src="../../../static/images/삭제하기.png", alt="삭제하기")
-                                        input.moveBtn(type="submit", name="deleteBtn", value="삭제하기")
+                                        input.moveBtn#deleteBtn(type="submit", name="deleteBtn", value="삭제하기")
                                     li 
                                         img(src="../../../static/images/공임변경.png", alt="공임 변경")
                                         span#onbutton 공임 변경
                                     li 
                                         img(src="../../../static/images/재고등록.png", alt="재고 등록")
-                                        input.moveBtn(value="재고 등록", type="submit", name="movestock")
+                                        input.moveBtn#movestock(value="재고 등록", type="submit", name="movestock")
                                     li 
                                         img(src="../../../static/images/주문등록.png", alt="주문 등록")
-                                        input.moveBtn(value="주문 등록", type="submit", name="moveorder")
+                                        input.moveBtn#moveorder(value="주문 등록", type="submit", name="moveorder")
                                     li 
                                         img(src="../../../static/images/주문등록.png", alt="수리 등록")
-                                        input.moveBtn(value="수리 등록", type="submit", name="moverepair")
+                                        input.moveBtn#moverepair(value="수리 등록", type="submit", name="moverepair")
                                     li 
                                         img(src="../../../static/images/판매등록 (1).png", alt="판매 등록")
-                                        input.moveBtn(value="판매 등록", type="submit", name="movesale")
+                                        input.moveBtn#movesale(value="판매 등록", type="submit", name="movesale")
                                     li 
                                         img(src="../../../static/images/대여등록 (1).png", alt="대여 등록")
-                                        input.moveBtn(value="대여 등록", type="submit", name="moverent")
+                                        input.moveBtn#moverent(value="대여 등록", type="submit", name="moverent")
 
     include ../partials/footer
         div#wagebox(class="")

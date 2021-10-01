@@ -1,25 +1,85 @@
-
 const changesStart = document.querySelector(".changesStart");
 const changesStartButton = document.querySelector("#changesStart");
 const closeChangeBox = document.querySelector("#closeChangeBox");
-const bgbg = document.querySelector("#bgbg "); 
+const bgbg = document.querySelector("#bgbg ");
 
+const checkedThis = document.querySelectorAll(".checkedThis");
+const saleBtn = document.querySelector("#saleBtn");
+const rentBtn = document.querySelector("#rentBtn");
+const deleteBtn = document.querySelector("#deleteBtn");
 
+const checkedAll = document.querySelector("#checkedAll");
 
-const changesStartOpen = () => {
-    changesStart.style.transition = "";
-    changesStart.classList.add("on");
+let checkedTrue = 0;
 
+for (let i = 0; i < checkedThis.length; i++) {
+    const checkedThisTrueFalse = (e) => {
+        console.log(e.target.checked);
+
+        if (e.target.checked) {
+            checkedTrue++;
+            console.log(checkedTrue);
+        } else {
+            checkedTrue--;
+            console.log(checkedTrue);
+        }
+    }; /////checkedThisTrueFalse
+    checkedThis[i].addEventListener('click', checkedThisTrueFalse);
+
+}; //// for
+
+const changesStartNotOpen = () => {
+    if (checkedTrue === 0) {
+        alert("체크된것이 없습니다.")
+    } else {
+        changesStart.style.transition = "";
+        changesStart.classList.add("on");
+    }
 };
+
+
+changesStartButton.addEventListener("click", changesStartNotOpen);
 
 const changeBoxClose = () => {
     changesStart.style.transition = "height 0s .5s";
     changesStart.classList.remove("on");
 }
 
-changesStartButton.addEventListener("click", changesStartOpen);
 closeChangeBox.addEventListener("click", changeBoxClose);
 bgbg.addEventListener("click", changeBoxClose);
+
+
+const checkedAllOff = (event) => {
+    if(checkedTrue === 0){
+        event.preventDefault();
+        alert("체크된것이 없습니다.")
+    }
+};
+
+
+saleBtn.addEventListener("click", checkedAllOff);
+rentBtn.addEventListener("click", checkedAllOff);
+deleteBtn.addEventListener("click", checkedAllOff);
+
+
+const checkedAllOnOff = () => {
+    if(checkedAll.checked){
+        // console.log("된다")
+        for(let i=0; i<checkedThis.length; i++){
+            checkedThis[i].checked = true;
+            checkedTrue = checkedThis.length;
+        }
+    }else{
+        for(let i=0; i<checkedThis.length; i++){
+            checkedThis[i].checked = false;
+            checkedTrue = 0;
+        }   
+    }
+};
+
+checkedAll.addEventListener("click", checkedAllOnOff);
+
+
 
 
 
@@ -33,7 +93,7 @@ let KRDay = today.toLocaleDateString('ko-KR');
 calD1.value = KRDay;
 calD2.value = KRDay;
 
-$(function() {////////// jQ
+$(function () { ////////// jQ
 
     $.datepicker.setDefaults({
         dateFormat: 'yy. m. d.',

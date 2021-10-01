@@ -9,8 +9,17 @@ const offbutton = document.querySelector("#offbutton");
 const onbutton = document.querySelector("#onbutton");
 const wagebox = document.querySelector("#wagebox");
 
+const deleteBtn = document.querySelector("#deleteBtn");
+const movestock = document.querySelector("#movestock");
+const moveorder =document.querySelector("#moveorder");
+const moverepair =document.querySelector("#moverepair");
+const movesale =document.querySelector("#movesale");
+const moverent =document.querySelector("#moverent");
+
 const clickAndChack = document.querySelector(".clickAndChack");
 const clickThis = document.getElementsByClassName('clickThis');
+
+
 
 // console.log(
 //     cardBro,
@@ -43,7 +52,7 @@ const tableBroBtnClick = () => {
 cardBro.addEventListener("click", cardBroBtnClick);
 tableBro.addEventListener("click", tableBroBtnClick);
 
-
+let checkedTrue = 0;
 
 // 체크박스 체크가 있을시에만 공임변경창 나오게하기
 for (let i = 0; i < clickThis.length; i++) {
@@ -54,34 +63,64 @@ for (let i = 0; i < clickThis.length; i++) {
 
         if (e.target.checked) {
             //    console.log(clickThis.value.find(e.target.value));
+            checkedTrue++;
+        }else{
+            if(checkedTrue === 0){
 
-            const wageBoxOn = () => {
-                wagebox.classList.add("on");
-                console.log("hihi")
-                wagebox.style.transition = "";
-                // if(e.target.value === clickThis[i].value){
-
-                // }
-            };
-            const wageBoxOff = () => {
-                wagebox.classList.remove("on");
-                console.log("hihi")
-                wagebox.style.transition = "height 0s .5s";
-                // if(e.target.value === clickThis[i].value){
-
-                // }
-            };
-            offbutton.addEventListener("click", wageBoxOff);
-            onbutton.addEventListener("click", wageBoxOn);
-            wageboxcent.addEventListener("click", wageBoxOff);
+            }else{
+                checkedTrue--;
+            }
         }
-        console.log("hi");
-
+        // console.log("hi");
+        
     };
-    // console.log(clickThis.length);
-
     clickThis[i].addEventListener("click", checkedTrueFalse);
 }
+
+const checkedAllOff = (event) => {
+    if(checkedTrue === 0){
+        event.preventDefault();
+        alert("체크된것이 없습니다.")
+    }
+};
+
+
+console.log(deleteBtn);
+
+deleteBtn.addEventListener("click", checkedAllOff);
+movestock.addEventListener("click", checkedAllOff);
+moveorder.addEventListener("click", checkedAllOff);
+moverepair.addEventListener("click", checkedAllOff);
+movesale.addEventListener("click", checkedAllOff);
+moverent.addEventListener("click", checkedAllOff); 
+
+// console.log(clickThis.length);
+const wageBoxOn = () => {
+    if(checkedTrue == 0){
+        alert("체크된것이 없습니다")
+    }else{
+        wagebox.classList.add("on");
+        // console.log("hihi")
+        wagebox.style.transition = "";
+        // if(e.target.value === clickThis[i].value){ 
+    }
+
+};
+
+const wageBoxOff = () => {
+    wagebox.classList.remove("on");
+    // console.log("hihi")
+    wagebox.style.transition = "height 0s .5s";
+    // if(e.target.value === clickThis[i].value){
+
+    // }
+};
+
+offbutton.addEventListener("click", wageBoxOff);
+onbutton.addEventListener("click", wageBoxOn);
+wageboxcent.addEventListener("click", wageBoxOff);
+
+
 
 
 
@@ -91,12 +130,14 @@ const checkThisAll = () => {
         clickAndChack.classList.toggle("on");
         for (let i = 0; i < clickThis.length; i++) {
             clickThis[i].checked = true;
+            checkedTrue = clickThis.length;
         }
     } else {
         // console.log("안녕?")
         clickAndChack.classList.toggle("on");
         for (let i = 0; i < clickThis.length; i++) {
             clickThis[i].checked = false;
+            checkedTrue = 0;
         }
     }
 
