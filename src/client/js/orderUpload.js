@@ -1,4 +1,104 @@
 window.onload = function () {
+    const account = document.querySelectorAll(".account");
+    const modelNumber = document.querySelectorAll(".modelNumber");
+    const manufacturer = document.querySelectorAll(".manufacturer");
+
+    const startsearch = document.querySelector(".startsearch");
+    const orderClose = document.querySelectorAll(".orderClose");
+    const bgBg = document.querySelector("#bgBg");
+    const searcOrderhBox = document.querySelector(".searcOrderhBox");
+    const searcModelhBox = document.querySelector(".searcModelhBox");
+    const searchManuBox = document.querySelector(".searchManuBox");
+
+    console.log(account)
+
+    for (let i = 0; i < account.length; i++) {
+        const accountOpen = () => {
+            searcModelhBox.style.display = "none";
+            searchManuBox.style.display = "none";
+            startsearch.classList.add("on");
+            searcOrderhBox.classList.add("on");
+            startsearch.style.transition = "";
+        };
+        account[i].addEventListener("click", accountOpen);
+    };
+
+    for (let i = 0; i < account.length; i++) {
+        const modelNumberOpen = () => {
+            searcOrderhBox.style.display = "none";
+            searchManuBox.style.display = "none";
+            startsearch.classList.add("on");
+            searcModelhBox.classList.add("on");
+            startsearch.style.transition = "";
+        };
+        modelNumber[i].addEventListener("click", modelNumberOpen);
+    };
+
+
+    for (let i = 0; i < manufacturer.length; i++) {
+        const manufacturerOpen = () => {
+            searcOrderhBox.style.display = "none";
+            searcModelhBox.style.display = "none";
+            startsearch.classList.add("on");
+            searchManuBox.classList.add("on");
+            startsearch.style.transition = "";
+        };
+        manufacturer[i].addEventListener("click", manufacturerOpen);
+    };
+
+    const allCloseBtn = () => {
+        startsearch.style.transition = "height 0s .5s";
+        startsearch.classList.remove("on");
+        searcOrderhBox.classList.remove("on");
+        searcModelhBox.classList.remove("on");
+        searchManuBox.classList.remove("on");
+    
+        setTimeout(function () {
+            searcOrderhBox.style.display = "block";
+            searcModelhBox.style.display = "block";
+            searchManuBox.style.display = "block";
+        }, 1000);
+    };
+
+
+    for (let i = 0; i < orderClose.length; i++) {
+
+        const closeOrderRemove = () => {
+            startsearch.style.transition = "height 0s .5s";
+            startsearch.classList.remove("on");
+            searcOrderhBox.classList.remove("on");
+            searcModelhBox.classList.remove("on");
+            searchManuBox.classList.remove("on");
+            setTimeout(function () {
+                searcOrderhBox.style.display = "block";
+                searcModelhBox.style.display = "block";
+                searchManuBox.style.display = "block";
+            }, 1000);
+    
+        };
+    orderClose[i].addEventListener("click",closeOrderRemove);
+    };
+
+    bgBg.addEventListener("click", allCloseBtn);
+
+    const goClient = document.querySelectorAll(".goClient");
+
+    for(let i=0; i<goClient.length; i++){
+        const goClientGO = () =>{
+            location.href="/client";
+        };
+
+
+        goClient[i].addEventListener("click", goClientGO);
+    }
+
+
+
+
+
+
+
+
     const plsbtn = document.querySelector('#plsbtn');
     const tbody = document.querySelector('#tbody');
 
@@ -60,34 +160,34 @@ window.onload = function () {
 
 
 
-    
+
     const calData = document.querySelector(".calData");
     let cldbox1 = document.getElementsByClassName("cldbox1111");
     let cldbox = document.querySelector("#cldbox");
 
-    
+
     let today = new Date();
     let KRDay = today.toLocaleDateString('ko-KR');
     calData.value = KRDay;
-    
-    
+
+
     let tomorrow = new Date(today.setDate(today.getDate() + 7));
-    
-    
-    
+
+
+
     const inputChinge = (e) => {
         console.log("안녕");
     };
 
     calData.addEventListener("input", inputChinge)
-    
+
     cldbox.value = tomorrow.toLocaleDateString('ko-KR');
-    
+
     let cldboxval = cldbox.value;
 
     // console.log(cldboxval);
 
-    calData.onclick = function(){
+    calData.onclick = function () {
         console.log("됬냐?");
     }
 
@@ -104,25 +204,39 @@ window.onload = function () {
     // console.log(cldboxTop);
 
 
+    // const cldboxChanges = () => {
+    //     console.log("dododododododod");
+    //     // for(let i=0; i<cldbox1.length; i++){
+    //     //     cldbox1[i].value = cldbox.value;
+    //     // }
+    // };
+
+
+
+    // cldbox.addEventListener("change", cldboxChanges);
+
 
     $(function () { ////// jQ 시작
 
-    $.datepicker.setDefaults({
-        dateFormat: 'yy. m. d.',
-        prevText: '이전 달',
-        nextText: '다음 달',
-        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-        showMonthAfterYear: true,
-        yearSuffix: '년'
-    });
-    
-    $('.ui-datepicker ').css({ "margin-left" : "141px", "margin-top": "-223px"});  //달력(calendar) 위치
-    // $(function () {
-    // });
+        $.datepicker.setDefaults({
+            dateFormat: 'yy. m. d.',
+            prevText: '이전 달',
+            nextText: '다음 달',
+            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            showMonthAfterYear: true,
+            yearSuffix: '년'
+        });
+
+        $('.ui-datepicker ').css({
+            "margin-left": "141px",
+            "margin-top": "-223px"
+        }); //달력(calendar) 위치
+        // $(function () {
+        // });
 
 
         $("#datepicker").datepicker({
@@ -135,7 +249,7 @@ window.onload = function () {
                 }, 1); ///setTimeout
             } /// beforeShow
 
-        });/// datepicker
+        }); /// datepicker
         // $(".cldbox1111").datepicker("setDate", "+7d");
         $("#cldbox").datepicker({
             showOn: "both",
@@ -151,13 +265,13 @@ window.onload = function () {
                     })
                 }, 1); ///setTimeout
             } /// beforeShow
-        });// datepicker
-    
+        }); // datepicker
 
 
 
 
-    
-    });//// jQ 끝
+
+
+    }); //// jQ 끝
 
 }

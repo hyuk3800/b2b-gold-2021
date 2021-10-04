@@ -3,6 +3,60 @@ window.onload = function () {
     //일단 되게 하고 코드 는 나중에 줄일 수 있으면 줄이자
 
 
+    
+    const modelNumber = document.querySelector("#modelNumber"); 
+    const title = document.querySelector("#title"); 
+    const allModelNumber = document.querySelectorAll(".allModelNumber");
+    
+    const modelNumberInput = () => {
+        const modelValue = modelNumber.value;
+        // console.log('이이이');
+        // console.log(allModelNumber[0].dataset.model)
+        for(let i=0; i<allModelNumber.length; i++){
+            if(modelValue === allModelNumber[i].dataset.model){
+                alert("모델번호가 중복됩니다.")
+            }
+            title.value = modelValue;
+
+        }
+    };
+
+    modelNumber.addEventListener("change", modelNumberInput);
+
+    const stoneWeight = document.getElementsByName("stoneWeight");
+    const stoneWeight2 = document.getElementsByName("stoneWeight2");
+    const stoneWeight22 = document.getElementsByName("stoneWeight22");
+
+    
+
+    
+    
+    // for(let i=0; i<stoneWeight22.length; i++){
+    //     const stoneWeightPluse = () => {
+    //         if(!stoneWeight2[0].value){
+    //             stoneWeight2[0].value = 0;
+    //             stoneWeight[0].value =  Number(stoneWeight2[0].value) + Number(stoneWeight22[i].value);
+    //         }
+    //         stoneWeight[0].value =  Number(stoneWeight2[0].value) + Number(stoneWeight22[i].value);
+    //     };
+    //     const allStone22Add = (event) => {
+    //         // console.log("ddddd");
+    //        if(!event.target.value){
+    //         event.target.value = 0;
+    //         stoneWeight[0].value =  Number(stoneWeight2[0].value) + Number(stoneWeight22[i].value);
+    //        }
+    //        stoneWeight[0].value =  Number(stoneWeight2[0].value) + Number(stoneWeight22[i].value);
+
+    //     };
+        
+        
+    //     stoneWeight22[i].addEventListener("change", allStone22Add);
+    //     stoneWeight2[0].addEventListener("change", stoneWeightPluse);
+    // };
+
+
+
+
     const ageBoxButton = document.querySelectorAll(".ageBox button")
 
     // console.log(ageBoxButton);
@@ -616,6 +670,10 @@ const etcAdd1 = () => {
     }; ////for 문
 
     
+
+    
+
+
     
     // const stoneBtn = document.querySelector("#stoneClickBtn");
     // const stoneTbody = document.querySelector("#stoneTbody");

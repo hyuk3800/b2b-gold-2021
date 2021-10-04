@@ -1,213 +1,578 @@
 extends ../base
 include ../mixins/orderuploadtable
+include ../mixins/stockmodelcard
+include ../mixins/stockclienttable
 
 block links 
     link(rel="stylesheet", href="/static/css/order/orderupload.css")
     link(rel="stylesheet", href="/static/css/components/footer.css")
+    link(rel="stylesheet", href="/static/css/stock/startsearch.css") 
 
 block scripts 
     script(defer, src="/assets/js/orderUpload.js") 
 
 block content   
-    div(class="container orderSaveBox")
-        div(class="row")
-            div(class="col-6")
-                div(class="orderName")
-                    a( href="/order/main", target="_self", class="mntitArrow") 
-                    span #{pageTitle}
-                a(href="", class="icInfoOutline")
-                    img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움") 
-            div(class="col-6 orderBtnBox")
-                button(id="orderBtn") 주문등록
-        div(class="row")
-            div(class="col-12 imgOrderBox")
-                div(class="imgbox")
-                    img(src="../../../../static/images/no_image_available.png", alt="이미지 없음")
-        div(class="row")
-            div(class="col-6 calinderBox")
-                div(class="calinder")
-                    img(src="../../../../static/images/calendar.png", alt="calendar")
-                input(type="text" class="calData", id="datepicker")
-        div(class="row tableLongBoxBox")
-            div(class="tableLongBox")
-                div(class="col-12 vybox")
-                    table 
-                        thead 
-                            tr 
-                                th(width="2%" rowspan="2") 취소
-                                th(width="8%" style="border-bottom: none;") 거래처
-                                th(width="8%" style="border-bottom: none;") 모델번호
-                                th(width="8%" style="border-bottom: none;") 제조사
-                                th(width="5%" rowspan="2") 재질
-                                th(width="5%" rowspan="2") 색상
-                                th(width="3%" rowspan="2") 수량
-                                th(colspan="4") 판매단가
-                                th(width="6%" colspan="2") 개당알수
-                                th(width="4%" rowspan="2") 개당 <br> 알중량
-                                th(colspan="2") 스톤
-                                th(width="4%" rowspan="2") 사이즈
-                                th(rowspan="2") 기타 설명
-                                th(width="8.5%") 출고일
-                            tr 
-                                th(style="border-top: none;")
-                                    input(name="clickThis" id="clickThis" type="checkbox")
-                                th(style="border-top: none;")
-                                    input(name="clickThis" id="clickThis" type="checkbox")
-                                th(style="border-top: none;")
-                                    input(name="clickThis" id="clickThis" type="checkbox")
-                                th 기본
-                                th 추가
-                                th 중심
-                                th 보조
-                                th 메인
-                                th 보조
-                                th 메인
-                                th 보조
-                                th
-                                    input(type="text" class="cldbox1", id="cldbox",  autocomplete="off" )
-                                    div(class="calinder2")
-                                        img(src="../../../../static/images/calendar.png" alt="calendar")
-                        if anotherSaveDb
-                            each product in anotherSaveDb
-                                +orderUploadTable(product)
-                        else
-                            tbody#tbody  
+    form(method="post")#formPOST     
+        div(class="container orderSaveBox")
+            div(class="row")
+                div(class="col-6")
+                    div(class="orderName")
+                        a( href="/order/main", target="_self", class="mntitArrow") 
+                        span #{pageTitle}
+                    a(href="", class="icInfoOutline")
+                        img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움") 
+                div(class="col-6 orderBtnBox")
+                    button(id="orderBtn") 주문등록
+            div(class="row")
+                div(class="col-12 imgOrderBox")
+                    div(class="imgbox")
+                        img(src="../../../../static/images/no_image_available.png", alt="이미지 없음")
+            div(class="row")
+                div(class="col-6 calinderBox")
+                    div(class="calinder")
+                        img(src="../../../../static/images/calendar.png", alt="calendar")
+                    input(type="text" class="calData", id="datepicker")
+            div(class="row tableLongBoxBox")
+                div(class="tableLongBox")
+                    div(class="col-12 vybox")
+                        table 
+                            thead 
                                 tr 
-                                    td 
-                                        button(class="trsBTN") 
-                                    td 
-                                        input(type="text")
-                                        button(class="secbtn") 
-                                    td 
-                                        input(type="text")
-                                        button(class="secbtn") 
-                                    td 
-                                        input(type="text") 
-                                        button(class="secbtn") 
-                                    td 
-                                        select(name="gramBox" id="gramBox") 
-                                            option(value="") 
-                                            option(value="10K") 10K
-                                            option(value="14K") 14K
-                                            option(value="18K") 18K
-                                            option(value="22K") 22K
-                                            option(value="순금-995") 순금-995
-                                            option(value="순금-999") 순금-999
-                                            option(value="실버") 실버
-                                            option(value="PT") PT
-                                            option(value="기타") 기타
-                                    td 
-                                        select(name="color" id="color")
-                                            option(value="") 
-                                            option(value="G") G
-                                            option(value="G/B") G/B
-                                            option(value="G/P") G/P
-                                            option(value="G/R/W") G/R/W
-                                            option(value="G/W") G/W
-                                            option(value="P") P
-                                            option(value="P/W") P/W
-                                            option(value="P/블랙도금") P/블랙도금
-                                            option(value="W") W
-                                            option(value="W/B") W/B
-                                            option(value="W/G") W/G
-                                            option(value="W/P") W/P
-                                            option(value="블랙") 블랙
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text") 
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text" class="cldbox1111" autocomplete="off" )
-                                        div(class="calinder2") 
-                                            img(src="../../../../static/images/calendar.png" alt="calendar")
+                                    th(width="2%" rowspan="2") 취소
+                                    th(width="8%" style="border-bottom: none;") 거래처
+                                    th(width="8%" style="border-bottom: none;") 모델번호
+                                    th(width="8%" style="border-bottom: none;") 제조사
+                                    th(width="5%" rowspan="2") 재질
+                                    th(width="5%" rowspan="2") 색상
+                                    th(width="3%" rowspan="2") 수량
+                                    th(colspan="4") 판매단가
+                                    th(width="6%" colspan="2") 개당알수
+                                    th(width="4%" rowspan="2") 개당 <br> 알중량
+                                    th(colspan="2") 스톤
+                                    th(width="4%" rowspan="2") 사이즈
+                                    th(rowspan="2") 기타 설명
+                                    th(width="8.5%") 출고일
                                 tr 
-                                    td 
-                                        button(class="trsBTN") 
-                                    td 
-                                        input(type="text")
-                                        button(class="secbtn") 
-                                    td 
-                                        input(type="text")
-                                        button(class="secbtn") 
-                                    td 
-                                        input(type="text") 
-                                        button(class="secbtn") 
-                                    td 
-                                        select(name="gramBox" id="gramBox") 
-                                            option(value="") 
-                                            option(value="10K") 10K
-                                            option(value="14K") 14K
-                                            option(value="18K") 18K
-                                            option(value="22K") 22K
-                                            option(value="순금-995") 순금-995
-                                            option(value="순금-999") 순금-999
-                                            option(value="실버") 실버
-                                            option(value="PT") PT
-                                            option(value="기타") 기타
-                                    td 
-                                        select(name="color" id="color")
-                                            option(value="") 
-                                            option(value="G") G
-                                            option(value="G/B") G/B
-                                            option(value="G/P") G/P
-                                            option(value="G/R/W") G/R/W
-                                            option(value="G/W") G/W
-                                            option(value="P") P
-                                            option(value="P/W") P/W
-                                            option(value="P/블랙도금") P/블랙도금
-                                            option(value="W") W
-                                            option(value="W/B") W/B
-                                            option(value="W/G") W/G
-                                            option(value="W/P") W/P
-                                            option(value="블랙") 블랙
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text") 
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text")
-                                    td 
-                                        input(type="text" class="cldbox1111" autocomplete="off" )
-                                        div(class="calinder2") 
+                                    th(style="border-top: none;")
+                                        input(name="clickThis" id="clickThis" type="checkbox")
+                                    th(style="border-top: none;")
+                                        input(name="clickThis" id="clickThis" type="checkbox")
+                                    th(style="border-top: none;")
+                                        input(name="clickThis" id="clickThis" type="checkbox")
+                                    th 기본
+                                    th 추가
+                                    th 중심
+                                    th 보조
+                                    th 메인
+                                    th 보조
+                                    th 메인
+                                    th 보조
+                                    th
+                                        input(type="text" class="cldbox1", id="cldbox",  autocomplete="off" )
+                                        div(class="calinder2")
                                             img(src="../../../../static/images/calendar.png" alt="calendar")
-        div(class="row")
-            div(class="pluseBox")
-                button(id="plsbtn") 추가
+                            if anotherSaveDb
+                                each product in anotherSaveDb
+                                    +orderUploadTable(product)
+                            else
+                                tbody#tbody  
+                                    tr 
+                                        td 
+                                            button(class="trsBTN" type="button") 
+                                        td 
+                                            input(type="text" name="account")
+                                            button(class="secbtn account" type="button") 
+                                        td 
+                                            input(type="text" name="modelNumber")
+                                            button(class="secbtn modelNumber" type="button") 
+                                        td 
+                                            input(type="text" name="manufacturer") 
+                                            button(class="secbtn manufacturer" type="button") 
+                                        td 
+                                            select(name="material" id="gramBox") 
+                                                option(value="") 
+                                                option(value="10K") 10K
+                                                option(value="14K") 14K
+                                                option(value="18K") 18K
+                                                option(value="22K") 22K
+                                                option(value="순금-995") 순금-995
+                                                option(value="순금-999") 순금-999
+                                                option(value="실버") 실버
+                                                option(value="PT") PT
+                                                option(value="기타") 기타
+                                        td 
+                                            select(name="color" id="color")
+                                                option(value="") 
+                                                option(value="G") G
+                                                option(value="G/B") G/B
+                                                option(value="G/P") G/P
+                                                option(value="G/R/W") G/R/W
+                                                option(value="G/W") G/W
+                                                option(value="P") P
+                                                option(value="P/W") P/W
+                                                option(value="P/블랙도금") P/블랙도금
+                                                option(value="W") W
+                                                option(value="W/B") W/B
+                                                option(value="W/G") W/G
+                                                option(value="W/P") W/P
+                                                option(value="블랙") 블랙
+                                        td 
+                                            input(type="number" name="quantity")
+                                        td 
+                                            input(type="number" name="basicWage") 
+                                        td 
+                                            input(type="number" name="additionWage")
+                                        td 
+                                            input(type="number" name="stoneWage1")
+                                        td 
+                                            input(type="number" name="stoneWage2")
+                                        td 
+                                            input(type="number" name="stoneQuantity")
+                                        td 
+                                            input(type="number" name="stoneQuantity2")
+                                        td 
+                                            input(type="number" name="stoneWeight3")
+                                        td 
+                                            input(type="text" name="stoneName")
+                                        td 
+                                            input(type="text" name="stoneName2")
+                                        td 
+                                            input(type="text" name="size")
+                                        td 
+                                            input(type="text" name="description")
+                                        td 
+                                            input(type="text" class="cldbox1111" name="releasedate" autocomplete="off" disabled )
+                                            div(class="calinder2") 
+                                                img(src="../../../../static/images/calendar.png" alt="calendar")
+                                    tr 
+                                        td 
+                                            button(class="trsBTN" type="button") 
+                                        td 
+                                            input(type="text" name="account")
+                                            button(class="secbtn account" type="button") 
+                                        td 
+                                            input(type="text" name="modelNumber")
+                                            button(class="secbtn modelNumber" type="button") 
+                                        td 
+                                            input(type="text"  name="manufacturer") 
+                                            button(class="secbtn manufacturer" type="button") 
+                                        td 
+                                            select(name="material" id="gramBox") 
+                                                option(value="") 
+                                                option(value="10K") 10K
+                                                option(value="14K") 14K
+                                                option(value="18K") 18K
+                                                option(value="22K") 22K
+                                                option(value="순금-995") 순금-995
+                                                option(value="순금-999") 순금-999
+                                                option(value="실버") 실버
+                                                option(value="PT") PT
+                                                option(value="기타") 기타
+                                        td 
+                                            select(name="color" id="color")
+                                                option(value="") 
+                                                option(value="G") G
+                                                option(value="G/B") G/B
+                                                option(value="G/P") G/P
+                                                option(value="G/R/W") G/R/W
+                                                option(value="G/W") G/W
+                                                option(value="P") P
+                                                option(value="P/W") P/W
+                                                option(value="P/블랙도금") P/블랙도금
+                                                option(value="W") W
+                                                option(value="W/B") W/B
+                                                option(value="W/G") W/G
+                                                option(value="W/P") W/P
+                                                option(value="블랙") 블랙
+                                        td 
+                                            input(type="number" name="quantity")
+                                        td 
+                                            input(type="number" name="basicWage") 
+                                        td 
+                                            input(type="number" name="additionWage")
+                                        td 
+                                            input(type="number" name="stoneWage1")
+                                        td 
+                                            input(type="number" name="stoneWage2")
+                                        td 
+                                            input(type="number" name="stoneQuantity")
+                                        td 
+                                            input(type="number" name="stoneQuantity2")
+                                        td 
+                                            input(type="number" name="stoneWeight3")
+                                        td 
+                                            input(type="text" name="stoneName")
+                                        td 
+                                            input(type="text" name="stoneName2")
+                                        td 
+                                            input(type="text" name="size")
+                                        td 
+                                            input(type="text" name="description")
+                                        td 
+                                            input(type="text" class="cldbox1111" name="releasedate" autocomplete="off" disabled )
+                                            div(class="calinder2") 
+                                                img(src="../../../../static/images/calendar.png" alt="calendar")
+                                    
+            div(class="row")
+                div(class="pluseBox")
+                    button(id="plsbtn" type="button") 추가
+        .startsearch
+            #bgBg 
+            .searcOrderhBox.container
+                .row.manuNameBox
+                    .col-12.manuName 
+                        span 거래처
+                .container   
+                    .row.clientBody 
+                        .col-3.clientBodyName
+                            span 전체 n개
+                        .col-7
+                            .getClient
+                                input(type="text" placeholder="검색어를 입력하세요")
+                                button(type="button")
+                                    i(class="las la-search")
+                    .container      
+                        .row
+                            .clientBox
+                                .col-12
+                                    table 
+                                        thead
+                                            tr 
+                                                th No
+                                                th 선택
+                                                th 구분
+                                                th 상호명
+                                                th 사업체명
+                                                th 대표자명
+                                                th 대표자연락처
+                                                th 연락처
+                                                th 팩스
+                                                th 통상
+                                                th 비고
+                                                th VAT
+                                                th 거래형태
+                                                th 해리
+                                        tbody 
+                                            if account
+                                                each account1 in account
+                                                    +stockClienTtable(account1)
+                                                span 
+                                            else 
+
+                                .col-12.botbutton
+                                    button.goClient(type="button") 추가등록 
+                    .row 
+                        .col-12.numberBox
+                            span 1
+                    .row.orderButtonBox2(style="margin-bottom: 20px")
+                        .col-5
+                            button.orderClose(type="button") 취소
+            .searcModelhBox.container
+                .row.searcModelTitle
+                    .col-12 
+                        span 메인 상품(사진) 검색
+                .container    
+                    .row.searcModelSubTitle
+                        .col-2 
+                            span 전체 n개
+                        .col-10  
+                            .inputModel
+                                form(method="GET")
+                                    input(type="text" placeholder="검색어를 입력하세요")
+                                    button(type="button")
+                                        i(class="las la-search")
+                    .row
+                        .col-12#fillterBox
+                            button#filterButton(type="button") 필터 
+                        .col-12
+                            div(class="mainck")
+                                div(class="row")
+                                    div(class="col-2 catalognanu") *성별
+                                    div(class="col-10 chackboxbox chackboxbox1")
+                                        div(class="allForm")
+                                            label(class="radiobox", for="man") 남자
+                                                input(type="radio", name="gender", id="man", value="남성") 
+                                            label(class="radiobox", for="woman") 여자
+                                                input(type="radio", name="gender", id="woman", value="여성")
+                                            //- label(class="radiobox", for="all") 전체
+                                            //-     input(type="radio", name="gender", id="all", value="전체" checked)
+                                div(class="row")
+                                    div(class="col-2 catalognanu") *나이대
+                                    div(class="col-10 chackboxbox chackboxbox1")
+                                        div(class="chackbox ageBox")
+                                            button(type="button", name="age", class="ageButton" value="영유아") 영유아
+                                            button(type="button", name="age", class="ageButton" value="10대~20대") 10대~20대
+                                            button(type="button", name="age", class="ageButton" value="30대~40대") 30대~40대
+                                            button(type="button", name="age", class="ageButton" value="50대이상") 50대이상
+                                div(class="row")
+                                    div(class="col-2 catalognanu") *부위
+                                    div(class="col-10 chackboxbox chackboxbox1")
+                                        div(class="chackbox partBox")
+                                            button(type="button", name="part" id="necklace" value="목걸이") 목걸이
+                                            button(type="button", name="part" id="earring" value="귀걸이") 귀걸이
+                                            button(type="button", name="part" id="bracelet" value="팔찌") 팔찌
+                                            button(type="button", name="part" id="anklet" value="발찌") 발찌
+                                            button(type="button", name="part" id="ring" value="반지") 반지
+                                            button(type="button", name="part" id="etc" value="기타") 기타
+                                div(class="row")
+                                    div(class="col-2 catalognanu") *스타일
+                                    div(class="col-10 chackboxbox chackboxbox1")
+                                        div(class="chackbox styleBox" id="necklaceSt")
+                                            button(type="button", name="styles", value="패션") 패션
+                                            button(type="button", name="styles", value="아기제") 아기제품
+                                            button(type="button", name="styles", value="종교") 종교
+                                            button(type="button", name="styles", value="웨딩") 웨딩
+                                            button(type="button", name="styles", value="대작") 대작
+                                            button(type="button", name="styles", value="진주") 진주
+                                            button(type="button", name="styles", value="다이아") 다이아
+                                            button(type="button", name="styles", value="유색보") 유색보석
+                                            button(type="button", name="styles", value="레이스") 레이스
+                                            button(type="button", name="styles", value="볼") 볼
+                                            button(type="button", name="styles", value="클립") 클립
+                                            button(type="button", name="styles", value="기계체") 기계체인
+                                            button(type="button", name="styles", value="모줄") 모줄
+                                            button(type="button", name="styles", value="함마링") 함마링
+                                            button(type="button", name="styles", value="각줄") 각줄
+                                            button(type="button", name="styles", value="할로우") 할로우
+                                            button(type="button", name="styles", value="오메가") 오메가
+                                            button(type="button", name="styles", value="이태리") 이태리
+                                            button(type="button", name="styles", value="면") 면
+                                            button(type="button", name="styles", value="가죽") 가죽
+                                            button(type="button", name="styles", value="캐스팅") 캐스팅
+                                            button(type="button", name="styles", value="양장") 양장
+                                            button(type="button", name="styles", value="고방") 고방
+                                            button(type="button", name="styles", value="스타킹") 스타킹
+                                            button(type="button", name="styles", value="초커") 초커
+                                            button(type="button", name="styles", value="볼드") 볼드
+                                            button(type="button", name="styles", value="이니셜") 이니셜
+                                            button(type="button", name="styles", value="롱") 롱
+                                            button(type="button", name="styles", value="펜던트") 펜던트
+                                            button(type="button", name="styles", value="심플") 심플
+                                            button(type="button", name="styles", value="일체형") 일체형
+                                            button(type="button", name="styles", value="뱅글") 뱅글
+                                            button(type="button", name="styles", value="원석") 원석
+                                            button(type="button", name="styles", value="컷팅") 컷팅
+                                            button(type="button", name="styles", value="펫") 펫
+                                            button(type="button", name="styles", value="연예인") 연예인
+                                            button(type="button", name="styles", value="기타") 기타
+                                        div(class="chackbox styleBox" id="earringSt")
+                                            button(type="button", name="styles", value="패션") 패션
+                                            button(type="button", name="styles", value="아기제") 아기제품
+                                            button(type="button", name="styles", value="종교") 종교
+                                            button(type="button", name="styles", value="웨딩") 웨딩
+                                            button(type="button", name="styles", value="대작") 대작
+                                            button(type="button", name="styles", value="진주") 진주
+                                            button(type="button", name="styles", value="다이아") 다이아
+                                            button(type="button", name="styles", value="유색보석") 유색보석
+                                            button(type="button", name="styles", value="레이스") 레이스
+                                            button(type="button", name="styles", value="볼") 볼
+                                            button(type="button", name="styles", value="클립") 클립
+                                            button(type="button", name="styles", value="버튼") 버튼
+                                            button(type="button", name="styles", value="드롭") 드롭
+                                            button(type="button", name="styles", value="링") 링
+                                            button(type="button", name="styles", value="투핀/투링") 투핀/투링
+                                            button(type="button", name="styles", value="피어싱") 피어싱
+                                            button(type="button", name="styles", value="심플") 심플
+                                            button(type="button", name="styles", value="원터치") 원터치
+                                            button(type="button", name="styles", value="침") 침
+                                            button(type="button", name="styles", value="낚싯줄") 낚싯줄
+                                            button(type="button", name="styles", value="뱅글") 뱅글
+                                            button(type="button", name="styles", value="원석") 원석
+                                            button(type="button", name="styles", value="컷팅") 컷팅
+                                            button(type="button", name="styles", value="펫") 펫
+                                            button(type="button", name="styles", value="연예인") 연예인
+                                            button(type="button", name="styles", value="기타") 기타
+                                        div(class="chackbox styleBox" id="braceletSt")
+                                            button(type="button", name="styles", value="패션") 패션
+                                            button(type="button", name="styles", value="아기제") 아기제품
+                                            button(type="button", name="styles", value="종교") 종교
+                                            button(type="button", name="styles", value="웨딩") 웨딩
+                                            button(type="button", name="styles", value="대작") 대작
+                                            button(type="button", name="styles", value="진주") 진주
+                                            button(type="button", name="styles", value="다이아") 다이아
+                                            button(type="button", name="styles", value="유색보") 유색보석
+                                            button(type="button", name="styles", value="레이스") 레이스
+                                            button(type="button", name="styles", value="볼") 볼
+                                            button(type="button", name="styles", value="클립") 클립
+                                            button(type="button", name="styles", value="기계체") 기계체인
+                                            button(type="button", name="styles", value="모줄") 모줄
+                                            button(type="button", name="styles", value="함마링") 함마링
+                                            button(type="button", name="styles", value="각줄") 각줄
+                                            button(type="button", name="styles", value="할로우") 할로우
+                                            button(type="button", name="styles", value="오메가") 오메가
+                                            button(type="button", name="styles", value="이태리") 이태리
+                                            button(type="button", name="styles", value="면") 면
+                                            button(type="button", name="styles", value="가죽") 가죽
+                                            button(type="button", name="styles", value="캐스팅") 캐스팅
+                                            button(type="button", name="styles", value="양장") 양장
+                                            button(type="button", name="styles", value="고방") 고방
+                                            button(type="button", name="styles", value="스타킹") 스타킹
+                                            button(type="button", name="styles", value="레이어드") 레이어드
+                                            button(type="button", name="styles", value="링크체인") 링크체인
+                                            button(type="button", name="styles", value="두줄") 두줄
+                                            button(type="button", name="styles", value="뱅글") 뱅글
+                                            button(type="button", name="styles", value="원석") 원석
+                                            button(type="button", name="styles", value="컷팅") 컷팅
+                                            button(type="button", name="styles", value="펫") 펫
+                                            button(type="button", name="styles", value="연예인") 연예인
+                                            button(type="button", name="styles", value="기타") 기타
+                                        div(class="chackbox styleBox" id="ankletSt")
+                                            button(type="button", name="styles", value="패션") 패션
+                                            button(type="button", name="styles", value="아기제") 아기제품
+                                            button(type="button", name="styles", value="종교") 종교
+                                            button(type="button", name="styles", value="웨딩") 웨딩
+                                            button(type="button", name="styles", value="대작") 대작
+                                            button(type="button", name="styles", value="진주") 진주
+                                            button(type="button", name="styles", value="다이아") 다이아
+                                            button(type="button", name="styles", value="유색보") 유색보석
+                                            button(type="button", name="styles", value="레이스") 레이스
+                                            button(type="button", name="styles", value="볼") 볼
+                                            button(type="button", name="styles", value="클립") 클립
+                                            button(type="button", name="styles", value="기계체") 기계체인
+                                            button(type="button", name="styles", value="모줄") 모줄
+                                            button(type="button", name="styles", value="함마링") 함마링
+                                            button(type="button", name="styles", value="각줄") 각줄
+                                            button(type="button", name="styles", value="할로우") 할로우
+                                            button(type="button", name="styles", value="오메가") 오메가
+                                            button(type="button", name="styles", value="이태리") 이태리
+                                            button(type="button", name="styles", value="면") 면
+                                            button(type="button", name="styles", value="가죽") 가죽
+                                            button(type="button", name="styles", value="캐스팅") 캐스팅
+                                            button(type="button", name="styles", value="양장") 양장
+                                            button(type="button", name="styles", value="고방") 고방
+                                            button(type="button", name="styles", value="스타킹") 스타킹
+                                            button(type="button", name="styles", value="레이어드") 레이어드
+                                            button(type="button", name="styles", value="링크체인") 링크체인
+                                            button(type="button", name="styles", value="두줄") 두줄
+                                            button(type="button", name="styles", value="뱅글") 뱅글
+                                            button(type="button", name="styles", value="원석") 원석
+                                            button(type="button", name="styles", value="컷팅") 컷팅
+                                            button(type="button", name="styles", value="펫") 펫
+                                            button(type="button", name="styles", value="연예인") 연예인
+                                            button(type="button", name="styles", value="기타") 기타
+                                        div(class="chackbox styleBox" id="ringSt")
+                                            button(type="button", name="styles", value="패션") 패션
+                                            button(type="button", name="styles", value="아기제") 아기제품
+                                            button(type="button", name="styles", value="종교") 종교
+                                            button(type="button", name="styles", value="웨딩") 웨딩
+                                            button(type="button", name="styles", value="대작") 대작
+                                            button(type="button", name="styles", value="진주") 진주
+                                            button(type="button", name="styles", value="다이아") 다이아
+                                            button(type="button", name="styles", value="유색보") 유색보석
+                                            button(type="button", name="styles", value="레이스") 레이스
+                                            button(type="button", name="styles", value="볼") 볼
+                                            button(type="button", name="styles", value="체인") 체인
+                                            button(type="button", name="styles", value="미스링") 미스링
+                                            button(type="button", name="styles", value="마담") 마담
+                                            button(type="button", name="styles", value="커플링") 커플링
+                                            button(type="button", name="styles", value="앵게이지") 앵게이지
+                                            button(type="button", name="styles", value="애끼") 애끼
+                                            button(type="button", name="styles", value="원석") 원석
+                                            button(type="button", name="styles", value="컷팅") 컷팅
+                                            button(type="button", name="styles", value="펫") 펫
+                                            button(type="button", name="styles", value="연예인") 연예인
+                                            button(type="button", name="styles", value="기타") 기타
+                                        div(class="chackbox styleBox" id="etcSt")
+                                            button(type="button", name="styles" value="브로찌") 브로찌
+                                            button(type="button", name="styles" value="원석") 원석
+                                            button(type="button", name="styles" value="합성") 합성
+                                            button(type="button", name="styles" value="기념품") 기념품
+                                            button(type="button", name="styles" value="진주") 진주
+                                            button(type="button", name="styles" value="기타") 기타
+                                div(class="row")
+                                    div(class="col-2 catalognanu") *소재
+                                    div(class="col-10 chackboxbox chackboxbox1")
+                                        div(class="chackbox materialBox")
+                                            button(type="button", name="material" value="실버") 실버
+                                            button(type="button", name="material" value="10K") 10K
+                                            button(type="button", name="material" value="14K") 14K
+                                            button(type="button", name="material" value="18K") 18K
+                                            button(type="button", name="material" value="22K") 22K
+                                            button(type="button", name="material" value="순금-995") 순금-995
+                                            button(type="button", name="material" value="순금-999") 순금-999
+                                            button(type="button", name="material" value="PT") PT
+                                            button(type="button", name="material" value="기타") 기타
+                                div(class="row")
+                                    div(class="col-2 catalognanu") *중량
+                                    div(class="col-10 chackboxbox chackboxbox1")
+                                        div(class="chackbox weightBox")    
+                                            button(type="button" name="weight" value="1.875") 반돈
+                                            button(type="button" name="weight" value="3.75") 1돈
+                                            button(type="button" name="weight" value="7.5") 2돈
+                                            button(type="button" name="weight" value="11.25") 3돈
+                                            button(type="button" name="weight" value="18.75") 5돈
+                                            button(type="button" name="weight" value="26.25") 7돈
+                                            button(type="button" name="weight" value="37.5") 10돈
+                                            button(type="button" name="weight" value="112.5") 30돈
+                                            button(type="button" name="weight" value="187.5") 50돈
+                                            button(type="button" name="weight" value="375") 100돈
+                                
+                    .row.modelcardlistBox
+                        .col-12.modelcardlist
+                            if user.products
+                                each product in user.products
+                                    +stockmodelCard(product)
+                            else 
+                                div
+                            div#goCatalogeUpload 
+                                button(type="button") 
+                                    i(class="las la-plus")
+                                    br
+                                    span 추가등록
+                    .row    
+                        .col-12.numberBox
+                            span 1
+                    .row.orderButtonBox2
+                        .col-5
+                            button.orderClose(type="button") 취소
+
+
+            .searchManuBox.container
+                .row.manuNameBox
+                    .col-12.manuName 
+                         span 거래처
+                .container   
+                    .row.clientBody 
+                        .col-3.clientBodyName
+                            span 전체 n개
+                        .col-7
+                            .getClient
+                                input(type="text" placeholder="검색어를 입력하세요")
+                                button(type="button")
+                                    i(class="las la-search")
+                    .container      
+                        .row
+                            .clientBox
+                                .col-12
+                                    table 
+                                        thead
+                                            tr 
+                                                th No
+                                                th 선택
+                                                th 구분
+                                                th 상호명
+                                                th 사업체명
+                                                th 대표자명
+                                                th 대표자연락처
+                                                th 연락처
+                                                th 팩스
+                                                th 통상
+                                                th 비고
+                                                th VAT
+                                                th 거래형태
+                                                th 해리
+                                        tbody 
+                                            if client
+                                                each clients in client
+                                                    +stockClienTtable(clients)
+                                                span 
+                                            else 
+
+                                .col-12.botbutton
+                                    button.goClient(type="button") 추가등록 
+                    .row 
+                        .col-12.numberBox
+                            span 1
+                    .row.orderButtonBox2
+                        .col-5
+                            button.orderClose(type="button") 취소

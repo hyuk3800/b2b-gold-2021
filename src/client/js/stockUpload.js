@@ -601,6 +601,8 @@ const goldWeight = document.getElementsByName("goldWeight");
 const stoneWeight = document.getElementsByName("stoneWeight");
 const formPOST = document.querySelector("#formPOST");
 
+
+
 console.log(goldWeight);
 
 const startDisabledNone = () => {

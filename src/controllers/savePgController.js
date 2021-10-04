@@ -2,6 +2,7 @@ import goldProduct from "../models/Product";
 import goldStock from "../models/Stock";
 import goldClient from "../models/Client";
 import User from "../models/User";
+import session from "express-session";
 
 
 export const catalogeMain = async (req, res) => {
@@ -264,11 +265,18 @@ export const deleteCataloge = async (req, res) => {
     return res.redirect("/cataloge/main");
 };
 
-export const getUpload = (req, res) => {
+export const getUpload = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
+    const {
+        user: {
+            _id
+        },
+    } = req.session;
+    const user = await User.findById(_id).populate("products");
     return res.render("cataloge/catalogeUpload", {
         pageTitle: "카탈로그 등록",
-        pathname
+        pathname,
+        user
     })
 };
 export const postUpload = async (req, res) => {
@@ -721,48 +729,48 @@ export const postStockUpload = async (req, res) => {
     try {
         if (orderNumber.length === 0) {
             const rand = Math.floor(Math.random() * 100000000);
-                const newGoldStock = await goldStock.create({
-                    registrationdate: registrationdate,
-                    orderNumber: orderNumber,
-                    modelNumber: modelNumber,
-                    manufacturer: manufacturer,
-                    material: material,
-                    color: color,
-                    quantity: quantity,
-                    basicWage: basicWage,
-                    additionWage: additionWage,
-                    stoneWage1: stoneWage1,
-                    stoneWage2: stoneWage2,
-                    stoneWeight3: stoneWeight3,
-                    goldWeight: goldWeight,
-                    stoneWeight: stoneWeight,
-                    harry: harry,
-                    unitPrice: unitPrice,
-                    stone: {
-                        stoneName: stoneName,
-                        stoneQuantity: stoneQuantity,
-                    },
-                    stone2: {
-                        stoneName2: stoneName2,
-                        stoneQuantity2: stoneQuantity2,
-                    },
-                    size: size,
-                    description: description,
-                    purchaseWage: purchaseWage,
-                    eggPurchasePrice: eggPurchasePrice,
+            const newGoldStock = await goldStock.create({
+                registrationdate: registrationdate,
+                orderNumber: orderNumber,
+                modelNumber: modelNumber,
+                manufacturer: manufacturer,
+                material: material,
+                color: color,
+                quantity: quantity,
+                basicWage: basicWage,
+                additionWage: additionWage,
+                stoneWage1: stoneWage1,
+                stoneWage2: stoneWage2,
+                stoneWeight3: stoneWeight3,
+                goldWeight: goldWeight,
+                stoneWeight: stoneWeight,
+                harry: harry,
+                unitPrice: unitPrice,
+                stone: {
+                    stoneName: stoneName,
+                    stoneQuantity: stoneQuantity,
+                },
+                stone2: {
+                    stoneName2: stoneName2,
+                    stoneQuantity2: stoneQuantity2,
+                },
+                size: size,
+                description: description,
+                purchaseWage: purchaseWage,
+                eggPurchasePrice: eggPurchasePrice,
 
-                    products: productList,
+                products: productList,
 
 
-                    serialNumber: String((0 + 1) + rand).padStart(8, '0'),
+                serialNumber: String((0 + 1) + rand).padStart(8, '0'),
 
-                    owner: _id,
-                });///// newGoldStock
+                owner: _id,
+            }); ///// newGoldStock
 
-                const user = await User.findById(_id);
-                user.stocks.push(newGoldStock._id);
-                user.save();
-                console.log("뉴스톡", newGoldStock._id);
+            const user = await User.findById(_id);
+            user.stocks.push(newGoldStock._id);
+            user.save();
+            console.log("뉴스톡", newGoldStock._id);
         } else {
             for (let i = 0; i < Number(orderNumber.length); i++) {
                 const rand = Math.floor(Math.random() * 100000000);
@@ -802,7 +810,7 @@ export const postStockUpload = async (req, res) => {
                     serialNumber: String((i + 1) + rand).padStart(8, '0'),
 
                     owner: _id,
-                });///// newGoldStock
+                }); ///// newGoldStock
                 const user = await User.findById(_id);
                 user.stocks.push(newGoldStock._id);
                 user.save();
@@ -841,12 +849,116 @@ export const orderMain = (req, res) => {
         pathname
     });
 };
-export const orderUpload = (req, res) => {
+
+
+export const getOrderUpload = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
+    const user = await User.findById(_id).populate("products");
+    const client = await goldClient.find({
+        $and: [{
+            "clientType": "매입처"
+        }, {
+            "owner": _id
+        }]
+    });
+    const account = await goldClient.find({
+        $and: [{
+            "clientType": "판매처"
+        }, {
+            "owner": _id
+        }]
+    })
+
     return res.render("order/orderupload", {
         pageTitle: "주문 등록",
-        pathname
+        pathname,
+        user,
+        client,
+        account
     });
+};
+
+export const postOrderUpload = async (req, res) => {
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
+    const {
+        account,
+        modelNumber,
+        manufacturer,
+        material,
+        color,
+        quantity,
+        basicWage,
+        additionWage,
+        stoneWage1,
+        stoneWage2,
+        stoneQuantity,
+        stoneQuantity2,
+        stoneWeight3,
+        stoneName,
+        stoneName2,
+        size,
+        description,
+        releasedate,
+    } = req.body;
+
+    const products = await goldProduct.find({
+        $and: [{
+            "modelNumber": modelNumber
+        }, {
+            "owner": _id
+        }]
+    });
+
+    let productList = [];
+
+    for (let i = 0; i < products.length; i++) {
+        productList.push(products[i]._id);
+    };
+
+    console.log(req.body);
+
+    console.log(modelNumber.length);
+    for (let i = 0; i < modelNumber.length; i++) {
+        const reand = Math.floor(Math.random() * 100000000);
+        const newGoldOrder = await goldOrder.create({
+            registrationdate,
+            releasedate,
+            account,
+            modelNumber,
+            manufacturer,
+            material,
+            color,
+            quantity,
+            basicWage,
+            additionWage,
+            stoneWage1,
+            stoneWage2,
+            stone: {
+                stoneName,
+                stoneQuantity,
+            },
+            stone2 {
+                stoneName2,
+                stoneQuantity2,
+            },
+            stoneWeight3,
+            size,
+            description,
+
+            orderNumber: String((0+1)+rand).padStart(8,"0"),
+            owner: _id,
+        });
+    }
+
 };
 
 export const repairMain = (req, res) => {

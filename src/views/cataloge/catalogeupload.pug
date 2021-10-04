@@ -1,4 +1,5 @@
 extends ../base.pug
+include ../mixins/catalogupmodelnum
 
 
 block links 
@@ -38,6 +39,7 @@ block content
                                 label(for="mimgpluse") 
                                     span +
                                 input(type="file", accept="image/*", name="catalogeimg", id="mimgpluse", required)
+                                img(src="", alt="")
                 div(class="row")
                     div(class="col-12")
                         div(class="mtt mtt2")
@@ -286,11 +288,11 @@ block content
                         div(class="col-3 col-sm-2 catalognanu") *모델번호
                         div(class="col-9 col-sm-4")
                             div(class="allForm")
-                                input(class="inppp", name="modelNumber", type="text", placeholder="모델번호", required)
+                                input#modelNumber(class="inppp", name="modelNumber", type="text", placeholder="모델번호", required)
                         div(class="col-3 col-sm-2 catalognanu") *제품명
                         div(class="col-9 col-sm-4")
                             div(class="allForm")
-                                input(class="inppp", name="title", type="text", placeholder="제품명", required)
+                                input#title(class="inppp", name="title", type="text", placeholder="제품명", required)
                     div(class="row")
                         div(class="col-3 col-sm-2 catalognanu") *제조사
                         div(class="col-9 col-sm-4")
@@ -354,99 +356,99 @@ block content
                                     th 판매단가(총가격)
                                     th 삭제
                             tbody#stoneTbody
-                                //- tr
-                                //-     td
-                                //-         div
-                                //-             input(type="text" placeholder="스톤명", name="stoneName")
-                                //-             img(class="sltImg" src="../../../../static/images/ic-zoom-in-24-px@3x.png" alt="검색")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="수량" name="stoneQuantity")
-                                //-     td
-                                //-         div
-                                //-             input(type="text" placeholder="설명", name="stoneDescription")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="중량(개당)", name="stoneWeight2")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="중량(총중량)")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="매입단가(개당)", name="stonePurchasePrice")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="매입단가(총가격)")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="판매단가(개당)", name="stoneSellingPrice")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="판매단가(총가격)")
-                                //-     td
-                                //-         button(type="button") 삭제
-                                //- tr
-                                //-     td
-                                //-         div
-                                //-             input(type="text" placeholder="스톤명", name="stoneName2")
-                                //-             img(class="sltImg" src="../../../../static/images/ic-zoom-in-24-px@3x.png" alt="검색")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="수량" name="stoneQuantity2")
-                                //-     td
-                                //-         div
-                                //-             input(type="text" placeholder="설명", name="stoneDescription2")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="중량(개당)", name="stoneWeight22")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="중량(총중량)")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="매입단가(개당)", name="stonePurchasePrice2")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="매입단가(총가격)")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="판매단가(개당)", name="stoneSellingPrice2")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="판매단가(총가격)")
-                                //-     td
-                                //-         button(type="button") 삭제
-                                //- tr
-                                //-     td
-                                //-         div
-                                //-             input(type="text" placeholder="스톤명", name="stoneName2")
-                                //-             img(class="sltImg" src="../../../../static/images/ic-zoom-in-24-px@3x.png" alt="검색")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="수량" name="stoneQuantity2")
-                                //-     td
-                                //-         div
-                                //-             input(type="text" placeholder="설명", name="stoneDescription2")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="중량(개당)", name="stoneWeight22")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="중량(총중량)")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="매입단가(개당)", name="stonePurchasePrice2")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="매입단가(총가격)")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="판매단가(개당)", name="stoneSellingPrice2")
-                                //-     td
-                                //-         div
-                                //-             input(type="number" placeholder="판매단가(총가격)")
-                                //-     td
-                                //-         button(type="button") 삭제
+                                tr
+                                    td
+                                        div
+                                            input(type="text" placeholder="스톤명", name="stoneName")
+                                            img(class="sltImg" src="../../../../static/images/ic-zoom-in-24-px@3x.png" alt="검색")
+                                    td
+                                        div
+                                            input(type="number" placeholder="수량" name="stoneQuantity")
+                                    td
+                                        div
+                                            input(type="text" placeholder="설명", name="stoneDescription")
+                                    td
+                                        div
+                                            input(type="number" placeholder="중량(개당)", name="stoneWeight2")
+                                    td
+                                        div
+                                            input(type="number" placeholder="중량(총중량)")
+                                    td
+                                        div
+                                            input(type="number" placeholder="매입단가(개당)", name="stonePurchasePrice")
+                                    td
+                                        div
+                                            input(type="number" placeholder="매입단가(총가격)")
+                                    td
+                                        div
+                                            input(type="number" placeholder="판매단가(개당)", name="stoneSellingPrice")
+                                    td
+                                        div
+                                            input(type="number" placeholder="판매단가(총가격)")
+                                    td
+                                        button(type="button") 삭제
+                                tr
+                                    td
+                                        div
+                                            input(type="text" placeholder="스톤명", name="stoneName2")
+                                            img(class="sltImg" src="../../../../static/images/ic-zoom-in-24-px@3x.png" alt="검색")
+                                    td
+                                        div
+                                            input(type="number" placeholder="수량" name="stoneQuantity2")
+                                    td
+                                        div
+                                            input(type="text" placeholder="설명", name="stoneDescription2")
+                                    td
+                                        div
+                                            input(type="number" placeholder="중량(개당)", name="stoneWeight22")
+                                    td
+                                        div
+                                            input(type="number" placeholder="중량(총중량)")
+                                    td
+                                        div
+                                            input(type="number" placeholder="매입단가(개당)", name="stonePurchasePrice2")
+                                    td
+                                        div
+                                            input(type="number" placeholder="매입단가(총가격)")
+                                    td
+                                        div
+                                            input(type="number" placeholder="판매단가(개당)", name="stoneSellingPrice2")
+                                    td
+                                        div
+                                            input(type="number" placeholder="판매단가(총가격)")
+                                    td
+                                        button(type="button") 삭제
+                                tr
+                                    td
+                                        div
+                                            input(type="text" placeholder="스톤명", name="stoneName2")
+                                            img(class="sltImg" src="../../../../static/images/ic-zoom-in-24-px@3x.png" alt="검색")
+                                    td
+                                        div
+                                            input(type="number" placeholder="수량" name="stoneQuantity2")
+                                    td
+                                        div
+                                            input(type="text" placeholder="설명", name="stoneDescription2")
+                                    td
+                                        div
+                                            input(type="number" placeholder="중량(개당)", name="stoneWeight22")
+                                    td
+                                        div
+                                            input(type="number" placeholder="중량(총중량)")
+                                    td
+                                        div
+                                            input(type="number" placeholder="매입단가(개당)", name="stonePurchasePrice2")
+                                    td
+                                        div
+                                            input(type="number" placeholder="매입단가(총가격)")
+                                    td
+                                        div
+                                            input(type="number" placeholder="판매단가(개당)", name="stoneSellingPrice2")
+                                    td
+                                        div
+                                            input(type="number" placeholder="판매단가(총가격)")
+                                    td
+                                        button(type="button") 삭제
                             tfoot 
                                 tr 
                                     td 
@@ -609,3 +611,7 @@ block content
                     div(class="col-12 btnbtn")
                         button(class="ctlogBox clossbtn") 취소
                         button(class="ctlogBox", type="submit") 등록
+                    if user
+                        each product in user.products 
+                            +catalogupmodelnum(product)
+                    else
