@@ -92,11 +92,20 @@ window.onload = function () {
         goClient[i].addEventListener("click", goClientGO);
     }
 
+    const formPOST = document.querySelector("#formPOST");
+    const trLength = document.querySelectorAll("#tbody tr");
 
+    const submitPost = (event) => {
+        // event.preventDefault();
+        console.log("이거", trLength);
+        let Length = trLength.length;
+        lengthinput = '<input name="lengthset" style="display: none" type="Number" value="' + Length + '">'
+        formPOST.insertAdjacentHTML('beforeEnd', lengthinput)
+    };  
 
+    window.submitPost = submitPost;
 
-
-
+    formPOST.addEventListener("submit", submitPost);
 
 
     const plsbtn = document.querySelector('#plsbtn');
@@ -155,7 +164,7 @@ window.onload = function () {
 
 
     plsbtn.addEventListener("click", plsbtnClick);
-
+    window.plsbtnClick = plsbtnClick;
 
 
 

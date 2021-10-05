@@ -170,14 +170,22 @@
 }
 
 .calData{
-    padding-left: 10px;
-    width: 90px;
+    /* padding-left: 10px; */
+    width: 130px;
     height: 30px;
     border: 1px solid rgba(153, 153, 153, 0.5);
     font-size: 12px;
     color: #444;
     display: flex;
     align-items: center;
+}
+
+.calData input{
+    padding-left: 10px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
 }
 
 .calD1{
@@ -251,6 +259,11 @@
 
 
 /* 표 */
+.tableTheTableBox{
+    margin: 0 auto;
+    width: 80%;
+}
+
 .tableTheTable{
     padding-bottom: 15px;
 }
@@ -296,12 +309,18 @@
 }
 
 
-.listlist a{
+.listlist button{
     margin-left: 10px;
     text-decoration: none;
     color: #007bff;
+    background-color: #fff;
+    border: none;
+    outline: none;
 }
-
+.listlist button:focus{
+    border: none;
+    outline: none; 
+}
 
 
 /* 하단 숫자박스 */
@@ -339,10 +358,162 @@
 
 
 @media (max-width: 880px) {
-
+    .tableTheTableBox{
+        width: 100%;
+    }
 
     .tableTheTablebox{
         overflow-x: scroll;
     }
 
+}
+
+.orderTr td{
+    
+    font-size: 14px;
+}
+
+.orderTd {
+    padding-left: 15px;
+    text-align: left;
+}
+
+.clickImg{
+    position: relative;
+    width: 72px;
+    height: 55px;
+}
+.clickImg img{
+    width: 95%;
+    height: 100%;
+}
+
+
+.changesStart {
+    width: 100%;
+    height: 0%;
+    position: fixed;
+    top: 0;
+    z-index: 999999;
+    overflow: hidden;
+}
+
+.changesStart.on{
+    height: 100%;
+}
+
+#bgbg{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.changesStart.on #bgbg{
+    opacity: 1;
+}
+
+.changeBox{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 193px;
+    background-color: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+    opacity: 0;
+    transition: top .5s, opacity .5s;
+}
+
+.change1.on{
+    top: 50%;
+    opacity: 1;
+}
+.change2.on{
+    top: 50%;
+    opacity: 1;
+}
+.change3.on{
+    top: 50%;
+    opacity: 1;
+}
+.change4.on{
+    top: 50%;
+    opacity: 1;
+}
+
+.changeTitle{
+    padding: 6px;
+    width: 400px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(153, 153, 153, 0.445);
+    background-color: #f1f5f7;
+    margin-bottom: 20px;
+
+}
+
+.changeBody{
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.changeBody2{
+    padding-right: 0;
+}
+
+.changeBodyBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: #ffd8a2;
+}
+.changeBodyselect select{
+    padding-left: 5px;
+    width: 100%;
+    height: 32px;
+    font-size: 14px;
+    background: #f0edea url("../../images/ic_arrow_drop_down_24px.png") no-repeat 91% 50%;
+    appearance: none;
+}
+
+.changeBodyselect select:focus{
+    border: none;
+    outline: none;
+    box-shadow: 0 0 5px 1px #fc9300;
+}
+
+.changeBodyselect input{
+    padding-left: 5px;
+    width: 100%;
+    height: 32px;
+    font-size: 14px;
+}
+
+.changeBodyButton{
+    display: flex;
+    justify-content: end;
+}
+
+.changeBodyButton button{
+    margin: 0 5px;
+    width: 92px;
+    height: 36px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #8600FC;
+}
+
+.changeBodyButton button:first-child{
+    color: #666;
+    background-color: #dbb3ff;
 }

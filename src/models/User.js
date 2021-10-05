@@ -24,6 +24,9 @@ const userSchema = new mongoose.Schema({
     stocks: [
         { type: mongoose.Schema.Types.ObjectId, ref: "Stock" }
        ], // 등록한 재고 id
+    orders: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "Order" }
+       ], // 등록한 재고 id
 });
 
 

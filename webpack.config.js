@@ -14,6 +14,7 @@ module.exports = {
         quote:"./src/client/js/quote.js",
         stockMain:"./src/client/js/stockMain.js",
         stockUpload:"./src/client/js/stockUpload.js",
+        orderMain:"./src/client/js/orderMain.js",
     },
     mode: "development",
     watch: true,

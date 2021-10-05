@@ -1,14 +1,19 @@
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
+    fileUrl: { type : String, required: true},// 제품 이미지
     createdAt: {type: Date, require: true, default: Date.now }, // 생성날짜\
     // clickThis: {type: Boolean, require: true, default: false }, // 채크여부
     owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },// 오너
     products: { type: mongoose.Schema.Types.ObjectId, ref: "Product" }, // 등록한 제품 id
-    
+    stocks: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "Stock" }
+       ],
+
+
     orderNumber: { type: String, required: true, },// 주문번호
 
-    gubun: { type: String, require: true, default: "재고" }, // 구분
+    gubun: { type: String, require: true, default: "접수" }, // 구분
 
     registrationdate: { type: String },// 등록일 (날짜 변경 가능)
     releasedate: {  type: String },// 출고일(변경 가능)

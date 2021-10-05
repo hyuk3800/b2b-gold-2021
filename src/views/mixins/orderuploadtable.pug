@@ -4,14 +4,14 @@ mixin orderUploadTable(product)
                     td 
                         button(class="trsBTN" type="button") 
                     td 
-                        input(type="text") 
-                        button(class="secbtn" type="button") 
+                        input(type="text" name="account") 
+                        button(class="secbtn account" type="button") 
                     td 
-                        input(type="text" value=`${product.modelNumber}`)
-                        button(class="secbtn" type="button") 
+                        input(type="text"  name="modelNumber" value=`${product.modelNumber}`)
+                        button(class="secbtn modelNumber" type="button") 
                     td 
-                        input(type="text" value=`${product.manufacturer}`)
-                        button(class="secbtn" type="button") 
+                        input(type="text" name="manufacturer" value=`${product.manufacturer}`)
+                        button(class="secbtn manufacturer" type="button") 
                     td 
                         select(name="material" id="gramBox") 
                             option(value="") 
@@ -93,6 +93,6 @@ mixin orderUploadTable(product)
                     td 
                         input(type="text"  name="description" value=`${product.description}`)
                     td 
-                        input(type="text" class="cldbox1111" name="releasedate" autocomplete="off" disabled )
+                        input(type="text" class="cldbox1111" name="releasedate" autocomplete="off" )
                         div(class="calinder2") 
                             img(src="../../../../static/images/calendar.png" alt="calendar" )

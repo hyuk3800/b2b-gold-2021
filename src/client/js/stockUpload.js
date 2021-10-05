@@ -597,13 +597,14 @@ orderCldbox.value = KRDay;
 
 // submit시 disabled 풀어주기
 // const modelNumber = document.getElementsByName("modelNumber");
+// const PostForm = document.querySelector("#PostForm")
 const goldWeight = document.getElementsByName("goldWeight");
 const stoneWeight = document.getElementsByName("stoneWeight");
 const formPOST = document.querySelector("#formPOST");
 
+const trLength = document.querySelectorAll("#tbody tr");
 
-
-console.log(goldWeight);
+console.log(trLength);
 
 const startDisabledNone = () => {
     // if (!modelNumber.innerText) {
@@ -615,8 +616,10 @@ const startDisabledNone = () => {
             stoneWeight[i].disabled = false;
         };
     // }
-        
-
+        let Length = trLength.length;
+        console.log(Length);
+        lengthinput = '<input name="lengthset" style="display: none" type="Number" value="'+ Length + '">'
+        formPOST.insertAdjacentHTML('beforeEnd', lengthinput);
 };
 
 formPOST.addEventListener("submit", startDisabledNone);
