@@ -3,7 +3,7 @@ mixin quotetable(quote)
             tr  
                 td
                     input(name="clickThis" id="checkedThis" type="checkbox" value=`${quote._id}`)
-                td 1
+                td.quoteNum
                 td #{quote.createdAt.toLocaleDateString('ko-KR')}
                 td #{quote.frontquote}
                 td #{quote.backquote}

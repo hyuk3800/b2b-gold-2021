@@ -2,8 +2,11 @@ mixin stockUploadTable(product)
         tr
             td
                 button(class="trsBTN")
-            td
-                input(type="text" name="orderNumber") 
+            td  
+                if product.orderNumber
+                    input(type="text" name="orderNumber" value=`${product.orderNumber}`) 
+                else 
+                    input(type="text" name="orderNumber")
                 button(class="secbtn orderOnButton" type="button")
             td
                 input(type="text" name="modelNumber" value=`${product.modelNumber}`) 

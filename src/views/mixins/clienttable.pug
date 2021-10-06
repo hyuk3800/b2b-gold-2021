@@ -1,7 +1,7 @@
 mixin clientTable(client)
         tbody 
             tr 
-                td
+                td.clientNum
                 //- td #{client.findIndex((i) => i._id == client._id)}
                 td 
                     input(name="clickClient" id="clickClient" type="checkbox" value=`${client._id}`)

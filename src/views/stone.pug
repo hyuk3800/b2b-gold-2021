@@ -17,7 +17,7 @@ block content
                         if stones
                             span (전체 #{stones.length}개)
                         else
-                            span (전체 #{user.stones.length}개)
+                            span (전체 #{stoness.length}개)
                         a(href="")
                             img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움") 
                 div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
@@ -61,7 +61,7 @@ block content
                             else 
                                 div
                         else
-                            each stone in user.stones
+                            each stone in stoness
                                 +stoneTable(stone)
                             else
                                 div

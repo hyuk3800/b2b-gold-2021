@@ -30,7 +30,7 @@ block content
                 if products
                     span 전체 #{products.length} 개 
                 else
-                    span 전체 #{user.products.length} 개 
+                    span 전체 #{productss.length} 개 
                 span(id="wjscpNum", class="hidden") (n) 개 선택됨
         div(class="row")
             div(class="col-3")
@@ -286,7 +286,7 @@ block content
                         else    
                             div 
                     else 
-                        each product in user.products 
+                        each product in productss
                             +card(product)
                         else    
                             div 
@@ -317,7 +317,7 @@ block content
                             else 
                                 div
                         else   
-                            each product in user.products 
+                            each product in productss
                                 +table(product)
                             else 
                                 div

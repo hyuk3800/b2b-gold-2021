@@ -17,7 +17,7 @@ const orderSchema = new mongoose.Schema({
 
     registrationdate: { type: String },// 등록일 (날짜 변경 가능)
     releasedate: {  type: String },// 출고일(변경 가능)
-    account: { type: Number },//거래처
+    account: { type: String },//거래처
     modelNumber: { type:String },//모델번호(모델번호가 없으면 등록하러 가자고함)
     manufacturer:{ type: String },//제조사
     material: { type: String },//재질

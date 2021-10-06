@@ -1,7 +1,15 @@
+const stockNum = document.querySelectorAll(".stockNum");
+for(let i=0; i<stockNum.length; i++){
+    stockNum[i].innerText = i+1;
+};
+
+
 const changesStart = document.querySelector(".changesStart");
 const changesStartButton = document.querySelector("#changesStart");
 const closeChangeBox = document.querySelector("#closeChangeBox");
 const bgbg = document.querySelector("#bgbg ");
+
+
 
 const checkedThis = document.querySelectorAll(".checkedThis");
 const saleBtn = document.querySelector("#saleBtn");

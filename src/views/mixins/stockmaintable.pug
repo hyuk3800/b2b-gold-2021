@@ -1,6 +1,6 @@
 mixin stockMainTable(stock)
         tr
-            td
+            td.stockNum
             td
                 input(name="clickThis" class="checkedThis" type="checkbox" value=`${stock._id}`)
             td #{stock.serialNumber}

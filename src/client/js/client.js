@@ -80,3 +80,9 @@ const openClientOff = () => {
 openClient.addEventListener("click", openClientOn);
 bgOff.addEventListener("click", openClientOff);
 removeOn.addEventListener("click", openClientOff);
+
+const clientNum = document.querySelectorAll(".clientNum");
+
+for(let i=0; i<clientNum.length; i++){
+    clientNum[i].innerText = i+1;
+}

@@ -14,7 +14,7 @@ block content
             div(class="col-sm-6 col-12")
                 div(class="stoneFree")
                     span #{pageTitle} 
-                    span (전체 #{user.quotes.length} 개)
+                    span (전체 #{quotes.length} 개)
                     a(href="")
                         img(src="../../../static/images/ic-info-outline-24-px.png", alt="도움") 
             div(class="col-12 col-md-6 col-lg-4 stoneSavebox")
@@ -25,10 +25,12 @@ block content
             div(class="col-12 col-md-6 searchMyBox")
                 div(class="calinder cal1")
                     img(src="../../../static/images/calendar.png", alt="calendar")
-                div(class="calData calD1") 2021-07-08
+                div(class="calData calD1")
+                    input#calD1.calDataInput(name="calD1" value="2010. 01. 01.")
                 div(class="calinder cal2")
                     img(src="../../../static/images/calendar.png", alt="calendar")
-                div(class="calData calD2") 2021-07-08
+                div(class="calData calD2")
+                    input#calD2.calDataInput(name="calD2" value="2010. 01. 01.")
                 select(name="why_do_this" id="why_do_this")
                     option(value="등록일") 등록일
         div(class="row deleteOrViewBox")
@@ -53,7 +55,7 @@ block content
                             th 등록일
                             th 앞시세
                             th 뒷시세
-                    each quote in user.quotes 
+                    each quote in quotes 
                         +quotetable(quote)
                     else
                         div

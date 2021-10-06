@@ -14,14 +14,17 @@ mixin saleUploadTable(product)
                         option(value="WG") WG
                 td
                     div(class="sechBox2")
-                        input(type="text", value="") 
+                        if product.serialNumber
+                            input(type="text", name="serialNumber" value=`${product.serialNumber}`) 
+                        else
+                            input(type="text", name="serialNumber" value="") 
                         button(class="secbtn") 
                 td
                     div(class="sechBox2")
-                        input(type="text", value=`${product.modelNumber}`) 
+                        input(type="text", name="modelNumber" value=`${product.modelNumber}`) 
                         button(class="secbtn") 
                 td
-                    select(name="JAJIL" class="downSelectBox" id="JAJIL") 
+                    select(name="material" class="downSelectBox" id="JAJIL") 
                         option(value="10K") 10K
                         option(value="14K") 14K
                         option(value="18K") 18K
@@ -32,7 +35,7 @@ mixin saleUploadTable(product)
                         option(value="PT") PT
                         option(value="기타") 기타
                 td
-                    select(name="SAGSANG" class="downSelectBox" id="SAGSANG") 
+                    select(name="color" class="downSelectBox" id="SAGSANG") 
                         option(value="") 
                         option(value="G") G
                         option(value="G/B") G/B
@@ -48,37 +51,37 @@ mixin saleUploadTable(product)
                         option(value="W/P") W/P
                         option(value="블랙") 블랙
                 td
-                    select(name="DANGASANGPUM" class="downSelectBox" id="DANGASANGPUM") 
+                    select(name="unitPrice" class="downSelectBox" id="DANGASANGPUM") 
                         option(value="N") N
                         option(value="Y") Y
                 td  
                     if !product.basicWage
-                        div(class="sechBox2")
+                        div(class="sechBox2" name="basicWage")
                             input(type="number" value=`0`) 
                     else
                         div(class="sechBox2")
-                            input(type="number" value=`${product.basicWage}`) 
+                            input(type="number" name="basicWage" value=`${product.basicWage}`) 
                 td  
                     if !product.additionWage
                         div(class="sechBox2")
-                            input(type="number" value=`0`) 
+                            input(type="number" name="additionWage" value=`0`) 
                     else
                         div(class="sechBox2")
-                            input(type="number" value=`${product.additionWage}`) 
+                            input(type="number" name="additionWage" value=`${product.additionWage}`) 
                 td  
                     if !product.stoneWage1 
                         div(class="sechBox2")
-                            input(type="number" value=`0`) 
+                            input(type="number" name="stoneWage1" value=`0`) 
                     else
                         div(class="sechBox2")
-                            input(type="number" value=`${product.stoneWage1}`) 
+                            input(type="number" name="stoneWage1" value=`${product.stoneWage1}`) 
                 td  
                     if !product.stoneWage2 
                         div(class="sechBox2")
-                            input(type="number" value=`0`) 
+                            input(type="number" name="stoneWage2" value=`0`) 
                     else
                         div(class="sechBox2")
-                            input(type="number" value=`${product.stoneWage2}`) 
+                            input(type="number" name="stoneWage2" value=`${product.stoneWage2}`) 
                 td
                     if product.stone
                         div(class="sechBox2")

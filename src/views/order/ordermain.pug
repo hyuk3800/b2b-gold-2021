@@ -51,150 +51,152 @@ block content
                     input(class="searching" type="text" placeholder="검색어를 입력하세요")
                     button(id="btn_searching")
                         i(class="las la-search")
-        div(class="row deleteOrViewBox")
-            div(class="col-md-12 col-lg-6 filterselect")
-                select(name="sortselect" id="sortselect") 
-                    option(value="필터") 필터
-                    option(value="함량") 함량
-                    option(value="색상") 색상
-                    option(value="단계") 단계
-                    option(value="거래처") 거래처
-                    option(value="제조사") 제조사
-                select(name="sortselect" id="sortselect") 
-                    option(value="목록") 목록
-            div(class="col-md-8 col-lg-6 deleteOrView")
-                div(class="deleteMan dVBox")
-                    img(src="../../../../static/images/삭제하기.png", alt="삭제하기")
-                    span 삭제하기
-                div(class="ViewMan dVBox")
-                    select(name="page-view-counter" id="select10_50") 
-                        option(value="10View") 10View
-                        option(value="20View") 20View
-                        option(value="30View") 30View
-                        option(value="50View") 50View
-    .tableTheTableBox 
-        div(class="container tableTheTable")
-            div(class="row")
+    form(method="POST") 
+        .container
+            div(class="row deleteOrViewBox")
+                div(class="col-md-12 col-lg-6 filterselect")
+                    select(name="sortselect" id="sortselect") 
+                        option(value="필터") 필터
+                        option(value="함량") 함량
+                        option(value="색상") 색상
+                        option(value="단계") 단계
+                        option(value="거래처") 거래처
+                        option(value="제조사") 제조사
+                    select(name="sortselect" id="sortselect") 
+                        option(value="목록") 목록
+                div(class="col-md-8 col-lg-6 deleteOrView")
+                    div(class="deleteMan dVBox")
+                        img(src="../../../../static/images/삭제하기.png", alt="삭제하기")
+                        button#delBtn(type="submit", name="deleteBtn" value="삭제하기") 삭제하기
+                    div(class="ViewMan dVBox")
+                        select(name="page-view-counter" id="select10_50") 
+                            option(value="10View") 10View
+                            option(value="20View") 20View
+                            option(value="30View") 30View
+                            option(value="50View") 50View
+        .tableTheTableBox 
+            div(class="container tableTheTable")
+                div(class="row")
+                    div(class="col-12")
+                        div(class="tableTheTablebox")
+                            table 
+                                thead 
+                                    tr 
+                                        th(width="3%") No
+                                        th(width="2%")
+                                            input(name="clickAll" id="checkedAll" type="checkbox")
+                                        th(width="7.5%") 출고일 <br> 접수일
+                                        th(width="10%") 거래처 <br> 주문번호
+                                        th(width="5%") 사진
+                                        th(width="10%") 모델번호
+                                        th(width="5%") 함량 <br> 색상 
+                                        th(width="4%") 메인 <br> 보조 
+                                        th(width="7%") 사이즈
+                                        th(width="3%") 수량
+                                        th(width="8%") 비고
+                                        th(width="8%") 제조사 <br> 제조No
+                                        th(width="7%") 단계 구성
+                                tbody 
+                                    if user.orders 
+                                        each order in user.orders 
+                                            +orderMainTable(order)
+                                    else
+                                    //- tr 
+                                    //-     td(style="background-color: #dbb3ff; color: steelblue;") 1
+                                    //-     td 
+                                    //-         input(name="clickThis" id="checkedThis" type="checkbox") 
+                                    //-     td 출 2021-07-23 <br> 접 2021-07-16 
+                                    //-     td 바르샤 <br> 00000099
+                                    //-     td(class="clickImg") 
+                                    //-     td 조각 돌반지
+                                    //-     td 순금995
+                                    //-     td 
+                                    //-     td 
+                                    //-     td 1
+                                    //-     td 
+                                    //-     td 한국표준금거래소
+                                    //-     td 접수
+                div(class="col-12 nopaddingbox")    
+                    div(class="listlist")
+                        span 채크된 것
+                        button(type="button")#change1.changeBtn 단계변경
+                        button(type="button")#change2.changeBtn 접수일변경
+                        button(type="button")#change3.changeBtn 출고일변경
+                        button(type="button")#change4.changeBtn 거래처변경
+                        button(name="changeButton5" value="재고등록" type="submit")#change5.changeBtn 재고등록
+                        button(name="changeButton6" value="판매등록" type="submit")#change6.changeBtn 판매등록
                 div(class="col-12")
-                    div(class="tableTheTablebox")
-                        table 
-                            thead 
-                                tr 
-                                    th(width="3%") No
-                                    th(width="2%")
-                                        input(name="clickAll" id="checkedAll" type="checkbox")
-                                    th(width="7.5%") 출고일 <br> 접수일
-                                    th(width="10%") 거래처 <br> 주문번호
-                                    th(width="5%") 사진
-                                    th(width="10%") 모델번호
-                                    th(width="5%") 함량 <br> 색상 
-                                    th(width="4%") 메인 <br> 보조 
-                                    th(width="7%") 사이즈
-                                    th(width="3%") 수량
-                                    th(width="8%") 비고
-                                    th(width="8%") 제조사 <br> 제조No
-                                    th(width="7%") 단계 구성
-                            tbody 
-                                if user.orders 
-                                    each order in user.orders 
-                                        +orderMainTable(order)
+                    div(class="numlist")
+                        div(class="numnum on")
+                            span 1
+        include ../partials/footer
+        .changesStart
+                #bgbg 
+                .container.changeBox.change1 
+                    .row.changeTitle
+                        .col-12
+                            span 단계 변경
+                    .row.changeBody
+                        .col-4.changeBody2
+                            div.changeBodyBox
+                                span 단계
+                        .col-8.changeBodyselect
+                            select(name="gubun") 
+                                option(value="접수") 접수 
+                                option(value="생산") 생산
+                                option(value="재고") 재고
+                                option(value="출고") 출고
+                    .row
+                        .col-4 
+                        .col-8.changeBodyButton
+                            button.closeChangeBox(type="button") 닫기
+                            button(type="submit" name="changeButton1" value="수정") 수정
+                .container.changeBox.change2
+                    .row.changeTitle
+                        .col-12
+                            span 접수일 변경
+                    .row.changeBody
+                        .col-4.changeBody2
+                            div.changeBodyBox
+                                span 단계
+                        .col-8.changeBodyselect
+                            input(type="text" name="registrationdate")
+                    .row
+                        .col-4 
+                        .col-8.changeBodyButton
+                            button.closeChangeBox(type="button") 닫기
+                            button(type="submit" name="changeButton2" value="수정") 수정
+                .container.changeBox.change3    
+                    .row.changeTitle
+                        .col-12
+                            span 출고일 변경
+                    .row.changeBody
+                        .col-4.changeBody2
+                            div.changeBodyBox
+                                span 단계
+                        .col-8.changeBodyselect
+                            input(type="text" name="releasedate")
+                    .row
+                        .col-4 
+                        .col-8.changeBodyButton
+                            button.closeChangeBox(type="button") 닫기
+                            button(type="submit" name="changeButton3" value="수정") 수정
+                .container.changeBox.change4   
+                    .row.changeTitle
+                        .col-12
+                            span 거래처 변경
+                    .row.changeBody
+                        .col-4.changeBody2
+                            div.changeBodyBox
+                                span 단계
+                        .col-8.changeBodyselect
+                            select(name="account")
+                                if client
+                                    each clients in client
+                                        +orderMainClient(clients)
                                 else
-                                //- tr 
-                                //-     td(style="background-color: #dbb3ff; color: steelblue;") 1
-                                //-     td 
-                                //-         input(name="clickThis" id="checkedThis" type="checkbox") 
-                                //-     td 출 2021-07-23 <br> 접 2021-07-16 
-                                //-     td 바르샤 <br> 00000099
-                                //-     td(class="clickImg") 
-                                //-     td 조각 돌반지
-                                //-     td 순금995
-                                //-     td 
-                                //-     td 
-                                //-     td 1
-                                //-     td 
-                                //-     td 한국표준금거래소
-                                //-     td 접수
-            div(class="col-12 nopaddingbox")    
-                div(class="listlist")
-                    span 채크된 것
-                    button(type="button")#change1.changeBtn 단계변경
-                    button(type="button")#change2.changeBtn 접수일변경
-                    button(type="button")#change3.changeBtn 출고일변경
-                    button(type="button")#change4.changeBtn 거래처변경
-                    button(name="changeButton5" type="submit")#change5.changeBtn 재고등록
-                    button(name="changeButton6" type="submit")#change6.changeBtn 판매등록
-            div(class="col-12")
-                div(class="numlist")
-                    div(class="numnum on")
-                        span 1
-    include ../partials/footer
-    .changesStart
-            #bgbg 
-            .container.changeBox.change1 
-                .row.changeTitle
-                    .col-12
-                        span 단계 변경
-                .row.changeBody
-                    .col-4.changeBody2
-                        div.changeBodyBox
-                            span 단계
-                    .col-8.changeBodyselect
-                        select(name="gubun") 
-                            option(value="접수") 접수 
-                            option(value="생산") 생산
-                            option(value="재고") 재고
-                            option(value="출고") 출고
-                .row
-                    .col-4 
-                    .col-8.changeBodyButton
-                        button.closeChangeBox(type="button") 닫기
-                        button(type="submit" name="changeButton1" value="수정") 수정
-            .container.changeBox.change2
-                .row.changeTitle
-                    .col-12
-                        span 접수일 변경
-                .row.changeBody
-                    .col-4.changeBody2
-                        div.changeBodyBox
-                            span 단계
-                    .col-8.changeBodyselect
-                        input(type="text" name="registrationdate")
-                .row
-                    .col-4 
-                    .col-8.changeBodyButton
-                        button.closeChangeBox(type="button") 닫기
-                        button(type="submit" name="changeButton2" value="수정") 수정
-            .container.changeBox.change3    
-                .row.changeTitle
-                    .col-12
-                        span 출고일 변경
-                .row.changeBody
-                    .col-4.changeBody2
-                        div.changeBodyBox
-                            span 단계
-                    .col-8.changeBodyselect
-                        input(type="text" name="releasedate")
-                .row
-                    .col-4 
-                    .col-8.changeBodyButton
-                        button.closeChangeBox(type="button") 닫기
-                        button(type="submit" name="changeButton3" value="수정") 수정
-            .container.changeBox.change4   
-                .row.changeTitle
-                    .col-12
-                        span 거래처 변경
-                .row.changeBody
-                    .col-4.changeBody2
-                        div.changeBodyBox
-                            span 단계
-                    .col-8.changeBodyselect
-                        select(name="account")
-                            if client
-                                each clients in client
-                                    +orderMainClient(clients)
-                            else
-                .row
-                    .col-4 
-                    .col-8.changeBodyButton
-                        button.closeChangeBox(type="button") 닫기
-                        button(type="submit" name="changeButton4" value="수정") 수정
+                    .row
+                        .col-4 
+                        .col-8.changeBodyButton
+                            button.closeChangeBox(type="button") 닫기
+                            button(type="submit" name="changeButton4" value="수정") 수정

@@ -1,3 +1,10 @@
+const orderNum = document.querySelectorAll(".orderNum");
+
+for(let i=0; i<orderNum.length; i++){
+    orderNum[i].innerText = (i + 1);
+}
+
+
 const calD1 = document.querySelector("#calD1");
 const calD2 = document.querySelector("#calD2");
 
@@ -9,14 +16,17 @@ calD2.value = KRDay;
 const clickAll = document.querySelector("#checkedAll");
 const checkedThis = document.querySelectorAll(".checkedThis");
 
+console.log(checkedThis);
+
 
 let checkedTrue = 0;
 
 for (let i = 0; i < checkedThis.length; i++) {
     const checkedThisTrueFalse = (e) => {
-        console.log(e.target.checked);
+        console.log(e.target);
 
         if (e.target.checked) {
+            // console.log(checkedThis.indexOf(e.target));
             checkedTrue++;
             console.log(checkedTrue);
         } else {
@@ -27,6 +37,21 @@ for (let i = 0; i < checkedThis.length; i++) {
     checkedThis[i].addEventListener('click', checkedThisTrueFalse);
 
 }; //// for
+
+// const indexInClass = (node) => {
+//     for(let i=0; i<node.length; i++){
+//         if(checkedThis[i] === node){
+//             return i;
+//         }else{
+//             return -1;
+
+//         }
+//     };
+// };
+
+// alert("the id is" + indexInClass(checkedThis));
+
+
 
 
 const clickAllCheckedThis = () => {
@@ -56,6 +81,7 @@ const change2 = document.querySelector(".change2");
 const change3 = document.querySelector(".change3");
 const change4 = document.querySelector(".change4");
 const bgbg = document.querySelector("#bgbg");
+const delBtn = document.querySelector("#delBtn");
 
 
 const changeBtn1 = document.querySelector("#change1");
@@ -132,6 +158,14 @@ const checkCheckThis = (event) => {
     }
 };
 
+const releasedate = document.querySelectorAll(".releasedate"); // 출고일
+const registrationdate = document.querySelectorAll(".registrationdate"); // 접수일
+const registrationdateInput = document.getElementsByName("registrationdate")
+
+console.log(releasedate,"출고일");
+console.log(registrationdate,"접수일");
+
+
 
 
 
@@ -139,9 +173,9 @@ changeBtn1.addEventListener("click", change1On);
 changeBtn2.addEventListener("click", change2On);
 changeBtn3.addEventListener("click", change3On);
 changeBtn4.addEventListener("click", change4On);
-changeBtn5.addEventListener("submit", checkCheckThis);
-changeBtn6.addEventListener("submit", checkCheckThis);
-
+changeBtn5.addEventListener("click", checkCheckThis);
+changeBtn6.addEventListener("click", checkCheckThis);
+delBtn.addEventListener("click", checkCheckThis)
 
 const OffchangeBoxs = () => {
     change1.style.display =  "block";

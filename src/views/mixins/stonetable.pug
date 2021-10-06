@@ -3,7 +3,7 @@ mixin stoneTable(stone)
             tr 
                 td
                     input(name="clickStone" id="chckchck" type="checkbox" value=`${stone._id}`)
-                td 1
+                td.stoneNum
                 td #{stone.name}
                 td #{stone.weight}
                 td #{stone.purchasePrice}

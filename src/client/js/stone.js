@@ -16,3 +16,10 @@ const postFormOff = () => {
 stoneButton.addEventListener("click", postFormOn);
 bgbtn.addEventListener("click",postFormOff);
 offButton.addEventListener("click", postFormOff);
+
+
+const stoneNum = document.querySelectorAll(".stoneNum");
+
+for(let i=0; i<stoneNum.length; i++){
+    stoneNum[i].innerText = i+1;
+}

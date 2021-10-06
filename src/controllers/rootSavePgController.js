@@ -21,6 +21,9 @@ export const getStone = async (req, res) => {
       }
    } = req.session;
    const user = await User.findById(_id).populate("stones");
+   const stoness = await goldStone.find({
+      "owner": _id
+   }).sort({"_id":-1})
    // console.log("세션 ID는",_id, "유저는",user);
    //console.log(user.stones);
    if (!user) {
@@ -53,7 +56,7 @@ export const getStone = async (req, res) => {
                owner: _id
             }
          ]
-      });
+      }).sort({"_id":-1});
       return res.render("stone", {
          pageTitle: "스톤 관리",
          stones,
@@ -64,7 +67,7 @@ export const getStone = async (req, res) => {
 
    return res.render("stone", {
       pageTitle: "스톤 관리",
-      user,
+      stoness,
       pathname
    });
 };
@@ -373,6 +376,9 @@ export const getQuote = async (req, res) => {
       }
    } = req.session;
    const user = await User.findById(_id).populate("quotes");
+   const quotes = await goldQuote.find({
+      "owner": _id
+   }).sort({"_id":-1});
    if (!user) {
       return res.status(404).render("404");
    }
@@ -382,7 +388,7 @@ export const getQuote = async (req, res) => {
    const pathname = req._parsedOriginalUrl.pathname;
    return res.render("quote", {
       pageTitle: "시세 관리",
-      user,
+      quotes,
       pathname
    });
 };

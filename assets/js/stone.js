@@ -15,7 +15,7 @@
   \********************************/
 /***/ (() => {
 
-eval("var postForm = document.querySelector(\".postForm\");\nvar stoneButton = document.querySelector(\"#stoneButton\");\nvar offButton = document.querySelector(\"#offButton\");\nvar bgbtn = document.querySelector(\"#bgbtn\");\n\nvar postFormOn = function postFormOn() {\n  postForm.classList.add(\"on\");\n  postForm.style.transition = \"\";\n};\n\nvar postFormOff = function postFormOff() {\n  postForm.classList.remove(\"on\");\n  postForm.style.transition = \"height 0s .5s\";\n};\n\nstoneButton.addEventListener(\"click\", postFormOn);\nbgbtn.addEventListener(\"click\", postFormOff);\noffButton.addEventListener(\"click\", postFormOff);\n\n//# sourceURL=webpack://dd/./src/client/js/stone.js?");
+eval("var postForm = document.querySelector(\".postForm\");\nvar stoneButton = document.querySelector(\"#stoneButton\");\nvar offButton = document.querySelector(\"#offButton\");\nvar bgbtn = document.querySelector(\"#bgbtn\");\n\nvar postFormOn = function postFormOn() {\n  postForm.classList.add(\"on\");\n  postForm.style.transition = \"\";\n};\n\nvar postFormOff = function postFormOff() {\n  postForm.classList.remove(\"on\");\n  postForm.style.transition = \"height 0s .5s\";\n};\n\nstoneButton.addEventListener(\"click\", postFormOn);\nbgbtn.addEventListener(\"click\", postFormOff);\noffButton.addEventListener(\"click\", postFormOff);\nvar stoneNum = document.querySelectorAll(\".stoneNum\");\n\nfor (var i = 0; i < stoneNum.length; i++) {\n  stoneNum[i].innerText = i + 1;\n}\n\n//# sourceURL=webpack://dd/./src/client/js/stone.js?");
 
 /***/ })
 
