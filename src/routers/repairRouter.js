@@ -1,10 +1,10 @@
 import express from "express";
-import { repairMain, repairupload } from "../controllers/savePgController";
+import { getRepairMain, postRepairMain, getRepairUpload, postRepairUpload } from "../controllers/savePgController";
 import { protectorMiddleware, clickDeta } from "../middlewares";
 
 const repairRouter = express.Router();
 
-repairRouter.get("/main", protectorMiddleware, repairMain);
-repairRouter.get("/upload", protectorMiddleware, clickDeta, repairupload);
+repairRouter.route("/main").all(protectorMiddleware).get(getRepairMain).post(postRepairMain);
+repairRouter.route("/upload").all(protectorMiddleware).get(clickDeta, getRepairUpload).post(postRepairUpload);
 
 export default repairRouter;

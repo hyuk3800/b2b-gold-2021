@@ -27,6 +27,9 @@ const userSchema = new mongoose.Schema({
     orders: [
         { type: mongoose.Schema.Types.ObjectId, ref: "Order" }
        ], // 등록한 재고 id
+    repairs: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "Repair" }
+       ], // 등록한 재고 id
 });
 
 

@@ -93,7 +93,7 @@
 }
 
 .calData{
-    padding-left: 10px;
+    /* padding-left: 10px; */
     width: 90px;
     height: 30px;
     border: 1px solid rgba(153, 153, 153, 0.5);
@@ -268,4 +268,18 @@ td input{
     }
 
 
+}
+
+#calDeta{
+    padding-left: 10px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+
+.rightbutton{
+    display: flex;
+    align-items: center;
+    border: none;
 }

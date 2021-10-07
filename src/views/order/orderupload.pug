@@ -67,9 +67,9 @@ block content
                                     th 보조
                                     th 메인
                                     th 보조
-                                    th
-                                        input(type="text" class="cldbox1", id="cldbox",  autocomplete="off" )
-                                        div(class="calinder2")
+                                    th.rightbutton
+                                        input(type="text" class="cldbox1", id="cldbox",  autocomplete="off" disabled )
+                                        //- div(class="calinder2")
                                             img(src="../../../../static/images/calendar.png" alt="calendar")
                             if anotherSaveDb
                                 each product in anotherSaveDb
@@ -140,9 +140,9 @@ block content
                                             input(type="text" name="size")
                                         td 
                                             input(type="text" name="description")
-                                        td 
+                                        td.rightbutton  
                                             input(type="text" class="cldbox1111" name="releasedate" autocomplete="off" disabled )
-                                            div(class="calinder2") 
+                                            //- div(class="calinder2") 
                                                 img(src="../../../../static/images/calendar.png" alt="calendar")
                                     tr 
                                         td 
@@ -208,9 +208,9 @@ block content
                                             input(type="text" name="size")
                                         td 
                                             input(type="text" name="description")
-                                        td 
+                                        td.rightbutton  
                                             input(type="text" class="cldbox1111" name="releasedate" autocomplete="off" disabled )
-                                            div(class="calinder2") 
+                                            //- div(class="calinder2") 
                                                 img(src="../../../../static/images/calendar.png" alt="calendar")
                                     
             div(class="row")

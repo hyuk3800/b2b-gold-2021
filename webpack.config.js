@@ -3,18 +3,19 @@ const path = require("path");
 
 module.exports = {
     entry: {
+        home1:"./src/client/js/home1.js",
         main: "./src/client/js/main.js",
         hambutton: "./src/client/js/hambutton.js",
         catalogeMain:"./src/client/js/catalogeMain.js",
         catalogeUpdate:"./src/client/js/catalogeUpdate.js",
-        orderUpload:"./src/client/js/orderUpload.js",
-        home1:"./src/client/js/home1.js",
         client1:"./src/client/js/client.js",
         stone:"./src/client/js/stone.js",
         quote:"./src/client/js/quote.js",
         stockMain:"./src/client/js/stockMain.js",
         stockUpload:"./src/client/js/stockUpload.js",
         orderMain:"./src/client/js/orderMain.js",
+        orderUpload:"./src/client/js/orderUpload.js",
+        repairUpload:"./src/client/js/repairUpload.js",
     },
     mode: "development",
     watch: true,

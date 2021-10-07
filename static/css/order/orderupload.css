@@ -264,6 +264,11 @@ td input{
     left: 0;
 }
 
+.rightbutton{
+    display: flex;
+    align-items: center;
+    border: none;
+}
 
 /* 켈린더 위치 */
 

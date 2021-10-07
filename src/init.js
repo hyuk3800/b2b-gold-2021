@@ -6,6 +6,8 @@ import "./models/Stone";
 import "./models/Quote";
 import "./models/Client";
 import "./models/Stock";
+import "./models/Order";
+import "./models/Repair";
 import app from "./server";
 
 const PORT = 5000;

@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function(){
     const account = document.querySelectorAll(".account");
     const modelNumber = document.querySelectorAll(".modelNumber");
     const manufacturer = document.querySelectorAll(".manufacturer");
@@ -10,7 +10,6 @@ window.onload = function () {
     const searcModelhBox = document.querySelector(".searcModelhBox");
     const searchManuBox = document.querySelector(".searchManuBox");
 
-    console.log(account)
 
     for (let i = 0; i < account.length; i++) {
         const accountOpen = () => {
@@ -52,7 +51,7 @@ window.onload = function () {
         searcOrderhBox.classList.remove("on");
         searcModelhBox.classList.remove("on");
         searchManuBox.classList.remove("on");
-
+    
         setTimeout(function () {
             searcOrderhBox.style.display = "block";
             searcModelhBox.style.display = "block";
@@ -74,46 +73,32 @@ window.onload = function () {
                 searcModelhBox.style.display = "block";
                 searchManuBox.style.display = "block";
             }, 1000);
-
+    
         };
-        orderClose[i].addEventListener("click", closeOrderRemove);
+    orderClose[i].addEventListener("click",closeOrderRemove);
     };
 
     bgBg.addEventListener("click", allCloseBtn);
 
     const goClient = document.querySelectorAll(".goClient");
 
-    for (let i = 0; i < goClient.length; i++) {
-        const goClientGO = () => {
-            location.href = "/client";
+    for(let i=0; i<goClient.length; i++){
+        const goClientGO = () =>{
+            location.href="/client";
         };
 
 
         goClient[i].addEventListener("click", goClientGO);
     }
 
-    const formPOST = document.querySelector("#formPOST");
-    
-    const submitPost = (event) => {
-        // event.preventDefault();
-        const trLength = document.querySelectorAll("#tbody tr");
-        console.log("이거", trLength);
-        let Length = trLength.length;
-        lengthinput = '<input name="lengthset" style="display: none" type="Number" value="' + Length + '">'
-        formPOST.insertAdjacentHTML('beforeEnd', lengthinput);
-    };
 
-    window.submitPost = submitPost;
-
-    formPOST.addEventListener("submit", submitPost);
-
-
-    const plsbtn = document.querySelector('#plsbtn');
-    const tbody = document.querySelector('#tbody');
+    const plsbtn = document.querySelector("#plsbtn");
+    const tbody = document.querySelector("#tbody");
 
 
     const plsbtnClick = () => {
-        console.log("hi");
+
+        console.log("안녕하신가? 후후후후후");
         const newRow = tbody.insertRow();
 
         const newCell1 = newRow.insertCell(0);
@@ -158,7 +143,6 @@ window.onload = function () {
         newCell18.innerHTML = '<input type="text" name="description">';
         newCell19.innerHTML = '<input type="text" class="cldbox1111" autocomplete="off" disabled><div class="calinder2">';
 
-
     };
 
 
@@ -167,63 +151,35 @@ window.onload = function () {
     window.plsbtnClick = plsbtnClick;
 
 
+    const formPOST = document.querySelector("#formPOST");
+    const submitPOST = () => {
+        const trLength = document.querySelectorAll("#tbody tr");
+        console.log("이거", trLength);
+        lengthinput = '<input name="lengthset" style="display: none" type="Number" value="' + Length + '">'
+        formPOST.insertAdjacentHTML('beforeEnd', lengthinput);
+    };
+    formPOST.addEventListener("sumbit", submitPOST)
 
 
 
-    const calData = document.querySelector(".calData");
+    const calDeta = document.querySelector("#calDeta");
     let cldbox1 = document.getElementsByClassName("cldbox1111");
     let cldbox = document.querySelector("#cldbox");
 
 
     let today = new Date();
     let KRDay = today.toLocaleDateString('ko-KR');
-    calData.value = KRDay;
-
+    calDeta.value = KRDay;
 
     let tomorrow = new Date(today.setDate(today.getDate() + 7));
-
-
-
-    const inputChinge = (e) => {
-        console.log("안녕");
-    };
-
-    calData.addEventListener("input", inputChinge)
 
     cldbox.value = tomorrow.toLocaleDateString('ko-KR');
 
     let cldboxval = cldbox.value;
 
-    // console.log(cldboxval);
-
-    calData.onclick = function () {
-        console.log("됬냐?");
-    }
-
-    // console.log("내일 : ", tomorrow.toLocaleDateString('ko-KR'));
     for (let i = 0; i < cldbox1.length; i++) {
         cldbox1[i].value = cldboxval;
     }
-
-    // let cldboxTop = [];
-
-    // for (let i = 0; i < cldbox.length; i++) {
-    //     cldboxTop = cldbox[i].getBoundingClientRect().bottom;
-    // }
-    // console.log(cldboxTop);
-
-
-    // const cldboxChanges = () => {
-    //     console.log("dododododododod");
-    //     // for(let i=0; i<cldbox1.length; i++){
-    //     //     cldbox1[i].value = cldbox.value;
-    //     // }
-    // };
-
-
-
-    // cldbox.addEventListener("change", cldboxChanges);
-
 
     $(function () { ////// jQ 시작
 
@@ -248,7 +204,7 @@ window.onload = function () {
         // });
 
 
-        $("#datepicker").datepicker({
+        $("#calDeta").datepicker({
             beforeShow: function (input, inst) {
                 let offset = $(input).offset();
                 window.setTimeout(function () {
@@ -260,10 +216,9 @@ window.onload = function () {
 
         }); /// datepicker
         // $(".cldbox1111").datepicker("setDate", "+7d");
-        $("#cldbox").datepicker({
+        $(".cldbox1111").datepicker({
             showOn: "button",
             buttonImage: "../../../../static/images/calendar.png",
-
 
             beforeShow: function (input, inst) {
                 let offset = $(input).offset();
@@ -276,11 +231,9 @@ window.onload = function () {
                 }, 1); ///setTimeout
             } /// beforeShow
         }); // datepicker
-
-        $(".cldbox1111").datepicker({
+        $(".cldbox").datepicker({
             showOn: "button",
             buttonImage: "../../../../static/images/calendar.png",
-
 
             beforeShow: function (input, inst) {
                 let offset = $(input).offset();
@@ -301,4 +254,5 @@ window.onload = function () {
 
     }); //// jQ 끝
 
-}
+
+};/////// window.onload

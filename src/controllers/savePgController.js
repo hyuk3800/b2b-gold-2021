@@ -3,6 +3,7 @@ import goldStock from "../models/Stock";
 import goldClient from "../models/Client";
 import goldOrder from "../models/Order";
 import User from "../models/User";
+import goldRepair from "../models/Repair";
 import session from "express-session";
 
 
@@ -541,6 +542,8 @@ export const postStockMain = async (req, res) => {
     } = req.body;
 
     console.log(req.body);
+
+    
     if (!clickThis) {
         return res.status(401).redirect("/stock/main");
     }
@@ -643,7 +646,7 @@ export const getStockUpload = async (req, res) => {
                 "owner": _id
             }
         ]
-    });
+    }).sort({ "_id": -1});
     console.log("세션 ID는", _id, "유저는", user._id)
     if (!user) {
         return res.status(404).render("404");
@@ -874,6 +877,9 @@ export const getOrderMain = async (req, res) => {
     const { user: {_id} } = req.session;
 
     const user = await User.findById(_id).populate("orders");
+    const orderss = await goldOrder.find({
+
+    }).sort({ "_id": -1});
     const client = await goldClient.find({
         $and: [{
                 "clientType": "판매처"
@@ -882,7 +888,13 @@ export const getOrderMain = async (req, res) => {
                 "owner": _id
             }
         ]
-    });
+    }).sort({ "_id": -1});
+    if (!user) {
+        return res.status(404).render("404");
+    }
+    if (String(_id) !== String(user._id)) {
+        return res.status(403).redirect("/");
+    }
 
 
     return res.render("order/ordermain", {
@@ -1041,7 +1053,17 @@ export const getOrderUpload = async (req, res) => {
         }, {
             "owner": _id
         }]
-    })
+    }).sort({ "_id": -1});
+
+    console.log("세션 ID는", _id, "유저는", user._id);
+
+    if (!user) {
+        return res.status(404).render("404");
+    }
+    if (String(_id) !== String(user._id)) {
+        return res.status(403).redirect("/");
+    }
+
 
     return res.render("order/orderupload", {
         pageTitle: "주문 등록",
@@ -1183,15 +1205,84 @@ export const postOrderUpload = async (req, res) => {
     }
 };
 
-export const repairMain = (req, res) => {
+export const getRepairMain = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
+    const { user: {_id} } = req.session;
+
+    const user = await User.findById(_id).populate("repairs");
+    const client = await goldClient.find({
+        $and: [{
+                "clientType": "판매처"
+            },
+            {
+                "owner": _id
+            }
+        ]
+    }).sort({ "_id": -1});
+    if (!user) {
+        return res.status(404).render("404");
+    }
+    if (String(_id) !== String(user._id)) {
+        return res.status(403).redirect("/");
+    }
+
+    console.log("이거봐", user.repairs);
     return res.render("repair/repairmain", {
         pageTitle: "수리 관리",
+        pathname,
+        user,
+        client
+    });
+};
+
+export const postRepairMain = async (req, res) => {
+
+};
+
+export const getRepairUpload = async (req, res) => {
+    const pathname = req._parsedOriginalUrl.pathname;
+    const { user: {_id} } = req.session;
+    const user = await User.findById(_id).populate("products");
+    const client = await goldClient.find({
+        $and: [{
+            "clientType": "매입처"
+        }, {
+            "owner": _id
+        }]
+    });
+    const account = await goldClient.find({
+        $and: [{
+                "clientType": "판매처"
+            },
+            {
+                "owner": _id
+            }
+        ]
+    }).sort({ "_id": -1});
+
+    console.log("세션 ID는", _id, "유저는", user._id);
+
+    if (!user) {
+        return res.status(404).render("404");
+    }
+    if (String(_id) !== String(user._id)) {
+        return res.status(403).redirect("/");
+    }
+
+
+
+    return res.render("repair/repairupload", {
+        pageTitle: "수리 등록",
+        user,
+        client,
+        account,
         pathname
     });
 };
-export const repairupload = (req, res) => {
-    const pathname = req._parsedOriginalUrl.pathname;
+export const postRepairUpload = async (req, res) => {
+    const { user: {_id} } = req.session;
+    
+
     return res.render("repair/repairupload", {
         pageTitle: "수리 등록",
         pathname
