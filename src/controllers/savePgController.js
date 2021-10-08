@@ -16,7 +16,9 @@ export const catalogeMain = async (req, res) => {
     const user = await User.findById(_id).populate("products");
     const productss = await goldProduct.find({
         "owner": _id
-    }).sort({"_id":-1});
+    }).sort({
+        "_id": -1
+    });
     console.log("세션 ID는", _id, "유저는", user._id)
     if (!user) {
         return res.status(404).render("404");
@@ -45,7 +47,9 @@ export const catalogeMain = async (req, res) => {
                         "owner": _id
                     }
                 ]
-            }).sort({"_id":-1});
+            }).sort({
+                "_id": -1
+            });
         } else {
 
             products = await goldProduct.find({
@@ -92,7 +96,9 @@ export const catalogeMain = async (req, res) => {
                         "owner": _id
                     }
                 ] // 금/은중량
-            }).sort({"_id":-1});
+            }).sort({
+                "_id": -1
+            });
         }
 
 
@@ -543,7 +549,7 @@ export const postStockMain = async (req, res) => {
 
     console.log(req.body);
 
-    
+
     if (!clickThis) {
         return res.status(401).redirect("/stock/main");
     }
@@ -646,7 +652,9 @@ export const getStockUpload = async (req, res) => {
                 "owner": _id
             }
         ]
-    }).sort({ "_id": -1});
+    }).sort({
+        "_id": -1
+    });
     console.log("세션 ID는", _id, "유저는", user._id)
     if (!user) {
         return res.status(404).render("404");
@@ -737,7 +745,72 @@ export const postStockUpload = async (req, res) => {
     // console.log(orderNumber.length);
     try {
         if (Number(lengthset) === 1) {
-            const rand = Math.floor(Math.random() * 100000000);
+            // const rand = Math.floor(Math.random() * 100000000);
+            // if (orderNumber) {
+            //     const order = await goldOrder.find({
+            //         allNumber: {
+            //             $in: orderNumber
+            //         }
+            //     });
+            //     console.log("오더는",order);
+            //     const repair = await goldRepair.find({
+            //         allNumber: {
+            //             $in: orderNumber
+            //         }
+            //     });
+            //     console.log("랜터는",repair);
+            //     if (!order === []) {
+            //         const newGoldStock = await goldStock.create({
+            //             registrationdate: registrationdate,
+            //             orderNumber: orderNumber,
+            //             modelNumber: modelNumber,
+            //             manufacturer: manufacturer,
+            //             material: material,
+            //             color: color,
+            //             quantity: quantity,
+            //             basicWage: basicWage,
+            //             additionWage: additionWage,
+            //             stoneWage1: stoneWage1,
+            //             stoneWage2: stoneWage2,
+            //             stoneWeight3: stoneWeight3,
+            //             goldWeight: goldWeight,
+            //             stoneWeight: stoneWeight,
+            //             harry: harry,
+            //             unitPrice: unitPrice,
+            //             stone: {
+            //                 stoneName: stoneName,
+            //                 stoneQuantity: stoneQuantity,
+            //             },
+            //             stone2: {
+            //                 stoneName2: stoneName2,
+            //                 stoneQuantity2: stoneQuantity2,
+            //             },
+            //             size: size,
+            //             description: description,
+            //             purchaseWage: purchaseWage,
+            //             eggPurchasePrice: eggPurchasePrice,
+
+            //             products: productList,
+
+
+            //             serialNumber: String((0 + 1) + rand).padStart(8, '0'),
+
+            //             owner: _id,
+            //         });
+            //         console.log("오더가 있을때만들어지는 id", newGoldStock._id);
+            //         const user = await User.findById(_id);
+            //         // console.log(user);
+            //         user.stocks.push(newGoldStock._id);
+            //         user.save();
+            //         order[0].stocks.push(newGoldStock._id);
+            //         order[0].save();
+            //         return res.redirect("/stock/main");
+            //     }
+            //     if (!repair === []) {
+
+            //     }
+
+            // } else {
             const newGoldStock = await goldStock.create({
                 registrationdate: registrationdate,
                 orderNumber: orderNumber,
@@ -781,16 +854,31 @@ export const postStockUpload = async (req, res) => {
             user.stocks.push(newGoldStock._id);
             user.save();
             console.log("뉴스톡", newGoldStock._id);
-            if(orderNumber){
-                const order = await goldOrder.find({
-                    orderNumber: {
-                        $in: orderNumber
-                    }
-                });
-                console.log("오더는",order);
-                order[0].stocks.push(newGoldStock._id);
-                order[0].save();
-            }
+            // }
+            // if (orderNumber) {
+            //     const order = await goldOrder.find({
+            //         allNumber: {
+            //             $in: orderNumber
+            //         }
+            //     });
+            //     console.log("오더",order);
+            //     if (!order === []) {
+            //         console.log("오더는", order);
+            //         order[0].stocks.push(newGoldStock._id);
+            //         order[0].save();
+            //     }
+            //     const repair = await goldRepair.find({
+            //         allNumber: {
+            //             $in: orderNumber
+            //         }
+            //     });
+            //     console.log("대여",repair);
+            //     if(!repair === []){
+            //         console.log("대여는", repair);
+            //         repair[0].stocks.push(newGoldStock._id);
+            //         repair[0].save();
+            //     }
+            // }
         } else {
             for (let i = 0; i < Number(lengthset); i++) {
                 const rand = Math.floor(Math.random() * 100000000);
@@ -835,22 +923,39 @@ export const postStockUpload = async (req, res) => {
                 user.stocks.push(newGoldStock._id);
                 user.save();
                 console.log("뉴스톡", newGoldStock._id);
-                if(orderNumber){
-                    const order = await goldOrder.find({
-                        orderNumber: {
-                            $in: orderNumber
-                        }
-                    });
-                    console.log("오더는",order);
-                    order[i].stocks.push(newGoldStock._id);
-                    order[i].save();
-                }
+                // if (orderNumber) {
+                //     const order = await goldOrder.find({
+                //         allNumber: {
+                //             $in: orderNumber
+                //         }
+                //     });
+                //     const repair = await goldRepair.find({
+                //         allNumber: {
+                //             $in: orderNumber
+                //         }
+                //     });
+                //     if(!order === []){
+                //         for(let ord=0; ord<order.length; ord++){
+                //             console.log("오더는", order);
+                //             order[ord].stocks.push(newGoldStock[i]._id);
+                //             order[ord].save();
+                //         }
+                //     }
+                //     if(!repair === []){
+                //         for(let rep=0; rep<repair.length; rep++){
+                //             console.log("대여는", repair);
+                //             repair[rep].stocks.push(newGoldStock[i]._id);
+                //             repair[rep].save();
+                //         }
+                //     }
+
+                // }
             }
         }
         return res.redirect("/stock/main");
         // return res.end();
     } catch (error) {
-        console.log(error);
+        console.log("에러는", error);
         return res.status(400).redirect("/stock/upload");
     }
 };
@@ -874,12 +979,18 @@ export const editStock = (req, res) => {
 
 export const getOrderMain = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
-    const { user: {_id} } = req.session;
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
 
     const user = await User.findById(_id).populate("orders");
     const orderss = await goldOrder.find({
 
-    }).sort({ "_id": -1});
+    }).sort({
+        "_id": -1
+    });
     const client = await goldClient.find({
         $and: [{
                 "clientType": "판매처"
@@ -888,7 +999,9 @@ export const getOrderMain = async (req, res) => {
                 "owner": _id
             }
         ]
-    }).sort({ "_id": -1});
+    }).sort({
+        "_id": -1
+    });
     if (!user) {
         return res.status(404).render("404");
     }
@@ -906,7 +1019,11 @@ export const getOrderMain = async (req, res) => {
 };
 
 export const postOrderMain = async (req, res) => {
-    const { user:{ _id } } = req.session;
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
     const {
         clickThis,
         changeButton1,
@@ -924,55 +1041,55 @@ export const postOrderMain = async (req, res) => {
 
 
     console.log(req.body);
-    if(!clickThis){
+    if (!clickThis) {
         console.log("없다")
         return res.status(401).redirect("/cataloge/main");
     }
-    if(changeButton1){
+    if (changeButton1) {
         const clickOrder = await goldOrder.updateMany({
             _id: {
                 $in: clickThis
             }
-        },{
+        }, {
             gubun,
         });
         console.log(clickOrder);
         return res.redirect("/order/main");
     }
-    if(changeButton2){
+    if (changeButton2) {
         const clickOrder = await goldOrder.updateMany({
             _id: {
                 $in: clickThis
             }
-        },{
+        }, {
             registrationdate,
         });
         console.log(clickOrder);
         return res.redirect("/order/main");
     }
-    if(changeButton3){
+    if (changeButton3) {
         const clickOrder = await goldOrder.updateMany({
             _id: {
                 $in: clickThis
             }
-        },{
+        }, {
             releasedate,
         });
         console.log(clickOrder);
         return res.redirect("/order/main");
     }
-    if(changeButton4){
+    if (changeButton4) {
         const clickOrder = await goldOrder.updateMany({
             _id: {
                 $in: clickThis
             }
-        },{
+        }, {
             account,
         });
         console.log(clickOrder);
         return res.redirect("/order/main");
     }
-    if(changeButton5){
+    if (changeButton5) {
         const clickOrder = await goldOrder.find({
             _id: {
                 $in: clickThis
@@ -983,7 +1100,7 @@ export const postOrderMain = async (req, res) => {
         console.log(req.session.anotherSaveDb);
         return res.redirect("/stock/upload");
     }
-    if(changeButton6){
+    if (changeButton6) {
         const clickOrder = await goldOrder.find({
             _id: {
                 $in: clickThis
@@ -994,7 +1111,7 @@ export const postOrderMain = async (req, res) => {
         console.log(req.session.anotherSaveDb);
         return res.redirect("/sale/upload");
     }
-    if(deleteBtn){
+    if (deleteBtn) {
         const clickOrder = await goldOrder.find({
             _id: {
                 $in: clickThis
@@ -1011,15 +1128,19 @@ export const postOrderMain = async (req, res) => {
 
 
 export const deleteOrder = async (req, res) => {
-    const { user:{_id} } = req.session;
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
 
     let deletId = [];
-    for(let i=0; i<req.session.anotherSaveDb.length; i++){
+    for (let i = 0; i < req.session.anotherSaveDb.length; i++) {
         deletId.push(req.session.anotherSaveDb[i]._id);
     };
 
     const user = await User.findById(_id);
-    
+
     if (String(_id) !== String(user._id)) {
         return res.status(403).redirect("/");
     }
@@ -1053,7 +1174,9 @@ export const getOrderUpload = async (req, res) => {
         }, {
             "owner": _id
         }]
-    }).sort({ "_id": -1});
+    }).sort({
+        "_id": -1
+    });
 
     console.log("세션 ID는", _id, "유저는", user._id);
 
@@ -1101,8 +1224,9 @@ export const postOrderUpload = async (req, res) => {
         releasedate,
         lengthset,
         registrationdate,
+
     } = req.body;
-    
+
     console.log(req.body);
     const products = await goldProduct.find({
         $and: [{
@@ -1122,7 +1246,7 @@ export const postOrderUpload = async (req, res) => {
 
     try {
         if (Number(lengthset) === 1) {
-            const rand = Math.floor(Math.random() * 100000000);
+            const rand = Math.round(Math.random() * 0xffffffff).toString(16);
             const newGoldOrder = await goldOrder.create({
                 fileUrl: productImg[0],
                 registrationdate: registrationdate,
@@ -1151,7 +1275,7 @@ export const postOrderUpload = async (req, res) => {
 
                 products: productList,
 
-                orderNumber: String((0 + 1) + rand).padStart(8, '0'),
+                allNumber: rand,
 
                 owner: _id,
             });
@@ -1160,7 +1284,7 @@ export const postOrderUpload = async (req, res) => {
             user.save();
         } else {
             for (let i = 0; i < Number(lengthset); i++) {
-                const rand = Math.floor(Math.random() * 100000000);
+                const rand = Math.round(Math.random() * 0xffffffff).toString(16);
                 const newGoldOrder = await goldOrder.create({
                     fileUrl: productImg[i],
                     registrationdate: registrationdate,
@@ -1189,7 +1313,7 @@ export const postOrderUpload = async (req, res) => {
 
                     products: productList[i],
 
-                    orderNumber: String((0 + 1) + rand).padStart(8, '0'),
+                    allNumber: rand,
 
                     owner: _id,
                 });
@@ -1207,7 +1331,11 @@ export const postOrderUpload = async (req, res) => {
 
 export const getRepairMain = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
-    const { user: {_id} } = req.session;
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
 
     const user = await User.findById(_id).populate("repairs");
     const client = await goldClient.find({
@@ -1218,7 +1346,9 @@ export const getRepairMain = async (req, res) => {
                 "owner": _id
             }
         ]
-    }).sort({ "_id": -1});
+    }).sort({
+        "_id": -1
+    });
     if (!user) {
         return res.status(404).render("404");
     }
@@ -1226,7 +1356,7 @@ export const getRepairMain = async (req, res) => {
         return res.status(403).redirect("/");
     }
 
-    console.log("이거봐", user.repairs);
+    // console.log("이거봐", user.repairs);
     return res.render("repair/repairmain", {
         pageTitle: "수리 관리",
         pathname,
@@ -1236,12 +1366,142 @@ export const getRepairMain = async (req, res) => {
 };
 
 export const postRepairMain = async (req, res) => {
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
+    const {
+        clickThis,
+        changeButton1,
+        changeButton2,
+        changeButton3,
+        changeButton4,
+        changeButton5,
+        changeButton6,
+        gubun,
+        registrationdate,
+        releasedate,
+        account,
+        deleteBtn,
+    } = req.body;
 
+    if (!clickThis) {
+        console.log("없다")
+        return res.status(401).redirect("/cataloge/main");
+    }
+    if (changeButton1) {
+        const ClickRepair = await goldRepair.updateMany({
+            _id: {
+                $in: clickThis
+            }
+        }, {
+            gubun,
+        });
+        console.log(ClickRepair);
+        return res.redirect("/repair/main");
+    }
+    if (changeButton2) {
+        const ClickRepair = await goldRepair.updateMany({
+            _id: {
+                $in: clickThis
+            }
+        }, {
+            registrationdate,
+        });
+        console.log(ClickRepair);
+        return res.redirect("/repair/main");
+    }
+    if (changeButton3) {
+        const ClickRepair = await goldRepair.updateMany({
+            _id: {
+                $in: clickThis
+            }
+        }, {
+            releasedate,
+        });
+        console.log(ClickRepair);
+        return res.redirect("/repair/main");
+    }
+    if (changeButton4) {
+        const ClickRepair = await goldRepair.updateMany({
+            _id: {
+                $in: clickThis
+            }
+        }, {
+            account,
+        });
+        console.log(ClickRepair);
+        return res.redirect("/repair/main");
+    }
+    if (changeButton5) {
+        const ClickRepair = await goldRepair.find({
+            _id: {
+                $in: clickThis
+            }
+
+        });
+        req.session.anotherSaveDb = ClickRepair;
+        console.log(req.session.anotherSaveDb);
+        return res.redirect("/stock/upload");
+    }
+    if (changeButton6) {
+        const ClickRepair = await goldRepair.find({
+            _id: {
+                $in: clickThis
+            }
+
+        });
+        req.session.anotherSaveDb = ClickRepair;
+        console.log(req.session.anotherSaveDb);
+        return res.redirect("/sale/upload");
+    }
+    if (deleteBtn) {
+        const ClickRepair = await goldRepair.find({
+            _id: {
+                $in: clickThis
+            }
+
+        });
+        req.session.anotherSaveDb = ClickRepair;
+        console.log(req.session.anotherSaveDb);
+        return res.redirect("/repair/delete")
+    }
+
+    return res.end();
 };
+
+export const deleteRepair = async (req, res) => {
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
+
+    let deletId = [];
+    for (let i = 0; i < req.session.anotherSaveDb.length; i++) {
+        deletId.push(req.session.anotherSaveDb[i]._id);
+    };
+
+    const user = await User.findById(_id);
+    if (String(_id) !== String(user._id)) {
+        return res.status(403).redirect("/");
+    }
+    await goldRepair.deleteMany({
+        _id: deletId
+    });
+
+    return res.redirect("/repair/main");
+};
+
 
 export const getRepairUpload = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
-    const { user: {_id} } = req.session;
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
     const user = await User.findById(_id).populate("products");
     const client = await goldClient.find({
         $and: [{
@@ -1258,7 +1518,9 @@ export const getRepairUpload = async (req, res) => {
                 "owner": _id
             }
         ]
-    }).sort({ "_id": -1});
+    }).sort({
+        "_id": -1
+    });
 
     console.log("세션 ID는", _id, "유저는", user._id);
 
@@ -1280,13 +1542,131 @@ export const getRepairUpload = async (req, res) => {
     });
 };
 export const postRepairUpload = async (req, res) => {
-    const { user: {_id} } = req.session;
-    
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
+    const {
+        registrationdate,
+        account,
+        modelNumber,
+        manufacturer,
+        material,
+        color,
+        quantity,
+        basicWage,
+        additionWage,
+        stoneWage1,
+        stoneWage2,
+        stoneQuantity,
+        stoneQuantity2,
+        stoneWeight3,
+        stoneName,
+        stoneName2,
+        size,
+        description,
+        releasedate,
+        lengthset
+    } = req.body;
 
-    return res.render("repair/repairupload", {
-        pageTitle: "수리 등록",
-        pathname
+    const products = await goldProduct.find({
+        $and: [{
+            "modelNumber": modelNumber
+        }, {
+            "owner": _id
+        }]
     });
+
+    let productList = [];
+    let productImg = [];
+
+
+    for (let i = 0; i < products.length; i++) {
+        productList.push(products[i]._id);
+        productImg.push(products[i].fileUrl);
+    };
+
+    console.log("이거 ", lengthset);
+    try {
+        if (Number(lengthset) === 1) {
+            const rand = Math.round(Math.random() * 0xffffffff).toString(16);
+            const newGoldRepair = await goldRepair.create({
+                fileUrl: productImg[0],
+                owner: _id,
+                products: productList,
+                //repairNumber: String((0 + 1) + rand).padStart(8, '0'),
+                allNumber: rand,
+                registrationdate: registrationdate,
+                account: account,
+                modelNumber: modelNumber,
+                manufacturer: manufacturer,
+                material: material,
+                color: color,
+                quantity: quantity,
+                basicWage: basicWage,
+                additionWage: additionWage,
+                stoneWage1: stoneWage1,
+                stoneWage2: stoneWage2,
+                stone: {
+                    stoneName: stoneName,
+                    stoneQuantity: stoneQuantity,
+                },
+                stone2: [{
+                    stoneName2: stoneName2,
+                    stoneQuantity2: stoneQuantity2,
+                }],
+                stoneWeight3: stoneWeight3,
+                size: size,
+                description: description,
+                releasedate: releasedate,
+            });
+            const user = await User.findById(_id);
+            user.repairs.push(newGoldRepair._id);
+            user.save();
+        } else {
+            for (let i = 0; i < Number(lengthset); i++) {
+                const rand = Math.round(Math.random() * 0xffffffff).toString(16);
+                const newGoldRepair = await goldRepair.create({
+                    fileUrl: productImg[i],
+                    owner: _id,
+                    products: productList[i],
+                    allNumber: rand,
+                    registrationdate: registrationdate,
+                    account: account[i],
+                    modelNumber: modelNumber[i],
+                    manufacturer: manufacturer[i],
+                    material: material[i],
+                    color: color[i],
+                    quantity: quantity[i],
+                    basicWage: basicWage[i],
+                    additionWage: additionWage[i],
+                    stoneWage1: stoneWage1[i],
+                    stoneWage2: stoneWage2[i],
+                    stone: {
+                        stoneName: stoneName[i],
+                        stoneQuantity: stoneQuantity[i],
+                    },
+                    stone2: [{
+                        stoneName2: stoneName2[i],
+                        stoneQuantity2: stoneQuantity2[i],
+                    }],
+                    stoneWeight3: stoneWeight3[i],
+                    size: size[i],
+                    description: description[i],
+                    releasedate: releasedate[i],
+                });
+                const user = await User.findById(_id);
+                user.repairs.push(newGoldRepair._id);
+                user.save();
+            }
+        }
+        return res.redirect("/repair/main");
+
+    } catch (error) {
+        console.log(error);
+        return res.status(400).redirect("repair/upload");
+    }
 };
 
 export const purchaseMain = (req, res) => {

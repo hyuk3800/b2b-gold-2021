@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema({
        ],
 
 
-    orderNumber: { type: String, required: true, },// 주문번호
+    allNumber: { type: String, required: true, },// 주문번호
 
     gubun: { type: String, require: true, default: "접수" }, // 구분
 

@@ -11,7 +11,7 @@ const repairSchema = new mongoose.Schema({
         { type: mongoose.Schema.Types.ObjectId, ref: "Stock" }
        ],
 
-    repairNumber: { type: String, required: true, },// 수리번호
+    allNumber: { type: String, required: true, },// 수리번호
 
 
     gubun: { type: String, require: true, default: "접수" }, // 구분

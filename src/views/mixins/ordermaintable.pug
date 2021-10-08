@@ -4,7 +4,7 @@ mixin orderMainTable(order)
             td 
                 input(name="clickThis" class="checkedThis" type="checkbox" value=`${order._id}`) 
             td.orderTd 출 <span class="releasedate"> #{order.releasedate} </span> <br> 접 <span class="registrationdate"> #{order.registrationdate}</span>
-            td #{order.account} <br> #{order.orderNumber}
+            td #{order.account} <br> #{order.allNumber}
             td(class="clickImg") 
                 img(src="/" + order.fileUrl, alt="productImg")
             td #{order.modelNumber}

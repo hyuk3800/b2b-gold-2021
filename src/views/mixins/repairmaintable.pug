@@ -2,9 +2,9 @@ mixin repairMainTable(repair)
         tr.repairTr 
             td(style="background-color: #dbb3ff; color: steelblue;").repairNum
             td 
-                input(name="clickThis" id="checkedThis" type="checkbox" value=`${repair._id}`)
+                input(name="clickThis" class="checkedThis" type="checkbox" value=`${repair._id}`)
             td.repairTd 출 <span class="releasedate"> #{repair.releasedate} </span> <br> 접 <span class="registrationdate"> #{repair.registrationdate} </span>
-            td #{repair.account} <br> #{repair.repairNumber}
+            td #{repair.account} <br> #{repair.allNumber}
             td(class="clickImg")
                 img(src="/"+repair.fileUrl, alt="productImg")
             td #{repair.modelNumber}

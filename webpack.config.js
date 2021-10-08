@@ -15,6 +15,7 @@ module.exports = {
         stockUpload:"./src/client/js/stockUpload.js",
         orderMain:"./src/client/js/orderMain.js",
         orderUpload:"./src/client/js/orderUpload.js",
+        repairMain:"./src/client/js/repairMain.js",
         repairUpload:"./src/client/js/repairUpload.js",
     },
     mode: "development",

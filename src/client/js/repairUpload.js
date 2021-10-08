@@ -1,4 +1,4 @@
-window.onload = function(){
+window.onload = function () {
     const account = document.querySelectorAll(".account");
     const modelNumber = document.querySelectorAll(".modelNumber");
     const manufacturer = document.querySelectorAll(".manufacturer");
@@ -9,6 +9,14 @@ window.onload = function(){
     const searcOrderhBox = document.querySelector(".searcOrderhBox");
     const searcModelhBox = document.querySelector(".searcModelhBox");
     const searchManuBox = document.querySelector(".searchManuBox");
+
+
+
+
+
+
+
+
 
 
     for (let i = 0; i < account.length; i++) {
@@ -51,7 +59,7 @@ window.onload = function(){
         searcOrderhBox.classList.remove("on");
         searcModelhBox.classList.remove("on");
         searchManuBox.classList.remove("on");
-    
+
         setTimeout(function () {
             searcOrderhBox.style.display = "block";
             searcModelhBox.style.display = "block";
@@ -73,18 +81,18 @@ window.onload = function(){
                 searcModelhBox.style.display = "block";
                 searchManuBox.style.display = "block";
             }, 1000);
-    
+
         };
-    orderClose[i].addEventListener("click",closeOrderRemove);
+        orderClose[i].addEventListener("click", closeOrderRemove);
     };
 
     bgBg.addEventListener("click", allCloseBtn);
 
     const goClient = document.querySelectorAll(".goClient");
 
-    for(let i=0; i<goClient.length; i++){
-        const goClientGO = () =>{
-            location.href="/client";
+    for (let i = 0; i < goClient.length; i++) {
+        const goClientGO = () => {
+            location.href = "/client";
         };
 
 
@@ -151,15 +159,17 @@ window.onload = function(){
     window.plsbtnClick = plsbtnClick;
 
 
+
     const formPOST = document.querySelector("#formPOST");
     const submitPOST = () => {
+        // event.preventDefault();
         const trLength = document.querySelectorAll("#tbody tr");
         console.log("이거", trLength);
-        lengthinput = '<input name="lengthset" style="display: none" type="Number" value="' + Length + '">'
+        lengthinput = '<input name="lengthset" style="display: none" type="Number" value="' + trLength.length + '">'
         formPOST.insertAdjacentHTML('beforeEnd', lengthinput);
     };
-    formPOST.addEventListener("sumbit", submitPOST)
-
+    formPOST.addEventListener("submit", submitPOST)
+    // window.submitPost = submitPost;
 
 
     const calDeta = document.querySelector("#calDeta");
@@ -170,6 +180,17 @@ window.onload = function(){
     let today = new Date();
     let KRDay = today.toLocaleDateString('ko-KR');
     calDeta.value = KRDay;
+
+    console.log(cldbox1);
+
+    const inputDisabledOff = () => {
+        // event.preventDefault();
+        for (let i = 0; i < cldbox1.length; i++) {
+            cldbox1[i].disabled = false;
+
+        }
+    };
+    formPOST.addEventListener("click", inputDisabledOff);
 
     let tomorrow = new Date(today.setDate(today.getDate() + 7));
 
@@ -255,4 +276,4 @@ window.onload = function(){
     }); //// jQ 끝
 
 
-};/////// window.onload
+}; /////// window.onload

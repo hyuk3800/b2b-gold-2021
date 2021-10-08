@@ -11,7 +11,7 @@ const stockSchema = new mongoose.Schema({
     gubun: { type: String, require: true, default: "일반" }, // 구분
 
     registrationdate: { type: String },// 등록일 (날짜 변경 가능)
-    orderNumber: { type: Number },//주문번호
+    orderNumber: { type: String },//주문번호
     modelNumber: { type:String },//모델번호(모델번호가 없으면 등록하러 가자고함)
     manufacturer:{ type: String },//제조사
     material: { type: String },//재질
