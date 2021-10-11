@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-
+///////////////////////// 잠깐 폐기 //////////////////
 const repairSchema = new mongoose.Schema({
     fileUrl: { type : String, required: true},// 제품 이미지
     createdAt: {type: Date, require: true, default: Date.now }, // 생성날짜\

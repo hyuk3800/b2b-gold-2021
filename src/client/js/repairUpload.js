@@ -11,6 +11,19 @@ window.onload = function () {
     const searchManuBox = document.querySelector(".searchManuBox");
 
 
+    const clientNum = document.querySelectorAll(".clientNum");
+    const clientNum2 = document.querySelectorAll(".clientNum2");
+
+
+    for(let i=0; i<clientNum.length; i++){
+        clientNum[i].innerText = i+1;
+    }
+
+
+
+    for(let i=0; i<clientNum2.length; i++){
+        clientNum2[i].innerText = i+1;
+    }
 
 
 
@@ -165,8 +178,10 @@ window.onload = function () {
         // event.preventDefault();
         const trLength = document.querySelectorAll("#tbody tr");
         console.log("이거", trLength);
+        typeinput = '<input name="dbtype" style="display: none" type="text" value="repair">';
         lengthinput = '<input name="lengthset" style="display: none" type="Number" value="' + trLength.length + '">'
         formPOST.insertAdjacentHTML('beforeEnd', lengthinput);
+        formPOST.insertAdjacentHTML('beforeEnd', typeinput);
     };
     formPOST.addEventListener("submit", submitPOST)
     // window.submitPost = submitPost;

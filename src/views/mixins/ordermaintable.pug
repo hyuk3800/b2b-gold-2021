@@ -11,7 +11,7 @@ mixin orderMainTable(order)
             td #{order.material} <br> #{order.color}
             td #{order.stone.stoneName} <br>  #{order.stone2.stoneName2} 
             td #{order.size}
-            td #{order.quantity} <br> <div class="orderStocks"> #{order.stocks.length}</div>
+            td <div class="orderQuantity"> #{order.quantity} </div> <br> <div class="orderStocks"> #{order.stocks.length}</div>
             td #{order.description}
             td #{order.manufacturer}
             td #{order.gubun}

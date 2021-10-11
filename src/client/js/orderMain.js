@@ -155,12 +155,19 @@ const checkCheckThis = (event) => {
     if (checkedTrue === 0) {
         event.preventDefault();
         alert("체크된것이 없습니다.");
+    // }else{
+    //     if(){
+
+    //     }else{
+
+    //     }
     }
+    
 };
 
 const releasedate = document.querySelectorAll(".releasedate"); // 출고일
 const registrationdate = document.querySelectorAll(".registrationdate"); // 접수일
-const registrationdateInput = document.getElementsByName("registrationdate")
+const registrationdateInput = document.getElementsByName("registrationdate");
 
 console.log(releasedate,"출고일");
 console.log(registrationdate,"접수일");

@@ -96,9 +96,9 @@ block content
                                     th(width="8%") 제조사 <br> 제조No
                                     th(width="7%") 단계 구성
                             tbody 
-                                if user.repairs 
-                                    each repair in user.repairs 
-                                        +repairMainTable(repair)
+                                if repair 
+                                    each repairs in repair 
+                                        +repairMainTable(repairs)
                                 else
             div(class="row")
                 div(class="col-12")

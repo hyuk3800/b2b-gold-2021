@@ -10,6 +10,20 @@ window.onload = function () {
     const searcModelhBox = document.querySelector(".searcModelhBox");
     const searchManuBox = document.querySelector(".searchManuBox");
 
+    const clientNum = document.querySelectorAll(".clientNum");
+    const clientNum2 = document.querySelectorAll(".clientNum2");
+
+
+    for(let i=0; i<clientNum.length; i++){
+        clientNum[i].innerText = i+1;
+    }
+
+
+
+    for(let i=0; i<clientNum2.length; i++){
+        clientNum2[i].innerText = i+1;
+    }
+
     console.log(account)
 
     for (let i = 0; i < account.length; i++) {
@@ -99,7 +113,9 @@ window.onload = function () {
         const trLength = document.querySelectorAll("#tbody tr");
         console.log("이거", trLength);
         let Length = trLength.length;
-        lengthinput = '<input name="lengthset" style="display: none" type="Number" value="' + Length + '">'
+        typeinput = '<input name="dbtype" style="display: none" type="text" value="order">';
+        lengthinput = '<input name="lengthset" style="display: none" type="Number" value="' + Length + '">';
+        formPOST.insertAdjacentHTML('beforeEnd', typeinput);
         formPOST.insertAdjacentHTML('beforeEnd', lengthinput);
     };
 

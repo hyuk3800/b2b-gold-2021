@@ -2,6 +2,7 @@ extends ../base
 include ../mixins/repairuploadtable
 include ../mixins/stockmodelcard
 include ../mixins/stockclienttable
+include ../mixins/stockclienttable2
 
 block links 
     link(rel="stylesheet", href="/static/css/repair/repairupload.css")
@@ -498,7 +499,7 @@ block content
                                         tbody 
                                             if client
                                                 each clients in client
-                                                    +stockClienTtable(clients)
+                                                    +stockClienTtable2(clients)
                                                 span 
                                             else 
 

@@ -392,6 +392,10 @@
     height: 100%;
 }
 
+.orderQuantity{
+    display: inline-block;
+    height: 25px;
+}
 
 .changesStart {
     width: 100%;

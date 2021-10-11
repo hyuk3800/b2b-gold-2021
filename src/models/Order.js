@@ -9,7 +9,8 @@ const orderSchema = new mongoose.Schema({
     stocks: [
         { type: mongoose.Schema.Types.ObjectId, ref: "Stock" }
        ],
-
+    
+    dbType: { type: String },// 주문등록인지 수리등록인지 구분
 
     allNumber: { type: String, required: true, },// 주문번호
 
