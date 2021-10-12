@@ -1,11 +1,11 @@
 import express from "express";
-import { purchaseMain, purchaseUpload } from "../controllers/savePgController";
+import { purchaseMain, getPurchaseUpload, postPurchaseUpload } from "../controllers/savePgController";
 import { protectorMiddleware } from "../middlewares";
 
 const purchaseRouter = express.Router();
 
 
 purchaseRouter.get("/main", protectorMiddleware, purchaseMain);
-purchaseRouter.get("/upload", protectorMiddleware, purchaseUpload);
+purchaseRouter.route("/upload").all(protectorMiddleware).get(getPurchaseUpload).post(postPurchaseUpload);
 
 export default purchaseRouter;

@@ -1659,12 +1659,39 @@ export const purchaseMain = (req, res) => {
         pathname
     });
 };
-export const purchaseUpload = (req, res) => {
+export const getPurchaseUpload = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
+    const user = await User.findById(_id);
+    const clients = await goldClient.find({
+        $and: [{
+                "clientType": "매입처"
+            },
+            {
+                "owner": _id
+            }
+        ]
+    });
+    if (!user) {
+        return res.status(404).render("404");
+    }
+    if (String(_id) !== String(user._id)) {
+        return res.status(403).redirect("/");
+    }
+
     return res.render("purchase/purchaseupload", {
         pageTitle: "매입 등록",
-        pathname
+        pathname,
+        clients
     });
+};
+
+export const postPurchaseUpload = (req, res) => {
+
 };
 
 export const saleMain = (req, res) => {

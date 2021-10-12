@@ -119,7 +119,7 @@ window.onload = function () {
 
     const plsbtnClick = () => {
 
-        console.log("안녕하신가? 후후후후후");
+        // console.log("안녕하신가? 후후후후후");
         const newRow = tbody.insertRow();
 
         const newCell1 = newRow.insertCell(0);
