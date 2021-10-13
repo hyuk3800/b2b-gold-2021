@@ -198,6 +198,8 @@ window.onload = function () {
 
     console.log(cldbox1);
 
+    const orderBtn = document.querySelector("#orderBtn");
+
     const inputDisabledOff = () => {
         // event.preventDefault();
         for (let i = 0; i < cldbox1.length; i++) {
@@ -205,7 +207,7 @@ window.onload = function () {
 
         }
     };
-    formPOST.addEventListener("click", inputDisabledOff);
+    formPOST.addEventListener("submit", inputDisabledOff);
 
     let tomorrow = new Date(today.setDate(today.getDate() + 7));
 

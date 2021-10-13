@@ -1,3 +1,6 @@
+const formPOST = document.querySelector("#formPOST");
+
+
 const content = document.querySelectorAll(".content");
 const material = document.querySelectorAll(".material");
 const netWeight = document.getElementsByName("netWeight");
@@ -175,7 +178,7 @@ for (let i = 0; i < material.length; i++) {
 
 
     plsbtn.addEventListener("click", clickPlsbtn);
-    window.plsbtnClick = plsbtnClick;
+
 
     material[i].addEventListener("change", materialChange);
     netWeight[i].addEventListener("change", netWeightX);
@@ -186,13 +189,21 @@ for (let i = 0; i < material.length; i++) {
     unitPrice[i].addEventListener("change", totalAmount);
     tariff[i].addEventListener("change", totalAmount);
 }; //// for문
+// window.plsbtnClick = plsbtnClick;
+const purchaseBtn = document.querySelector("#purchaseBtn");
+
+const submitEventGo = () => {
+    for(let i=0; i<content.length; i++){
+        content[i].disabled = false;
+        netGoldConversion[i].disabled = false;
+        supplyPrice[i].disabled = false;
+        taxAmount[i].disabled = false;
+        total[i].disabled = false;
+    };
+};
 
 
-
-
-
-
-
+formPOST.addEventListener("submit", submitEventGo);
 
 
 
@@ -204,8 +215,6 @@ for (let i = 0; i < material.length; i++) {
 
 
 const calDeta = document.querySelector("#cal");
-let cldbox1 = document.getElementsByClassName("cldbox1111");
-let cldbox = document.querySelector("#cldbox");
 
 
 let today = new Date();

@@ -7,7 +7,7 @@ import "./models/Quote";
 import "./models/Client";
 import "./models/Stock";
 import "./models/Order";
-import "./models/Repair";
+import "./models/Purchase";
 import app from "./server";
 
 const PORT = 5000;

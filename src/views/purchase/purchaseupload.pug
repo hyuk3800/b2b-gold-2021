@@ -9,190 +9,347 @@ block scripts
     script(src="/assets/js/purchaseUpload.js") 
     
 block content
-    div(class="container purchaseSaveBox")
-        div(class="row purchaseSaveSmBox1")
-            div(class="col-6")
-                div(class="orderName")
-                    a(href="/purchase/main", target="_self", class="mntitArrow") 
-                    span #{pageTitle}
-                a(href="",class="icInfoOutline")
-                    img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움")  
-            div(class="col-6 purchaseBtnBox")
-                button(id="purchaseBtn") 매입등록
-        div(class="row")
-            div(class="col-12 col-sm-5")
-                table(class="purchaseSaveTable1")
-                    tr 
-                        td 등록일
-                        td  
-                            div(class="dunglogeel")
-                                div(class="calinder")
-                                    img(src="../../../../static/images/calendar.png", alt="calendar")
-                                div(class="calData")
-                                    input(name="" value="2021. 7. 16.")#cal
-                    tr 
-                        td 매입처
-                        td 
-                            div(class="maipcher")
-                                input(type="text" name="client" placeholder="매입처")
-                                button(class="secbtn" type="button" )#clickButton
-            div(class="col-12 col-sm-7")
-                table(class="purchaseSaveTable2")
-                    tr 
-                        td
-                        td 순금중량(g)
-                        td 금액(원)
-                    tr 
-                        td 매입전 미수
-                        td
-                            div.goldgleamBefore
-                        td
-                            div.moneyBefore
-                    tr 
-                        td 매입
-                        td
-                            div.stockGold
-                        td
-                            div.stockMoney
-                    tr 
-                        td 결제 및 반품
-                        td
-                            div.paymentGold
-                        td
-                            div.paymentMoney
-                    tr 
-                        td 매입 후 미수
-                        td
-                            div.attemptGold
-                        td
-                            div.attemptMoney
-    div(class="container purchaseSaveToBox")
-        div(class="row")
-            div(class="col-12")
-                div(class="purchaseSaveToBox1")
-                    table 
-                        thead 
-                            tr 
-                                th(width="1%" rowspan="2") 취소
-                                th(width="4%" rowspan="2") 구분
-                                th(width="5%" rowspan="2") 재질
-                                th(width="6%" rowspan="2") 함량
-                                th(colspan="3") 중량
-                                th(width="3%" rowspan="2") 수량
-                                th(width="7%" rowspan="2") 단가
-                                th(width="7%" rowspan="2") 공급가
-                                th(width="4%" rowspan="2") 세율
-                                th(width="7%" rowspan="2") 세액
-                                th(width="7%" rowspan="2") 합계금액
-                                th(width="8%" rowspan="2") 비고
-                            tr 
-                                th(width="5%") 실중량
-                                th(width="4%") 해리
-                                th(width="5%") 순금환산
-                        tbody#tBody 
-                            tr
-                                td
-                                    button(class="trsBTN")
-                                td
-                                    select(name="purBox" class="purBox")
-                                        option(value="매입") 매입
-                                        option(value="매입후결제") 매입후결제
-                                        option(value="결제") 결제
-                                        option(value="결통") 결통
-                                        option(value="반품") 반품
-                                        option(value="DC") DC
-                                td
-                                    select(name="material" class="material") 
-                                        option(value="") 
-                                        option(value="10K") 10K
-                                        option(value="14K") 14K
-                                        option(value="18K") 18K
-                                        option(value="22K") 22K
-                                        option(value="순금-995") 순금-995
-                                        option(value="순금-999") 순금-999
-                                        option(value="실버") 실버
-                                        option(value="PT") PT
-                                        option(value="기타") 기타
-                                td
-                                    input(type="number" name="content" class="purbox1111 content" autocomplete="off" disabled) 
-                                td
-                                    input(type="number" name="netWeight") 
-                                td
-                                    select(name="harry" class="harry") 
-                                        option(value="1.10") 1.10
-                                        option(value="1.09") 1.09
-                                        option(value="1.07") 1.07
-                                        option(value="1.06") 1.06
-                                        option(value="1.00") 1.00
-                                td
-                                    input(type="number" class="purbox1111" name="netGoldConversion" autocomplete="off" disabled) 
-                                td
-                                    input(type="number" name="quantity" value="1") 
-                                td
-                                    input(type="number" name="unitPrice") 
-                                td
-                                    input(type="number" name="supplyPrice" class="purbox1111" autocomplete="off" disabled) 
-                                td
-                                    select(name="tariff" class="tariff") 
-                                        option(value="0") 0
-                                        option(value="10") 10
-                                td
-                                    input(type="number" name="taxAmount" class="purbox1111" autocomplete="off" disabled) 
-                                td
-                                    input(type="number" name="total" class="purbox1111" autocomplete="off" disabled) 
-                                td
-                                    input(type="text" name="description") 
-        div(class="row")
-            div(class="pluseBox")
-                button(id="plsbtn") 추가
-    .startsearch
-            #bgBg 
-            .searcOrderhBox.container
-                .row.manuNameBox
-                    .col-12.manuName 
-                        span 거래처
-                .container   
-                    .row.clientBody 
-                        .col-3.clientBodyName
-                            span 전체 #{clients.length}개
-                        .col-7
-                            .getClient
-                                input(type="text" placeholder="검색어를 입력하세요")
-                                button(type="button")
-                                    i(class="las la-search")
-                    .container      
-                        .row
-                            .clientBox
-                                .col-12
-                                    table 
-                                        thead
-                                            tr 
-                                                th No
-                                                th 선택
-                                                th 구분
-                                                th 상호명
-                                                th 사업체명
-                                                th 대표자명
-                                                th 대표자연락처
-                                                th 연락처
-                                                th 팩스
-                                                th 통상
-                                                th 비고
-                                                th VAT
-                                                th 거래형태
-                                                th 해리
-                                        tbody
-                                            if clients
-                                                each client in clients
-                                                    +stockClienTtable(client)
-                                                span 
-                                            else 
+    form(method="POST")#formPOST   
+        div(class="container purchaseSaveBox")
+            div(class="row purchaseSaveSmBox1")
+                div(class="col-6")
+                    div(class="orderName")
+                        a(href="/purchase/main", target="_self", class="mntitArrow") 
+                        span #{pageTitle}
+                    a(href="",class="icInfoOutline")
+                        img(src="../../../../static/images/ic-info-outline-24-px.png", alt="도움")  
+                div(class="col-6 purchaseBtnBox")
+                    button(id="purchaseBtn") 매입등록
+            div(class="row")
+                div(class="col-12 col-sm-5")
+                    table(class="purchaseSaveTable1")
+                        tr 
+                            td 등록일
+                            td  
+                                div(class="dunglogeel")
+                                    div(class="calinder")
+                                        img(src="../../../../static/images/calendar.png", alt="calendar")
+                                    div(class="calData")
+                                        input(name="registrationDate" value="2021. 7. 16.")#cal
+                        tr 
+                            td 매입처
+                            td 
+                                div(class="maipcher")
+                                    input(type="text" name="client" placeholder="매입처")
+                                    button(class="secbtn" type="button" )#clickButton
+                div(class="col-12 col-sm-7")
+                    table(class="purchaseSaveTable2")
+                        tr 
+                            td
+                            td 순금중량(g)
+                            td 금액(원)
+                        tr 
+                            td 매입전 미수
+                            td
+                                div.goldgleamBefore
+                            td
+                                div.moneyBefore
+                        tr 
+                            td 매입
+                            td
+                                div.stockGold
+                            td
+                                div.stockMoney
+                        tr 
+                            td 결제 및 반품
+                            td
+                                div.paymentGold
+                            td
+                                div.paymentMoney
+                        tr 
+                            td 매입 후 미수
+                            td
+                                div.attemptGold
+                            td
+                                div.attemptMoney
+        div(class="container purchaseSaveToBox")
+            div(class="row")
+                div(class="col-12")
+                    div(class="purchaseSaveToBox1")
+                        table 
+                            thead 
+                                tr 
+                                    th(width="1%" rowspan="2") 취소
+                                    th(width="4%" rowspan="2") 구분
+                                    th(width="5%" rowspan="2") 재질
+                                    th(width="6%" rowspan="2") 함량
+                                    th(colspan="3") 중량
+                                    th(width="3%" rowspan="2") 수량
+                                    th(width="7%" rowspan="2") 단가
+                                    th(width="7%" rowspan="2") 공급가
+                                    th(width="4%" rowspan="2") 세율
+                                    th(width="7%" rowspan="2") 세액
+                                    th(width="7%" rowspan="2") 합계금액
+                                    th(width="8%" rowspan="2") 비고
+                                tr 
+                                    th(width="5%") 실중량
+                                    th(width="4%") 해리
+                                    th(width="5%") 순금환산
+                            tbody#tBody 
+                                tr
+                                    td
+                                        button(class="trsBTN")
+                                    td
+                                        select(name="purBox" class="purBox")
+                                            option(value="매입") 매입
+                                            option(value="매입후결제") 매입후결제
+                                            option(value="결제") 결제
+                                            option(value="결통") 결통
+                                            option(value="반품") 반품
+                                            option(value="DC") DC
+                                    td
+                                        select(name="material" class="material") 
+                                            option(value="") 
+                                            option(value="10K") 10K
+                                            option(value="14K") 14K
+                                            option(value="18K") 18K
+                                            option(value="22K") 22K
+                                            option(value="순금-995") 순금-995
+                                            option(value="순금-999") 순금-999
+                                            option(value="실버") 실버
+                                            option(value="PT") PT
+                                            option(value="기타") 기타
+                                    td
+                                        input(type="number" name="content" class="purbox1111 content" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="netWeight") 
+                                    td
+                                        select(name="harry" class="harry") 
+                                            option(value="1.10") 1.10
+                                            option(value="1.09") 1.09
+                                            option(value="1.07") 1.07
+                                            option(value="1.06") 1.06
+                                            option(value="1.00") 1.00
+                                    td
+                                        input(type="number" class="purbox1111" name="netGoldConversion" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="quantity" value="1") 
+                                    td
+                                        input(type="number" name="unitPrice") 
+                                    td
+                                        input(type="number" name="supplyPrice" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        select(name="tariff" class="tariff") 
+                                            option(value="0") 0
+                                            option(value="10") 10
+                                    td
+                                        input(type="number" name="taxAmount" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="total" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        input(type="text" name="description") 
+                                tr
+                                    td
+                                        button(class="trsBTN")
+                                    td
+                                        select(name="purBox" class="purBox")
+                                            option(value="매입") 매입
+                                            option(value="매입후결제") 매입후결제
+                                            option(value="결제") 결제
+                                            option(value="결통") 결통
+                                            option(value="반품") 반품
+                                            option(value="DC") DC
+                                    td
+                                        select(name="material" class="material") 
+                                            option(value="") 
+                                            option(value="10K") 10K
+                                            option(value="14K") 14K
+                                            option(value="18K") 18K
+                                            option(value="22K") 22K
+                                            option(value="순금-995") 순금-995
+                                            option(value="순금-999") 순금-999
+                                            option(value="실버") 실버
+                                            option(value="PT") PT
+                                            option(value="기타") 기타
+                                    td
+                                        input(type="number" name="content" class="purbox1111 content" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="netWeight") 
+                                    td
+                                        select(name="harry" class="harry") 
+                                            option(value="1.10") 1.10
+                                            option(value="1.09") 1.09
+                                            option(value="1.07") 1.07
+                                            option(value="1.06") 1.06
+                                            option(value="1.00") 1.00
+                                    td
+                                        input(type="number" class="purbox1111" name="netGoldConversion" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="quantity" value="1") 
+                                    td
+                                        input(type="number" name="unitPrice") 
+                                    td
+                                        input(type="number" name="supplyPrice" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        select(name="tariff" class="tariff") 
+                                            option(value="0") 0
+                                            option(value="10") 10
+                                    td
+                                        input(type="number" name="taxAmount" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="total" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        input(type="text" name="description") 
+                                tr
+                                    td
+                                        button(class="trsBTN")
+                                    td
+                                        select(name="purBox" class="purBox")
+                                            option(value="매입") 매입
+                                            option(value="매입후결제") 매입후결제
+                                            option(value="결제") 결제
+                                            option(value="결통") 결통
+                                            option(value="반품") 반품
+                                            option(value="DC") DC
+                                    td
+                                        select(name="material" class="material") 
+                                            option(value="") 
+                                            option(value="10K") 10K
+                                            option(value="14K") 14K
+                                            option(value="18K") 18K
+                                            option(value="22K") 22K
+                                            option(value="순금-995") 순금-995
+                                            option(value="순금-999") 순금-999
+                                            option(value="실버") 실버
+                                            option(value="PT") PT
+                                            option(value="기타") 기타
+                                    td
+                                        input(type="number" name="content" class="purbox1111 content" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="netWeight") 
+                                    td
+                                        select(name="harry" class="harry") 
+                                            option(value="1.10") 1.10
+                                            option(value="1.09") 1.09
+                                            option(value="1.07") 1.07
+                                            option(value="1.06") 1.06
+                                            option(value="1.00") 1.00
+                                    td
+                                        input(type="number" class="purbox1111" name="netGoldConversion" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="quantity" value="1") 
+                                    td
+                                        input(type="number" name="unitPrice") 
+                                    td
+                                        input(type="number" name="supplyPrice" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        select(name="tariff" class="tariff") 
+                                            option(value="0") 0
+                                            option(value="10") 10
+                                    td
+                                        input(type="number" name="taxAmount" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="total" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        input(type="text" name="description") 
+                                tr
+                                    td
+                                        button(class="trsBTN")
+                                    td
+                                        select(name="purBox" class="purBox")
+                                            option(value="매입") 매입
+                                            option(value="매입후결제") 매입후결제
+                                            option(value="결제") 결제
+                                            option(value="결통") 결통
+                                            option(value="반품") 반품
+                                            option(value="DC") DC
+                                    td
+                                        select(name="material" class="material") 
+                                            option(value="") 
+                                            option(value="10K") 10K
+                                            option(value="14K") 14K
+                                            option(value="18K") 18K
+                                            option(value="22K") 22K
+                                            option(value="순금-995") 순금-995
+                                            option(value="순금-999") 순금-999
+                                            option(value="실버") 실버
+                                            option(value="PT") PT
+                                            option(value="기타") 기타
+                                    td
+                                        input(type="number" name="content" class="purbox1111 content" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="netWeight") 
+                                    td
+                                        select(name="harry" class="harry") 
+                                            option(value="1.10") 1.10
+                                            option(value="1.09") 1.09
+                                            option(value="1.07") 1.07
+                                            option(value="1.06") 1.06
+                                            option(value="1.00") 1.00
+                                    td
+                                        input(type="number" class="purbox1111" name="netGoldConversion" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="quantity" value="1") 
+                                    td
+                                        input(type="number" name="unitPrice") 
+                                    td
+                                        input(type="number" name="supplyPrice" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        select(name="tariff" class="tariff") 
+                                            option(value="0") 0
+                                            option(value="10") 10
+                                    td
+                                        input(type="number" name="taxAmount" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        input(type="number" name="total" class="purbox1111" autocomplete="off" disabled) 
+                                    td
+                                        input(type="text" name="description") 
+            div(class="row")
+                div(class="pluseBox")
+                    button(id="plsbtn" type="button") 추가
+        .startsearch
+                #bgBg 
+                .searcOrderhBox.container
+                    .row.manuNameBox
+                        .col-12.manuName 
+                            span 거래처
+                    .container   
+                        .row.clientBody 
+                            .col-3.clientBodyName
+                                span 전체 #{clients.length}개
+                            .col-7
+                                .getClient
+                                    input(type="text" placeholder="검색어를 입력하세요")
+                                    button(type="button")
+                                        i(class="las la-search")
+                        .container      
+                            .row
+                                .clientBox
+                                    .col-12
+                                        table 
+                                            thead
+                                                tr 
+                                                    th No
+                                                    th 선택
+                                                    th 구분
+                                                    th 상호명
+                                                    th 사업체명
+                                                    th 대표자명
+                                                    th 대표자연락처
+                                                    th 연락처
+                                                    th 팩스
+                                                    th 통상
+                                                    th 비고
+                                                    th VAT
+                                                    th 거래형태
+                                                    th 해리
+                                            tbody
+                                                if clients
+                                                    each client in clients
+                                                        +stockClienTtable(client)
+                                                    span 
+                                                else 
 
-                                .col-12.botbutton
-                                    button.goClient(type="button") 추가등록 
-                    .row 
-                        .col-12.numberBox
-                            span 1
-                    .row.orderButtonBox2(style="margin-bottom: 20px")
-                        .col-5
-                            button.orderClose(type="button") 취소
+                                    .col-12.botbutton
+                                        button.goClient(type="button") 추가등록 
+                        .row 
+                            .col-12.numberBox
+                                span 1
+                        .row.orderButtonBox2(style="margin-bottom: 20px")
+                            .col-5
+                                button.orderClose(type="button") 취소

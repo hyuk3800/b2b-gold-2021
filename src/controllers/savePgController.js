@@ -1691,6 +1691,26 @@ export const getPurchaseUpload = async (req, res) => {
 };
 
 export const postPurchaseUpload = (req, res) => {
+    const { user: { _id } } = req.session;
+    const {
+        registrationDate,
+        client,
+        purBox,
+        material,
+        content,
+        netWeight,
+        harry,
+        netGoldConversion,
+        quantity,
+        unitPrice,
+        supplyPrice,
+        taxAmount,
+        total,
+        description,
+    } = req.body;
+
+    console.log(req.body, material.length);
+
 
 };
 
