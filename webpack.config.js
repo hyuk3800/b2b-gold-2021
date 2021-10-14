@@ -17,6 +17,7 @@ module.exports = {
         orderUpload:"./src/client/js/orderUpload.js",
         repairMain:"./src/client/js/repairMain.js",
         repairUpload:"./src/client/js/repairUpload.js",
+        purchaseMain:"./src/client/js/purchaseMain.js",
         purchaseUpload:"./src/client/js/purchaseUpload.js",
     },
     mode: "development",

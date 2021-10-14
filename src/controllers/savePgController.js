@@ -5,6 +5,7 @@ import goldOrder from "../models/Order";
 import User from "../models/User";
 import goldRepair from "../models/Repair";
 import session from "express-session";
+import goldPurchase from "../models/Purchase";
 
 
 export const catalogeMain = async (req, res) => {
@@ -1652,11 +1653,33 @@ export const postRepairUpload = async (req, res) => {
     }
 };
 
-export const purchaseMain = (req, res) => {
+export const purchaseMain = async (req, res) => {
     const pathname = req._parsedOriginalUrl.pathname;
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
+
+    const user = await User.findById(_id).populate("purchases");
+    if (!user) {
+        return res.status(404).render("404");
+    }
+    if (String(_id) !== String(user._id)) {
+        return res.status(403).redirect("/");
+    }
+    // const purchasess = await goldPurchase.find({
+    //     $and: [{
+
+    //     }, {
+
+    //     }]
+    // });
+
     return res.render("purchase/purchasemain", {
         pageTitle: "매입 관리",
-        pathname
+        pathname,
+        user
     });
 };
 export const getPurchaseUpload = async (req, res) => {
@@ -1690,8 +1713,12 @@ export const getPurchaseUpload = async (req, res) => {
     });
 };
 
-export const postPurchaseUpload = (req, res) => {
-    const { user: { _id } } = req.session;
+export const postPurchaseUpload = async (req, res) => {
+    const {
+        user: {
+            _id
+        }
+    } = req.session;
     const {
         registrationDate,
         client,
@@ -1706,11 +1733,69 @@ export const postPurchaseUpload = (req, res) => {
         supplyPrice,
         taxAmount,
         total,
+        tariff,
         description,
     } = req.body;
 
-    console.log(req.body, material.length);
+    console.log(req.body, tariff);
+    if (Number(material.length) === 1) {
+        const rand = Math.round(Math.random() * 0xffffffff).toString(16);
+        const newGoldPurchase = await goldPurchase.create({
+            registrationDate,
+            client,
+            purBox: purBox[0],
+            content,
+            netWeight,
+            harry,
+            netGoldConversion,
+            quantity,
+            unitPrice,
+            supplyPrice,
+            tariff: tariff[0],
+            taxAmount,
+            total,
+            description,
 
+            purchNumber: rand,
+
+
+            owner: _id,
+        });
+        const user = await User.findById(_id);
+        user.purchases.push(newGoldPurchase._id);
+        user.save();
+    } else {
+        for (let i = 0; i < material.length; i++) {
+
+            const rand = Math.round(Math.random() * 0xffffffff).toString(16);
+            const newGoldPurchase = await goldPurchase.create({
+                registrationDate,
+                client,
+                purBox: purBox[i],
+                content: content[i],
+                netWeight: netWeight[i],
+                harry: harry[i],
+                netGoldConversion: netGoldConversion[i],
+                quantity: quantity[i],
+                unitPrice: unitPrice[i],
+                supplyPrice: supplyPrice[i],
+                tariff: tariff[i],
+                taxAmount: taxAmount[i],
+                total: total[i],
+                description: description[i],
+
+                purchNumber: rand,
+
+
+                owner: _id,
+            });
+            const user = await User.findById(_id);
+            user.purchases.push(newGoldPurchase._id);
+            user.save();
+        }
+    }
+    return res.redirect("/purchase/main");
+    z
 
 };
 

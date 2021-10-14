@@ -1,0 +1,19 @@
+mixin purchaseTtable(purchase)
+        tr 
+            td.purchNum
+            td
+                input(type="checkbox" value=`${purchase._id}`)
+            td #{purchase.registrationDate}
+            td #{purchase.purBox}
+            td #{purchase.client}
+            td #{purchase.purchNumber}
+            td #{purchase.description}
+            td #{purchase.material}
+            td #{purchase.netWeight}g
+            td #{purchase.harry}
+            td #{purchase.netGoldConversion}
+            td #{purchase.quantity}
+            td #{purchase.unitPrice}
+            td #{purchase.supplyPrice}
+            td #{purchase.taxAmount}
+            td #{purchase.total}
